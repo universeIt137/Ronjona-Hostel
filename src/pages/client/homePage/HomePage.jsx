@@ -6,7 +6,8 @@ import Packages from './homeComponents/Packages';
 import Offers from './homeComponents/Offers';
 import Facility from './homeComponents/Facility';
 import Review from './homeComponents/Review';
-import Gallery from './homeComponents/Gallery';
+import PhotoGallery from './homeComponents/PhotoGallery';
+import VideoGallery from './homeComponents/VideoGallery';
 
 const HomePage = () => {
     return (
@@ -18,7 +19,8 @@ const HomePage = () => {
             <Facility/>
             <ChooseUs />
             <Review />
-            <Gallery/>
+            <PhotoGallery/>
+            <VideoGallery/>
         </div>
     );
 };
