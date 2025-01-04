@@ -8,10 +8,12 @@ import Facility from './homeComponents/Facility';
 import Review from './homeComponents/Review';
 import PhotoGallery from './homeComponents/PhotoGallery';
 import VideoGallery from './homeComponents/VideoGallery';
+import { Button } from 'flowbite-react';
 
 const HomePage = () => {
     return (
         <div>
+              <Button>Click me</Button>
             <Banner />
             <Location/>
             <Packages />
