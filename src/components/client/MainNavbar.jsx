@@ -26,23 +26,23 @@ const MainNavbar = () => {
     }, []);
 
     return (
-        <div className={`fixed w-full top-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black opacity-90' : 'bg-white opacity-100'}`}>
+        <div className={`fixed w-full top-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-50' : 'bg-white opacity-100'}`}>
             {!isScrolled && (
                 <div className="flex items-center gap-4 bg-black text-white justify-center">
                     <p className='text-xs md:text-md lg:text-md'>
-                        10000+ students have experienced the Luxurious Hive Life. See what makes us stand out
+                        10000+ students have experienced the Luxurious Hive Life.
                     </p>
                     <FaAngleRight className='text-center m-o md:m-2'></FaAngleRight>
                 </div>
             )}
 
             {/* Navbar */}
-            <Navbar className={`${isScrolled ? 'bg-black opacity-85' : 'bg-white opacity-100'} transition-all duration-300`} fluid rounded>
+            <Navbar className={`${isScrolled ? 'bg-black bg-opacity-50' : 'bg-white opacity-100'} transition-all duration-300`} fluid rounded>
                 {/* Brand */}
-                <Navbar.Brand className='h-16 md:h-20' href="#">
+                <Navbar.Brand className='h-14 md:h-10' href="#">
                     <img
                         src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1735990482/Ronjona/fcxyldbbg3gtm0ung8kt.png"
-                        className="mr-2 h-8 sm:h-9"
+                        className="mr-2 h-8 md:h-9 rounded-lg"
                         alt="Logo"
                     />
                 </Navbar.Brand>
