@@ -6,10 +6,10 @@ import { FaSearch } from 'react-icons/fa';
 const Banner = () => {
     return (
         <div>
-            <div className="relative h-56 md:h-[100vh] mt-24 rounded-none">
+            <div className="relative h-56 md:h-[100vh] mt-16 md:mt-12 rounded-none">
                 {/* Banner Text */}
-                <p className="absolute top-[40%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-[#fab10b] text-3xl md:text-6xl text-center font-bold px-4">
-                    You don’t just Stay with us, you Live with us!
+                <p className="absolute top-[40%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-[#fab10b] text-3xl md:text-6xl text-center font-bold px-4 w-full">
+                    You don’t just Stay with us, you <br/> Live with us!
                 </p>
                 {/* Responsive Form */}
                 <div className="absolute z-30 p-4 top-[105%] md:top-[80%] left-[50%] transform -translate-x-[50%] tarnslate-y-0 md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex flex-col md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
