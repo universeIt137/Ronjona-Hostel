@@ -13,7 +13,6 @@ import { Button } from 'flowbite-react';
 const HomePage = () => {
     return (
         <div>
-              <Button>Click me</Button>
             <Banner />
             <Location/>
             <Packages />

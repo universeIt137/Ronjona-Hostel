@@ -8,8 +8,11 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
-    
+    extend: {
+      colors: {
+        'main-color': '#fab10b', // Light gray background color
+      },
+    },
   },
   plugins: [
     require('daisyui'),
