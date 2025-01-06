@@ -6,7 +6,7 @@ const Offers = () => {
         <div className='mt-10 container px-4 md:px-0 md:mx-auto'>
             {/* Top Section start */}
             <div className='  mb-6 font-bold flex justify-between items-center'>
-                <p className="text-2xl md:text-4xl hover:underline">Offers For you</p>
+                <p className="text-2xl md:text-4xl hover:underline text-main-color">Offers For you</p>
                 <div className='flex items-center gap-8 hover:underline me-8 text-xl'>
                     <IoArrowBackOutline></IoArrowBackOutline>
                     <IoArrowForward></IoArrowForward>

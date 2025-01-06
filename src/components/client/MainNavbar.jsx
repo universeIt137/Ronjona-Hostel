@@ -49,7 +49,7 @@ const MainNavbar = () => {
 
                 {/* Large screen navigation */}
                 <div className="hidden md:flex md:items-center md:space-x-6">
-                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline`}>
+                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                         Home
                     </a>
 
@@ -59,7 +59,7 @@ const MainNavbar = () => {
                         onMouseEnter={() => setShowGetInTouchDropdown(true)}
                         onMouseLeave={() => setShowGetInTouchDropdown(false)}
                     >
-                        <p className={`text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'} hover:underline`}>
+                        <p className={`text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             Get In Touch
                         </p>
                         {showGetInTouchDropdown && (
@@ -80,7 +80,7 @@ const MainNavbar = () => {
                         onMouseEnter={() => setShowGalleryDropdown(true)}
                         onMouseLeave={() => setShowGalleryDropdown(false)}
                     >
-                        <p className={`text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'} hover:underline`}>
+                        <p className={`text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             Gallery
                         </p>
                         {showGalleryDropdown && (
@@ -93,17 +93,17 @@ const MainNavbar = () => {
                         )}
                     </div>
 
-                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline`}>
+                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                         Our Branches
                     </a>
-                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline`}>
+                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                         Our Packages
                     </a>
                 </div>
 
                 {/* Drawer toggle for mobile */}
                 <div className="flex md:hidden">
-                    <Button className="bg-gray-700 text-white" onClick={() => setIsOpen(true)}>
+                    <Button className="bg-main-color text-white" onClick={() => setIsOpen(true)}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
