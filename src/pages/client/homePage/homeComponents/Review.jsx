@@ -5,9 +5,10 @@ const Review = () => {
     return (
         <div className="container px-4 md:px-0 md:mx-auto">
             {/* Title Section */}
-            <div className="mt-3 text-center md:text-left">
-                <p className="text-xl md:text-4xl text-gray-400 mt-6 md:mt-36 md:ml-12">Border Review</p>
-                <p className="text-sm md:text-xl text-gray-500 mt-2 md:ml-12">Container</p>
+            <div className='  mb-10 '>
+                <p className="text-2xl md:text-4xl hover:underline font-bold ">Border Review</p>
+                <p>Container</p>
+                
             </div>
 
             {/* Card Container */}
