@@ -24,6 +24,9 @@ import AddPrivacy from "../pages/admin/privacy/AddPrivacy";
 import AddFeatures from "../pages/admin/features/AddFeatures";
 import AddReview from "../pages/admin/reviews/AddReview";
 import ManageReview from "../pages/admin/reviews/ManageReview";
+import PhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
+import ManagePhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
+import ManageVideoGallery from "../pages/admin/gallery/ManageVideoGallery";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -138,6 +141,15 @@ const router = createBrowserRouter([
             {
                 path: "manage-review",
                 element: <ManageReview/>
+            },
+            // Gallery related routes 
+            {
+                path: "manage-photo-gallery",
+                element: <ManagePhotoGallery/>
+            },
+            {
+                path: "manage-video-gallery",
+                element: <ManageVideoGallery/>
             }
 
         ]
