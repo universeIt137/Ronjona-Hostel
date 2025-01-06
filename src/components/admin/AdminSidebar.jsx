@@ -15,11 +15,11 @@ import { Link } from 'react-router-dom';
 import { BiGitBranch, BiLocationPlus } from 'react-icons/bi';
 import { TbBrandChrome } from 'react-icons/tb';
 import { GiBranchArrow, GiBrassKnuckles } from 'react-icons/gi';
-import { FcPrivacy } from 'react-icons/fc';
+import { FcGallery, FcPrivacy } from 'react-icons/fc';
 import { MdFeaturedPlayList } from 'react-icons/md';
 const AdminSidebar = () => {
     return (
-        <div className=''>
+        <div className='h-[100vh]'>
             <Sidebar aria-label="Sidebar with multi-level dropdown example">
                 <Sidebar.Items>
                     <Sidebar.ItemGroup>
@@ -161,19 +161,33 @@ const AdminSidebar = () => {
 
                         </Sidebar.Collapse>
 
+                        <Sidebar.Collapse
+                            icon={FcGallery}
+                            label="Gallery"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/manage-photo-gallery'}>
+                                <Sidebar.Item>
+                                    Manage Photo Gallery
+                                </Sidebar.Item>
+                            </Link>
+
+                            <Link to={'/dashboard/manage-video-gallery'}>
+                                <Sidebar.Item>
+                                    Manage Video Gallery
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
                         
-                        <Sidebar.Item href="#" icon={HiUser}>
-                            Users
+                        <Sidebar.Item icon={HiUser}>
+                            Logout
                         </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiShoppingBag}>
-                            Products
-                        </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiArrowSmRight}>
-                            Sign In
-                        </Sidebar.Item>
-                        <Sidebar.Item href="#" icon={HiTable}>
-                            Sign Up
-                        </Sidebar.Item>
+                        
                     </Sidebar.ItemGroup>
                 </Sidebar.Items>
             </Sidebar>
