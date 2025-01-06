@@ -7,8 +7,9 @@ const Banner = () => {
     return (
         <div>
             <div className="relative h-56 md:h-[100vh] mt-16 md:mt-12 rounded-none">
+                
                 {/* Banner Text */}
-                <p className="absolute top-[40%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-[#fab10b] text-3xl md:text-6xl text-center font-bold px-4 w-full">
+                <p className="absolute top-[40%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-main-color text-3xl md:text-6xl text-center font-bold px-4 w-full">
                     You don’t just Stay with us, you <br/> Live with us!
                 </p>
                 {/* Responsive Form */}
