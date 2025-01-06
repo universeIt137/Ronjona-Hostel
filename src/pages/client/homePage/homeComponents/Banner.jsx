@@ -12,7 +12,7 @@ const Banner = () => {
                     You don’t just Stay with us, you <br/> Live with us!
                 </p>
                 {/* Responsive Form */}
-                <div className="absolute z-30 p-4 top-[105%] md:top-[80%] left-[50%] transform -translate-x-[50%] tarnslate-y-0 md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex flex-col md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
+                <div className="absolute z-30 p-4 top-[105%] md:top-[65%] left-[50%] transform -translate-x-[50%] tarnslate-y-0 md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex flex-col md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
                     <div className="w-full md:w-auto">
                         <Select
                             id="destination"

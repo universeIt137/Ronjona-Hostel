@@ -2,26 +2,47 @@ import React from 'react';
 
 const PhotoGallery = () => {
     return (
-        <div className="px-4">
-            <h1 className="text-2xl ml-12 md:text-5xl text-gray-400 mt-10">Photo Gallery</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+        <div className="px-4 md:px-0 container mx-auto mt-20">
+            <div className='  mb-10 '>
+                <p className="text-2xl md:text-5xl hover:underline font-bold ">Photo Gallery</p>
+                
+            </div>
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4  mt-6 ">
                 <div>
-                    <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736069505/ronjona/uacpdp2e2gz8plklnfza.png" alt="Video Thumbnail" />
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736069505/ronjona/uacpdp2e2gz8plklnfza.png" alt="Video Thumbnail" />
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736069505/ronjona/uacpdp2e2gz8plklnfza.png" alt="Video Thumbnail" />
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736069505/ronjona/uacpdp2e2gz8plklnfza.png" alt="Video Thumbnail" />
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736069505/ronjona/uacpdp2e2gz8plklnfza.png" alt="Video Thumbnail" />
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                </div>
+                <div>
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                </div>
+                <div>
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                </div>
+                <div>
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                </div>
+                <div>
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                </div>
+                <div>
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
+                </div>
+                <div>
+                    <img className='h-36 md:h-48 rounded-xl w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg" alt="Video Thumbnail" />
                 </div>
             </div>
         </div>

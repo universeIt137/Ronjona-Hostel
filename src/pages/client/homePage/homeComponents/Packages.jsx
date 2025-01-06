@@ -7,7 +7,7 @@ import { TbShare3 } from 'react-icons/tb';
 
 const Packages = () => {
     return (
-        <div>
+        <div className='container px-4 md:px-0 md:mx-auto'>
             {/* Top Section start */}
             <div className='  mb-6 font-bold flex justify-between items-center'>
                 <p className="text-2xl md:text-4xl hover:underline">Our Pakeges</p>
@@ -19,7 +19,7 @@ const Packages = () => {
             {/* Top Section end */}
 
             {/* Mian Card Section Start */}
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 mx-4 md:mx-10 lg:mx-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 ">
                 <div className='rounded-xl  w-full pb-6'> 
                     <div className="relative">
                         <img className='rounded-xl h-72 w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
