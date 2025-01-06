@@ -3,14 +3,14 @@ import Marquee from 'react-fast-marquee';
 
 const Location = () => {
     return (
-        <div className="mt-64 md:mt-16 ">
+        <div className="mt-64 md:mt-16 container px-4 md:px-0 md:mx-auto">
             {/* Title */}
             <p className="hover:underline text-2xl md:text-4xl mb-6 font-bold">Locations</p>
             
             {/* Wrapper with overflow hidden */}
             <div className="overflow-hidden relative">
                 {/* Absolute element for larger screens */}
-                <div className="absolute z-10 h-80 w-80 p-8 bg-white  hidden lg:block">
+                <div className="absolute z-10 h-80 w-80 p-8 bg-[#f1edec] rounded-lg bg-opacity-80  hidden lg:block">
                     <img
                         className="rounded-lg h-60 w-full"
                         src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/imagecon-group.jpg"
@@ -19,7 +19,7 @@ const Location = () => {
                 </div>
 
                 <Marquee speed={100} gradient={false}>
-                    <div className="flex md:gap-4 gap-2 mx-1 py-10">
+                    <div className="flex md:gap-4 gap-2 px-1  py-10">
                         {/* Cards */}
                         {Array.from({ length: 8 }).map((_, index) => (
                             <div
