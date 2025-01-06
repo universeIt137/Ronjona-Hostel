@@ -5,7 +5,7 @@ const Location = () => {
     return (
         <div className="mt-64 md:mt-16 container px-4 md:px-0 md:mx-auto">
             {/* Title */}
-            <p className="hover:underline text-2xl md:text-4xl mb-6 font-bold">Locations</p>
+            <p className="hover:underline text-2xl md:text-4xl mb-6 font-bold text-main-color">Locations</p>
             
             {/* Wrapper with overflow hidden */}
             <div className="overflow-hidden relative">

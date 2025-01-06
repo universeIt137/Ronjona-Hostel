@@ -6,7 +6,7 @@ const Review = () => {
         <div className="container px-4 md:px-0 md:mx-auto">
             {/* Title Section */}
             <div className='  mb-10 '>
-                <p className="text-2xl md:text-4xl hover:underline font-bold ">Border Review</p>
+                <p className="text-2xl md:text-4xl hover:underline font-bold text-main-color">Border Review</p>
                 <p>Container</p>
                 
             </div>

@@ -40,7 +40,7 @@ const Banner = () => {
                             <option>4+ Guests</option>
                         </Select>
                     </div>
-                    <button className="w-full md:w-auto flex gap-2 items-center justify-center bg-[#fab10b] rounded-lg px-6 py-2 text-white text-sm md:text-base hover:bg-yellow-600">
+                    <button className="w-full md:w-auto flex gap-2 items-center justify-center bg-main-color rounded-lg px-6 py-2 text-white text-sm md:text-base hover:bg-yellow-600">
                         <FaSearch />
                         <p>Search</p>
                     </button>
