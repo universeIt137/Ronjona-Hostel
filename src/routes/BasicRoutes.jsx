@@ -27,6 +27,10 @@ import ManageReview from "../pages/admin/reviews/ManageReview";
 import PhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
 import ManagePhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
 import ManageVideoGallery from "../pages/admin/gallery/ManageVideoGallery";
+import Register from "../pages/client/credentialPage/Register";
+import Login from "../pages/client/credentialPage/Login";
+import PrivateRoute from "./PrivateRoute";
+import ManageUser from "../pages/admin/manageUser/ManageUser";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -77,10 +81,18 @@ const router = createBrowserRouter([
         ]
         
     },
+    {
+        path: '/admin-register',
+        element: <Register/>
+    },
+    {
+        path: "/admin-login",
+        element: <Login/>
+    },
     // Dashboard related routes 
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
@@ -150,6 +162,11 @@ const router = createBrowserRouter([
             {
                 path: "manage-video-gallery",
                 element: <ManageVideoGallery/>
+            },
+            // manage user related routes 
+            {
+                path: "manage-users",
+                element: <ManageUser/>
             }
 
         ]

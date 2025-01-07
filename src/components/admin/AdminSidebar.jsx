@@ -11,13 +11,22 @@ import {
     HiUser,
 } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BiGitBranch, BiLocationPlus } from 'react-icons/bi';
 import { TbBrandChrome } from 'react-icons/tb';
 import { GiBranchArrow, GiBrassKnuckles } from 'react-icons/gi';
 import { FcGallery, FcPrivacy } from 'react-icons/fc';
 import { MdFeaturedPlayList } from 'react-icons/md';
+import { FaUser } from 'react-icons/fa';
 const AdminSidebar = () => {
+
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.clear('token');
+        localStorage.clear('user');
+        navigate('/');
+    }
+
     return (
         <div className='h-[100vh]'>
             <Sidebar aria-label="Sidebar with multi-level dropdown example">
@@ -126,16 +135,22 @@ const AdminSidebar = () => {
 
 
 
+                        <Link to={'/dashboard/manage-users'}>
+                            <Sidebar.Item icon={FaUser}>
+                                Manage Users
+                            </Sidebar.Item>
+                        </Link>
+
                         <Link to={'/dashboard/add-privacy'}>
-                        <Sidebar.Item  icon={FcPrivacy}>
-                            Privacy
-                        </Sidebar.Item>
+                            <Sidebar.Item icon={FcPrivacy}>
+                                Privacy
+                            </Sidebar.Item>
                         </Link>
 
                         <Link to={'/dashboard/add-features'}>
-                        <Sidebar.Item  icon={MdFeaturedPlayList}>
-                            Hompage Features
-                        </Sidebar.Item>
+                            <Sidebar.Item icon={MdFeaturedPlayList}>
+                                Hompage Features
+                            </Sidebar.Item>
                         </Link>
 
                         <Sidebar.Collapse
@@ -160,7 +175,7 @@ const AdminSidebar = () => {
                             </Link>
 
                         </Sidebar.Collapse>
-
+                        
                         <Sidebar.Collapse
                             icon={FcGallery}
                             label="Gallery"
@@ -184,10 +199,13 @@ const AdminSidebar = () => {
 
                         </Sidebar.Collapse>
                         
-                        <Sidebar.Item icon={HiUser}>
-                            Logout
+
+                        <Sidebar.Item  icon={HiUser}>
+                            <button onClick={handleLogout}>
+                                Logout
+                            </button>
                         </Sidebar.Item>
-                        
+
                     </Sidebar.ItemGroup>
                 </Sidebar.Items>
             </Sidebar>
