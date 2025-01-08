@@ -3,7 +3,7 @@ import axios from "axios";
 export const uploadImg = async (file) => {
     const data = new FormData();
     data.append("file", file);
-    data.append("upload_preset", "imageUpload"); // Your Cloudinary upload preset
+    data.append("upload_preset", "ronjonaImg"); // Your Cloudinary upload preset
   
     try {
       let api = `https://api.cloudinary.com/v1_1/dxvacpgrv/image/upload`;
