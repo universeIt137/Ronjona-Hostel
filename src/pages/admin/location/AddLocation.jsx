@@ -87,7 +87,7 @@ const AddLocation = () => {
     return (
         <div className="w-10/12 mx-auto p-4">
             <Helmet>
-                <title>Dashboard | Manage Chairman</title>
+                <title>Dashboard | Add Location</title>
             </Helmet>
             <h2 className="text-2xl font-semibold mb-4">Upload Chairman's Content</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
