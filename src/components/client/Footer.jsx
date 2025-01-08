@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaAngleRight, FaFacebook, FaInstagramSquare, FaLinkedin } from 'react-icons/fa';
 import { FaSquareFacebook } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -77,6 +78,8 @@ const Footer = () => {
                                 <li><a href="#">Terms & Condition</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Refund Policy</a></li>
+                                <li><Link to={"/admin-login"}>Admin Login</Link></li>
+                                <li><Link to={"/admin-register"}>Admin Register</Link></li>
                             </ul>
                         </div>
 
