@@ -4,14 +4,14 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { uploadImg } from '../../../hooks/UploadImage';
+import { Helmet } from 'react-helmet-async';
 
 const ManageBranch = () => {
     const axiosPublic = useAxiosPublic();
-    const [selectedLocation, setSelectedLocation] = useState(null); // Track selected user
+    const [selectedBranch, setSelectedBranch] = useState(null); // Track selected user
 
-    const [location, setLocation] = useState(selectedLocation?.location || "");
-    const [image, setimage] = useState(null);
 
+   
 
     const token = localStorage.getItem("token");
     const config = {
@@ -38,7 +38,6 @@ const ManageBranch = () => {
         }
     })
 
-    console.log(branches)
 
     const handleDelete = async (id) => {
 
@@ -88,39 +87,34 @@ const ManageBranch = () => {
 
     }
 
+
+    const handleUpdateClick = (item) => {
+        setSelectedBranch(item);
+        document.getElementById('my_modal_1').showModal();
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
-        const image = form.image.files[0];
-
-        let img = '';
-        if (image) {
-            img = await uploadImg(image);  // Assume uploadImg is an async function returning the image URL
-        } else {
-            img = selectedLocation.img;
-        }
+        const location = form.location.value;
+        const branch = form.branch.value;
 
 
-        let updatedLocation = "";
-        if (location) {
-            updatedLocation = location;
-        } else {
-            updatedLocation = selectedLocation.location;
-        }
-
-        const payload = { location: updatedLocation, img };
+        const payload = { location, branch };
         console.log(payload);
         try {
-            const res = await axiosPublic.put(`/updateLocation/${selectedLocation._id}`, payload, config);
+            const res = await axiosPublic.put(`/updateBranch/${selectedBranch._id}`, payload, config);
             if (res) {
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Your work has been updated",
+                    title: "Your branch has been updated",
                     showConfirmButton: false,
                     timer: 1500
                 });
             }
+            setSelectedBranch("");
+
             refetch(); // Refetch users after update
             document.getElementById('my_modal_1').close();
         } catch (error) {
@@ -129,15 +123,13 @@ const ManageBranch = () => {
         }
     };
 
-    const handleUpdateClick = (item) => {
-        setSelectedLocation(item);
-        // setRole(user.role); // Set initial role value
-        document.getElementById('my_modal_1').showModal();
-    };
+   
 
     return (
         <div>
-
+            <Helmet>
+                <title>Dashboard | Manage Branch</title>
+            </Helmet>
             <div className="container mx-auto p-4">
                 <h2 className="text-2xl font-semibold mb-4">Manage Branch</h2>
                 <div className="overflow-x-auto">
@@ -157,7 +149,7 @@ const ManageBranch = () => {
                                 return (
                                     <tr key={item._id} className="hover:bg-gray-50">
                                         <td className="px-4 py-2 border text-center">{index + 1}</td>
-                                        <td className="px-4 py-2 border">{item.location.location}</td>
+                                        <td className="px-4 py-2 border">{item?.location?.location}</td>
                                         <td className="px-4 py-2 border">{item.branch}</td>
 
                                         <td className="px-4 py-2 border">{date}</td>
@@ -187,25 +179,26 @@ const ManageBranch = () => {
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Updating Branch</h3>
-                    <p className="py-2">Updating role for: <strong>{selectedLocation?.location.location}</strong></p>
+                    <p className="py-2">Updating branch for: <strong>{selectedBranch?.location?.location}</strong></p>
                     <form onSubmit={handleSubmit}>
                         <div className="form-control mb-4">
 
                             <div className="">
                                 <label htmlFor="name">Branch's Name</label>
-                                <input type="text" name="branch" defaultValue={selectedLocation?.branch} className="w-full px-4 py-2 border rounded-md" />
+                                <input type="text" name="branch" defaultValue={selectedBranch?.branch} className="w-full px-4 py-2 border rounded-md" />
                             </div>
 
                             <div className="">
                                 <label htmlFor="name">Select location</label>
                                 <select name="location" className="select select-bordered w-full">
                                     <option disabled selected>Select Location</option>
+                                    <option value={selectedBranch?.location} selected>{selectedBranch?.location?.location}</option>
                                     {
                                         locations?.map(item =>
+
                                             <option value={item._id} key={item._id}>{item?.location}</option>
                                         )
                                     }
-
                                 </select>
                             </div>
 
