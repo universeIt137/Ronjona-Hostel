@@ -183,7 +183,7 @@ const ManageLocation = () => {
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Updating Location</h3>
-                    <p className="py-2">Updating role for: <strong>{selectedLocation?.location}</strong></p>
+                    <p className="py-2">Updating location for: <strong>{selectedLocation?.location}</strong></p>
                     <form onSubmit={handleSubmit}>
                         <div className="form-control mb-4">
 
