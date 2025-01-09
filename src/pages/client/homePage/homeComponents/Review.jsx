@@ -10,7 +10,6 @@ const Review = () => {
                 <p>Container</p>
                 
             </div>
-
             {/* Card Container */}
             <Marquee pauseOnHover gradient={false} speed={50}>
                 <div className="flex gap-6 mt-6">
