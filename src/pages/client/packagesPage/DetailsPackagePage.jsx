@@ -1,9 +1,12 @@
 import React from 'react';
+import PackageDetailsLeftSide from './detailsPackageComponents/PackageDetailsLeftSide';
+import PackageDetailsRightSide from './detailsPackageComponents/PackageDetailsRightSide';
 
 const DetailsPackagePage = () => {
     return (
-        <div>
-            this is package details page.
+        <div className='flex flex-col-reverse md:flex-row gap-4 justify-items-center container mx-auto mt-24'>
+            <PackageDetailsLeftSide/>
+            <PackageDetailsRightSide/>
         </div>
     );
 };
