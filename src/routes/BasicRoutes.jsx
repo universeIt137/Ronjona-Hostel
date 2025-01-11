@@ -31,6 +31,7 @@ import Register from "../pages/client/credentialPage/Register";
 import Login from "../pages/client/credentialPage/Login";
 import PrivateRoute from "./PrivateRoute";
 import ManageUser from "../pages/admin/manageUser/ManageUser";
+import ManageFeatures from "../pages/admin/features/ManageFeatures";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -144,6 +145,10 @@ const router = createBrowserRouter([
             {
                 path: "add-features",
                 element: <AddFeatures/>
+            },
+            {
+                path: "manage-features",
+                element: <ManageFeatures/>
             },
             // Review related routes 
             {

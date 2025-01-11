@@ -111,6 +111,7 @@ const ManageLocation = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                form.reset();
             }
             refetch(); // Refetch users after update
             document.getElementById('my_modal_1').close();
@@ -191,7 +192,7 @@ const ManageLocation = () => {
                                 <label htmlFor="name">Location's Name</label>
                                 <input
                                     type="text"
-                                    // value={location}
+                                    defaultValue={selectedLocation?.location}
                                     name="location"
                                     onChange={(e) => setLocation(e.target.value)}
                                     className="w-full px-4 py-2 border rounded-md" />

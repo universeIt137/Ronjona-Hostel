@@ -147,11 +147,33 @@ const AdminSidebar = () => {
                             </Sidebar.Item>
                         </Link>
 
-                        <Link to={'/dashboard/add-features'}>
+
+
+
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="HomePage Features"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/add-features'}>
+                                <Sidebar.Item icon={MdFeaturedPlayList}>
+                                    Hompage Features
+                                </Sidebar.Item>
+                            </Link>
+
+                            <Link to={'/dashboard/manage-features'}>
                             <Sidebar.Item icon={MdFeaturedPlayList}>
-                                Hompage Features
+                                Manage Features
                             </Sidebar.Item>
                         </Link>
+
+                        </Sidebar.Collapse>
+
+
 
                         <Sidebar.Collapse
                             icon={BiGitBranch}
@@ -175,7 +197,7 @@ const AdminSidebar = () => {
                             </Link>
 
                         </Sidebar.Collapse>
-                        
+
                         <Sidebar.Collapse
                             icon={FcGallery}
                             label="Gallery"
@@ -198,9 +220,9 @@ const AdminSidebar = () => {
                             </Link>
 
                         </Sidebar.Collapse>
-                        
 
-                        <Sidebar.Item  icon={HiUser}>
+
+                        <Sidebar.Item icon={HiUser}>
                             <button onClick={handleLogout}>
                                 Logout
                             </button>
