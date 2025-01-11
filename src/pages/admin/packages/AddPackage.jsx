@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet-async';
-import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { uploadImg } from '../../../hooks/UploadImage';
 import { Editor } from '@tinymce/tinymce-react';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 
 const AddPackage = () => {
-    const [heading, setHeading] = useState('');
-    const [address, setAddress] = useState('');
-    const [description, setDescription] = useState('');
-    const [title, setTitle] = useState('');
-    const [featureName, setFeatureName] = useState('');
-    const [contents, setContents] = useState([{ content_name: '' }]);
-    const [videos, setVideos] = useState([{ videoUrl: '' }]);
+
+    const [contents, setContents] = useState([{ featureTitle: '', featureDesc: '' }]);
     const [images, setImages] = useState([]); // Array to store uploaded image URLs
     const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
+
+    const token = localStorage.getItem("token");
+    const config = {
+        headers: {
+            Authorization: token,
+        },
+    };
+
+
 
     const [formData, setFormData] = useState({
         description: '',
@@ -28,12 +32,7 @@ const AddPackage = () => {
         setFormData({ ...formData, description: value });
     };
 
-    const token = localStorage.getItem("token");
-    const config = {
-        headers: {
-            Authorization: token,
-        },
-    };
+
 
     const { data: branches = [] } = useQuery({
         queryKey: ['branches'],
@@ -54,28 +53,16 @@ const AddPackage = () => {
         setContents(updatedContents);
     };
 
-    const handleVideoChange = (index, field, value) => {
-        const updatedVideos = videos.map((video, i) =>
-            i === index ? { ...video, [field]: value } : video
-        );
-        setVideos(updatedVideos);
-    };
+
 
     const addContent = () => {
-        setContents([...contents, { content_name: '' }]);
-    };
-
-    const addVideo = () => {
-        setVideos([...videos, { videoUrl: '' }]);
+        setContents([...contents, { featureTitle: '', featureDesc: '' }]);
     };
 
     const removeContent = (index) => {
         setContents(contents.filter((_, i) => i !== index));
     };
 
-    const removeVideo = (index) => {
-        setVideos(videos.filter((_, i) => i !== index));
-    };
 
     const handleImageChange = (e) => {
         setImages([...e.target.files]); // Set selected images
@@ -83,40 +70,57 @@ const AddPackage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const form = e.target;
+
+        const title = form.title.value;
+        const branch = form.branch.value;
+        const price = form.price.value;
+        const video = form.video.value;
+
         setLoading(true);
 
         // Upload each image individually
-        const imageUrls = await Promise.all(
+        const img = await Promise.all(
             images.map(async (image) => await uploadImg(image))
         );
 
-        const packageData = {
-            heading,
-            address,
-            description,
+        const payload = {
             title,
-            contents,
-            featureName,
-            images: imageUrls, // Array of image URLs
-            videos
+            branch,
+            price,
+            video,
+            features: contents,
+            img,
+
+            desc: formData.description
         };
 
-        console.log('Package Data:', packageData);
+        // console.log(payload);
+
+        // console.log('Package Data:', packageData);
 
         // Submit data to the server or process it as needed
-        // axiosPublic.post('/package', packageData)
-        //     .then(res => {
-        //         if (res) {
-        //             Swal.fire({
-        //                 position: "top-end",
-        //                 icon: "success",
-        //                 title: "Your package has been added",
-        //                 showConfirmButton: false,
-        //                 timer: 1500
-        //             });
-        //         }
-        //     })
-        //     .catch()
+        axiosPublic.post('/createPackage', payload)
+            .then(res => {
+                if (res) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your package has been added",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+            .catch((error) => {
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: error.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
 
         setLoading(false);
     };
@@ -129,23 +133,23 @@ const AddPackage = () => {
             <h2 className="text-2xl font-bold text-center mb-6">Add Packages</h2>
             <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                    {/* Heading Input */}
+                    {/* Title Input */}
                     <div className="mb-4">
                         <label className="block text-gray-700 font-semibold mb-2">Package Title</label>
                         <input
                             type="text"
-                            value={heading}
-                            onChange={(e) => setHeading(e.target.value)}
+                            name="title"
                             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                             placeholder="Enter Title"
                             required
                         />
                     </div>
 
+                    {/* Location input  */}
                     <div className="">
                         <label htmlFor="name" className=''>Select Branch</label>
-                        <select name="location" className="select select-bordered w-full mt-2">
-                            <option disabled selected>Select Location</option>
+                        <select name="branch" className="select select-bordered w-full mt-2">
+                            <option disabled selected>Select Branch</option>
                             {
                                 branches?.map(item =>
                                     <option value={item._id} key={item._id}>{item?.branch}</option>
@@ -162,8 +166,7 @@ const AddPackage = () => {
                         <label className="block text-gray-700 font-semibold mb-2">Price</label>
                         <input
                             type="text"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
+                            name='price'
                             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                             placeholder="Enter Price"
                             required
@@ -175,8 +178,7 @@ const AddPackage = () => {
                         <label className="block text-gray-700 font-semibold mb-2">Video Url</label>
                         <input
                             type="text"
-                            value={featureName}
-                            onChange={(e) => setFeatureName(e.target.value)}
+                            name='video'
                             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                             placeholder="Enter Video Url"
                             required
@@ -187,15 +189,24 @@ const AddPackage = () => {
                 <div className="grid lg:grid-cols-2">
                     {/* Feature content Section */}
                     <div className="mb-4">
-                        <label className="block text-gray-700 font-semibold mb-2 text-xl">Feature Content</label>
+                        <label className="block text-gray-700 font-semibold mb-2 text-xl">Add Features</label>
                         {contents.map((content, index) => (
                             <div key={index} className="flex gap-4 mb-2">
                                 <input
                                     type="text"
-                                    value={content?.content_name}
-                                    onChange={(e) => handleContentChange(index, 'content_name', e.target.value)}
+                                    value={content?.featureTitle}
+                                    onChange={(e) => handleContentChange(index, 'featureTitle', e.target.value)}
                                     className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
-                                    placeholder="Enter Content Name"
+                                    placeholder="Enter Feature Title"
+                                    required
+                                />
+
+                                <input
+                                    type="text"
+                                    value={content?.featureDesc}
+                                    onChange={(e) => handleContentChange(index, 'featureDesc', e.target.value)}
+                                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
+                                    placeholder="Enter Feature Description"
                                     required
                                 />
 
@@ -247,7 +258,7 @@ const AddPackage = () => {
                             apiKey='atnary0we9a0nuqjzgtnpxyd0arpbwud7ocxkjxqjtaab3nm'
                             init={{
                                 height: 500,
-                                max_height: "500",
+                                max_height: 500,
                                 width: '100%',
                                 border: "0px",
                                 //    menubar: false,
@@ -271,7 +282,7 @@ const AddPackage = () => {
                 <div className="text-center">
                     <button
                         type="submit"
-                        className={`mt-4 bg-green-500 text-white bg-blue-500 px-6 py-2 rounded hover:bg-green-600 transition duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`mt-4  text-white bg-blue-500 px-6 py-2 rounded hover:bg-green-600 transition duration-300 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                         disabled={loading}
                     >
                         {loading ? 'Uploading...' : 'Submit'}

@@ -101,7 +101,7 @@ const ManageBranch = () => {
 
 
         const payload = { location, branch };
-        console.log(payload);
+        // console.log(payload);
         try {
             const res = await axiosPublic.put(`/updateBranch/${selectedBranch._id}`, payload, config);
             if (res) {
@@ -112,6 +112,7 @@ const ManageBranch = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                form.reset();
             }
             setSelectedBranch("");
 
@@ -119,7 +120,15 @@ const ManageBranch = () => {
             document.getElementById('my_modal_1').close();
         } catch (error) {
             console.error('Error updating user role:', error);
-            alert('Failed to update user role');
+            document.getElementById('my_modal_1').close();
+            Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Failed to update Branch",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
         }
     };
 
@@ -179,6 +188,9 @@ const ManageBranch = () => {
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg">Updating Branch</h3>
+                    {
+                        console.log(selectedBranch)
+                    }
                     <p className="py-2">Updating branch for: <strong>{selectedBranch?.location?.location}</strong></p>
                     <form onSubmit={handleSubmit}>
                         <div className="form-control mb-4">
@@ -192,7 +204,7 @@ const ManageBranch = () => {
                                 <label htmlFor="name">Select location</label>
                                 <select name="location" className="select select-bordered w-full">
                                     <option disabled selected>Select Location</option>
-                                    <option value={selectedBranch?.location} selected>{selectedBranch?.location?.location}</option>
+                                    <option value={selectedBranch?.location?._id} selected>{selectedBranch?.location?.location}</option>
                                     {
                                         locations?.map(item =>
 
