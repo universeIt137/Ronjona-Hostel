@@ -28,7 +28,7 @@ const Packages = ({ packages }) => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
             {packages.map((pkg) => (
-                <div key={pkg.id} className=' border-2 border-red-600   pb-5  rounded shadow relative'>
+                <div key={pkg.id} className=' pb-5  rounded shadow relative'>
                     <div className="relative">
                         <img className='rounded-xl h-72 w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
                             alt="A variety of spices" />
