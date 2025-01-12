@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Drawer, Button } from "flowbite-react";
 import { FaAngleRight, FaAngleUp } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const MainNavbar = () => {
     const [isOpen, setIsOpen] = useState(false); // Drawer visibility state
@@ -49,9 +50,9 @@ const MainNavbar = () => {
 
                 {/* Large screen navigation */}
                 <div className="hidden md:flex md:items-center md:space-x-6">
-                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                    <NavLink to="/" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                         Home
-                    </a>
+                    </NavLink>
 
                     {/* Get In Touch dropdown */}
                     <div
@@ -66,10 +67,10 @@ const MainNavbar = () => {
                             <div
                                 className="absolute top-full left-0  w-48 bg-white shadow-lg rounded-md z-50"
                             >
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</a>
+                                <NavLink NavLink to={"/about-us"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
+                                <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink>
+                                <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</NavLink>
+                                <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
                             </div>
                         )}
                     </div>
@@ -87,18 +88,18 @@ const MainNavbar = () => {
                             <div
                                 className="absolute top-full left-0  w-48 bg-white shadow-lg rounded-md z-50"
                             >
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Image Gallery</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Video Gallery</a>
+                                <NavLink to="/image-gallery" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Image Gallery</NavLink>
+                                <NavLink to="/video-gallery" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Video Gallery</NavLink>
                             </div>
                         )}
                     </div>
 
-                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                    <NavLink to={`/our-branch`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                         Our Branches
-                    </a>
-                    <a href="#" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                    </NavLink>
+                    <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                         Our Packages
-                    </a>
+                    </NavLink>
                 </div>
 
                 {/* Drawer toggle for mobile */}
@@ -128,9 +129,9 @@ const MainNavbar = () => {
                     <h2>Menu</h2>
                 </Drawer.Header>
                 <Drawer.Items>
-                    <a href="#" className="block text-lg font-medium text-gray-700 hover:underline py-2">
+                    <NavLink to="/" className="block text-lg font-medium text-gray-700 hover:underline py-2">
                         Home
-                    </a>
+                    </NavLink>
 
                     {/* Get In Touch dropdown */}
                     <div className='py-2'>
@@ -143,10 +144,10 @@ const MainNavbar = () => {
                         </button>
                         {showGetInTouchDropdown && (
                             <div className="pl-4">
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</a>
+                                <NavLink NavLink to={"/about-us"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
+                                <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink>
+                                <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</NavLink>
+                                <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
                             </div>
                         )}
                     </div>
@@ -162,18 +163,18 @@ const MainNavbar = () => {
                         </button>
                         {showGalleryDropdown && (
                             <div className="pl-4">
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Image Gallery</a>
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Video Gallery</a>
+                                <NavLink NavLink to={"/image-gallery"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Image Gallery</NavLink>
+                                <NavLink NavLink to={"/video-gallery"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Video Gallery</NavLink>
                             </div>
                         )}
                     </div>
 
-                    <a href="#" className="block text-lg font-medium text-gray-700 hover:underline py-2">
+                    <NavLink to={"/our-branch"} className="block text-lg font-medium text-gray-700 hover:underline py-2">
                         Our Branches
-                    </a>
-                    <a href="#" className="block text-lg font-medium text-gray-700 hover:underline py-2">
+                    </NavLink>
+                    <NavLink to={"/our-packages"} className="block text-lg font-medium text-gray-700 hover:underline py-2">
                         Our Packages
-                    </a>
+                    </NavLink>
                 </Drawer.Items>
             </Drawer>
 
