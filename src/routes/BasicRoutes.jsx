@@ -44,20 +44,17 @@ const router = createBrowserRouter([
                 element:<HomePage/>
             },
             {
-                path: 'about',
-                element:<AboutPage/>
+                path: 'about-us',
+                element:<div className="h-screen justify-center items-center flex flex-col " >About Us Page</div>
             },
-            {
-                path: 'mission',
-                element:<MissionPage/>
-            },
+            
             {
                 path: 'vission',
-                element:<VissionPage/>
+                element:<div className="h-screen justify-center items-center flex flex-col " >Vission Page</div>
             },
             {
-                path: 'management-information',
-                element:<ManagementInfoPage/>
+                path: 'management-info',
+                element:<div className="h-screen justify-center items-center flex flex-col " >Management Informaton</div>
             },
             {
                 path: 'contact-us',
@@ -79,6 +76,23 @@ const router = createBrowserRouter([
                 path: 'package-details',
                 element:<DetailsPackagePage/>
             },
+            {
+                path : "image-gallery",
+                element : <div className="h-screen justify-center items-center flex flex-col " >Image Gallery</div>
+            },
+            {
+                path : "video-gallery",
+                element : <div className="h-screen justify-center items-center flex flex-col " >Video Gallery</div>
+            },
+            {
+                path : "our-branch",
+                element : <div className="h-screen justify-center items-center flex flex-col " >Our Branch</div>
+            },
+            {
+                path: 'mission',
+                element:<div className="h-screen justify-center items-center flex flex-col " >Mission</div>
+            },
+            
         ]
         
     },

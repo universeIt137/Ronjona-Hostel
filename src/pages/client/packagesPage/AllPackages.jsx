@@ -5,7 +5,7 @@ import AllPackagesRightSide from './allPackagesComponent/AllPackagesRightSide';
 const AllPackages = () => {
     return (
         <div className='  flex justify-items-center container mx-auto mt-24'>
-            <AllPackagesLeftSide/>
+            {/* <AllPackagesLeftSide/> */}
             <AllPackagesRightSide/>
         </div>
     );
