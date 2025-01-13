@@ -3,8 +3,12 @@ import { FaFacebookF, FaTwitter, FaEnvelope, FaInstagram } from 'react-icons/fa'
 import { IoMdShareAlt } from 'react-icons/io';
 import { MdArrowOutward } from 'react-icons/md';
 import { TbShare3 } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
-const Packages = ({ packages }) => {
+const Packages = ({ packages, isLoading }) => {
+    window.scrollTo(0, 0);
     const [showShareOptions, setShowShareOptions] = useState(null); // Track which package's share options are open
 
     // Social Media Share URLs
@@ -25,10 +29,18 @@ const Packages = ({ packages }) => {
             `https://www.instagram.com/`, // Instagram requires the app for direct sharing
     };
 
+    if (isLoading) {
+        return (
+            <div className=' h-screen flex-col flex justify-center items-center ' >
+                <h1 className='text-center' >Loading...</h1>
+            </div>
+        )
+    }
+
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
             {packages.map((pkg) => (
-                <div key={pkg.id} className=' pb-5  rounded shadow relative'>
+                <div key={pkg._id} className=' pb-5  rounded shadow relative'>
                     <div className="relative">
                         <img className='rounded-xl h-72 w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
                             alt="A variety of spices" />
@@ -36,7 +48,7 @@ const Packages = ({ packages }) => {
                             New Launch
                         </div>
                         <TbShare3 onClick={() =>
-                            setShowShareOptions(showShareOptions === pkg.id ? null : pkg.id)
+                            setShowShareOptions(showShareOptions === pkg._id ? null : pkg._id)
                         } className='absolute top-4 right-3 bg-white hover:bg-main-color hover:bg-main-color hover:bg-main-color rounded-full text-3xl p-1'></TbShare3>
                     </div>
 
@@ -46,12 +58,14 @@ const Packages = ({ packages }) => {
                             <p className='font-bold text-xl'>Lansdowne</p>
                             <p>Starting @ <span className='font-bold'>$564/-</span></p>
                         </div>
-                        <MdArrowOutward className='text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2'></MdArrowOutward>
+                        <Link to={`/package-details`}><MdArrowOutward className='text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2'>
+                        </MdArrowOutward>
+                        </Link>
                     </div>
 
 
                     {/* Share Options Dropdown */}
-                    {showShareOptions === pkg.id && (
+                    {showShareOptions === pkg._id && (
                         <div className='absolute top-0 mt-2 right-20 bg-white border rounded shadow-lg z-10'>
                             <ul className='p-2 flex gap-4'>
                                 <li>
@@ -113,13 +127,24 @@ const AllPackagesRightSide = () => {
         { label: 'High Range', id: 'high-range' },
     ];
 
-    const packagesData = [
-        { id: 1, price: 50, description: 'Basic package with essential features.' },
-        { id: 2, price: 100, description: 'Includes popular features and services.' },
-        { id: 3, price: 150, description: 'Best for medium-sized needs.' },
-        { id: 4, price: 250, description: 'Premium package with advanced features.' },
-        { id: 5, price: 300, description: 'Tailored solutions to meet specific requirements.' },
-    ];
+    // const packagesData = [
+    //     { id: 1, price: 50, description: 'Basic package with essential features.' },
+    //     { id: 2, price: 100, description: 'Includes popular features and services.' },
+    //     { id: 3, price: 150, description: 'Best for medium-sized needs.' },
+    //     { id: 4, price: 250, description: 'Premium package with advanced features.' },
+    //     { id: 5, price: 300, description: 'Tailored solutions to meet specific requirements.' },
+    // ];
+
+    const axiosPublic = useAxiosPublic();
+
+    const { data: packagesData = [], refetch, isError, isLoading } = useQuery({
+        queryKey: ['packagesData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllPackages');
+            console.log(res.data)
+            return res.data?.data;
+        }
+    });
 
     // Filter packages based on price ranges
     const filteredPackages = (() => {
@@ -134,6 +159,8 @@ const AllPackagesRightSide = () => {
                 return packagesData; // All Packages
         }
     })();
+
+
 
     return (
         <div className='bg-slate-100 w-full'>
@@ -161,7 +188,7 @@ const AllPackagesRightSide = () => {
 
             {/* Packages Component */}
             <div className='mt-8'>
-                <Packages packages={filteredPackages} />
+                <Packages packages={filteredPackages} isLoading={isLoading} />
             </div>
         </div>
     );
