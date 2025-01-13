@@ -73,7 +73,7 @@ const router = createBrowserRouter([
                 element:<AllPackages/>
             },
             {
-                path: 'package-details',
+                path: 'package-details/:id',
                 element:<DetailsPackagePage/>
             },
             {

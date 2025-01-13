@@ -58,7 +58,7 @@ const Packages = ({ packages, isLoading }) => {
                             <p className='font-bold text-xl'>Lansdowne</p>
                             <p>Starting @ <span className='font-bold'>$564/-</span></p>
                         </div>
-                        <Link to={`/package-details`}><MdArrowOutward className='text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2'>
+                        <Link to={`/package-details/${pkg?._id}`}><MdArrowOutward className='text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2'>
                         </MdArrowOutward>
                         </Link>
                     </div>
@@ -141,10 +141,11 @@ const AllPackagesRightSide = () => {
         queryKey: ['packagesData'],
         queryFn: async () => {
             const res = await axiosPublic.get('/getAllPackages');
-            console.log(res.data)
             return res.data?.data;
         }
     });
+
+
 
     // Filter packages based on price ranges
     const filteredPackages = (() => {
