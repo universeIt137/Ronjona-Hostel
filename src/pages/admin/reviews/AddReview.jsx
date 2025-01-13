@@ -36,6 +36,7 @@ const AddReview = () => {
 
         const name = form.name.value;
         const review = form.review.value;
+        const location = form.location.value;
         const image = form.image.files[0];
 
         let img = '';
@@ -44,8 +45,8 @@ const AddReview = () => {
         }
 
         try {
-            const payload = { name, review, img };
-            // console.log(payload);
+            const payload = { name, review, img,location };
+            console.log(payload);
 
             const res = await axiosPublic.post(`/createReview`, payload);
 
@@ -85,9 +86,9 @@ const AddReview = () => {
     return (
         <div className="w-10/12 mx-auto p-4">
             <Helmet>
-                <title>Dashboard | Add Features</title>
+                <title>Dashboard | Add Review</title>
             </Helmet>
-            <h2 className="text-2xl font-semibold mb-4">Add HomePage Features</h2>
+            <h2 className="text-2xl font-semibold mb-4">Review From</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 {loading && <p className="text-blue-500">Uploading data...</p>}
 
@@ -99,12 +100,16 @@ const AddReview = () => {
 
                     <div className="">
                         <label htmlFor="name">Review</label> <br />
-                        <textarea className="textarea textarea-accent w-full" placeholder="Add Review"></textarea>
+                        <textarea name="review" className="textarea textarea-accent w-full" placeholder="Add Review"></textarea>
+                    </div>
+                    <div className="">
+                        <label htmlFor="name">Location</label> <br />
+                        <textarea name="location" className="textarea textarea-accent w-full" placeholder="Enter Location"></textarea>
                     </div>
 
                     <div className=" w-full">
                         <div className="relative">
-                            <p>Feature logo</p>
+                            <p>Border Imgage</p>
                             <input type="file" name='image' className="file-input file-input-bordered file-input-md w-full " placeholder="Upload location image" />
                         </div>
                     </div>
