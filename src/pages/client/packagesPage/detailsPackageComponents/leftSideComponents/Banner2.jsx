@@ -21,7 +21,7 @@ const Banner2 = ({ packagesDetailsData = { img: [] } }) => {
     return (
         <div className='m-10 relative overflow-hidden'>
             {/* Image Display */}
-            <div className='h-[90vh] w-[90vh] mx-auto '>
+            <div className='h-[90vh] border rounded-full w-[90vh] mx-auto '>
                 <img
                     className=' lg:w-full lg:h-full object-cover transition-all duration-500'
                     src={packagesDetailsData.img[currentIndex]}
