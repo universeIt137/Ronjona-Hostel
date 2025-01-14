@@ -1,9 +1,30 @@
 import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const PhotoGallery = () => {
+    const axiosPublic = useAxiosPublic();
+
+    // const { data: locationData = [], refetch, isError, isLoading } = useQuery({
+    //     queryKey: ['locationData'],
+    //     queryFn: async () => {
+    //         const res = await axiosPublic.get('/getAllLocations');
+    //         return res.data?.data;
+    //     }
+    // });
+
+    const { data: images = [] } = useQuery({
+        queryKey: ["photoGalleryData"],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/getAllPhoto`);
+            return res.data?.data
+        }
+    })
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentImage, setCurrentImage] = useState(null);
+    const [showAllImages, setShowAllImages] = useState(false);
 
     const handleImageClick = (imageSrc) => {
         setCurrentImage(imageSrc);
@@ -21,26 +42,29 @@ const PhotoGallery = () => {
         }
     };
 
-    const images = [
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    ];
+    // const images = [
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
+    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
+    // ];
+
+    // Show only 10 images initially
+    const visibleImages = showAllImages ? images : images.slice(0, 12);
 
     return (
         <div className="px-4 md:px-0 w-11/12 mx-auto lg:my-7 ">
@@ -48,17 +72,29 @@ const PhotoGallery = () => {
                 <p className="text-2xl md:text-4xl hover:underline font-bold text-black">Photo Gallery</p>
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-6">
-                {images.map((imageSrc, index) => (
+                {visibleImages.map((imageSrc, index) => (
                     <div key={index}>
                         <img
                             className="h-24 md:h-48 rounded-xl w-full cursor-pointer"
-                            src={imageSrc}
+                            src={imageSrc?.img}
                             alt={`Gallery Item ${index + 1}`}
-                            onClick={() => handleImageClick(imageSrc)}
+                            onClick={() => handleImageClick(imageSrc?.img)}
                         />
                     </div>
                 ))}
             </div>
+
+            {/* Show button only if images length > 12 */}
+            {images.length > 12 && (
+                <div className="mt-6 text-center">
+                    <button
+                        onClick={() => setShowAllImages(!showAllImages)}
+                        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
+                    >
+                        {showAllImages ? "See Less" : "See More"}
+                    </button>
+                </div>
+            )}
 
             {/* Modal */}
             {isModalOpen && (
@@ -80,18 +116,18 @@ const PhotoGallery = () => {
                             &times;
                         </button>
                     </div>
+
                     {/* Horizontal Scrollable Thumbnail List */}
                     <Marquee pauseOnHover gradient={false} speed={100} className="w-full overflow-hidedn bg-black bg-opacity-50 py-4">
                         <div className="flex space-x-4 px-3">
                             {images.map((imageSrc, index) => (
                                 <img
                                     key={index}
-                                    src={imageSrc}
+                                    src={imageSrc?.img}
                                     alt={`Thumbnail ${index + 1}`}
-                                    className={`h-24 w-24 rounded-lg cursor-pointer ${
-                                        currentImage === imageSrc ? "ring-4 ring-white" : ""
-                                    }`}
-                                    onClick={() => setCurrentImage(imageSrc)}
+                                    className={`h-24 w-24 rounded-lg cursor-pointer ${currentImage === imageSrc ? "ring-4 ring-white" : ""
+                                        }`}
+                                    onClick={() => setCurrentImage(imageSrc?.img)}
                                 />
                             ))}
                         </div>
