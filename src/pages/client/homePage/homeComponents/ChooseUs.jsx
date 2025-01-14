@@ -2,9 +2,9 @@ import React from 'react';
 
 const ChooseUs = () => {
     return (
-        <div className=" my-48 container px-4 md:px-0 md:mx-auto">
+        <div className=" my-10 w-11/12 mx-auto  px-4 md:px-0 md:mx-auto">
             <div className='  mb-10 '>
-                <p className="text-2xl md:text-5xl hover:underline font-bold text-main-color">Why Choose Us</p>
+                <p className="text-2xl md:text-5xl hover:underline font-bold text-black">Why Choose Us</p>
                 
             </div>
             <div className="flex flex-col lg:flex-row  lg:gap-20">
@@ -24,7 +24,7 @@ const ChooseUs = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 mt-6 lg:mt-10 mr-0 lg:mr-8">
-                    <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-main-color">WHY YOU WITH RONJONA</p>
+                    <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-black">WHY YOU WITH RONJONA</p>
                     <p className="text-sm lg:text-lg text-justify">
                         Ronjona women’s Hostel in Uttara is a premier venture for a comfortable stay for both girl
                         residents studying in various institutions who prefer staying away from the college hostel

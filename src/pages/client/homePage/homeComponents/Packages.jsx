@@ -71,9 +71,9 @@ const Packages = () => {
 
                         <div className="flex justify-between items-center mt-3 px-3">
                             <div>
-                                <p className="font-bold text-xl">Lansdowne</p>
+                                <p className="font-bold text-xl">{ pkg?.title}</p>
                                 <p>
-                                    Starting @ <span className="font-bold">$564/-</span>
+                                    Starting @ <span className="font-bold">$ {pkg?.price} /-</span>
                                 </p>
                             </div>
                             <Link to={`/package-details/${pkg?._id}`}>
