@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             
             {
                 path: 'vission',
-                element:<div className="h-screen justify-center items-center flex flex-col " >Vission Page</div>
+                element:<VissionPage></VissionPage>
             },
             {
                 path: 'management-info',
