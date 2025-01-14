@@ -8,8 +8,6 @@ import Facility from './homeComponents/Facility';
 import Review from './homeComponents/Review';
 import PhotoGallery from './homeComponents/PhotoGallery';
 import VideoGallery from './homeComponents/VideoGallery';
-import { Button } from 'flowbite-react';
-import AboutPage from '../aboutPage/AboutPage';
 
 const HomePage = () => {
     return (
