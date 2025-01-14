@@ -44,8 +44,8 @@ const router = createBrowserRouter([
                 element:<HomePage/>
             },
             {
-                path: 'about-us',
-                element:<div className="h-screen justify-center items-center flex flex-col " >About Us Page</div>
+                path: 'about',
+                element:<AboutPage></AboutPage>
             },
             
             {

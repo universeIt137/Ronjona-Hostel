@@ -67,7 +67,8 @@ const MainNavbar = () => {
                             <div
                                 className="absolute top-full left-0  w-48 bg-white shadow-lg rounded-md z-50"
                             >
-                                <NavLink NavLink to={"/about-us"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
+                                
+                                <NavLink NavLink to={"/about"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
                                 <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink>
                                 <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</NavLink>
                                 <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
