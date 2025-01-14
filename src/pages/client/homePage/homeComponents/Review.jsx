@@ -1,71 +1,49 @@
-import React from 'react';
 import Marquee from 'react-fast-marquee';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import { useQuery } from '@tanstack/react-query';
 
 const Review = () => {
+    const axiosPublic = useAxiosPublic();
+
+    const { data: reviewsData = [], refetch, isError, isLoading } = useQuery({
+        queryKey: ['reviewsData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllReview');
+            return res.data?.data;
+        }
+    });
+
     return (
-        <div className="container px-4 md:px-0 md:mx-auto">
+        <div className="w-11/12 mx-auto px-4 md:px-0">
             {/* Title Section */}
-            <div className='  mb-10 '>
-                <p className="text-2xl md:text-4xl hover:underline font-bold text-main-color">Border Review</p>
-                <p>Container</p>
-                
+            <div>
+                <p className="text-2xl md:text-4xl hover:underline font-bold text-black">Border Review</p>
             </div>
+
             {/* Card Container */}
             <Marquee pauseOnHover gradient={false} speed={50}>
                 <div className="flex gap-6 mt-6">
-                    {/* Card 1 */}
-                    <div className="flex flex-col md:flex-row items-center w-[320px] md:w-[590px] bg-white shadow-lg rounded-lg p-4 gap-4">
-                        <div className="flex-shrink-0">
-                            <img
-                                className="object-cover w-24 h-24 md:w-40 md:h-40 rounded-full"
-                                src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736095640/ronjona/sghoablli8mfzf3llk26.png"
-                                alt="Jay Kriplani"
-                            />
+                    {reviewsData.map((review, index) => (
+                        <div
+                            key={index}
+                            className="flex flex-col md:flex-row items-center w-[320px] md:w-[590px] bg-white shadow-lg rounded-lg p-4 gap-4"
+                        >
+                            <div className="flex-shrink-0">
+                                <img
+                                    className="object-cover w-24 h-24 md:w-40 md:h-40 rounded-full"
+                                    src={review?.img}
+                                    alt={review?.name}
+                                />
+                            </div>
+                            <div className="text-center md:text-left flex-grow">
+                                <p className="text-lg md:text-2xl font-bold">{review?.name}</p>
+                                <p className="text-black text-md md:text-lg">{review?.location}</p>
+                                <p className="text-sm md:text-base mt-2 text-gray-600 text-justify">
+                                    {review?.review}
+                                </p>
+                            </div>
                         </div>
-                        <div className="text-center md:text-left flex-grow ">
-                            <p className="text-lg md:text-2xl font-bold">Jay Kriplani</p>
-                            <p className="text-[#FAB10B] text-md md:text-lg">Noida, Delhi</p>
-                            <p className="text-sm md:text-base mt-2 text-gray-600 text-balance">
-                                Nilesh Bhai and his supporting team from the Skyee property are the reason I’ll recommend Hive to anyone. His style of communication and relentless approach to making sure everyone is happy and properly serviced is certainly something I was very impressed by.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Card 2 */}
-                    <div className="flex flex-col md:flex-row items-center w-[320px] md:w-[590px] bg-white shadow-lg rounded-lg p-4 gap-4">
-                        <div className="flex-shrink-0">
-                            <img
-                                className="object-cover w-24 h-24 md:w-40 md:h-40 rounded-full"
-                                src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736095640/ronjona/sghoablli8mfzf3llk26.png"
-                                alt="Jay Kriplani"
-                            />
-                        </div>
-                        <div className="text-center md:text-left flex-grow">
-                            <p className="text-lg md:text-2xl font-bold">Jay Kriplani</p>
-                            <p className="text-[#FAB10B] text-md md:text-lg">Noida, Delhi</p>
-                            <p className="text-sm md:text-base mt-2 text-gray-600 text-balance ">
-                                Nilesh Bhai and his supporting team from the Skyee property are the reason I’ll recommend Hive to anyone. His style of communication and relentless approach to making sure everyone is happy and properly serviced is certainly something I was very impressed by.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Card 3 */}
-                    <div className="flex flex-col md:flex-row items-center w-[320px] md:w-[590px] bg-white shadow-lg rounded-lg p-4 gap-4">
-                        <div className="flex-shrink-0">
-                            <img
-                                className="object-cover w-24 h-24 md:w-40 md:h-40 rounded-full"
-                                src="https://res.cloudinary.com/da43e0ikj/image/upload/v1736095640/ronjona/sghoablli8mfzf3llk26.png"
-                                alt="Jay Kriplani"
-                            />
-                        </div>
-                        <div className="text-center md:text-left flex-grow">
-                            <p className="text-lg md:text-2xl font-bold">Jay Kriplani</p>
-                            <p className="text-[#FAB10B] text-md md:text-lg">Noida, Delhi</p>
-                            <p className="text-sm md:text-base mt-2 text-gray-600 text-balance ">
-                                Nilesh Bhai and his supporting team from the Skyee property are the reason I’ll recommend Hive to anyone. His style of communication and relentless approach to making sure everyone is happy and properly serviced is certainly something I was very impressed by.
-                            </p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </Marquee>
         </div>
