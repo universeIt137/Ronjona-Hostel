@@ -35,7 +35,7 @@ const Facility = () => {
                                 <div className="h-8">
                                     <img className="w-12" src={item?.logo} alt={item?.title} />
                                 </div>
-                                <div className="lg:mt-8">
+                                <div className="lg:mt-8 mt-6 ">
                                     <p>{item?.title}</p>
                                 </div>
                             </div>

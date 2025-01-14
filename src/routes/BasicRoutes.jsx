@@ -54,7 +54,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'management-info',
-                element:<div className="h-screen justify-center items-center flex flex-col " >Management Informaton</div>
+                element: <ManagementInfoPage></ManagementInfoPage>
             },
             {
                 path: 'contact-us',
