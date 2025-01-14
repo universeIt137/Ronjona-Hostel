@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
-import { uploadImg } from '../../../hooks/UploadImage';
 import formatDateTime from '../../../hooks/useDateTime';
+import { uploadImg } from '../../../hooks/UploadImage';
 
-const ManageBanner = () => {
+
+const ManageFeatures = () => {
     const axiosPublic = useAxiosPublic();
     const [selectedLocation, setSelectedLocation] = useState(null); // Track selected user
 
@@ -22,10 +23,10 @@ const ManageBanner = () => {
     };
 
 
-    const { data: banners = [], refetch } = useQuery({
-        queryKey: ['banners'],
+    const { data: features = [], refetch } = useQuery({
+        queryKey: ['features'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/getAllBanner');
+            const res = await axiosPublic.get('/getAllFeatures');
             return res.data.data;
         }
     })
@@ -45,12 +46,12 @@ const ManageBanner = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await axiosPublic.delete(`/deleteBanner/${id}`, config);
+                    const res = await axiosPublic.delete(`/deleteFeature/${id}`, config);
                     if (res.data.success) {
                         Swal.fire({
                             position: "center",
                             icon: "success",
-                            title: "Location has been deleted",
+                            title: "Feature has been deleted",
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -86,20 +87,20 @@ const ManageBanner = () => {
         const title = form.title.value;
         const image = form.image.files[0];
 
-        let img = '';
+        let logo = '';
         if (image) {
-            img = await uploadImg(image);  // Assume uploadImg is an async function returning the image URL
+            logo = await uploadImg(image);  // Assume uploadImg is an async function returning the image URL
         } else {
-            img = selectedLocation.img;
+            logo = selectedLocation.img;
         }
 
 
-        
 
-        const payload = { title, img };
+
+        const payload = { title, logo };
         console.log(payload);
         try {
-            const res = await axiosPublic.put(`/updateBanner/${selectedLocation._id}`, payload, config);
+            const res = await axiosPublic.put(`/updateFeature/${selectedLocation._id}`, payload, config);
             if (res) {
                 Swal.fire({
                     position: "center",
@@ -111,6 +112,7 @@ const ManageBanner = () => {
             }
             refetch(); // Refetch users after update
             document.getElementById('my_modal_1').close();
+            form.reset();
         } catch (error) {
             console.error('Error updating user role:', error);
             alert('Failed to update user role');
@@ -133,14 +135,14 @@ const ManageBanner = () => {
                         <thead className="bg-gray-100">
                             <tr>
                                 <th className="px-4 py-2 border">#</th>
-                                <th className="px-4 py-2 border">Title</th>
-                                <th className="px-4 py-2 border">Banner</th>
+                                <th className="px-4 py-2 border">Feature</th>
+                                <th className="px-4 py-2 border">Logo</th>
                                 <th className="px-4 py-2 border">Created Date</th>
                                 <th className="px-4 py-2 border">Actions</th>
                             </tr>
                         </thead>
                         <tbody className='text-xs text-center font-bold'>
-                            {banners?.map((item, index) => {
+                            {features?.map((item, index) => {
                                 const { date } = formatDateTime(item?.createdAt);
                                 return (
                                     <tr key={item._id} className="hover:bg-gray-50">
@@ -149,7 +151,7 @@ const ManageBanner = () => {
                                         <td className="px-4 py-2 border">
                                             <div className="avatar">
                                                 <div className="w-12 rounded">
-                                                    <img src={item.img} className='w-12 ' />
+                                                    <img src={item.logo} className='w-12 ' />
                                                 </div>
                                             </div>
                                         </td>
@@ -179,13 +181,13 @@ const ManageBanner = () => {
             {/* Modal for updating user role */}
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Updating Banner</h3>
+                    <h3 className="font-bold text-lg">Updating Features</h3>
                     <p className="py-2">Updating Banner for: <strong>{selectedLocation?.title}</strong></p>
                     <form onSubmit={handleSubmit}>
                         <div className="form-control mb-4">
 
                             <div className="">
-                                <label htmlFor="name">Banner's Name</label>
+                                <label htmlFor="name">Feature's Name</label>
                                 <input
                                     type="text"
                                     defaultValue={selectedLocation?.title}
@@ -203,7 +205,7 @@ const ManageBanner = () => {
                                 <div className="avatar">
                                     <div className="w-32 rounded">
                                         <p>Already uploaded:</p>
-                                        <img className='w-12' src={selectedLocation?.img} />
+                                        <img className='w-12' src={selectedLocation?.logo} />
                                     </div>
                                 </div>
                             </div>
@@ -226,4 +228,4 @@ const ManageBanner = () => {
     );
 };
 
-export default ManageBanner;
+export default ManageFeatures;
