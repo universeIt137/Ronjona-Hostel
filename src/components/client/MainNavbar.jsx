@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Drawer, Button } from "flowbite-react";
 import { FaAngleRight, FaAngleUp } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const MainNavbar = () => {
     const [isOpen, setIsOpen] = useState(false); // Drawer visibility state
@@ -66,7 +67,7 @@ const MainNavbar = () => {
                             <div
                                 className="absolute top-full left-0  w-48 bg-white shadow-lg rounded-md z-50"
                             >
-                                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</a>
+                                < NavLink to="/about" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
                                 <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</a>
                                 <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</a>
                                 <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</a>
