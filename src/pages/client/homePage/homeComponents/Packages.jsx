@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaEnvelope, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
 import { TbShare3 } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 
@@ -52,7 +52,7 @@ const Packages = () => {
                         key={pkg._id}
                         className="pb-5 rounded shadow relative transform transition-transform duration-300 hover:scale-105"
                     >
-                        <div className="relative">
+                        <NavLink to={`/package-details/${pkg?._id}`}><div className="relative">
                             <img
                                 className="rounded-xl h-72 w-full"
                                 src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
@@ -69,17 +69,15 @@ const Packages = () => {
                             ></TbShare3>
                         </div>
 
-                        <div className="flex justify-between items-center mt-3 px-3">
-                            <div>
-                                <p className="font-bold text-xl">{ pkg?.title}</p>
-                                <p>
-                                    Starting @ <span className="font-bold">$ {pkg?.price} /-</span>
-                                </p>
-                            </div>
-                            <Link to={`/package-details/${pkg?._id}`}>
-                                <MdArrowOutward className="text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2" />
-                            </Link>
-                        </div>
+                            <div className="flex justify-between items-center mt-3 px-3">
+                                <div>
+                                    <p className="font-bold text-xl">{pkg?.title}</p>
+                                    <p>
+                                        Starting @ <span className="font-bold">$ {pkg?.price} /-</span>
+                                    </p>
+                                </div>
+                                
+                            </div></NavLink>
 
                         {/* Share Options Dropdown */}
                         {showShareOptions === pkg._id && (
