@@ -69,8 +69,8 @@ const MainNavbar = () => {
                             >
                                 
                                 <NavLink NavLink to={"/about"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
-                                <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink>
-                                <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision</NavLink>
+                                {/* <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink> */}
+                                <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision & Mission</NavLink>
                                 <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
                             </div>
                         )}
