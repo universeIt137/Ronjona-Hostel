@@ -43,9 +43,9 @@ const PhotoGallery = () => {
     ];
 
     return (
-        <div className="px-4 md:px-0 container mx-auto mt-20">
+        <div className="px-4 md:px-0 w-11/12 mx-auto lg:my-7 ">
             <div className="mb-10">
-                <p className="text-2xl md:text-4xl hover:underline font-bold text-main-color">Photo Gallery</p>
+                <p className="text-2xl md:text-4xl hover:underline font-bold text-black">Photo Gallery</p>
             </div>
             <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-6">
                 {images.map((imageSrc, index) => (
