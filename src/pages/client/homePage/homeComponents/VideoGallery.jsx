@@ -1,18 +1,32 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
+import ReactPlayer from 'react-player';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 
 const VideoGallery = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentImage, setCurrentImage] = useState(null);
+    const axiosPublic = useAxiosPublic();
+    const { data: videos = [] } = useQuery({
+        queryKey: ["vidoeGalleryData"],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/getAllVideo`);
+            console.log(res)
+            return res.data?.data || [];
+        }
+    });
 
-    const handleImageClick = (imageSrc) => {
-        setCurrentImage(imageSrc);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentVideo, setCurrentVideo] = useState(null);
+    const [showAllVideos, setShowAllVideos] = useState(false);
+
+    const handleVideoClick = (videoSrc) => {
+        setCurrentVideo(videoSrc);
         setIsModalOpen(true);
     };
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setCurrentImage(null);
+        setCurrentVideo(null);
     };
 
     const handleModalClick = (e) => {
@@ -21,44 +35,48 @@ const VideoGallery = () => {
         }
     };
 
-    const images = [
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-        "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    ];
+    // Show all videos if "See More" is clicked, otherwise show up to 12 videos
+    const displayedVideos = showAllVideos ? videos : videos.slice(0, 12);
 
     return (
-        <div className="px-4 md:px-0 container mx-auto my-20">
+        <div className="px-4 md:px-0 w-11/12 mx-auto my-20">
             <div className="mb-10">
                 <p className="text-2xl md:text-4xl hover:underline font-bold text-main-color">Video Gallery</p>
             </div>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-6">
-                {images.map((imageSrc, index) => (
-                    <div key={index}>
-                        <img
-                            className="h-24 md:h-48 rounded-xl w-full cursor-pointer"
-                            src={imageSrc}
-                            alt={`Gallery Item ${index + 1}`}
-                            onClick={() => handleImageClick(imageSrc)}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                {displayedVideos.map((video, index) => (
+                    <div key={index} className="cursor-pointer">
+                        <ReactPlayer
+                            url={video.video_link ? video.video_link : video?.video_link} // Assuming each video object has a `url` property
+                            width="100%"
+                            height="150px"
+                            controls
+                            onClick={() => handleVideoClick(video.video_link ? video.video_link : video?.video_link)}
                         />
                     </div>
                 ))}
             </div>
+
+            {/* See More / See Less Button */}
+            {videos.length > 12 && (
+                <div className="mt-6 text-center">
+                    {!showAllVideos ? (
+                        <button
+                            className="px-6 py-2 bg-blue-500 text-white rounded-lg"
+                            onClick={() => setShowAllVideos(true)}
+                        >
+                            See More
+                        </button>
+                    ) : (
+                        <button
+                            className="px-6 py-2 bg-red-500 text-white rounded-lg"
+                            onClick={() => setShowAllVideos(false)}
+                        >
+                            See Less
+                        </button>
+                    )}
+                </div>
+            )}
 
             {/* Modal */}
             {isModalOpen && (
@@ -68,10 +86,11 @@ const VideoGallery = () => {
                     onClick={handleModalClick}
                 >
                     <div className="relative mb-4">
-                        <img
-                            src={currentImage}
-                            alt="Enlarged View"
-                            className="rounded-lg max-w-full max-h-[70vh]"
+                        <ReactPlayer
+                            url={currentVideo}
+                            width="80vw"
+                            height="60vh"
+                            controls
                         />
                         <button
                             onClick={closeModal}
@@ -80,18 +99,19 @@ const VideoGallery = () => {
                             &times;
                         </button>
                     </div>
+
                     {/* Horizontal Scrollable Thumbnail List */}
-                    <Marquee pauseOnHover gradient={false} speed={100} className="w-full overflow-hidedn bg-black bg-opacity-50 py-4">
+                    <Marquee pauseOnHover gradient={false} speed={100} className="w-full bg-black bg-opacity-50 py-4">
                         <div className="flex space-x-4 px-3">
-                            {images.map((imageSrc, index) => (
-                                <img
+                            {videos.map((video, index) => (
+                                <ReactPlayer
                                     key={index}
-                                    src={imageSrc}
-                                    alt={`Thumbnail ${index + 1}`}
-                                    className={`h-24 w-24 rounded-lg cursor-pointer ${
-                                        currentImage === imageSrc ? "ring-4 ring-white" : ""
-                                    }`}
-                                    onClick={() => setCurrentImage(imageSrc)}
+                                    url={video.video_link ? video.video_link : video?.video_link}
+                                    width="100px"
+                                    height="60px"
+                                    className={`rounded-lg cursor-pointer ${currentVideo === video.video_link ? video.video_link : video?.video_link ? "ring-4 ring-white" : ""
+                                        }`}
+                                    onClick={() => setCurrentVideo(video.video_link ? video.video_link : video?.video_link)}
                                 />
                             ))}
                         </div>
