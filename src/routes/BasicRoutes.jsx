@@ -24,14 +24,14 @@ import AddPrivacy from "../pages/admin/privacy/AddPrivacy";
 import AddFeatures from "../pages/admin/features/AddFeatures";
 import AddReview from "../pages/admin/reviews/AddReview";
 import ManageReview from "../pages/admin/reviews/ManageReview";
-import PhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
-import ManagePhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
 import ManageVideoGallery from "../pages/admin/gallery/ManageVideoGallery";
 import Register from "../pages/client/credentialPage/Register";
 import Login from "../pages/client/credentialPage/Login";
 import PrivateRoute from "./PrivateRoute";
 import ManageUser from "../pages/admin/manageUser/ManageUser";
 import ManageFeatures from "../pages/admin/features/ManageFeatures";
+import PhotoGallery from "../pages/client/homePage/homeComponents/PhotoGallery";
+import ManagePhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -78,7 +78,7 @@ const router = createBrowserRouter([
             },
             {
                 path : "image-gallery",
-                element : <div className="h-screen justify-center items-center flex flex-col " >Image Gallery</div>
+                element : <PhotoGallery></PhotoGallery>
             },
             {
                 path : "video-gallery",
@@ -176,7 +176,7 @@ const router = createBrowserRouter([
             // Gallery related routes 
             {
                 path: "manage-photo-gallery",
-                element: <ManagePhotoGallery/>
+                element: <ManagePhotoGallery></ManagePhotoGallery>
             },
             {
                 path: "manage-video-gallery",
