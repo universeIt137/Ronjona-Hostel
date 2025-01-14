@@ -45,43 +45,52 @@ const Packages = () => {
     }
 
     return (
-        <div className=" w-11/12 mx-auto  " >
+        <div className=" w-11/12 mx-auto my-4  " >
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
                 {packagesData.map((pkg) => (
-                    <div key={pkg._id} className=' pb-5  rounded shadow relative'>
+                    <div
+                        key={pkg._id}
+                        className="pb-5 rounded shadow relative transform transition-transform duration-300 hover:scale-105"
+                    >
                         <div className="relative">
-                            <img className='rounded-xl h-72 w-full' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
-                                alt="A variety of spices" />
-                            <div className="absolute top-3 left-3  bg-main-color p-2 text-sm font-semibold rounded-lg">
+                            <img
+                                className="rounded-xl h-72 w-full"
+                                src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
+                                alt="A variety of spices"
+                            />
+                            <div className="absolute top-3 left-3 bg-main-color p-2 text-sm font-semibold rounded-lg">
                                 New Launch
                             </div>
-                            <TbShare3 onClick={() =>
-                                setShowShareOptions(showShareOptions === pkg._id ? null : pkg._id)
-                            } className='absolute top-4 right-3 bg-white hover:bg-main-color hover:bg-main-color hover:bg-main-color rounded-full text-3xl p-1'></TbShare3>
+                            <TbShare3
+                                onClick={() =>
+                                    setShowShareOptions(showShareOptions === pkg._id ? null : pkg._id)
+                                }
+                                className="absolute top-4 right-3 bg-white hover:bg-main-color rounded-full text-3xl p-1"
+                            ></TbShare3>
                         </div>
 
-
-                        <div className='flex justify-between items-center'>
+                        <div className="flex justify-between items-center mt-3 px-3">
                             <div>
-                                <p className='font-bold text-xl'>Lansdowne</p>
-                                <p>Starting @ <span className='font-bold'>$564/-</span></p>
+                                <p className="font-bold text-xl">Lansdowne</p>
+                                <p>
+                                    Starting @ <span className="font-bold">$564/-</span>
+                                </p>
                             </div>
-                            <Link to={`/package-details/${pkg?._id}`}><MdArrowOutward className='text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2'>
-                            </MdArrowOutward>
+                            <Link to={`/package-details/${pkg?._id}`}>
+                                <MdArrowOutward className="text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2" />
                             </Link>
                         </div>
 
-
                         {/* Share Options Dropdown */}
                         {showShareOptions === pkg._id && (
-                            <div className='absolute top-0 mt-2 right-20 bg-white border rounded shadow-lg z-10'>
-                                <ul className='p-2 flex gap-4'>
+                            <div className="absolute top-0 mt-2 right-20 bg-white border rounded shadow-lg z-10">
+                                <ul className="p-2 flex gap-4">
                                     <li>
                                         <a
                                             href={socialShareUrls.facebook(pkg)}
-                                            target='_blank'
-                                            rel='noopener noreferrer'
-                                            className='text-blue-600 hover:text-blue-800 text-xl'
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-600 hover:text-blue-800 text-xl"
                                         >
                                             <FaFacebookF />
                                         </a>
@@ -89,9 +98,9 @@ const Packages = () => {
                                     <li>
                                         <a
                                             href={socialShareUrls.twitter(pkg)}
-                                            target='_blank'
-                                            rel='noopener noreferrer'
-                                            className='text-blue-400 hover:text-blue-600 text-xl'
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-400 hover:text-blue-600 text-xl"
                                         >
                                             <FaTwitter />
                                         </a>
@@ -99,7 +108,7 @@ const Packages = () => {
                                     <li>
                                         <a
                                             href={socialShareUrls.email(pkg)}
-                                            className='text-gray-600 hover:text-gray-800 text-xl'
+                                            className="text-gray-600 hover:text-gray-800 text-xl"
                                         >
                                             <FaEnvelope />
                                         </a>
@@ -107,9 +116,9 @@ const Packages = () => {
                                     <li>
                                         <a
                                             href={socialShareUrls.instagram()}
-                                            target='_blank'
-                                            rel='noopener noreferrer'
-                                            className='text-pink-500 hover:text-pink-700 text-xl'
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-pink-500 hover:text-pink-700 text-xl"
                                         >
                                             <FaInstagram />
                                         </a>
