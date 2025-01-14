@@ -6,7 +6,7 @@ import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 
 const VideoGallery = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: videos = [] } = useQuery({
+    const { data: videos = [],isLoading,isError,refetch } = useQuery({
         queryKey: ["vidoeGalleryData"],
         queryFn: async () => {
             const res = await axiosPublic.get(`/getAllVideo`);
@@ -37,6 +37,14 @@ const VideoGallery = () => {
 
     // Show all videos if "See More" is clicked, otherwise show up to 12 videos
     const displayedVideos = showAllVideos ? videos : videos.slice(0, 12);
+
+    if (isLoading) {
+        return (
+            <div className='flex flex-col justify-center items-center h-screen ' >
+                <h1 >Loading data....</h1>
+            </div>
+        )
+    }
 
     return (
         <div className="px-4 md:px-0 w-11/12 mx-auto my-20">

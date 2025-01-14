@@ -14,7 +14,7 @@ const PhotoGallery = () => {
     //     }
     // });
 
-    const { data: images = [] } = useQuery({
+    const { data: images = [],isLoading,isError,refetch } = useQuery({
         queryKey: ["photoGalleryData"],
         queryFn: async () => {
             const res = await axiosPublic.get(`/getAllPhoto`);
@@ -65,6 +65,14 @@ const PhotoGallery = () => {
 
     // Show only 10 images initially
     const visibleImages = showAllImages ? images : images.slice(0, 12);
+
+    if (isLoading) {
+        return (
+            <div className='flex flex-col justify-center items-center h-screen' >
+                <h1>Loading Data</h1>
+            </div>
+        )
+    }
 
     return (
         <div className="px-4 md:px-0 w-11/12 mx-auto lg:my-7 ">
