@@ -6,6 +6,7 @@ import formatDateTime from '../../../hooks/useDateTime';
 import Swal from 'sweetalert2';
 import { uploadImg } from '../../../hooks/UploadImage';
 import { Editor } from '@tinymce/tinymce-react';
+import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
 
 const ManagePackage = () => {
     const axiosPublic = useAxiosPublic();
@@ -33,7 +34,7 @@ const ManagePackage = () => {
         },
     };
 
-    const { data: packages = [], refetch } = useQuery({
+    const { data: packages = [], isLoading,refetch } = useQuery({
         queryKey: ['packages'],
         queryFn: async () => {
             const res = await axiosPublic.get('/getAllPackages');
@@ -197,6 +198,12 @@ const ManagePackage = () => {
         setLoading(false);
     };
 
+    if (isLoading) {
+        return (
+            <SkeletonLoader></SkeletonLoader>
+        )
+    }
+
 
 
     return (
@@ -226,8 +233,8 @@ const ManagePackage = () => {
                                         <tr key={item._id}>
                                             <td className='py-2 border'>{index + 1}</td>
                                             <td className='py-2 border'>{item.title}</td>
-                                            <td className='py-2 border'>{item.branch.location.location}</td>
-                                            <td className='py-2 border'>{item.branch.branch}</td>
+                                            <td className='py-2 border'>{item.branch?.location?.location}</td>
+                                            <td className='py-2 border'>{item?.branch?.branch}</td>
                                             <td className='py-2 border'>{date}</td>
                                             <td className="px-4 py-2 border text-center">
                                                 <button

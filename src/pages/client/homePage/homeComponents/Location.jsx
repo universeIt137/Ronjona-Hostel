@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const Location = () => {
     const axiosPublic = useAxiosPublic();
@@ -14,11 +15,7 @@ const Location = () => {
         }
     });
     if (isLoading) {
-        return (
-            <div className='flex flex-col justify-center items-center h-screen ' >
-                <h1>Loading data</h1>
-            </div>
-        )
+        return (<SkeletonLoader></SkeletonLoader>)
     }
     return (
         <div className="mt-64 md:mt-16 container px-4 md:px-0 md:mx-auto">

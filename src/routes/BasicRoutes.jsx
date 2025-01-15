@@ -33,6 +33,8 @@ import ManageFeatures from "../pages/admin/features/ManageFeatures";
 import PhotoGallery from "../pages/client/homePage/homeComponents/PhotoGallery";
 import ManagePhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
 import VideoGallery from "../pages/client/homePage/homeComponents/VideoGallery";
+import AllBranch from "../pages/client/branch/AllBranch";
+import BranchByPackages from "../pages/client/branch/BranchByPackages";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -87,7 +89,11 @@ const router = createBrowserRouter([
             },
             {
                 path : "our-branch",
-                element : <div className="h-screen justify-center items-center flex flex-col " >Our Branch</div>
+                element : <AllBranch></AllBranch>
+            },
+            {
+                path : "branch-by-packages/:id",
+                element : <BranchByPackages></BranchByPackages>
             },
             {
                 path: 'mission',
