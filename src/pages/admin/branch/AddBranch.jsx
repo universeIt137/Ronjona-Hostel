@@ -40,9 +40,19 @@ const AddBranch = () => {
 
         const location = form.location.value;
         const branch = form.branch.value;
+        const img = e.target.img.files[0];
+
+        let images = ""
+
+        if (!images?.name) {
+            images = ""
+        }
+
+        images = await uploadImg(img)
 
         try {
-            const payload = { location, branch };
+            const payload = { location, branch, img: images };
+            console.log(payload)
             console.log(payload);
 
             const res = await axiosPublic.post(`/createBranch`, payload, config);
@@ -93,6 +103,10 @@ const AddBranch = () => {
                     <div className="">
                         <label htmlFor="name">Branch's Name</label>
                         <input type="text" name="branch" className="w-full px-4 py-2 border rounded-md" />
+                    </div>
+                    <div className="">
+                        <label htmlFor="img">Upload Img</label>
+                        <input type="file" name="img" className="w-full px-4 py-2 border rounded-md" />
                     </div>
                     <div className="">
                         <label htmlFor="name">Select location</label>
