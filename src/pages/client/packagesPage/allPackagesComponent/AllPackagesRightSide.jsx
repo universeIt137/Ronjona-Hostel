@@ -5,9 +5,11 @@ import { TbShare3 } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 // Package card component
 const Packages = ({ packages, isLoading }) => {
+    window.scrollTo(0, 0);
     const [showShareOptions, setShowShareOptions] = useState(null);
 
     const socialShareUrls = {
@@ -27,9 +29,16 @@ const Packages = ({ packages, isLoading }) => {
     };
 
     if (isLoading) {
+        return <SkeletonLoader />;
+    }
+
+    if (!isLoading && packages.length === 0) {
         return (
-            <div className='h-screen flex-col flex justify-center items-center'>
-                <h1 className='text-center'>Loading...</h1>
+            <div className="text-center text-lg text-gray-500">
+                No packages found for the selected filters.
+                <div className='my-10' >
+                    <SkeletonLoader></SkeletonLoader>
+                </div>
             </div>
         );
     }
@@ -42,8 +51,8 @@ const Packages = ({ packages, isLoading }) => {
                         <div className="relative">
                             <img
                                 className='rounded-xl h-72 w-full'
-                                src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
-                                alt="A variety of spices"
+                                src={pkg.img[0]}
+                                alt={pkg.name}
                             />
                             <div className="absolute top-3 left-3 bg-main-color p-2 text-sm font-semibold rounded-lg">
                                 New Launch
@@ -51,7 +60,7 @@ const Packages = ({ packages, isLoading }) => {
                             <TbShare3
                                 onClick={() => setShowShareOptions(showShareOptions === pkg._id ? null : pkg._id)}
                                 className='absolute top-4 right-3 bg-white hover:bg-main-color rounded-full text-3xl p-1'
-                            ></TbShare3>
+                            />
                         </div>
 
                         <div className='flex justify-between items-center mt-4'>
@@ -69,7 +78,7 @@ const Packages = ({ packages, isLoading }) => {
 
                     {/* Share Options Dropdown */}
                     {showShareOptions === pkg._id && (
-                        <div className='absolute top-0 mt-2 right-20 bg-white   rounded shadow-lg z-10'>
+                        <div className='absolute top-0 mt-2 right-20 bg-white rounded shadow-lg z-10'>
                             <ul className='p-2 flex gap-4'>
                                 <li>
                                     <a
@@ -122,6 +131,7 @@ const Packages = ({ packages, isLoading }) => {
 const AllPackagesRightSide = () => {
     const axiosPublic = useAxiosPublic();
     const [priceRange, setPriceRange] = useState('all');
+    const [selectedLocation, setSelectedLocation] = useState('all');
 
     const { data: packagesData = [], isLoading } = useQuery({
         queryKey: ['packagesData'],
@@ -131,28 +141,48 @@ const AllPackagesRightSide = () => {
         }
     });
 
-    // Filter packages based on price range
-    const filterPackagesByPrice = (priceRange) => {
-        switch (priceRange) {
-            case 'low':
-                return packagesData.filter(pkg => pkg.price < 100);
-            case 'medium':
-                return packagesData.filter(pkg => pkg.price >= 100 && pkg.price <= 500);
-            case 'high':
-                return packagesData.filter(pkg => pkg.price > 500);
-            default:
-                return packagesData; // Show all packages when 'all' is selected
+
+
+    const { data: locations = [] } = useQuery({
+        queryKey: ['locationsData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllLocations');
+            return res.data?.data;
         }
+    });
+
+    // Filter packages based on price range and location
+    const filterPackages = (priceRange, location) => {
+        let filtered = packagesData;
+        console.log("filtered", filtered)
+
+        if (priceRange !== 'all') {
+            filtered = filtered.filter(pkg => {
+                if (priceRange === 'low') return pkg.price < 100;
+                if (priceRange === 'medium') return pkg.price >= 100 && pkg.price <= 500;
+                if (priceRange === 'high') return pkg.price > 500;
+                return true;
+            });
+        }
+
+        if (location !== 'all') {
+            filtered = filtered.filter(pkg => pkg?.branch?.location?.location === location);
+        }
+
+        return filtered;
     };
 
-    const filteredPackages = filterPackagesByPrice(priceRange);
+    const filteredPackages = filterPackages(priceRange, selectedLocation);
+
+    console.log("selectedLocation", selectedLocation)
 
     return (
-        <div className='bg-slate-100 w-full flex flex-col lg:flex-row '>
+        <div className='bg-slate-100 w-full flex flex-col lg:flex-row'>
             {/* Sidebar Section */}
             <div className='w-full lg:w-1/4 p-5 bg-white shadow'>
-                <h3 className='text-xl font-bold mb-4'>Filter by Price</h3>
+                <h3 className='text-xl font-bold mb-4'>Filters</h3>
                 <div className='flex flex-col gap-4'>
+                    {/* Price Range Filter */}
                     <div className='flex flex-col'>
                         <label className='block font-semibold'>Price Range</label>
                         <div className="flex flex-col items-start gap-y-4 my-4">
@@ -202,6 +232,23 @@ const AllPackagesRightSide = () => {
                             </label>
                         </div>
                     </div>
+
+                    {/* Location Filter */}
+                    <div className='flex flex-col'>
+                        <label className='block font-semibold'>Location</label>
+                        <select
+                            value={selectedLocation}
+                            onChange={(e) => setSelectedLocation(e.target.value)}
+                            className='mt-2 p-2 border rounded'
+                        >
+                            <option value="all">All</option>
+                            {locations.map((location) => (
+                                <option key={location._id} value={location.location}>
+                                    {location.location}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -214,7 +261,7 @@ const AllPackagesRightSide = () => {
                     </p>
                 </div>
 
-                <div className='mt-8 '>
+                <div className='mt-8'>
                     <Packages packages={filteredPackages} isLoading={isLoading} />
                 </div>
             </div>

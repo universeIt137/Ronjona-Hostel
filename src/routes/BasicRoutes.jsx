@@ -32,6 +32,7 @@ import ManageUser from "../pages/admin/manageUser/ManageUser";
 import ManageFeatures from "../pages/admin/features/ManageFeatures";
 import PhotoGallery from "../pages/client/homePage/homeComponents/PhotoGallery";
 import ManagePhotoGallery from "../pages/admin/gallery/ManagePhotoGallery";
+import VideoGallery from "../pages/client/homePage/homeComponents/VideoGallery";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
             },
             {
                 path : "video-gallery",
-                element : <div className="h-screen justify-center items-center flex flex-col " >Video Gallery</div>
+                element : <VideoGallery></VideoGallery>
             },
             {
                 path : "our-branch",
