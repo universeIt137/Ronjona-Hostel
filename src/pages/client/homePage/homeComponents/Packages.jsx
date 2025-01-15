@@ -55,7 +55,7 @@ const Packages = () => {
                         <NavLink to={`/package-details/${pkg?._id}`}><div className="relative">
                             <img
                                 className="rounded-xl h-72 w-full"
-                                src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/food/spices.jpg"
+                                src={pkg?.img[0]}
                                 alt="A variety of spices"
                             />
                             <div className="absolute top-3 left-3 bg-main-color p-2 text-sm font-semibold rounded-lg">
