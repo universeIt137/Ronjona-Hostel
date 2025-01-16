@@ -1,11 +1,104 @@
-import React from 'react';
+import React from "react";
 
 const ContactUsPage = () => {
-    return (
-        <div>
-            
+  return (
+    <div className="bg-white mt-20 px-6 md:px-16 lg:px-32 py-12">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+          Visit Our Office
+        </h1>
+      </div>
+
+      {/* Main Content */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Left Side */}
+        <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 text-center m-6 ">
+          <h2 className="text-2xl font-semibold text-gray-700 mt-20 ">
+            Ronjona Girls Hostel
+          </h2>
+          <p className="text-gray-600">
+            <strong>Location:</strong> 123, Main Street, City, Country
+          </p>
+          <p className="text-gray-600">
+            <strong>Phone:</strong> +123-456-7890
+          </p>
+          <p className="text-gray-600">
+            <strong>Email:</strong> info@ronjonahostel.com
+          </p>
         </div>
-    );
+
+        {/* Right Side - Contact Form */}
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <form>
+            <div className="mb-4">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Name:
+              </label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Message:
+              </label>
+              <textarea
+                id="message"
+                placeholder="Enter your message"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div className="text-center">
+              <button
+                type="submit"
+                className="px-6 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* Map Section */}
+      <div className="mt-12">
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+          Map
+        </h2>
+        <div className="bg-gray-200 h-64 md:h-80 rounded-lg flex items-center justify-center text-gray-500">
+          <span>Map Placeholder</span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ContactUsPage;
