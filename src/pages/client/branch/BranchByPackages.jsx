@@ -35,8 +35,10 @@ const Packages = ({ packages, isLoading }) => {
     if (!isLoading && packages.length === 0) {
         return (
             <div className="text-center text-lg text-gray-500">
-                No packages found for the selected filters.
                 <div className='my-10' >
+
+                <h1>No packages found for this branch. </h1>
+
                     <SkeletonLoader></SkeletonLoader>
                 </div>
             </div>
@@ -130,12 +132,10 @@ const Packages = ({ packages, isLoading }) => {
 // Main component
 const BranchByPackages = () => {
     const axiosPublic = useAxiosPublic();
-    const [priceRange, setPriceRange] = useState('all');
-    const [selectedLocation, setSelectedLocation] = useState('all');
-    const {id} = useParams()
+    const { id } = useParams()
 
     const { data: branchByPackageData = [], isLoading } = useQuery({
-        queryKey: ['branchByPackageData',id],
+        queryKey: ['branchByPackageData', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/packages-by-branch/${id}`);
             console.log(res.data?.data)
@@ -145,126 +145,27 @@ const BranchByPackages = () => {
 
 
 
-    const { data: locations = [] } = useQuery({
-        queryKey: ['locationsData'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/getAllLocations');
-            return res.data?.data;
-        }
-    });
 
-    // Filter packages based on price range and location
-    const filterPackages = (priceRange, location) => {
-        let filtered = branchByPackageData;
 
-        if (priceRange !== 'all') {
-            filtered = filtered.filter(pkg => {
-                if (priceRange === 'low') return pkg.price < 100;
-                if (priceRange === 'medium') return pkg.price >= 100 && pkg.price <= 500;
-                if (priceRange === 'high') return pkg.price > 500;
-                return true;
-            });
-        }
 
-        if (location !== 'all') {
-            filtered = filtered.filter(pkg => pkg?.branch?.location?.location === location);
-        }
 
-        return filtered;
-    };
 
-    const filteredPackages = filterPackages(priceRange, selectedLocation);
-
-    console.log("selectedLocation", selectedLocation)
 
     return (
-        <div className='bg-slate-100 w-full' >
-            <div className=' lg:my-24  my-16 flex flex-col lg:flex-row'>
-                {/* Sidebar Section */}
-                <div className='w-full lg:w-1/4 p-5 bg-white shadow'>
-                    <h3 className='text-xl font-bold mb-4'>Filters</h3>
-                    <div className='flex flex-col gap-4'>
-                        {/* Price Range Filter */}
-                        <div className='flex flex-col'>
-                            <label className='block font-semibold'>Price Range</label>
-                            <div className="flex flex-col items-start gap-y-4 my-4">
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="price"
-                                        value="all"
-                                        checked={priceRange === 'all'}
-                                        onChange={() => setPriceRange('all')}
-                                        className="mr-2"
-                                    />
-                                    All
-                                </label>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="price"
-                                        value="low"
-                                        checked={priceRange === 'low'}
-                                        onChange={() => setPriceRange('low')}
-                                        className="mr-2"
-                                    />
-                                    Low
-                                </label>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="price"
-                                        value="medium"
-                                        checked={priceRange === 'medium'}
-                                        onChange={() => setPriceRange('medium')}
-                                        className="mr-2"
-                                    />
-                                    Medium ($100-$500)
-                                </label>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="price"
-                                        value="high"
-                                        checked={priceRange === 'high'}
-                                        onChange={() => setPriceRange('high')}
-                                        className="mr-2"
-                                    />
-                                    High ($500)
-                                </label>
-                            </div>
-                        </div>
-
-                        {/* Location Filter */}
-                        <div className='flex flex-col'>
-                            <label className='block font-semibold'>Location</label>
-                            <select
-                                value={selectedLocation}
-                                onChange={(e) => setSelectedLocation(e.target.value)}
-                                className='mt-2 p-2 border rounded'
-                            >
-                                <option value="all">All</option>
-                                {locations.map((location) => (
-                                    <option key={location._id} value={location.location}>
-                                        {location.location}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                </div>
+        <div className='bg-slate-100 ' >
+            <div className=' lg:my-24   my-20 '>
 
                 {/* Packages Section */}
-                <div className='w-full lg:w-3/4 p-5'>
-                    <div className='text-center mb-10 font-bold'>
-                        <p className='text-2xl lg:text-4xl text-main-color'>Our All Packages</p>
-                        <p className='mt-4 text-sm lg:text-xl'>
+                <div className='p-5'>
+                    <div className=' mb-10 font-bold'>
+                        <p className='text-2xl lg:text-4xl text-center text-black'>Our Packages</p>
+                        <p className='mt-4 text-center text-sm lg:text-xl'>
                             Choose your preferred package now and book it within the specified time frame.
                         </p>
                     </div>
 
                     <div className='mt-8'>
-                        <Packages packages={filteredPackages} isLoading={isLoading} />
+                        <Packages packages={branchByPackageData} isLoading={isLoading} />
                     </div>
                 </div>
             </div>

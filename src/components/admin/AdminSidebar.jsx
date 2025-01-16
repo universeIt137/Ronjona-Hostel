@@ -110,6 +110,29 @@ const AdminSidebar = () => {
                         </Sidebar.Collapse>
 
                         <Sidebar.Collapse
+                            icon={HiShoppingBag}
+                            label="Offer"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/upload-offer'}>
+                                <Sidebar.Item>
+                                    Upload Offer
+                                </Sidebar.Item>
+                            </Link>
+
+                            <Link to={'/dashboard/manage-offer'}>
+                                <Sidebar.Item>
+                                    Manage Offer
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+                        <Sidebar.Collapse
                             icon={BiGitBranch}
                             label="Banner"
                             renderChevronIcon={(theme, open) => {
