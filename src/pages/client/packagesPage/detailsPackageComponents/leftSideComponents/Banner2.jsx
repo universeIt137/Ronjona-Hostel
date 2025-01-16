@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { FaSwimmingPool } from 'react-icons/fa';
 
-const Banner2 = ({ packagesDetailsData = { img: [] } }) => {
+const Banner2 = ({ packagesDetailsData }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const data = packagesDetailsData?.features;
+
+    console.log("data is ", data)
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % packagesDetailsData.img.length);
@@ -21,7 +24,7 @@ const Banner2 = ({ packagesDetailsData = { img: [] } }) => {
     return (
         <div className='m-10 relative overflow-hidden'>
             {/* Image Display */}
-            <div className='h-[90vh] border rounded-full w-[90vh] mx-auto '>
+            <div className=' border rounded-full w-[30vh] mx-auto '>
                 <img
                     className=' lg:w-full lg:h-full object-cover transition-all duration-500'
                     src={packagesDetailsData.img[currentIndex]}
@@ -32,14 +35,14 @@ const Banner2 = ({ packagesDetailsData = { img: [] } }) => {
             {/* Navigation Buttons */}
             <button
                 aria-label="Previous Slide"
-                className='absolute lg:top-[28%] left-5 transform -translate-y-1/2 bg-black text-white p-2 rounded-full'
+                className='absolute lg:top-[18%] left-5 transform -translate-y-1/2 bg-black text-white p-2 rounded-full'
                 onClick={handlePrev}
             >
                 ❮
             </button>
             <button
                 aria-label="Next Slide"
-                className='absolute lg:top-[28%] right-5 transform -translate-y-1/2 bg-black text-white p-2 rounded-full'
+                className='absolute lg:top-[18%] right-5 transform -translate-y-1/2 bg-black text-white p-2 rounded-full'
                 onClick={handleNext}
             >
                 ❯
@@ -56,39 +59,26 @@ const Banner2 = ({ packagesDetailsData = { img: [] } }) => {
                     ></button>
                 ))}
             </div>
-            <div className='bg-gray-200 m-8 rounded-[30px] '>
-                <p className='text-5xl font-bold text-main-color pt-8 pl-8'>Facilities</p>
-                <div className='grid grid-cols-3 md:grid-cols-6'>
-
-                    <div className=' flex-row justify-items-center p-8'>
-                        <FaSwimmingPool className='text-8xl'></FaSwimmingPool>
-                        <p className='text-xl'>Sswimming Pool</p>
-                    </div>
-                    <div className=' flex-row justify-items-center p-8'>
-                        <FaSwimmingPool className='text-8xl'></FaSwimmingPool>
-                        <p className='text-xl'>Sswimming Pool</p>
-                    </div>
-                    <div className=' flex-row justify-items-center p-8'>
-                        <FaSwimmingPool className='text-8xl'></FaSwimmingPool>
-                        <p className='text-xl'>Sswimming Pool</p>
-                    </div>
-                    <div className=' flex-row justify-items-center p-8'>
-                        <FaSwimmingPool className='text-8xl'></FaSwimmingPool>
-                        <p className='text-xl'>Sswimming Pool</p>
-                    </div>
-                    <div className=' flex-row justify-items-center p-8'>
-                        <FaSwimmingPool className='text-8xl'></FaSwimmingPool>
-                        <p className='text-xl'>Sswimming Pool</p>
-                    </div>
-
-                    <div className=' flex-row justify-items-center p-8'>
-                        <FaSwimmingPool className='text-8xl'></FaSwimmingPool>
-                        <p className='text-xl'>Sswimming Pool</p>
-                    </div>
-
-
+            <div className="bg-gray-200 m-8 rounded-[30px]">
+                <p className="text-3xl font-bold pt-8 pl-8">Facilities</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 p-4">
+                    {data && data.length > 0 ? (
+                        data.map((item, i) => (
+                            <div key={i} className="flex flex-col items-center p-4">
+                                <img
+                                    src={item?.featilityImg}
+                                    alt={item?.featilityTitle || "Facility image"}
+                                    className="w-16 h-16 object-cover"
+                                />
+                                <p className="text-center mt-2">{item?.featilityTitle}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p className="col-span-full text-center text-gray-500">No facilities available.</p>
+                    )}
                 </div>
             </div>
+
         </div>
     );
 };
