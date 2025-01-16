@@ -106,6 +106,12 @@ const MainNavbar = () => {
                         <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             Our Packages
                         </NavLink>
+
+                        <NavLink to={`/contact-us`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                           Contact Us
+                        </NavLink>
+
+                        
                     </div>
 
                     {/* Drawer toggle for mobile */}
@@ -154,6 +160,7 @@ const MainNavbar = () => {
                                 <NavLink NavLink to={"/about-us"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
                                 <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission & Vission</NavLink>
                                 <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
+                                
                             </div>
                         )}
                     </div>
