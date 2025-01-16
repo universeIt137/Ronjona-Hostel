@@ -3,9 +3,20 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
+import { deleteAlert } from '../../../helper/deleteAlert';
+import { config } from 'localforage';
+import Swal from 'sweetalert2';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ManageOffer = () => {
   const axiosPublic = useAxiosPublic();
+
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      Authorization: token,
+    },
+  };
 
 
   const { data: offersData = [], refetch } = useQuery({
@@ -16,15 +27,40 @@ const ManageOffer = () => {
     }
   });
 
+  const navigate = useNavigate()
 
-  const handleEdit = (offer) => {
-    console.log('Edit:', offer);
-    // Add your edit logic here
+
+
+
+  const handleDelete = async (id) => {
+    const resp = await deleteAlert();
+    try {
+      if (resp.isConfirmed) {
+        let res = await axiosPublic.delete(`/offer-delete/${id}`, config);
+        if (res) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Offer delete successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          refetch();
+          return;
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Offer delete fail",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   };
 
-  const handleDelete = (offer) => {
-    console.log('Delete:', offer);
-  };
+
 
   return (
     <div className="overflow-x-auto py-8 text-center ">
@@ -72,14 +108,15 @@ const ManageOffer = () => {
                   {/* Actions */}
                   <td className="px-6 py-4 text-center border-b">
                     <div className="flex justify-center items-center space-x-4">
+                      <Link to={`/dashboard/update-offer/${offer?._id}`}>
+                        <button
+                          className="text-yellow-500 hover:text-yellow-700 p-2 rounded-full transition-colors"
+                        >
+                          <FaEdit size={18} />
+                        </button>
+                      </Link>
                       <button
-                        onClick={() => handleEdit(offer)}
-                        className="text-yellow-500 hover:text-yellow-700 p-2 rounded-full transition-colors"
-                      >
-                        <FaEdit size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(offer)}
+                        onClick={() => handleDelete(offer?._id)}
                         className="text-red-500 hover:text-red-700 p-2 rounded-full transition-colors"
                       >
                         <FaTrashAlt size={18} />
