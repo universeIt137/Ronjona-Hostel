@@ -13,8 +13,15 @@ const ContactUsPage = () => {
       {/* Main Content */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Left Side */}
-        <div className="bg-white p-6 rounded-lg shadow-lg space-y-4 text-center m-6 ">
-          <h2 className="text-2xl font-semibold text-gray-700 mt-20 ">
+        <div className="relative bg-white p-6 pt-24 rounded-lg shadow-lg space-y-4 text-center m-6">
+          {/* Top-left corner decoration */}
+          <div className="absolute top-0 left-0 w-20 h-20 bg-[#a020ba] rounded-tl-lg"></div>
+
+          {/* Bottom-right corner decoration */}
+          <div className="absolute bottom-0 right-0 w-20 h-20 bg-[#a020ba] rounded-br-lg"></div>
+
+          {/* Content */}
+          <h2 className="text-4xl font-semibold text-gray-700">
             Ronjona Girls Hostel
           </h2>
           <p className="text-gray-600">
@@ -79,7 +86,7 @@ const ContactUsPage = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="px-6 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="px-6 py-2 bg-[#a020ba] text-white font-semibold rounded-md hover:bg-[#a020ba] focus:outline-none focus:ring-2 focus:ring-[#a020ba]"
               >
                 Submit
               </button>
