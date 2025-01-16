@@ -1,26 +1,26 @@
 import React from 'react';
 
-const AddressSection = () => {
+const AddressSection = ({packagesDetailsData }) => {
   return (
     <div className='  justify-items-center mt-10'>
-      <div className='bg-yellow-50 shadow-lg p-6 w-[450px] rounded-[30px] px-4'>
+      <div className='bg-yellow-50 shadow-lg p-3 w-[450px] rounded-[30px] px-4'>
         
         {/* List with dots */}
-        <p className=" text-4xl font-bold">Other Information</p>
+        {/* <p className=" text-4xl font-bold">Other Information</p>
         <ul className="p-4">
           <li className="dot-item text-xl font-bold">Other Information</li>
           <li className="dot-item text-xl font-bold">Other Information</li>
           <li className="dot-item text-xl font-bold">Other Information</li>
           <li className="dot-item text-xl font-bold">Other Information</li>
-        </ul>
+        </ul> */}
 
         {/* Google Map Embed */}
         <iframe 
           title='Google Map'
           allowFullScreen="" 
           loading="lazy"
-          className='w-[420px] rounded-[30px]  h-96 my-10' 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.5351072979374!2d90.4302856747924!3d23.76395208825702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf537d1f2e09%3A0x8fe7a3faf331a140!2sUniverse%20IT%20Institute!5e0!3m2!1sen!2sbd!4v1736328939744!5m2!1sen!2sbd"
+          className='w-[420px] rounded-[30px]  h-96 my-8' 
+          src={packagesDetailsData?.locationLink}
           alt="" 
         />
       </div>
