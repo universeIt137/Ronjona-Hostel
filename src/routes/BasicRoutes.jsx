@@ -43,6 +43,7 @@ import AddVideoGallery from "../pages/admin/gallery/AddVideoGallery";
 import PhotoUpdate from "../pages/admin/gallery/PhotoUpdate";
 import UpdateVideo from "../pages/admin/gallery/UpdateVideo";
 import ManageContact from "../pages/admin/contact/ManageContact";
+import BorderReview from "../pages/client/review/BorderReview";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -52,16 +53,16 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element:<HomePage/>
+                element: <HomePage />
             },
             {
                 path: 'about',
-                element:<AboutPage></AboutPage>
+                element: <AboutPage></AboutPage>
             },
-            
+
             {
                 path: 'vission',
-                element:<VissionPage></VissionPage>
+                element: <VissionPage></VissionPage>
             },
             {
                 path: 'management-info',
@@ -69,55 +70,60 @@ const router = createBrowserRouter([
             },
             {
                 path: 'contact-us',
-                element:<ContactUsPage/>
+                element: <ContactUsPage />
             },
             {
                 path: 'blog',
-                element:<BlogPage/>
+                element: <BlogPage />
             },
             {
                 path: 'blog-details',
-                element:<BlogDetailsPage/>
+                element: <BlogDetailsPage />
             },
             {
                 path: 'all-packages',
-                element:<AllPackages/>
+                element: <AllPackages />
             },
             {
                 path: 'package-details/:id',
-                element:<DetailsPackagePage/>
+                element: <DetailsPackagePage />
             },
             {
-                path : "image-gallery",
-                element : <PhotoGallery></PhotoGallery>
+                path: "image-gallery",
+                element: <PhotoGallery></PhotoGallery>
             },
             {
-                path : "video-gallery",
-                element : <VideoGallery></VideoGallery>
+                path: "video-gallery",
+                element: <VideoGallery></VideoGallery>
             },
             {
-                path : "our-branch",
-                element : <AllBranch></AllBranch>
+                path: "our-branch",
+                element: <AllBranch></AllBranch>
             },
             {
-                path : "branch-by-packages/:id",
-                element : <BranchByPackages></BranchByPackages>
+                path: "branch-by-packages/:id",
+                element: <BranchByPackages></BranchByPackages>
             },
             {
                 path: 'mission',
-                element:<div className="h-screen justify-center items-center flex flex-col " >Mission</div>
+                element: <div className="h-screen justify-center items-center flex flex-col " >Mission</div>
             },
-            
+            // reive related routes
+            {
+                path: "border-review",
+                element: <BorderReview></BorderReview>
+            }
+
         ]
-        
+
     },
     {
         path: '/admin-register',
-        element: <Register/>
+        element: <Register />
     },
     {
         path: "/admin-login",
-        element: <Login/>
+        element: <Login />
     },
     // Dashboard related routes 
     {
@@ -126,67 +132,67 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard/>
+                element: <Dashboard />
             },
 
             // package related routes 
             {
                 path: 'add-package',
-                element: <AddPackage/>
+                element: <AddPackage />
             },
             {
                 path: 'manage-package',
-                element: <ManagePackage/>
+                element: <ManagePackage />
             },
             // location related routes 
             {
                 path: 'add-location',
-                element: <AddLocation/>
+                element: <AddLocation />
             },
             {
                 path: 'manage-location',
-                element: <ManageLocation/>
+                element: <ManageLocation />
             },
             // branch related routes 
             {
                 path: 'add-branch',
-                element: <AddBranch/>
+                element: <AddBranch />
             },
             {
                 path: 'manage-branch',
-                element: <ManageBranch/>
+                element: <ManageBranch />
             },
             // Banner related routes 
             {
                 path: "add-banner",
-                element: <AddBanner/>
+                element: <AddBanner />
             },
             {
                 path: "manage-banner",
-                element: <ManageBanner/>
+                element: <ManageBanner />
             },
             // Privacy related routes 
             {
                 path: "add-privacy",
-                element: <AddPrivacy/>
+                element: <AddPrivacy />
             },
             // Features related routes 
             {
                 path: "add-features",
-                element: <AddFeatures/>
+                element: <AddFeatures />
             },
             {
                 path: "manage-features",
-                element: <ManageFeatures/>
+                element: <ManageFeatures />
             },
             // Review related routes 
             {
                 path: "add-review",
-                element: <AddReview/>
+                element: <AddReview />
             },
             {
                 path: "manage-review",
-                element: <ManageReview/>
+                element: <ManageReview />
             },
             // Gallery related routes 
             {
@@ -195,7 +201,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "manage-video-gallery",
-                element: <ManageVideoGallery/>
+                element: <ManageVideoGallery />
             },
             {
                 path: "add-photo",
@@ -203,11 +209,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "add-video",
-                element: <AddVideoGallery/>
+                element: <AddVideoGallery />
             },
             {
                 path: "photo-update/:id",
-                element: <PhotoUpdate/>
+                element: <PhotoUpdate />
             },
             {
                 path: "video-update/:id",
@@ -216,29 +222,29 @@ const router = createBrowserRouter([
             // manage user related routes 
             {
                 path: "manage-users",
-                element: <ManageUser/>
+                element: <ManageUser />
             },
 
             // offer related routes
 
             {
                 path: "upload-offer",
-                element : <UploadOffer></UploadOffer>
+                element: <UploadOffer></UploadOffer>
             },
             {
                 path: "manage-offer",
-                element : <ManageOffer></ManageOffer>
+                element: <ManageOffer></ManageOffer>
             },
             {
                 path: "update-offer/:id",
-                element : <UpdateOffer></UpdateOffer>
+                element: <UpdateOffer></UpdateOffer>
             },
 
             // contact related api
 
             {
                 path: "all-contacts",
-                element : <ManageContact></ManageContact>
+                element: <ManageContact></ManageContact>
             },
 
         ]
