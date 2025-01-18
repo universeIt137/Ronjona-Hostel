@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import ReactPlayer from 'react-player';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const VideoGallery = () => {
     const axiosPublic = useAxiosPublic();
@@ -41,7 +42,9 @@ const VideoGallery = () => {
     if (isLoading) {
         return (
             <div className='flex flex-col justify-center items-center h-screen ' >
-                <h1 >Loading data....</h1>
+                <div>
+                    <SkeletonLoader></SkeletonLoader>
+                </div>
             </div>
         )
     }

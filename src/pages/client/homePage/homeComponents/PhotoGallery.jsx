@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const PhotoGallery = () => {
     const axiosPublic = useAxiosPublic();
@@ -69,7 +70,9 @@ const PhotoGallery = () => {
     if (isLoading) {
         return (
             <div className='flex flex-col justify-center items-center h-screen' >
-                <h1>Loading Data</h1>
+                <div>
+                    <SkeletonLoader></SkeletonLoader>
+                </div>
             </div>
         )
     }
