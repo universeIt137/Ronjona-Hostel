@@ -67,7 +67,7 @@ const AddVideoGallery = () => {
   return (
     <div className="flex justify-center items-center my-32">
       <Helmet>
-        <title>Dashboard | Video Upload Page</title>
+        <title>Dashboard | Video Maname Page</title>
         <meta name="description" content="Upload videos and manage your video gallery easily." />
       </Helmet>
       <form
@@ -117,3 +117,4 @@ const AddVideoGallery = () => {
 };
 
 export default AddVideoGallery;
+                                                                               
