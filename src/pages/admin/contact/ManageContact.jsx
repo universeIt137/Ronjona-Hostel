@@ -4,6 +4,8 @@ import { FaTrash, FaInfoCircle } from "react-icons/fa";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { updateAlert } from "../../../helper/updateAlert";
 import Swal from "sweetalert2";
+import { deleteAlert } from "../../../helper/deleteAlert";
+import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 
 const ManageContact = () => {
     const axiosPublic = useAxiosPublic();
@@ -16,9 +18,31 @@ const ManageContact = () => {
         },
     });
 
-    const handleDelete = (id) => {
-        if (window.confirm("Are you sure you want to delete this item?")) {
-            alert(`Delete row with ID: ${id}`);
+    const handleDelete = async (id) => {
+        let resp = await deleteAlert();
+        try {
+            if (resp.isConfirmed) {
+                let res = await axiosPublic.delete(`/delete-data/${id}`);
+                if (res) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Msg delete successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    refetch()
+                }
+            }
+        } catch (error) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Msg delete fails",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            console.log(error)
         }
     };
 
@@ -99,7 +123,7 @@ const ManageContact = () => {
                                         <FaInfoCircle size={18} />
                                     </button>
                                     <button
-                                        onClick={() => handleDelete(item.id)}
+                                        onClick={() => handleDelete(item._id)}
                                         className="text-red-600 hover:text-red-800"
                                     >
                                         <FaTrash size={18} />
@@ -110,7 +134,9 @@ const ManageContact = () => {
                     </tbody>
                 </table>
                 {tableData.length === 0 && (
-                    <p className="text-center text-gray-500 py-4">No data available</p>
+                    <p className="text-center text-gray-500 py-4">
+                        <SkeletonLoader></SkeletonLoader>
+                    </p>
                 )}
             </div>
         </div>
