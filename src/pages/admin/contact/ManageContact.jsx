@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaTrash, FaInfoCircle } from "react-icons/fa";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { updateAlert } from "../../../helper/updateAlert";
+import Swal from "sweetalert2";
 
 const ManageContact = () => {
     const axiosPublic = useAxiosPublic();
@@ -25,6 +27,35 @@ const ManageContact = () => {
             `Details:\nName: ${item.name}\nEmail: ${item.email}\nMessage: ${item.message}\nStatus: ${item.status}`
         );
     };
+
+    const updateStatus = async (id) => {
+        const resp = await updateAlert()
+        try {
+            if (resp.isConfirmed) {
+                let res = await axiosPublic.put(`/update-status/${id}`, {});
+                if (res) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Status update successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    refetch()
+                }
+            }
+        } catch (error) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Status update fail",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+
+    refetch()
 
     return (
         <div className="p-6">
@@ -51,8 +82,8 @@ const ManageContact = () => {
                                 <td className="px-6 py-4">{item.email}</td>
                                 <td className="px-6 py-4">{item.message?.slice(0, 20) || "No message"}...</td>
                                 <td className="px-6 py-4">
-                                    <span
-                                        className={`px-3 border-2 border-red-500 py-1 font-semibold text-sm rounded-full ${item.status === true
+                                    <span onClick={() => updateStatus(item?._id)}
+                                        className={`px-3 cursor-pointer border-2 border-red-500 py-1 font-semibold text-sm rounded-full ${item.status === true
                                             ? "bg-green-100 text-green-700"
                                             : "bg-red-100 text-red-700"
                                             }`}
