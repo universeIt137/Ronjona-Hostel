@@ -2,12 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
 
 const Offers = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const axiosPublic = useAxiosPublic();
 
-    const { data: offers = [] } = useQuery({
+    const { data: offers = [], isLoading } = useQuery({
         queryKey: ['offers'],
         queryFn: async () => {
             const res = await axiosPublic.get(`/all-offer`);
@@ -38,6 +39,15 @@ const Offers = () => {
     if (!offers.length) {
         return <div>No offers available at the moment. Please check back later!</div>;
     }
+
+    if (isLoading) {
+        return (
+            <div>
+                <SkeletonLoader></SkeletonLoader>
+            </div>
+        )
+    }
+
 
     return (
         <div className='mt-10 container px-4 md:px-0 md:mx-auto'>

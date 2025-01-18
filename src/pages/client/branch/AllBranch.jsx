@@ -30,17 +30,17 @@ const AllBranch = () => {
             <div className="overflow-hidden relative">
                 <div className="grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 gap-8 px-1 py-10">
                     {branchData.map((branch) => (
-                        <div key={branch.id} className="card bg-base-100 shadow-xl">
+                        <div key={branch.id} className="card h-80 bg-base-100 shadow-xl">
                             <Link to={`/branch-by-packages/${branch?._id}`}>
                                 <figure className="px-5 pt-5">
                                     <img
                                         src={branch.img || 'https://via.placeholder.com/150'}
                                         alt={branch.name}
-                                        className="rounded-xl w-full h-44 object-cover"
+                                        className="rounded-xl w-full h-64 object-cover"
                                     />
                                 </figure>
-                                <div className=" py-3 items-center text-center">
-                                    <h2 className="card-title">{branch.name}</h2>
+                                <div className=" my-2  items-center text-center">
+                                    <h2 className="card-title  ">{branch.name}</h2>
                                     <p>{branch.branch || 'No description available'}</p>
                                 </div>
                             </Link>

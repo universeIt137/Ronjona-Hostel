@@ -4,7 +4,7 @@ import { FaAngleRight, FaAngleUp } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 const MainNavbar = () => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
     const [isOpen, setIsOpen] = useState(false); // Drawer visibility state
     const [isScrolled, setIsScrolled] = useState(false); // Scroll state
     const [showGetInTouchDropdown, setShowGetInTouchDropdown] = useState(false); // Get In Touch dropdown visibility
@@ -30,13 +30,13 @@ const MainNavbar = () => {
     return (
         <div className={`fixed w-full top-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-50' : 'bg-white opacity-100'}`}>
             {!isScrolled && (
-                <div className="flex items-center gap-4 bg-black text-white justify-center">
+                <div className="flex flex-col lg:flex-row items-center lg:gap-4 py-2 lg:py-0 bg-black text-white justify-center">
                     <p className='text-xs md:text-md lg:text-md'>
                         10000+ students have experienced the Luxurious Hive Life.
                     </p>
                     <FaAngleRight className='text-center m-o md:m-2'></FaAngleRight>
                     <div>
-                        <p> call : 01777177771</p>
+                        <p> Call : 01777177771</p>
                     </div>
                 </div>
             )}
@@ -54,7 +54,7 @@ const MainNavbar = () => {
                     </NavLink>
 
                     {/* Large screen navigation */}
-                    <div className="hidden md:flex md:items-center md:space-x-6  ">
+                    <div className="hidden md:flex  md:space-x-6 lg:mr-32   ">
                         <NavLink to="/" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             Home
                         </NavLink>
@@ -77,6 +77,7 @@ const MainNavbar = () => {
                                     {/* <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink> */}
                                     <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision & Mission</NavLink>
                                     <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
+                                    <NavLink NavLink to={"/border-review"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Review</NavLink>
                                 </div>
                             )}
                         </div>
@@ -108,10 +109,10 @@ const MainNavbar = () => {
                         </NavLink>
 
                         <NavLink to={`/contact-us`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
-                           Contact Us
+                            Contact Us
                         </NavLink>
 
-                        
+
                     </div>
 
                     {/* Drawer toggle for mobile */}
@@ -142,12 +143,16 @@ const MainNavbar = () => {
                     <h2>Menu</h2>
                 </Drawer.Header>
                 <Drawer.Items>
-                    <NavLink to="/" className="block text-lg font-medium text-gray-700 hover:underline py-2">
+                    <NavLink
+                        to="/"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
                         Home
                     </NavLink>
 
                     {/* Get In Touch dropdown */}
-                    <div className='py-2'>
+                    <div className="py-2">
                         <button
                             onClick={() => setShowGetInTouchDropdown(!showGetInTouchDropdown)}
                             className="block text-lg font-medium text-gray-700 w-full text-left"
@@ -157,16 +162,40 @@ const MainNavbar = () => {
                         </button>
                         {showGetInTouchDropdown && (
                             <div className="pl-4">
-                                <NavLink NavLink to={"/about-us"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
-                                <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission & Vission</NavLink>
-                                <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
-                                
+                                <NavLink
+                                    to="/about-us"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)} // Close drawer on click
+                                >
+                                    About Us
+                                </NavLink>
+                                <NavLink
+                                    to="/mission"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)} // Close drawer on click
+                                >
+                                    Mission & Vision
+                                </NavLink>
+                                <NavLink
+                                    to="/management-info"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)} // Close drawer on click
+                                >
+                                    Management Info
+                                </NavLink>
+                                <NavLink
+                                    to="/border-review"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)} // Close drawer on click
+                                >
+                                    Review
+                                </NavLink>
                             </div>
                         )}
                     </div>
 
                     {/* Gallery dropdown */}
-                    <div className='py-2'>
+                    <div className="py-2">
                         <button
                             onClick={() => setShowGalleryDropdown(!showGalleryDropdown)}
                             className="block text-lg font-medium text-gray-700 w-full text-left"
@@ -176,20 +205,48 @@ const MainNavbar = () => {
                         </button>
                         {showGalleryDropdown && (
                             <div className="pl-4">
-                                <NavLink NavLink to={"/image-gallery"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Image Gallery</NavLink>
-                                <NavLink NavLink to={"/video-gallery"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Video Gallery</NavLink>
+                                <NavLink
+                                    to="/image-gallery"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)} // Close drawer on click
+                                >
+                                    Image Gallery
+                                </NavLink>
+                                <NavLink
+                                    to="/video-gallery"
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                                    onClick={() => setIsOpen(false)} // Close drawer on click
+                                >
+                                    Video Gallery
+                                </NavLink>
                             </div>
                         )}
                     </div>
 
-                    <NavLink to={"/our-branch"} className="block text-lg font-medium text-gray-700 hover:underline py-2">
+                    <NavLink
+                        to="/our-branch"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
                         Our Branches
                     </NavLink>
-                    <NavLink to={"/our-packages"} className="block text-lg font-medium text-gray-700 hover:underline py-2">
+                    <NavLink
+                        to="/all-packages"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
                         Our Packages
+                    </NavLink>
+                    <NavLink
+                        to="/contact-us"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
+                        Contact Us
                     </NavLink>
                 </Drawer.Items>
             </Drawer>
+
 
         </div>
     );
