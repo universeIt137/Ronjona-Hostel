@@ -230,6 +230,16 @@ const AdminSidebar = () => {
                                 return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
                             }}
                         >
+                            <Link to={'/dashboard/add-photo'}>
+                                <Sidebar.Item>
+                                    Add Photo
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/add-video'}>
+                                <Sidebar.Item>
+                                    Add Video 
+                                </Sidebar.Item>
+                            </Link>
                             <Link to={'/dashboard/manage-photo-gallery'}>
                                 <Sidebar.Item>
                                     Manage Photo Gallery

@@ -38,6 +38,9 @@ import BranchByPackages from "../pages/client/branch/BranchByPackages";
 import UploadOffer from "../pages/admin/offers/UploadOffer";
 import ManageOffer from "../pages/admin/offers/ManageOffer";
 import UpdateOffer from "../pages/admin/offers/UpdateOffer";
+import AddPhotoGallery from "../pages/admin/gallery/AddPhotoGallery";
+import AddVideoGallery from "../pages/admin/gallery/AddVideoGallery";
+import PhotoUpdate from "../pages/admin/gallery/PhotoUpdate";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -191,6 +194,18 @@ const router = createBrowserRouter([
             {
                 path: "manage-video-gallery",
                 element: <ManageVideoGallery/>
+            },
+            {
+                path: "add-photo",
+                element: <AddPhotoGallery></AddPhotoGallery>
+            },
+            {
+                path: "add-video",
+                element: <AddVideoGallery/>
+            },
+            {
+                path: "photo-update/:id",
+                element: <PhotoUpdate/>
             },
             // manage user related routes 
             {
