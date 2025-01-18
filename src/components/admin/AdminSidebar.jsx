@@ -221,6 +221,30 @@ const AdminSidebar = () => {
 
                         </Sidebar.Collapse>
 
+
+
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="Contact"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            
+
+                            <Link to={'/dashboard/all-contacts'}>
+                                <Sidebar.Item>
+                                    Manage Contact
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+
+
+
                         <Sidebar.Collapse
                             icon={FcGallery}
                             label="Gallery"
@@ -253,6 +277,13 @@ const AdminSidebar = () => {
                             </Link>
 
                         </Sidebar.Collapse>
+
+
+
+
+
+
+
 
 
                         <Sidebar.Item icon={HiUser}>
