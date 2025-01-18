@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const ContactUsPage = () => {
+  const [loading, setLoading] = useState(false);
+  const axiosPublic = useAxiosPublic()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+    const payload = {
+      name, email, message
+
+    };
+    try {
+      setLoading(true);
+      let res = await axiosPublic.post(`/send-contact`, payload);
+      setLoading(false)
+      if (res) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Contact successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    } catch (error) {
+      setLoading(false);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Contact fail",
+        showConfirmButton: false,
+        timer: 1500
+      });
+
+    }
+  }
   return (
     <div className="bg-white mt-20 px-6 md:px-16 lg:px-32 py-12">
       {/* Header */}
@@ -37,7 +75,7 @@ const ContactUsPage = () => {
 
         {/* Right Side - Contact Form */}
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <form>
+          <form onSubmit={handleSubmit} >
             <div className="mb-4">
               <label
                 htmlFor="name"
@@ -48,6 +86,7 @@ const ContactUsPage = () => {
               <input
                 type="text"
                 id="name"
+                name="name"
                 placeholder="Enter your name"
                 className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               />
@@ -63,6 +102,7 @@ const ContactUsPage = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 placeholder="Enter your email"
                 className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               />
@@ -78,6 +118,7 @@ const ContactUsPage = () => {
               <textarea
                 id="message"
                 placeholder="Enter your message"
+                name="message"
                 className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                 rows="4"
               ></textarea>
@@ -85,10 +126,13 @@ const ContactUsPage = () => {
 
             <div className="text-center">
               <button
+                disabled = {loading}
                 type="submit"
                 className="px-6 py-2 bg-[#a020ba] text-white font-semibold rounded-md hover:bg-[#a020ba] focus:outline-none focus:ring-2 focus:ring-[#a020ba]"
               >
-                Submit
+                {
+                  loading ? "Submiting..." : "Submit"
+                }
               </button>
             </div>
           </form>
