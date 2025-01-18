@@ -41,6 +41,7 @@ import UpdateOffer from "../pages/admin/offers/UpdateOffer";
 import AddPhotoGallery from "../pages/admin/gallery/AddPhotoGallery";
 import AddVideoGallery from "../pages/admin/gallery/AddVideoGallery";
 import PhotoUpdate from "../pages/admin/gallery/PhotoUpdate";
+import UpdateVideo from "../pages/admin/gallery/UpdateVideo";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -206,6 +207,10 @@ const router = createBrowserRouter([
             {
                 path: "photo-update/:id",
                 element: <PhotoUpdate/>
+            },
+            {
+                path: "video-update/:id",
+                element: <UpdateVideo></UpdateVideo>
             },
             // manage user related routes 
             {
