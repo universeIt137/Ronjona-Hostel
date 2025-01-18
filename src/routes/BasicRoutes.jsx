@@ -42,6 +42,7 @@ import AddPhotoGallery from "../pages/admin/gallery/AddPhotoGallery";
 import AddVideoGallery from "../pages/admin/gallery/AddVideoGallery";
 import PhotoUpdate from "../pages/admin/gallery/PhotoUpdate";
 import UpdateVideo from "../pages/admin/gallery/UpdateVideo";
+import ManageContact from "../pages/admin/contact/ManageContact";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -231,6 +232,13 @@ const router = createBrowserRouter([
             {
                 path: "update-offer/:id",
                 element : <UpdateOffer></UpdateOffer>
+            },
+
+            // contact related api
+
+            {
+                path: "all-contacts",
+                element : <ManageContact></ManageContact>
             },
 
         ]
