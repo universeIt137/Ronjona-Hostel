@@ -45,6 +45,9 @@ import UpdateVideo from "../pages/admin/gallery/UpdateVideo";
 import ManageContact from "../pages/admin/contact/ManageContact";
 import BorderReview from "../pages/client/review/BorderReview";
 import UploadAboutData from "../pages/admin/about-pages/UploadAboutData";
+import AddTeam from "../pages/admin/tam/AddTeam";
+import ManageTeam from "../pages/admin/tam/ManageTeam";
+import UpdateTeam from "../pages/admin/tam/UpdateTeam";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -253,7 +256,20 @@ const router = createBrowserRouter([
             {
                 path: "about-data-upload",
                 element : <UploadAboutData/>
-            }
+            },
+            // team related route
+            {
+                path: "add-team-member",
+                element : <AddTeam></AddTeam>
+            },
+            {
+                path: "manage-team-member",
+                element : <ManageTeam></ManageTeam>
+            },
+            {
+                path: "team-update/:id",
+                element : <UpdateTeam></UpdateTeam>
+            },
 
         ]
     }
