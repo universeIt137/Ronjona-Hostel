@@ -3,6 +3,7 @@ import axios from "axios";
 import { createAlert } from "../../../helper/createAlert";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UploadAboutData = () => {
     const axiosPublic = useAxiosPublic();
@@ -106,6 +107,9 @@ const UploadAboutData = () => {
 
     return (
         <div className="p-6 min-h-screen">
+            <Helmet>
+                <title>Dashboard | About Data Upload Page </title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-4">About Section</h1>
             <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Title Input */}

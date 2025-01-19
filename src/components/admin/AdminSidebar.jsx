@@ -261,6 +261,30 @@ const AdminSidebar = () => {
 
                         </Sidebar.Collapse>
 
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="Team"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            
+
+                            <Link to={'/dashboard/add-team-member'}>
+                                <Sidebar.Item>
+                                    Add Team Member
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/manage-team-member'}>
+                                <Sidebar.Item>
+                                Manage Team Member
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
 
 
 
