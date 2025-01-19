@@ -44,6 +44,7 @@ import PhotoUpdate from "../pages/admin/gallery/PhotoUpdate";
 import UpdateVideo from "../pages/admin/gallery/UpdateVideo";
 import ManageContact from "../pages/admin/contact/ManageContact";
 import BorderReview from "../pages/client/review/BorderReview";
+import UploadAboutData from "../pages/admin/about-pages/UploadAboutData";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -246,6 +247,13 @@ const router = createBrowserRouter([
                 path: "all-contacts",
                 element: <ManageContact></ManageContact>
             },
+
+            // about related routs
+
+            {
+                path: "about-data-upload",
+                element : <UploadAboutData/>
+            }
 
         ]
     }
