@@ -10,8 +10,9 @@ const ContactUsPage = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const message = e.target.message.value;
+    const phone_number = e.target.phone_number.value;
     const payload = {
-      name, email, message
+      name, email, message,phone_number
 
     };
     try {
@@ -108,6 +109,25 @@ const ContactUsPage = () => {
               />
             </div>
 
+
+            <div className="mb-4">
+              <label
+                htmlFor="phone_number"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Phone Number
+              </label>
+              <input
+                type="phone_number"
+                id="phone_number"
+                name="phone_number"
+                placeholder="Enter your phone number"
+                className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+
+
             <div className="mb-4">
               <label
                 htmlFor="message"
@@ -126,7 +146,7 @@ const ContactUsPage = () => {
 
             <div className="text-center">
               <button
-                disabled = {loading}
+                disabled={loading}
                 type="submit"
                 className="px-6 py-2 bg-[#a020ba] text-white font-semibold rounded-md hover:bg-[#a020ba] focus:outline-none focus:ring-2 focus:ring-[#a020ba]"
               >
