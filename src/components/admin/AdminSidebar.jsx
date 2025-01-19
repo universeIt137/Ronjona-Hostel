@@ -242,6 +242,25 @@ const AdminSidebar = () => {
 
                         </Sidebar.Collapse>
 
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="About Page"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            
+
+                            <Link to={'/dashboard/about-data-upload'}>
+                                <Sidebar.Item>
+                                    Upload About Data
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
 
 
 
@@ -277,13 +296,6 @@ const AdminSidebar = () => {
                             </Link>
 
                         </Sidebar.Collapse>
-
-
-
-
-
-
-
 
 
                         <Sidebar.Item icon={HiUser}>
