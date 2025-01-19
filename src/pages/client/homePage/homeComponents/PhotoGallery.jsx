@@ -1,150 +1,116 @@
-import React, { useState } from 'react';
-import Marquee from 'react-fast-marquee';
-import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
-import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 
 const PhotoGallery = () => {
+
     const axiosPublic = useAxiosPublic();
 
-    // const { data: locationData = [], refetch, isError, isLoading } = useQuery({
-    //     queryKey: ['locationData'],
-    //     queryFn: async () => {
-    //         const res = await axiosPublic.get('/getAllLocations');
-    //         return res.data?.data;
-    //     }
-    // });
+    const [isOpen, setIsOpen] = useState(false);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-    const { data: images = [],isLoading,isError,refetch } = useQuery({
-        queryKey: ["photoGalleryData"],
+    const { data: imgList = [], refetch, isLoading } = useQuery({
+        queryKey: ['imgList'],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/getAllPhoto`);
-            return res.data?.data
-        }
-    })
+            const res = await axiosPublic.get('/getAllPhoto');
+            return res.data?.data; // Ensure the response is an array
+        },
+    });
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentImage, setCurrentImage] = useState(null);
-    const [showAllImages, setShowAllImages] = useState(false);
-
-    const handleImageClick = (imageSrc) => {
-        setCurrentImage(imageSrc);
-        setIsModalOpen(true);
+    const openModal = (index) => {
+        setCurrentIndex(index);
+        setIsOpen(true);
     };
 
     const closeModal = () => {
-        setIsModalOpen(false);
-        setCurrentImage(null);
+        setIsOpen(false);
     };
 
-    const handleModalClick = (e) => {
-        if (e.target.id === "modalBackground") {
+    const goToNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % imgList.length);
+    };
+
+    const goToPrevious = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + imgList.length) % imgList.length);
+    };
+
+    // Close modal on outside click
+    const handleOutsideClick = (e) => {
+        if (e.target.classList.contains('modal-overlay')) {
             closeModal();
         }
     };
 
-    // const images = [
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452836/samples/coffee.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-3.jpg",
-    //     "https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452838/cld-sample-2.jpg",
-    // ];
-
-    // Show only 10 images initially
-    const visibleImages = showAllImages ? images : images.slice(0, 12);
-
-    if (isLoading) {
-        return (
-            <div className='flex flex-col justify-center items-center h-screen' >
-                <div>
-                    <SkeletonLoader></SkeletonLoader>
-                </div>
-            </div>
-        )
-    }
+    // Close modal with Escape key
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') goToNext();
+            if (e.key === 'ArrowLeft') goToPrevious();
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, []);
 
     return (
-        <div className="px-4 md:px-0 w-11/12 mx-auto lg:my-7 ">
-            <div className="mb-10">
-                <p className="text-2xl md:text-4xl hover:underline font-bold text-black">Photo Gallery</p>
-            </div>
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-6">
-                {visibleImages.map((imageSrc, index) => (
-                    <div key={index}>
+        <div className="bg-white">
+            <div className="w-11/12 mx-auto lg:mt-28  ">
+                {/* <Helmet>
+                    <title>Amar Thikana | Img Gallery</title>
+                </Helmet> */}
+                <h1 className='text-center text-black lg:text-4xl font-bold  ' >Our Photo Gallery</h1>
+                <div className="gallery-container  mt-4 flex flex-col lg:grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                    {imgList.map((item, index) => (
                         <img
-                            className="h-24 md:h-48 rounded-xl w-full cursor-pointer"
-                            src={imageSrc?.img}
-                            alt={`Gallery Item ${index + 1}`}
-                            onClick={() => handleImageClick(imageSrc?.img)}
+                            key={index}
+                            src={item?.img}
+                            alt={`Gallery Image ${index + 1}`}
+                            className="cursor-pointer lg:w-[400px] lg:h-[300px] rounded-lg shadow-md transition-transform transform hover:scale-105"
+                            onClick={() => openModal(index)}
                         />
-                    </div>
-                ))}
-            </div>
+                    ))}
 
-            {/* Show button only if images length > 12 */}
-            {images.length > 12 && (
-                <div className="mt-6 text-center">
-                    <button
-                        onClick={() => setShowAllImages(!showAllImages)}
-                        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700"
-                    >
-                        {showAllImages ? "See Less" : "See More"}
-                    </button>
-                </div>
-            )}
-
-            {/* Modal */}
-            {isModalOpen && (
-                <div
-                    id="modalBackground"
-                    className="fixed inset-0 bg-black bg-opacity-75 flex flex-col items-center justify-center z-50"
-                    onClick={handleModalClick}
-                >
-                    <div className="relative mb-4">
-                        <img
-                            src={currentImage}
-                            alt="Enlarged View"
-                            className="rounded-lg max-w-full max-h-[70vh]"
-                        />
-                        <button
-                            onClick={closeModal}
-                            className="absolute top-2 right-2 bg-white text-black rounded-full w-8 h-8 flex items-center justify-center text-xl font-bold"
+                    {/* Modal */}
+                    {isOpen && (
+                        <div
+                            className="modal-overlay fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
+                            onClick={handleOutsideClick}
                         >
-                            &times;
-                        </button>
-                    </div>
-
-                    {/* Horizontal Scrollable Thumbnail List */}
-                    <Marquee pauseOnHover gradient={false} speed={100} className="w-full overflow-hidedn bg-black bg-opacity-50 py-4">
-                        <div className="flex space-x-4 px-3">
-                            {images.map((imageSrc, index) => (
+                            <div className="relative max-w-3xl w-full p-4">
                                 <img
-                                    key={index}
-                                    src={imageSrc?.img}
-                                    alt={`Thumbnail ${index + 1}`}
-                                    className={`h-24 w-24 rounded-lg cursor-pointer ${currentImage === imageSrc ? "ring-4 ring-white" : ""
-                                        }`}
-                                    onClick={() => setCurrentImage(imageSrc?.img)}
+                                    src={imgList[currentIndex]?.img} // Access the imgUrl property
+                                    alt={`Zoomed Image ${currentIndex + 1}`}
+                                    className="w-full h-auto rounded-lg"
                                 />
-                            ))}
+                                {/* Navigation buttons */}
+                                <div className="absolute inset-y-0 left-2 flex items-center">
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            goToPrevious();
+                                        }}
+                                        className="text-white text-3xl p-2 mx-4 bg-opacity-75 rounded-full"
+                                    >
+                                        &#10094;
+                                    </button>
+                                </div>
+                                <div className="absolute inset-y-0 right-2 flex items-center">
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            goToNext();
+                                        }}
+                                        className="text-white text-3xl p-2 mx-4 bg-opacity-75 rounded-full"
+                                    >
+                                        &#10095;
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </Marquee>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 };

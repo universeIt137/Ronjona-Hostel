@@ -46,6 +46,8 @@ const Packages = () => {
 
     return (
         <div className=" w-11/12 mx-auto my-4  " >
+            <h1 className=" py-8 text-4xl font-bold hover:underline " >Our Packages</h1>
+
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
                 {packagesData.map((pkg) => (
                     <div
@@ -76,7 +78,7 @@ const Packages = () => {
                                         Starting @ <span className="font-bold">$ {pkg?.price} /-</span>
                                     </p>
                                 </div>
-                                
+
                             </div></NavLink>
 
                         {/* Share Options Dropdown */}
