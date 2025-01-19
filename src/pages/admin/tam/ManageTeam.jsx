@@ -106,7 +106,7 @@ const ManageTeam = () => {
                                 <td className="p-3 border border-gray-300">{member.role}</td>
                                 <td className="p-3 border border-gray-300">{member.phoneNumber}</td>
                                 <td className="p-3 border border-gray-300">{member.email}</td>
-                                <td className="p-3 border border-gray-300">{member.experience}</td>
+                                <td className="p-3 border border-gray-300">{member.experience} Years</td>
                                 <td className="p-3 border border-gray-300">
                                     <div className="flex items-center space-x-3">
                                         <button
