@@ -22,7 +22,7 @@ const Banner2 = ({ packagesDetailsData }) => {
     }
 
     return (
-        <div className='m-10 relative overflow-hidden'>
+        <div className=' relative overflow-hidden mt-10 '>
             {/* Image Display */}
             <div className=' border rounded-full w-[30vh] mx-auto '>
                 <img
