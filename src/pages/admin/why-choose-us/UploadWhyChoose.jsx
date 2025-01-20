@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { createAlert } from "../../../helper/createAlert";
 import Swal from "sweetalert2";
+import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 
 const UploadWhyChoose = () => {
     const axiosPublic = useAxiosPublic();
@@ -104,6 +105,14 @@ const UploadWhyChoose = () => {
 
 
     };
+
+    if (isLoading) {
+        return (
+            <div>
+                <SkeletonLoader></SkeletonLoader>
+            </div>
+        )
+    }
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">

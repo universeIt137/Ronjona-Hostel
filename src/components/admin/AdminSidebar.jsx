@@ -343,6 +343,29 @@ const AdminSidebar = () => {
 
                         </Sidebar.Collapse>
 
+                        
+                        {/* mission vission */}
+
+                        <Sidebar.Collapse
+                            icon={FcGallery}
+                            label="Mission & Vission"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/mission-vission-from'}>
+                                <Sidebar.Item>
+                                   Mission & Vission
+                                </Sidebar.Item>
+                            </Link>
+                            
+
+                            
+
+                        </Sidebar.Collapse>
+
 
 
 
