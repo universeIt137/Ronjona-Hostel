@@ -8,10 +8,14 @@ import Facility from './homeComponents/Facility';
 import Review from './homeComponents/Review';
 import PhotoGallery from './homeComponents/PhotoGallery';
 import VideoGallery from './homeComponents/VideoGallery';
+import { Helmet } from 'react-helmet-async';
 
 const HomePage = () => {
     return (
         <div>
+            <Helmet>
+                <title>Ronjona | Home Page</title>
+            </Helmet>
             <Banner />
             <Location/>
             <Packages />
