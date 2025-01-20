@@ -1,6 +1,26 @@
+import { useQuery } from "@tanstack/react-query";
 import { FaLinkedin } from "react-icons/fa";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
+  const axiosPublic = useAxiosPublic()
+  const { data: aboutData = {}, isLoading } = useQuery({
+    queryKey: ['aboutData',],
+    queryFn: async () => {
+      const res = await axiosPublic.get(`/aboutDataById`);
+      console.log(res?.data?.data);
+      return res?.data?.data[0] || {};
+    },
+  });
+  if (isLoading) {
+    return (
+      <div>
+        <SkeletonLoader></SkeletonLoader>
+      </div>
+    )
+  }
   return (
     <div className="w-11/12 bg-white py-10 px-6 mx-auto">
       {/* Who We Are Section */}
@@ -21,14 +41,16 @@ const AboutPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center mb-12">
           <div className="text-left">
             <h3 className="text-3xl font-bold text-black mb-4">
-              Discover Our Story of Success
+              {
+                aboutData?.title
+              }
             </h3>
           </div>
           <div className="text-right">
             <p className="text-lg text-gray-700 leading-relaxed text-justify">
-              From humble beginnings to industry leadership, we've taken steps
-              toward excellence. Join us in your pursuit of innovation—welcome
-              to the journey.
+              {
+                aboutData?.shortDes
+              }
             </p>
           </div>
         </div>
@@ -36,66 +58,32 @@ const AboutPage = () => {
         {/* Highlights Section (All Cards) */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Card 1 */}
-          <div>
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736572682/wzutxckyafvbyomqa3er.png"
-              alt="Trusted Business"
-              className="w-20 h-20 mx-auto mb-4"
-            />
-            <h4 className="text-xl font-semibold text-blue-900 text-center">
-              Trusted Business
-            </h4>
+          {
+            aboutData?.aboutFeatures.map((item, i) => {
+              return (
+                <div key={i} >
+                  <img
+                    src={item?.logo}
+                    alt="Trusted Business"
+                    className="w-20 h-20 mx-auto mb-4"
+                  />
+                  <h4 className="text-xl font-semibold text-blue-900 text-center">
+                    {
+                      item?.title
+                    }
+                  </h4>
 
-            <p className="text-sm text-gray-600 text-center mt-2">
-              We deliver success to your business.
-            </p>
-          </div>
+                  <p className="text-sm text-gray-600 text-center mt-2">
+                    {
+                      item?.short_des
+                    }
+                  </p>
+                </div>
+              )
+            })
+          }
 
-          {/* Card 2 */}
-          <div>
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736572682/w4eyksiym7nftjyyxiy0.png"
-              alt="Expertise in Action"
-              className="w-20 h-20 mx-auto mb-4"
-            />
-            <h4 className="text-xl font-semibold text-blue-900 text-center">
-              Expertise in Action
-            </h4>
-            <p className="text-sm text-gray-600 text-center mt-2">
-              We assist our clients in setting the right strategy.
-            </p>
-          </div>
 
-          {/* Card 3 */}
-          <div>
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736572682/rs7q8bl3x1dj2ig0xany.png"
-              alt="Recognized Excellence"
-              className="w-20 h-20 mx-auto mb-4"
-            />
-            <h4 className="text-xl font-semibold text-blue-900 text-center">
-              Recognized Excellence
-            </h4>
-            <p className="text-sm text-gray-600 text-center mt-2">
-              We see challenges as opportunities.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div>
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736572682/b9y2gqbqyw5kqmrvdtvf.png"
-              alt="Always Ready to Help"
-              className="w-20 h-20 mx-auto mb-4"
-            />
-            <h4 className="text-xl font-semibold text-blue-900 text-center">
-              Always Ready to Help
-            </h4>
-            <p className="text-sm text-gray-600 text-center mt-2">
-              Your success is our priority, and we're always here to support
-              you.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -126,7 +114,7 @@ const AboutPage = () => {
             </div>
             <div className="absolute bottom-10 left-50 transform translate-x-1/2 translate-y-1/2 w-40 h-48 shadow-lg">
               <img
-                src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736573919/yjrphxsrqghjj82oeey7.png"
+                src={aboutData?.img}
                 alt="Image 3"
                 className="object-cover w-full h-full rounded-lg"
               />
@@ -135,13 +123,14 @@ const AboutPage = () => {
           <div>
             <button className="bg-blue-900 text-xl font-bold text-white mt-12 rounded-full px-2 py-1">Our Values</button>
             <p className="text-4xl font-bold text-black mt-6">
-              Empowering Success Through Insightful Solutions
+              {
+                aboutData?.valuesTitle
+              }
             </p>
             <p className="text-black mt-4 leading-relaxed text-justify text-lg">
-              At our consulting firm, we are dedicated to delivering insightful
-              and innovative solutions tailored to each client’s unique needs.
-              Our unwavering commitment is to drive our clients’ success,
-              treating their objectives as our own.
+              {
+                aboutData?.valueDes
+              }
             </p>
           </div>
         </div>
@@ -158,88 +147,32 @@ const AboutPage = () => {
       <section className="py-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
           {/* Card 1 */}
-          <div className="relative">
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736585039/hxlbwimcyhn0eqizqrgy.png"
-              alt="John McNab"
-              className="w-full h-full object-cover rounded-lg shadow-md"
-            />
-            {/* Overlay */}
-            <div className="absolute left-10 bottom-2 bg-black bg-opacity-50 rounded-lg flex flex-row justify-start items-center space-x-4 px-2 py-1">
-              <div className="text-center text-white">
-                <p className="font-bold text-lg">John McNab</p>
-                <p className="text-sm">Position/Role</p>
-              </div>
-              <div>
-                <i className="text-white text-4xl">
-                  <FaLinkedin />
-                </i>
-              </div>
-            </div>
-          </div>
+          {
+            aboutData?.aboutTeamImg.map((item, i) => {
+              return (
+                <div key={i} className="relative">
+                  <img
+                    src={item?.img}
+                    alt="John McNab"
+                    className="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute left-10 bottom-2 bg-black bg-opacity-50 rounded-lg flex flex-row justify-start items-center space-x-4 px-2 py-1">
+                    <div className="text-center text-white">
+                      <p className="font-bold text-lg"> {item?.name} </p>
+                      <p className="text-sm">Position/{ item?.role}</p>
+                    </div>
+                    <div>
+                      <i className="text-white text-4xl">
+                        <Link to={item?.linkedinLink}><FaLinkedin /></Link>
+                      </i>
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
 
-          {/* Card 2 */}
-          <div className="relative">
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736585039/hxlbwimcyhn0eqizqrgy.png"
-              alt="Jane Doe"
-              className="w-full h-full object-cover rounded-lg shadow-md"
-            />
-            {/* Overlay */}
-            <div className="absolute left-10 bottom-2 bg-black bg-opacity-50 rounded-lg flex flex-row justify-start items-center space-x-4 px-2 py-1">
-              <div className="text-center text-white">
-                <p className="font-bold text-lg">Jane Doe</p>
-                <p className="text-sm">Position/Role</p>
-              </div>
-              <div>
-                <i className="text-white text-4xl">
-                  <FaLinkedin />
-                </i>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="relative">
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736585039/hxlbwimcyhn0eqizqrgy.png"
-              alt="Alice Johnson"
-              className="w-full h-full object-cover rounded-lg shadow-md"
-            />
-            {/* Overlay */}
-            <div className="absolute left-10 bottom-2 bg-black bg-opacity-50 rounded-lg flex flex-row justify-start items-center space-x-4 px-2 py-1">
-              <div className="text-center text-white">
-                <p className="font-bold text-lg">Alice Johnson</p>
-                <p className="text-sm">Position/Role</p>
-              </div>
-              <div>
-                <i className="text-white text-4xl">
-                  <FaLinkedin />
-                </i>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 4 */}
-          <div className="relative">
-            <img
-              src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736585039/hxlbwimcyhn0eqizqrgy.png"
-              alt="Bob Smith"
-              className="w-full h-full object-cover rounded-lg shadow-md"
-            />
-            {/* Overlay */}
-            <div className="absolute left-10 bottom-2 bg-black bg-opacity-50 rounded-lg flex flex-row justify-start items-center space-x-4 px-2 py-1">
-              <div className="text-center text-white">
-                <p className="font-bold text-lg">Bob Smith</p>
-                <p className="text-sm">Position/Role</p>
-              </div>
-              <div>
-                <i className="text-white text-4xl">
-                  <FaLinkedin />
-                </i>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>

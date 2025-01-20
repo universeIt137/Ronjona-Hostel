@@ -14,8 +14,9 @@ const UploadAboutData = () => {
         aboutFeatures: [{ logo: "", title: "", short_des: "" }],
         years: "",
         img: "",
+        valuesTitle: "",
         valueDes: "",
-        aboutTeamImg: [{ img: "", name: "", role: "" }],
+        aboutTeamImg: [{ img: "", name: "", role: "",linkedinLink : "" }],
     });
 
     const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dxvacpgrv/image/upload";
@@ -28,7 +29,6 @@ const UploadAboutData = () => {
                 const response = await axios.get(
                     "https://ronjona-hostel-server.vercel.app/api/v1/aboutDataById"
                 ); // Replace with your API endpoint
-                console.log(response?.data?.data[0]);
                 setFormData(response?.data?.data[0] || {});
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -86,9 +86,10 @@ const UploadAboutData = () => {
         let resp = await createAlert();
 
         try {
-            console.log(formData);
             if (resp.isConfirmed) {
+                setLoading(true)
                 let res = await axiosPublic.put(`/about-data`, formData);
+                setLoading(false)
                 if (res) {
                     Swal.fire({
                         position: "top-end",
@@ -268,6 +269,19 @@ const UploadAboutData = () => {
                                     className="p-2  border rounded-lg"
                                 />
                             </div>
+                            <div className="flex flex-col w-[25%] " >
+                                <label htmlFor={`team-role-${index}`} className="block font-bold mb-2">
+                                Linkedin Link
+                                </label>
+                                <input
+                                    id={`team-role-${index}`}
+                                    type="text"
+                                    placeholder="Linkedin Link"
+                                    value={member.linkedinLink || ""}
+                                    onChange={(e) => handleArrayChange(e, index, "aboutTeamImg", "linkedinLink")}
+                                    className="p-2  border rounded-lg"
+                                />
+                            </div>
                             <button
                                 type="button"
                                 onClick={() => handleRemoveItem("aboutTeamImg", index)}
@@ -322,24 +336,89 @@ const UploadAboutData = () => {
                         </label>
                         <input
                             id="years"
-                            type="number"
+                            type="text"
                             name="years"
-                            value={formData.years || ""}
+                            value={formData.years ? new Date(formData.years).toLocaleDateString() : ""} // Convert to local date string
                             onChange={handleInputChange}
                             className="w-full p-2 border rounded-lg"
                         />
                     </div>
                 </div>
 
-
-
-                {/* Submit */}
-                <button
-                    type="submit"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-lg"
+                <div className="grid grid-cols-2 gap-8"
                 >
-                    {formData.id ? "Update Data" : "Upload Data"}
-                </button>
+                    {/* valuesTitle */}
+                    <div>
+                        <label htmlFor="valuesTitle" className="block font-bold mb-2">
+                            Title
+                        </label>
+                        <input
+                            id="valuesTitle"
+                            type="text"
+                            name="valuesTitle" // Add a name attribute for better form handling
+                            value={formData.valuesTitle || ""}
+                            onChange={handleInputChange}
+                            placeholder="Enter the title" // Add placeholder for guidance
+                            className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            required // Ensure this field is filled out
+                        />
+                    </div>
+
+                    {/* valueDes */}
+                    <div>
+                        <label htmlFor="valueDes" className="block font-bold mb-2">
+                            Description
+                        </label>
+                        <textarea
+                            id="valueDes"
+                            name="valueDes"
+                            value={formData.valueDes || ""}
+                            onChange={handleInputChange}
+                            className="w-full p-2 border rounded-lg"
+                            rows="6" // Specifies the height of the textarea
+                        ></textarea>
+                    </div>
+
+
+
+                </div>
+
+
+
+                {/* Submit Button */}
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        disabled={loading} // Disable button when loading
+                        className={`flex items-center justify-center bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg focus:outline-none hover:bg-blue-600 ${loading ? 'opacity-70 cursor-not-allowed' : ''
+                            }`}
+                    >
+                        {loading ? (
+                            <svg
+                                className="w-5 h-5 mr-2 text-white animate-spin"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                            </svg>
+                        ) : (
+                            'Submit'
+                        )}
+                    </button>
+                </div>
             </form>
         </div>
     );

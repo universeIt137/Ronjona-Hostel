@@ -48,6 +48,7 @@ import UploadAboutData from "../pages/admin/about-pages/UploadAboutData";
 import AddTeam from "../pages/admin/tam/AddTeam";
 import ManageTeam from "../pages/admin/tam/ManageTeam";
 import UpdateTeam from "../pages/admin/tam/UpdateTeam";
+import BookingFrom from "../pages/client/booking-from/BookingFrom";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -116,7 +117,13 @@ const router = createBrowserRouter([
             {
                 path: "border-review",
                 element: <BorderReview></BorderReview>
-            }
+            },
+            // booking from
+
+            {
+                path: "packages-booking-from/:id",
+                element: <BookingFrom></BookingFrom>
+            },
 
         ]
 
