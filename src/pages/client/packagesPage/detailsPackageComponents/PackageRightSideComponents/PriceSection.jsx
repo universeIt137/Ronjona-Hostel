@@ -70,7 +70,7 @@ const PriceSection = ({ packagesDetailsData }) => {
             </Modal>
 
             {/* Price and Buttons Section */}
-            <div className='bg-yellow-50 shadow-lg p-6 w-[450px] rounded-[30px]'>
+            <div className='bg-gray-200 shadow-lg p-6 w-[450px] rounded-[30px]'>
                 <p className='text-2xl font-bold text-center '> {packagesDetailsData?.title} </p>
                 <p className='lg:text-4xl font-semibold text-center '>Price {packagesDetailsData?.price} </p>
                 <div className='flex justify-between gap-3 mt-6 '>
@@ -79,7 +79,7 @@ const PriceSection = ({ packagesDetailsData }) => {
                         href={`tel:+88${phoneNumber}`}
                         className="w-full"
                     >
-                        <button className='bg-main-color text-black py-3 text-xl rounded-lg w-full '>CALL NOW</button>
+                        <button className='bg-[#853493] text-white  py-3 text-xl rounded-lg w-full '>CALL NOW</button>
                     </a>
 
                     <a
@@ -88,10 +88,10 @@ const PriceSection = ({ packagesDetailsData }) => {
                         rel="noopener noreferrer"
                         className="w-full"
                     >
-                        <button className='bg-main-color w-full  text-black py-3 text-xl rounded-lg '>What's App</button>
+                        <button className='bg-[#853493] text-white w-full   py-3 text-xl rounded-lg '>What's App</button>
                     </a>
                 </div>
-                <button onClick={()=>navigateBookingFrom(packagesDetailsData?._id)} className='bg-main-color text-black py-3 text-xl rounded-lg w-full my-3'>Booking from</button>
+                <button onClick={()=>navigateBookingFrom(packagesDetailsData?._id)} className='bg-[#853493] text-white  py-3 text-xl rounded-lg w-full my-3'>Booking from</button>
             </div>
         </div>
     );

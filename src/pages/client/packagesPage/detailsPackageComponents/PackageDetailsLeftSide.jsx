@@ -5,7 +5,7 @@ import Banner2 from './leftSideComponents/Banner2';
 const PackageDetailsLeftSide = ({packagesDetailsData}) => {
     return (
         <div className=''>
-            <Banner2 packagesDetailsData = {packagesDetailsData} />
+            <Banner2 />
             <PackageDetailsDescription/>
         </div>
     );

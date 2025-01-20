@@ -3,7 +3,7 @@ import React from 'react';
 const AddressSection = ({packagesDetailsData }) => {
   return (
     <div className='  justify-items-center mt-10'>
-      <div className='bg-yellow-50 shadow-lg p-3 w-[450px] rounded-[30px] px-4'>
+      <div className='bg-gray-200 shadow-lg p-3 w-[450px] rounded-[30px] px-4'>
         
         {/* List with dots */}
         {/* <p className=" text-4xl font-bold">Other Information</p>

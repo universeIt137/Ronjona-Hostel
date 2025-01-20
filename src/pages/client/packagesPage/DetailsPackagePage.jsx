@@ -4,6 +4,7 @@ import PackageDetailsRightSide from './detailsPackageComponents/PackageDetailsRi
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const DetailsPackagePage = () => {
     const axiosPublic = useAxiosPublic();
@@ -21,7 +22,10 @@ const DetailsPackagePage = () => {
     });
 
     return (
-        <div className='flex flex-col-reverse md:flex-row gap-4 justify-items-center container mx-auto mt-24'>
+        <div className='flex flex-col-reverse md:flex-row gap-4 justify-items-center w-11/12 mx-auto mt-24 lg:mt-24'>
+            <Helmet>
+                <title>Ronjona | Packages Details Page </title>
+            </Helmet>
             <PackageDetailsLeftSide packagesDetailsData = {packagesDetailsData}  />
             <PackageDetailsRightSide packagesDetailsData = {packagesDetailsData} />
         </div>
