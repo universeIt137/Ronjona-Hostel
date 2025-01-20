@@ -5,6 +5,7 @@ import { TbShare3 } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
 
 const Packages = () => {
     const axiosPublic = useAxiosPublic();
@@ -38,8 +39,8 @@ const Packages = () => {
 
     if (isLoading) {
         return (
-            <div className=' h-screen flex-col flex justify-center items-center ' >
-                <h1 className='text-center' >Loading...</h1>
+            <div>
+                <SkeletonLoader></SkeletonLoader>
             </div>
         )
     }

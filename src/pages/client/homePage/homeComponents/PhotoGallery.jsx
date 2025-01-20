@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const PhotoGallery = () => {
 
@@ -52,6 +53,14 @@ const PhotoGallery = () => {
         document.addEventListener('keydown', handleKeyDown);
         return () => document.removeEventListener('keydown', handleKeyDown);
     }, []);
+
+    if (isLoading) {
+        return (
+            <div>
+                <SkeletonLoader></SkeletonLoader>
+            </div>
+        )
+    }
 
     return (
         <div className="bg-white">

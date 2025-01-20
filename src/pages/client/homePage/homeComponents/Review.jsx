@@ -1,6 +1,7 @@
 import Marquee from 'react-fast-marquee';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const Review = () => {
     const axiosPublic = useAxiosPublic();
@@ -12,6 +13,14 @@ const Review = () => {
             return res.data?.data;
         }
     });
+
+    if (isLoading) {
+        return (
+            <div>
+                <SkeletonLoader></SkeletonLoader>
+            </div>
+        )
+    }
 
     return (
         <div className="w-11/12 mx-auto px-4 md:px-0">
