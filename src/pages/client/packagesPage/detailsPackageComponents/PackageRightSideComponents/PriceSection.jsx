@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
 import Modal from 'react-modal'; // Install this library using: npm install react-modal
+import { useNavigate } from 'react-router-dom';
 const phoneNumber = "01777177771"; // Define phone number once to reuse
 
 
@@ -15,6 +16,12 @@ const PriceSection = ({ packagesDetailsData }) => {
     const handleCloseModal = () => {
         setIsModalOpen(false);
     };
+
+    const navigate = useNavigate();
+
+    const navigateBookingFrom = (id) => {
+        navigate(`/packages-booking-from/${id}`)
+    }
 
     return (
         <div className='justify-items-center'>
@@ -84,7 +91,7 @@ const PriceSection = ({ packagesDetailsData }) => {
                         <button className='bg-main-color w-full  text-black py-3 text-xl rounded-lg '>What's App</button>
                     </a>
                 </div>
-                <button className='bg-main-color text-black py-3 text-xl rounded-lg w-full my-3'>Booking from</button>
+                <button onClick={()=>navigateBookingFrom(packagesDetailsData?._id)} className='bg-main-color text-black py-3 text-xl rounded-lg w-full my-3'>Booking from</button>
             </div>
         </div>
     );

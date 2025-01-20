@@ -1,7 +1,8 @@
 
 const SkeletonLoader = () => {
+    window.scrollTo(0,0)
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 my-28 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(12)].map((_, index) => (
                 <div
                     key={index}
