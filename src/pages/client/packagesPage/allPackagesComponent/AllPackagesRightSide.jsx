@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaFacebookF, FaTwitter, FaEnvelope, FaInstagram } from 'react-icons/fa';
 import { MdArrowOutward } from 'react-icons/md';
 import { TbShare3 } from 'react-icons/tb';
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+import axios from 'axios';
 
 // Package card component
 const Packages = ({ packages, isLoading }) => {
@@ -152,6 +153,21 @@ const AllPackagesRightSide = () => {
         }
     });
 
+    const [branchName, setBranchName] = useState([])
+
+
+    useEffect(() => {
+        (async () => {
+            let res = await axios.get(`https://ronjona-hostel-server.vercel.app/api/v1/getAllBranches`);
+            setBranchName(res.data?.data)
+        })()
+    }, [locations])
+    
+
+
+
+    
+
     // Filter packages based on price range, location, and branch name
 
     const filterPackages = (priceRange, location, branch) => {
@@ -174,7 +190,7 @@ const AllPackagesRightSide = () => {
 
         // Filter by branch
         if (branch !== 'all') {
-            filtered = filtered.filter(pkg => pkg?.branch?.name === branch);
+            filtered = filtered.filter(pkg => pkg?.branch?.branch === branch);
         }
 
         return filtered;
@@ -260,21 +276,20 @@ const AllPackagesRightSide = () => {
                         </select>
                     </div>
 
-                    {/* Branch Filter */}
+                    
+                    {/* branch Filter */}
                     <div className='flex flex-col'>
-                        <label className='block font-semibold'>Branch Name</label>
+                        <label className='block font-semibold'>Branch</label>
                         <select
                             value={selectedBranch}
                             onChange={(e) => setSelectedBranch(e.target.value)}
                             className='mt-2 p-2 border rounded'
                         >
                             <option value="all">All</option>
-                            {locations.map((location) => (
-                                location.branches?.map(branch => (
-                                    <option key={branch._id} value={branch.name}>
-                                        {branch.name}
-                                    </option>
-                                ))
+                            {branchName.map((branch) => (
+                                <option key={branch._id} value={branch.branch}>
+                                    {branch.branch}
+                                </option>
                             ))}
                         </select>
                     </div>
