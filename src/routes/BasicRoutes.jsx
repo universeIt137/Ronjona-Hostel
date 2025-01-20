@@ -49,6 +49,7 @@ import AddTeam from "../pages/admin/tam/AddTeam";
 import ManageTeam from "../pages/admin/tam/ManageTeam";
 import UpdateTeam from "../pages/admin/tam/UpdateTeam";
 import BookingFrom from "../pages/client/booking-from/BookingFrom";
+import UploadWhyChoose from "../pages/admin/why-choose-us/UploadWhyChoose";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -277,6 +278,13 @@ const router = createBrowserRouter([
                 path: "team-update/:id",
                 element : <UpdateTeam></UpdateTeam>
             },
+
+            // why choose us
+
+            {
+                path: "upload-why-choose-us",
+                element : <UploadWhyChoose></UploadWhyChoose>
+            }
 
         ]
     }

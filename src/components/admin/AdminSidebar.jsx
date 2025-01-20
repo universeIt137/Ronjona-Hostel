@@ -189,10 +189,10 @@ const AdminSidebar = () => {
                             </Link>
 
                             <Link to={'/dashboard/manage-features'}>
-                            <Sidebar.Item icon={MdFeaturedPlayList}>
-                                Manage Features
-                            </Sidebar.Item>
-                        </Link>
+                                <Sidebar.Item icon={MdFeaturedPlayList}>
+                                    Manage Features
+                                </Sidebar.Item>
+                            </Link>
 
                         </Sidebar.Collapse>
 
@@ -232,7 +232,7 @@ const AdminSidebar = () => {
                                 return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
                             }}
                         >
-                            
+
 
                             <Link to={'/dashboard/all-contacts'}>
                                 <Sidebar.Item>
@@ -251,7 +251,7 @@ const AdminSidebar = () => {
                                 return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
                             }}
                         >
-                            
+
 
                             <Link to={'/dashboard/about-data-upload'}>
                                 <Sidebar.Item>
@@ -270,7 +270,7 @@ const AdminSidebar = () => {
                                 return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
                             }}
                         >
-                            
+
 
                             <Link to={'/dashboard/add-team-member'}>
                                 <Sidebar.Item>
@@ -279,7 +279,7 @@ const AdminSidebar = () => {
                             </Link>
                             <Link to={'/dashboard/manage-team-member'}>
                                 <Sidebar.Item>
-                                Manage Team Member
+                                    Manage Team Member
                                 </Sidebar.Item>
                             </Link>
 
@@ -304,7 +304,7 @@ const AdminSidebar = () => {
                             </Link>
                             <Link to={'/dashboard/add-video'}>
                                 <Sidebar.Item>
-                                    Add Video 
+                                    Add Video
                                 </Sidebar.Item>
                             </Link>
                             <Link to={'/dashboard/manage-photo-gallery'}>
@@ -320,6 +320,35 @@ const AdminSidebar = () => {
                             </Link>
 
                         </Sidebar.Collapse>
+
+                        {/* why choose us */}
+
+                        <Sidebar.Collapse
+                            icon={FcGallery}
+                            label="Why Choose Us"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/upload-why-choose-us'}>
+                                <Sidebar.Item>
+                                    Why Choose us
+                                </Sidebar.Item>
+                            </Link>
+                            
+
+                            
+
+                        </Sidebar.Collapse>
+
+
+
+
+
+
+
 
 
                         <Sidebar.Item icon={HiUser}>

@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
+import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const Facility = () => {
     const axiosPublic = useAxiosPublic();
@@ -15,8 +16,8 @@ const Facility = () => {
 
     if (isLoading) {
         return (
-            <div className="flex flex-col justify-center items-center h-screen">
-                <h1>Loading Data....</h1>
+            <div>
+                <SkeletonLoader></SkeletonLoader>
             </div>
         );
     }
