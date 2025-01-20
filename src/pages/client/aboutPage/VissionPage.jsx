@@ -3,6 +3,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
+import { Helmet } from 'react-helmet-async';
 
 const VissionPage = () => {
     const axiosPublic = useAxiosPublic();
@@ -23,6 +24,9 @@ const VissionPage = () => {
     }
     return (
         <div className="bg-gray-100">
+            <Helmet>
+                <title>Ronjona | Mission&Vission Page </title>
+            </Helmet>
             {/* Mission Section */}
             <section className="py-10 bg-gradient-to-r from-[#7F2B90] to-[#9B56A1] p-6 rounded-lg shadow-lg mt-32 mx-4 lg:mx-8 transition-transform duration-300 hover:scale-105">
                 <div className="max-w-6xl mx-auto px-6 lg:px-4 text-center">

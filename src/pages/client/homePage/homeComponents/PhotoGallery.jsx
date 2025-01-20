@@ -65,9 +65,9 @@ const PhotoGallery = () => {
     return (
         <div className="bg-white">
             <div className="w-11/12 mx-auto lg:mt-28  ">
-                {/* <Helmet>
-                    <title>Amar Thikana | Img Gallery</title>
-                </Helmet> */}
+                <Helmet>
+                    <title>Ronjona | Img Gallery Page</title>
+                </Helmet>
                 <h1 className='text-center text-black lg:text-4xl font-bold  ' >Our Photo Gallery</h1>
                 <div className="gallery-container  mt-4 flex flex-col lg:grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">
                     {imgList.map((item, index) => (

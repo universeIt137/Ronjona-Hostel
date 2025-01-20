@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
+import { Helmet } from 'react-helmet-async';
 
 const ManagementInfoPage = () => {
 
@@ -27,6 +28,9 @@ const ManagementInfoPage = () => {
     return (
         <div>
             <div className="container mx-auto mt-32 p-4">
+                <Helmet>
+                    <title>Ronjon | Management Page </title>
+                </Helmet>
                 <h1 className="lg:text-4xl text-xl font-bold text-start p-4">Management Information</h1>
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
                     {

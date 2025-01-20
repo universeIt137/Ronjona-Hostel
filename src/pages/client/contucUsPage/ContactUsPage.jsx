@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ContactUsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,9 @@ const ContactUsPage = () => {
   }
   return (
     <div className="bg-white mt-20 px-6 md:px-16 lg:px-32 py-12">
+      <Helmet>
+        <title>Ronjona | Contact Page </title>
+      </Helmet>
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-800">

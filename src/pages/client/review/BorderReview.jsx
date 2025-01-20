@@ -51,7 +51,7 @@ const BorderReview = () => {
     return (
         <div className='mt-10 w-11/12 mx-auto py-20 lg:py-28 px-4 md:px-0'>
             <Helmet>
-                <title>Border Review Page</title>
+                <title>Ronjona | Border Review Page</title>
             </Helmet>
             {/* Top Section */}
             <div className='mb-6 font-bold flex justify-between items-center'>

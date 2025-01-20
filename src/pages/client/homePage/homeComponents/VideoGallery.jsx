@@ -4,6 +4,7 @@ import Marquee from 'react-fast-marquee';
 import ReactPlayer from 'react-player';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+import { Helmet } from 'react-helmet-async';
 
 const VideoGallery = () => {
     const axiosPublic = useAxiosPublic();
@@ -51,6 +52,11 @@ const VideoGallery = () => {
 
     return (
         <div className="px-4 md:px-0 w-11/12 mx-auto my-20">
+            <Helmet>
+                <title>
+                    Ronjona | Video Gallery Page
+                </title>
+            </Helmet>
             <div className="mb-10">
                 <p className="text-2xl md:text-4xl hover:underline font-bold ">Video Gallery</p>
             </div>

@@ -3,6 +3,7 @@ import { FaLinkedin } from "react-icons/fa";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AboutPage = () => {
   const axiosPublic = useAxiosPublic()
@@ -23,6 +24,9 @@ const AboutPage = () => {
   }
   return (
     <div className="w-11/12 bg-white py-10 px-6 mx-auto">
+      <Helmet>
+        <title>Ronjona | About Us Page </title>
+      </Helmet>
       {/* Who We Are Section */}
       <section className="text-center mt-16">
         <div>
