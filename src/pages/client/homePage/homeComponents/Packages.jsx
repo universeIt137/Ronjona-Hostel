@@ -61,14 +61,14 @@ const Packages = () => {
                                 src={pkg?.img[0]}
                                 alt="A variety of spices"
                             />
-                            <div className="absolute top-3 left-3 bg-main-color p-2 text-sm font-semibold rounded-lg">
+                            <div className="absolute top-3 left-3 bg-[#97509F] text-white p-2 text-sm font-semibold rounded-lg">
                                 New Launch
                             </div>
                             <TbShare3
                                 onClick={() =>
                                     setShowShareOptions(showShareOptions === pkg._id ? null : pkg._id)
                                 }
-                                className="absolute top-4 right-3 bg-white hover:bg-main-color rounded-full text-3xl p-1"
+                                className="absolute top-4 right-3 bg-[#97509F] text-white  rounded-full text-3xl p-1"
                             ></TbShare3>
                         </div>
 

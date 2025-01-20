@@ -2,6 +2,7 @@ import React from 'react';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
+import { Helmet } from 'react-helmet-async';
 
 const ManagementInfoPage = () => {
 
@@ -27,6 +28,9 @@ const ManagementInfoPage = () => {
     return (
         <div>
             <div className="container mx-auto mt-32 p-4">
+                <Helmet>
+                    <title>Ronjon | Management Page </title>
+                </Helmet>
                 <h1 className="lg:text-4xl text-xl font-bold text-start p-4">Management Information</h1>
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8">
                     {
@@ -34,7 +38,7 @@ const ManagementInfoPage = () => {
                             return (
                                 <div key={i} >
                                     {/* card */}
-                                    <div className="border-8 border-main-color rounded-lg">
+                                    <div className="border-8 border-[#97509F] rounded-lg">
                                         <div className="lg:text-3xl text-xl text-center font-bold p-4"><p className="">Ronjona Hostel</p></div>
                                         <div className="">
                                             <img src={item?.img} alt="" className='flex justify-self-center lg:w-40 w-20 aspect-square rounded-[300px]' />
@@ -48,7 +52,7 @@ const ManagementInfoPage = () => {
                                         </div>
                                         {/* experience data */}
                                         <div className="flex justify-end w-full my-4">
-                                            <div className="bg-main-color w-1/2 px-4">
+                                            <div className="bg-[#97509F] text-white w-1/2 px-4">
                                                 <p className="">Experience:</p>
                                                 <p className=""> {item?.experience } Years </p>
                                             </div>

@@ -50,6 +50,7 @@ import ManageTeam from "../pages/admin/tam/ManageTeam";
 import UpdateTeam from "../pages/admin/tam/UpdateTeam";
 import BookingFrom from "../pages/client/booking-from/BookingFrom";
 import UploadWhyChoose from "../pages/admin/why-choose-us/UploadWhyChoose";
+import UploadMissionVission from "../pages/admin/mission-vission/UploadMissionVission";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -284,6 +285,12 @@ const router = createBrowserRouter([
             {
                 path: "upload-why-choose-us",
                 element : <UploadWhyChoose></UploadWhyChoose>
+            },
+            // visson vission routes
+
+            {
+                path: "mission-vission-from",
+                element : <UploadMissionVission></UploadMissionVission>
             }
 
         ]
