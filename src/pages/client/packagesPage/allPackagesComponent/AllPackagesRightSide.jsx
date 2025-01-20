@@ -54,12 +54,12 @@ const Packages = ({ packages, isLoading }) => {
                                 src={pkg.img[0]}
                                 alt={pkg.name}
                             />
-                            <div className="absolute top-3 left-3 bg-main-color p-2 text-sm font-semibold rounded-lg">
+                            <div className="absolute top-3 left-3 bg-[#97509F] text-white p-2 text-sm font-semibold rounded-lg">
                                 New Launch
                             </div>
                             <TbShare3
                                 onClick={() => setShowShareOptions(showShareOptions === pkg._id ? null : pkg._id)}
-                                className='absolute top-4 right-3 bg-white hover:bg-main-color rounded-full text-3xl p-1'
+                                className='absolute top-4 right-3 bg-[#97509F] text-white rounded-full text-3xl p-1'
                             />
                         </div>
 
@@ -71,7 +71,7 @@ const Packages = ({ packages, isLoading }) => {
                                 </p>
                             </div>
                             <Link to={`/package-details/${pkg?._id}`}>
-                                <MdArrowOutward className='text-4xl p-2 bg-main-color hover:bg-black rounded-full text-black hover:text-white me-2' />
+                                <MdArrowOutward className='text-4xl p-2 bg-[#97509F] text-white  rounded-full text-black hover:text-white me-2' />
                             </Link>
                         </div>
                     </Link>
@@ -132,6 +132,7 @@ const AllPackagesRightSide = () => {
     const axiosPublic = useAxiosPublic();
     const [priceRange, setPriceRange] = useState('all');
     const [selectedLocation, setSelectedLocation] = useState('all');
+    const [selectedBranch, setSelectedBranch] = useState('all');
 
     const { data: packagesData = [], isLoading } = useQuery({
         queryKey: ['packagesData'],
@@ -151,11 +152,12 @@ const AllPackagesRightSide = () => {
         }
     });
 
-    // Filter packages based on price range and location
-    const filterPackages = (priceRange, location) => {
-        let filtered = packagesData;
-        console.log("filtered", filtered)
+    // Filter packages based on price range, location, and branch name
 
+    const filterPackages = (priceRange, location, branch) => {
+        let filtered = packagesData;
+
+        // Filter by price range
         if (priceRange !== 'all') {
             filtered = filtered.filter(pkg => {
                 if (priceRange === 'low') return pkg.price < 100;
@@ -165,16 +167,24 @@ const AllPackagesRightSide = () => {
             });
         }
 
+        // Filter by location
         if (location !== 'all') {
             filtered = filtered.filter(pkg => pkg?.branch?.location?.location === location);
+        }
+
+        // Filter by branch
+        if (branch !== 'all') {
+            filtered = filtered.filter(pkg => pkg?.branch?.name === branch);
         }
 
         return filtered;
     };
 
-    const filteredPackages = filterPackages(priceRange, selectedLocation);
+    // Add branch state
 
-    console.log("selectedLocation", selectedLocation)
+
+    // Apply filters
+    const filteredPackages = filterPackages(priceRange, selectedLocation, selectedBranch);
 
     return (
         <div className='bg-slate-100 w-full flex flex-col lg:flex-row'>
@@ -249,13 +259,32 @@ const AllPackagesRightSide = () => {
                             ))}
                         </select>
                     </div>
+
+                    {/* Branch Filter */}
+                    <div className='flex flex-col'>
+                        <label className='block font-semibold'>Branch Name</label>
+                        <select
+                            value={selectedBranch}
+                            onChange={(e) => setSelectedBranch(e.target.value)}
+                            className='mt-2 p-2 border rounded'
+                        >
+                            <option value="all">All</option>
+                            {locations.map((location) => (
+                                location.branches?.map(branch => (
+                                    <option key={branch._id} value={branch.name}>
+                                        {branch.name}
+                                    </option>
+                                ))
+                            ))}
+                        </select>
+                    </div>
                 </div>
             </div>
 
             {/* Packages Section */}
             <div className='w-full lg:w-3/4 p-5'>
                 <div className='text-center mb-10 font-bold'>
-                    <p className='text-2xl lg:text-4xl text-main-color'>Our All Packages</p>
+                    <p className='text-2xl lg:text-4xl '>Our All Packages</p>
                     <p className='mt-4 text-sm lg:text-xl'>
                         Choose your preferred package now and book it within the specified time frame.
                     </p>

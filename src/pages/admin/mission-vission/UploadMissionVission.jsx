@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 import { createAlert } from "../../../helper/createAlert";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MissionVissionForm = () => {
     const axiosPublic = useAxiosPublic();
@@ -112,6 +113,9 @@ const MissionVissionForm = () => {
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
+            <Helmet>
+                <title>Dashboard | Mission&Vission Upload Page </title>
+            </Helmet>
             <form
                 onSubmit={handleSubmit}
                 className="bg-white p-6 rounded-lg shadow-lg w-full  space-y-4"
