@@ -82,6 +82,18 @@ const MainNavbar = () => {
                             )}
                         </div>
 
+                        <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                            Our Packages
+                        </NavLink>
+
+                        <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                            FAQ
+                        </NavLink>
+
+                        <NavLink to={`/our-branch`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                            Our Branches
+                        </NavLink>
+
                         {/* Gallery dropdown */}
                         <div
                             className="relative"
@@ -101,12 +113,8 @@ const MainNavbar = () => {
                             )}
                         </div>
 
-                        <NavLink to={`/our-branch`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
-                            Our Branches
-                        </NavLink>
-                        <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
-                            Our Packages
-                        </NavLink>
+
+
 
                         <NavLink to={`/contact-us`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             Contact Us
