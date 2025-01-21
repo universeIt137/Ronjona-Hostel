@@ -4,7 +4,7 @@ import { CiCircleCheck } from "react-icons/ci";
 
 const KeyFeatures = () => {
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       {/* Button Section */}
       <div className="flex justify-center m-8">
         <button className="bg-[#A020BA] px-8 py-4 text-4xl text-white text-center rounded-md hover:bg-purple-700 transition duration-300">
