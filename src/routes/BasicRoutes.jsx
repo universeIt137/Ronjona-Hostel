@@ -51,6 +51,7 @@ import UpdateTeam from "../pages/admin/tam/UpdateTeam";
 import BookingFrom from "../pages/client/booking-from/BookingFrom";
 import UploadWhyChoose from "../pages/admin/why-choose-us/UploadWhyChoose";
 import UploadMissionVission from "../pages/admin/mission-vission/UploadMissionVission";
+import Faq from "../pages/client/faq/Faq";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -126,6 +127,12 @@ const router = createBrowserRouter([
                 path: "packages-booking-from/:id",
                 element: <BookingFrom></BookingFrom>
             },
+            // Faq related routes
+            {
+                path: "faq",
+                element: <Faq></Faq>
+            },
+            
 
         ]
 

@@ -9,6 +9,7 @@ import Review from './homeComponents/Review';
 import PhotoGallery from './homeComponents/PhotoGallery';
 import VideoGallery from './homeComponents/VideoGallery';
 import { Helmet } from 'react-helmet-async';
+import KeyFeatures from '../key features/KeyFeatures';
 
 const HomePage = () => {
     return (
@@ -21,6 +22,7 @@ const HomePage = () => {
             <Packages />
             <Offers></Offers>
             <Facility/>
+            <KeyFeatures />
             <ChooseUs />
             <Review />
             <PhotoGallery/>
