@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { IoArrowBackOutline, IoArrowForward } from "react-icons/io5";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
+import { Helmet } from "react-helmet-async";
 
 const Offers = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -51,6 +52,9 @@ const Offers = () => {
 
     return (
         <div className='mt-10 container px-4 md:px-0 md:mx-auto'>
+            <Helmet>
+                <title>Ronjona | Home Page</title>
+            </Helmet>
             {/* Top Section */}
             <div className='mb-6 font-bold flex justify-between items-center'>
                 <p className="text-2xl md:text-4xl hover:underline text-black">Offers For You</p>

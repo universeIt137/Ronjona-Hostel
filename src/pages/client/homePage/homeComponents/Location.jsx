@@ -3,6 +3,7 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+import { Helmet } from 'react-helmet-async';
 
 const Location = () => {
     const axiosPublic = useAxiosPublic();
@@ -19,6 +20,9 @@ const Location = () => {
     }
     return (
         <div className="mt-64 md:mt-16 container px-4 md:px-0 md:mx-auto">
+            <Helmet>
+                <title>Ronjona| Home Page</title>
+            </Helmet>
             {/* Title */}
             <p className="hover:underline text-2xl md:text-4xl mb-6 font-bold">Locations</p>
 

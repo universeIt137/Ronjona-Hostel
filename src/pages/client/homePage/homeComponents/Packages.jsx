@@ -6,6 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
+import { Helmet } from "react-helmet-async";
 
 const Packages = () => {
     const axiosPublic = useAxiosPublic();
@@ -47,6 +48,9 @@ const Packages = () => {
 
     return (
         <div className=" w-11/12 mx-auto my-4  " >
+            <Helmet>
+                <title>Ronjona | Home Page</title>
+            </Helmet>
             <h1 className=" py-8 text-4xl font-bold hover:underline " >Our Packages</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
