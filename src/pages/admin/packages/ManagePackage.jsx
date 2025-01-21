@@ -342,8 +342,8 @@ const ManagePackage = () => {
                                     <div key={index} className="flex gap-4 mb-2">
                                         <input
                                             type="text"
-                                            value={content?.featureTitle}
-                                            onChange={(e) => handleContentChange(index, 'featureTitle', e.target.value)}
+                                            value={content?.featilityTitle}
+                                            onChange={(e) => handleContentChange(index, 'featilityTitle', e.target.value)}
                                             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                                             placeholder="Enter Feature Title"
                                             required

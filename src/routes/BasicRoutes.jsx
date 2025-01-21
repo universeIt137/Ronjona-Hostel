@@ -52,6 +52,9 @@ import BookingFrom from "../pages/client/booking-from/BookingFrom";
 import UploadWhyChoose from "../pages/admin/why-choose-us/UploadWhyChoose";
 import UploadMissionVission from "../pages/admin/mission-vission/UploadMissionVission";
 import Faq from "../pages/client/faq/Faq";
+import PackagesUpdate from "../pages/admin/packages/PackagesUpdate";
+import UploadKeyFeatures from "../pages/admin/key-feature/UploadKeyFeatures";
+import ManageKeyFeatures from "../pages/admin/key-feature/ManageKeyFeatures";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -163,6 +166,10 @@ const router = createBrowserRouter([
             {
                 path: 'manage-package',
                 element: <ManagePackage />
+            },
+            {
+                path: 'packages-update/:id',
+                element: <PackagesUpdate />
             },
             // location related routes 
             {
@@ -298,7 +305,17 @@ const router = createBrowserRouter([
             {
                 path: "mission-vission-from",
                 element : <UploadMissionVission></UploadMissionVission>
-            }
+            },
+            // key features routes
+            {
+                path: "upload-key-features",
+                element : <UploadKeyFeatures></UploadKeyFeatures>
+            },
+            {
+                path: "manage-key-feature",
+                element : <ManageKeyFeatures></ManageKeyFeatures>
+            },
+            
 
         ]
     }

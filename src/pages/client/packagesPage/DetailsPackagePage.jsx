@@ -22,11 +22,11 @@ const DetailsPackagePage = () => {
     });
 
     return (
-        <div className='flex flex-col-reverse md:flex-row gap-4 justify-items-center w-11/12 mx-auto mt-24 lg:mt-24'>
+        <div className='flex flex-col-reverse justify-between md:flex-row gap-4 justify-items-center w-11/12 mx-auto mt-24 lg:mt-24'>
             <Helmet>
                 <title>Ronjona | Packages Details Page </title>
             </Helmet>
-            <PackageDetailsLeftSide packagesDetailsData = {packagesDetailsData}  />
+            <PackageDetailsLeftSide   />
             <PackageDetailsRightSide packagesDetailsData = {packagesDetailsData} />
         </div>
     );

@@ -10,7 +10,7 @@ const FloatingBtn = () => {
             {/* Phone Call Button */}
             <a
                 href={`tel:+88${phoneNumber}`}
-                className="bg-green-500 p-3 rounded-full text-white shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center"
+                className="bg-green-500 p-3 z-50 rounded-full text-white shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center"
             >
                 <FaPhone size={24} />
             </a>
@@ -20,7 +20,7 @@ const FloatingBtn = () => {
                 href={`https://wa.me/+88${phoneNumber}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 p-3 rounded-full text-white shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center"
+                className="bg-green-500 p-3 z-50 rounded-full text-white shadow-lg hover:bg-green-600 transition duration-300 flex items-center justify-center"
             >
                 <BsWhatsapp size={24} />
             </a>

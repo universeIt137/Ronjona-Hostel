@@ -337,13 +337,42 @@ const AdminSidebar = () => {
                                     Why Choose us
                                 </Sidebar.Item>
                             </Link>
-                            
 
-                            
+
+
 
                         </Sidebar.Collapse>
 
-                        
+                        {/* key features */}
+
+                        <Sidebar.Collapse
+                            icon={FcGallery}
+                            label="Key Features"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/upload-key-features'}>
+                                <Sidebar.Item>
+                                    Upload Key Features
+                                </Sidebar.Item>
+                            </Link>
+
+                            <Link to={'/dashboard/manage-key-feature'}>
+                                <Sidebar.Item>
+                                    Manage Key Features
+                                </Sidebar.Item>
+                            </Link>
+
+
+
+
+
+                        </Sidebar.Collapse>
+
+
                         {/* mission vission */}
 
                         <Sidebar.Collapse
@@ -357,12 +386,12 @@ const AdminSidebar = () => {
                         >
                             <Link to={'/dashboard/mission-vission-from'}>
                                 <Sidebar.Item>
-                                   Mission & Vission
+                                    Mission & Vission
                                 </Sidebar.Item>
                             </Link>
-                            
 
-                            
+
+
 
                         </Sidebar.Collapse>
 
