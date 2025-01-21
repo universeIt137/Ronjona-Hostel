@@ -66,7 +66,7 @@ const Faq = () => {
               <h2 className="text-xl font-semibold mb-4 text-center italic">
                 How is the location? Is it dangerous?
               </h2>
-              <p className="text-gray-600 text-xl text-justify">
+              <p className="text-gray-600 text-xl text-justify mt-4">
                 It is a 2-minute walk from the main road with access to
                 transportation. Restaurants, hospitals, ATMs, shops, and bus
                 stops are all nearby, with Zom Zom Tower and Mascot Plaza just a
