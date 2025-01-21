@@ -86,7 +86,7 @@ const MainNavbar = () => {
                             Our Packages
                         </NavLink>
 
-                        <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink to={`/faq`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             FAQ
                         </NavLink>
 
