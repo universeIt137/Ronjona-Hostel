@@ -12,6 +12,9 @@ export default {
       colors: {
         'main-color': '#fab10b', // Light gray background color
       },
+      backgroundColor: {
+        "bg-color": "#853493"
+      }
     },
   },
   plugins: [
