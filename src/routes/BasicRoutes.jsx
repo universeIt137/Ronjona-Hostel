@@ -51,6 +51,7 @@ import UpdateTeam from "../pages/admin/tam/UpdateTeam";
 import BookingFrom from "../pages/client/booking-from/BookingFrom";
 import UploadWhyChoose from "../pages/admin/why-choose-us/UploadWhyChoose";
 import UploadMissionVission from "../pages/admin/mission-vission/UploadMissionVission";
+import PackagesUpdate from "../pages/admin/packages/PackagesUpdate";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -156,6 +157,10 @@ const router = createBrowserRouter([
             {
                 path: 'manage-package',
                 element: <ManagePackage />
+            },
+            {
+                path: 'packages-update/:id',
+                element: <PackagesUpdate />
             },
             // location related routes 
             {
@@ -291,7 +296,8 @@ const router = createBrowserRouter([
             {
                 path: "mission-vission-from",
                 element : <UploadMissionVission></UploadMissionVission>
-            }
+            },
+            
 
         ]
     }

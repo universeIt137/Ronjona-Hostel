@@ -21,11 +21,11 @@ const RelatedPackages = () => {
         <div className="h-auto p-5 rounded-[30px] mt-10 bg-gray-200 shadow-lg">
             <h2 className="text-xl font-semibold mb-5 text-center">Related Packages</h2>
             <div className="h-[100lvh] overflow-y-auto">
-                <div className="flex bg-white p-4 rounded-[15px] shadow-md hover:shadow-lg transition-shadow w-full my-4">
+                <div className="flex flex-col bg-white p-4 rounded-[15px] shadow-md hover:shadow-lg transition-shadow w-full my-4">
                     {
                         packagesData.slice(0,5).map((item, i) => {
                             return (
-                                <div key={i} >
+                                <div key={i} className='my-4' >
                                     <img
                                         className="h-48 w-64 rounded-[15px] object-cover"
                                         src={
@@ -38,7 +38,7 @@ const RelatedPackages = () => {
                                             {/* <h3 className="text-lg font-semibold">Package Title</h3> */}
                                             <p className="text-black my-2 font-semibold text-xl  "> { item?.title } </p>
                                         </div>
-                                        <div className="flex justify-between items-center mt-2">
+                                        <div className="flex gap-6  items-center mt-2">
                                             <p className="text-black font-bold">Price : { item?.price } টাকা </p>
                                             <button onClick={()=>handleNavigate(item?._id)} className="px-4 py-2 bg-[#853493] text-white rounded-lg hover:bg-blue-600 transition-colors">
                                                 Book Now
