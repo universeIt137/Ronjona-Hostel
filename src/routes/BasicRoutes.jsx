@@ -55,6 +55,8 @@ import Faq from "../pages/client/faq/Faq";
 import PackagesUpdate from "../pages/admin/packages/PackagesUpdate";
 import UploadKeyFeatures from "../pages/admin/key-feature/UploadKeyFeatures";
 import ManageKeyFeatures from "../pages/admin/key-feature/ManageKeyFeatures";
+import FaqUpload from "../pages/admin/faq-page/FaqUpload";
+import FaqManage from "../pages/admin/faq-page/FaqManage";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -314,6 +316,17 @@ const router = createBrowserRouter([
             {
                 path: "manage-key-feature",
                 element : <ManageKeyFeatures></ManageKeyFeatures>
+            },
+
+            // faq related routes
+
+            {
+                path: "faq-upload",
+                element : <FaqUpload></FaqUpload>
+            },
+            {
+                path: "manage-faq",
+                element : <FaqManage></FaqManage>
             },
             
 
