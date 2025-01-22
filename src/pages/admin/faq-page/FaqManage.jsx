@@ -4,9 +4,12 @@ import { Helmet } from 'react-helmet-async';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
+import { deleteAlert } from '../../../helper/deleteAlert';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const FaqManage = () => {
-  
+
 
   const axiosPublic = useAxiosPublic()
 
@@ -18,14 +21,38 @@ const FaqManage = () => {
     }
   });
 
-  const handleUpdate = (index) => {
-    const updatedData = [...faqData];
-    updatedData[index].questions = prompt('Update the question:', updatedData[index].questions);
-    updatedData[index].answer = prompt('Update the answer:', updatedData[index].answer);
+  const navigate = useNavigate();
+
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/faq-update/${id}`)
   };
 
-  const handleDelete = (index) => {
-    const updatedData = faqData.filter((_, i) => i !== index);
+  const handleDelete = async (id) => {
+    let resp = await deleteAlert();
+    try {
+      if (resp.isConfirmed) {
+        let res = await axiosPublic.delete(`/faq/${id}`);
+        if (res) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Faq delete successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          refetch()
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Faq delete fail",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+
   };
 
   if (isLoading) {
@@ -61,18 +88,18 @@ const FaqManage = () => {
                 <img src={item.logo} alt="Logo" className="w-16 h-16 object-cover rounded-md" />
               </td>
               <td className="px-4 py-2 border-b">{item.questions}</td>
-              <td className="px-4 py-2 border-b">{item.answer.slice(0,30)}....</td>
+              <td className="px-4 py-2 border-b">{item.answer.slice(0, 30)}....</td>
               <td className="px-4 py-2 border-b"> {new Date(item.createdAt).toLocaleDateString()}
               </td>
-              <td className="px-4 py-2 border-b flex items-center gap-4">
+              <td className="px-4 py-2 mt-6 flex items-center gap-4">
                 <button
-                  onClick={() => handleUpdate(index)}
+                  onClick={() => handleUpdate(item?._id)}
                   className="text-blue-600 hover:text-blue-800 transition duration-200"
                 >
                   <FaEdit className="text-xl" />
                 </button>
                 <button
-                  onClick={() => handleDelete(index)}
+                  onClick={() => handleDelete(item?._id)}
                   className="text-red-600 hover:text-red-800 transition duration-200"
                 >
                   <FaTrash className="text-xl" />

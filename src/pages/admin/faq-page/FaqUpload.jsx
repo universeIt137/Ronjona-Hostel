@@ -3,6 +3,7 @@ import { uploadImg } from "../../../hooks/UploadImage";
 import { createAlert } from "../../../helper/createAlert";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FaqUpload = () => {
   const axiosPublic = useAxiosPublic()
@@ -53,6 +54,9 @@ const FaqUpload = () => {
   return (
     <div>
       <div className="max-w-4xl mx-auto bg-white p-8 shadow-md rounded-md">
+        <Helmet>
+          <title>Dashboard | Faq Upload Page</title>
+        </Helmet>
         <h1 className="text-3xl font-bold text-center mb-6">FAQ Form</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-6">

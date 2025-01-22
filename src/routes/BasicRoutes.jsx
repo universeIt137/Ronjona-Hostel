@@ -57,6 +57,7 @@ import UploadKeyFeatures from "../pages/admin/key-feature/UploadKeyFeatures";
 import ManageKeyFeatures from "../pages/admin/key-feature/ManageKeyFeatures";
 import FaqUpload from "../pages/admin/faq-page/FaqUpload";
 import FaqManage from "../pages/admin/faq-page/FaqManage";
+import FaqUpdate from "../pages/admin/faq-page/FaqUpdate";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -327,6 +328,10 @@ const router = createBrowserRouter([
             {
                 path: "manage-faq",
                 element : <FaqManage></FaqManage>
+            },
+            {
+                path: "faq-update/:id",
+                element : <FaqUpdate></FaqUpdate>
             },
             
 
