@@ -2,10 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
-const ChooseUs = () => {
+const WhyChosseDetails = () => {
     const axiosPublic = useAxiosPublic()
-    
+
+    window.scrollTo(0,0)
+
     const { data: whyChooseData = [], refetch, isLoading } = useQuery({
         queryKey: ["whyChooseData"],
         queryFn: async () => {
@@ -22,6 +25,9 @@ const ChooseUs = () => {
     }
     return (
         <div className=" my-10 w-11/12 mx-auto  px-4 md:px-0 md:mx-auto">
+            <Helmet>
+                <title>Ronjona | Why choose us details</title>
+            </Helmet>
             <div className='  mb-10 '>
                 <p className="text-2xl md:text-5xl hover:underline font-bold text-black">
                     {
@@ -50,8 +56,8 @@ const ChooseUs = () => {
                     <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-black">WHY YOU WITH RONJONA</p>
                     <p className="text-sm lg:text-lg text-justify">
                         {
-                            whyChooseData?.des.slice(0,500)
-                        }...  <Link className='underline font-bold ' to={`choose-us-details`}>See more</Link>
+                            whyChooseData?.des
+                        }
                     </p>
                 </div>
             </div>
@@ -61,4 +67,4 @@ const ChooseUs = () => {
     );
 };
 
-export default ChooseUs;
+export default WhyChosseDetails;

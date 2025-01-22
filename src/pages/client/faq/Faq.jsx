@@ -4,6 +4,7 @@ import "aos/dist/aos.css"; // Import the AOS stylesheet
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
+import { Helmet } from "react-helmet-async";
 
 const Faq = () => {
   window.scrollTo(0, 0);
@@ -36,9 +37,12 @@ const Faq = () => {
   }
 
   return (
-    <div className="w-11/12 mt-32 mx-auto">
+    <div className="w-11/12 mt-30 lg:mt-32 mx-auto">
+      <Helmet>
+        <title>Ronjona | FAQ page</title>
+      </Helmet>
       <div>
-        <h2 className="text-6xl text-center mb-12 italic" data-aos="fade-up">
+        <h2 className="lg:text-6xl text-center mb-12 italic" data-aos="fade-up">
           Frequently Asked Questions
         </h2>
         <div className="bg-[#85919A] h-[80vh] flex flex-col justify-center items-start px-8 text-white">
@@ -50,7 +54,7 @@ const Faq = () => {
           </h3>
           <a
             href="#"
-            className="px-6 py-3 bg-transparent rounded border border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition"
+            className="px-6 py-3 bg-transparent rounded border border-[#97509F] text-white hover:bg-[#97509F]   hover:text-white transition"
             data-aos="fade-up"
           >
             Book Your Seat Earlier

@@ -58,6 +58,9 @@ import ManageKeyFeatures from "../pages/admin/key-feature/ManageKeyFeatures";
 import FaqUpload from "../pages/admin/faq-page/FaqUpload";
 import FaqManage from "../pages/admin/faq-page/FaqManage";
 import FaqUpdate from "../pages/admin/faq-page/FaqUpdate";
+import WhyChosseDetails from "../pages/client/homePage/homeComponents/WhyChosseDetails";
+import AddPayment from "../pages/admin/payment-page/AddPayment";
+import ManagePayment from "../pages/admin/payment-page/ManagePayment";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -138,6 +141,13 @@ const router = createBrowserRouter([
                 path: "faq",
                 element: <Faq></Faq>
             },
+            
+            // choose us related routes
+
+            {
+                path: "choose-us-details",
+                element : <WhyChosseDetails></WhyChosseDetails>
+            }
             
 
         ]
@@ -332,6 +342,19 @@ const router = createBrowserRouter([
             {
                 path: "faq-update/:id",
                 element : <FaqUpdate></FaqUpdate>
+            },
+
+
+            // payment method related routes
+
+            {
+                path: "add-pyment-method",
+                element : <AddPayment></AddPayment>
+            },
+
+            {
+                path: "manage-payment-method",
+                element : <ManagePayment></ManagePayment>
             },
             
 

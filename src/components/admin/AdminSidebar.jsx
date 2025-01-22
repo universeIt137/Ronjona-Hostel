@@ -388,6 +388,29 @@ const AdminSidebar = () => {
                         </Sidebar.Collapse>
 
 
+                        <Sidebar.Collapse
+                            icon={FcGallery}
+                            label="Payment"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/add-pyment-method'}>
+                                <Sidebar.Item>
+                                    Add Payment Method
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/manage-payment-method'}>
+                                <Sidebar.Item>
+                                    Manage payment method
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+
 
 
 
