@@ -89,7 +89,7 @@ const ManageContact = () => {
                         <tr>
                             <th className="px-6 py-3 text-left text-gray-700 font-medium">Se. No</th>
                             <th className="px-6 py-3 text-left text-gray-700 font-medium">Name</th>
-                            <th className="px-6 py-3 text-left text-gray-700 font-medium">Email</th>
+                            <th className="px-6 py-3 text-left text-gray-700 font-medium">Phone</th>
                             <th className="px-6 py-3 text-left text-gray-700 font-medium">Message</th>
                             <th className="px-6 py-3 text-left text-gray-700 font-medium">Status</th>
                             <th className="px-6 py-3 text-center text-gray-700 font-medium">Actions</th>
@@ -103,7 +103,7 @@ const ManageContact = () => {
                             >
                                 <td className="px-6 py-4">{index + 1}</td>
                                 <td className="px-6 py-4">{item.name}</td>
-                                <td className="px-6 py-4">{item.email}</td>
+                                <td className="px-6 py-4">{item.phone_number}</td>
                                 <td className="px-6 py-4">{item.message?.slice(0, 20) || "No message"}...</td>
                                 <td className="px-6 py-4">
                                     <span onClick={() => updateStatus(item?._id)}
