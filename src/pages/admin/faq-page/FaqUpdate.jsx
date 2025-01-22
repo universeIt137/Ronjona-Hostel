@@ -6,6 +6,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
+import { Helmet } from "react-helmet-async";
 
 const FaqUpdate = () => {
     const axiosPublic = useAxiosPublic();
@@ -89,6 +90,9 @@ const FaqUpdate = () => {
     return (
         <div>
             <div className="max-w-4xl mx-auto bg-white p-8 shadow-md rounded-md">
+                <Helmet>
+                    <title>Dashboard | Faq Update Page</title>
+                </Helmet>
                 <h1 className="text-3xl font-bold text-center mb-6">FAQ Form</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="avatar mb-4">
