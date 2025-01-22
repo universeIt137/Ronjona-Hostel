@@ -61,6 +61,7 @@ import FaqUpdate from "../pages/admin/faq-page/FaqUpdate";
 import WhyChosseDetails from "../pages/client/homePage/homeComponents/WhyChosseDetails";
 import AddPayment from "../pages/admin/payment-page/AddPayment";
 import ManagePayment from "../pages/admin/payment-page/ManagePayment";
+import UpdatePayment from "../pages/admin/payment-page/UpdatePayment";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -356,7 +357,10 @@ const router = createBrowserRouter([
                 path: "manage-payment-method",
                 element : <ManagePayment></ManagePayment>
             },
-            
+            {
+                path: "payment-update/:id",
+                element : <UpdatePayment></UpdatePayment>
+            }
 
         ]
     }

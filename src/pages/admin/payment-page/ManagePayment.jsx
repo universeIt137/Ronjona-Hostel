@@ -7,6 +7,7 @@ import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 import { createAlert } from "../../../helper/createAlert";
 import { deleteAlert } from "../../../helper/deleteAlert";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ManagePayment = () => {
   window.scrollTo(0, 0);
@@ -49,6 +50,10 @@ const ManagePayment = () => {
         timer: 1500
       });
     }
+  }
+  const navigate = useNavigate();
+  const handleUpdate = (id) => {
+    navigate(`/dashboard/payment-update/${id}`)
   }
 
   if (isLoading) {
@@ -97,6 +102,7 @@ const ManagePayment = () => {
                 <td className="px-4 py-2 border border-gray-300">
                   <div className="flex space-x-4">
                     <button
+                      onClick={()=>handleUpdate(item?._id)}
                       className="text-blue-600 hover:text-blue-800"
                       title="Update"
                     >
