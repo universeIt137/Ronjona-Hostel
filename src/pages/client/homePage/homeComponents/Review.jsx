@@ -31,7 +31,7 @@ const Review = () => {
 
             {/* Card Container */}
             <Marquee pauseOnHover gradient={false} speed={50}>
-                <div className="flex gap-6 mt-6">
+                <div className="flex z-0 gap-6 mt-6">
                     {reviewsData.map((review, index) => (
                         <div
                             key={index}

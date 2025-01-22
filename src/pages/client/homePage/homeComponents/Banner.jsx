@@ -11,11 +11,10 @@ const Banner = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
 
-    // Fetching banner data
     useEffect(() => {
         const fetchBannerData = async () => {
             try {
-                const res = await axiosPublic.get('/getAllBanner'); // Update endpoint if necessary
+                const res = await axiosPublic.get('/getAllBanner');
                 setBannerData(res.data.data || []);
                 setIsLoading(false);
             } catch (error) {
@@ -26,15 +25,13 @@ const Banner = () => {
         fetchBannerData();
     }, [axiosPublic]);
 
-    // Automatic slide transition
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) =>
                 prevIndex === bannerData.length - 1 ? 0 : prevIndex + 1
             );
-        }, 3000); // Change slides every 3 seconds
-
-        return () => clearInterval(interval); // Cleanup interval on unmount
+        }, 3000);
+        return () => clearInterval(interval);
     }, [bannerData]);
 
     const handlePrevSlide = () => {
@@ -60,8 +57,8 @@ const Banner = () => {
     return (
         <div className="relative h-56 md:h-[100vh] mt-16 md:mt-12 rounded-none">
             {/* Banner Text */}
-            <p className="absolute top-[40%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-main-color text-3xl md:text-6xl text-center font-bold px-4 w-full">
-                You don’t just Stay with us, you <br /> Live with us!
+            <p className="absolute top-[30%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-main-color text-lg md:text-5xl lg:text-6xl text-center font-bold px-4 w-full">
+                You don’t just Stay with us, you <br className="hidden md:block" /> Live with us!
             </p>
 
             {/* Responsive Form */}
@@ -70,7 +67,7 @@ const Banner = () => {
                     <Select
                         id="destination"
                         required
-                        className="w-full md:w-auto p-2 rounded-md border border-gray-300"
+                        className="w-full p-2 rounded-md border border-gray-300"
                     >
                         <option value="">Select Destination</option>
                         <option>United States</option>
@@ -83,7 +80,7 @@ const Banner = () => {
                     <Select
                         id="guests"
                         required
-                        className="w-full md:w-auto p-2 rounded-md border border-gray-300"
+                        className="w-full p-2 rounded-md border border-gray-300"
                     >
                         <option value="">Select Guests</option>
                         <option>1 Guest</option>
@@ -103,7 +100,7 @@ const Banner = () => {
                 {bannerData.map((item, index) => (
                     <img
                         key={index}
-                        src={item.img} // Assuming `img` is the URL field in the API response
+                        src={item.img}
                         alt={`Slide ${index + 1}`}
                         className={`absolute top-0 left-0 w-full h-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'
                             }`}
