@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { createAlert } from "../../../helper/createAlert";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UploadKeyFeatures = () => {
     const axiosPublic = useAxiosPublic();
@@ -112,6 +113,9 @@ const UploadKeyFeatures = () => {
     return (
         <form onSubmit={handleSubmit} className="max-w-4xl mx-auto p-6 bg-white shadow rounded-lg space-y-6">
             <h1 className="text-2xl font-bold text-center">Upload Form</h1>
+            <Helmet>
+                <title>Dashboard | Faq Upload Page </title>
+            </Helmet>
 
             {/* Images Section */}
             <div>

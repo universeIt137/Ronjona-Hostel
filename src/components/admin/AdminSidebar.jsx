@@ -360,20 +360,39 @@ const AdminSidebar = () => {
                                 </Sidebar.Item>
                             </Link>
 
-                            <Link to={'/dashboard/manage-key-feature'}>
+                        </Sidebar.Collapse>
+
+                        {/* faq */}
+
+
+                        <Sidebar.Collapse
+                            icon={FcGallery}
+                            label="FAQ"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+                            <Link to={'/dashboard/faq-upload'}>
                                 <Sidebar.Item>
-                                    Manage Key Features
+                                    Upload Faq
                                 </Sidebar.Item>
                             </Link>
-
-
-
-
+                            <Link to={'/dashboard/manage-faq'}>
+                                <Sidebar.Item>
+                                    Manage Faq
+                                </Sidebar.Item>
+                            </Link>
 
                         </Sidebar.Collapse>
 
 
+
+
+
                         {/* mission vission */}
+
 
                         <Sidebar.Collapse
                             icon={FcGallery}
