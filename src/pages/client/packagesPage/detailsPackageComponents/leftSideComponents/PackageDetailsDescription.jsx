@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaWhatsapp, FaInstagram } from 'react-icons/fa';  // Import social media icons
 
 const PackageDetailsDescription = () => {
+    window.scrollTo(0,0)
 
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
