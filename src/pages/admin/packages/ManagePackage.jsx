@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { uploadImg } from '../../../hooks/UploadImage';
 import { Editor } from '@tinymce/tinymce-react';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
+import { useNavigate } from 'react-router-dom';
 
 const ManagePackage = () => {
     const axiosPublic = useAxiosPublic();
@@ -109,6 +110,12 @@ const ManagePackage = () => {
         setId(item._id);
         document.getElementById('my_modal_1').showModal();
     };
+
+    const navigate = useNavigate();
+
+    const packagesUpdate = (id) => {
+        navigate(`/dashboard/packages-update/${id}`)
+    }
 
     const addContent = () => {
         setContents([...contents, { featureTitle: '', featureDesc: '' }]);
@@ -238,7 +245,7 @@ const ManagePackage = () => {
                                             <td className='py-2 border'>{date}</td>
                                             <td className="px-4 py-2 border text-center">
                                                 <button
-                                                    onClick={() => handleUpdateClick(item)}
+                                                    onClick={() => packagesUpdate(item._id)}
                                                     className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 mr-2"
                                                 >
                                                     Update

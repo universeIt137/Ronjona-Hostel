@@ -204,7 +204,7 @@ const FilterPackages = () => {
   const filteredPackages = filterPackages(priceRange, selectedLocation, selectedBranch);
 
   return (
-    <div className='bg-slate-100 w-full flex flex-col lg:flex-row'>
+    <div className='bg-slate-100 w-full flex my-24 flex-col lg:flex-row'>
       {/* Sidebar Section */}
       <div className='w-full lg:w-1/4 p-5 bg-white shadow'>
         <h3 className='text-xl font-bold mb-4'>Filters</h3>
