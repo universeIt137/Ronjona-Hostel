@@ -6,6 +6,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
+import { Helmet } from "react-helmet-async";
 
 const PackagesUpdate = () => {
     const axiosPublic = useAxiosPublic();
@@ -170,6 +171,9 @@ const PackagesUpdate = () => {
 
     return (
         <div className="p-6 max-w-4xl mx-auto bg-white shadow-lg rounded-lg">
+            <Helmet>
+                <title>Dashboard | Packages Update Page</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-4">Update Package</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
