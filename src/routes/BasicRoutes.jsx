@@ -62,6 +62,8 @@ import WhyChosseDetails from "../pages/client/homePage/homeComponents/WhyChosseD
 import AddPayment from "../pages/admin/payment-page/AddPayment";
 import ManagePayment from "../pages/admin/payment-page/ManagePayment";
 import UpdatePayment from "../pages/admin/payment-page/UpdatePayment";
+import FilterBranch from "../pages/client/home-filter/FilterBranch";
+import FilterPackages from "../pages/client/home-filter/FilterPackages";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -148,6 +150,17 @@ const router = createBrowserRouter([
             {
                 path: "choose-us-details",
                 element : <WhyChosseDetails></WhyChosseDetails>
+            },
+            // home page filter
+            {
+                path: "branch/:id",
+                element: <FilterBranch></FilterBranch>
+            },
+            
+            
+            {
+                path: "packages/:id",
+                element : <FilterPackages></FilterPackages>
             }
             
 
@@ -162,6 +175,8 @@ const router = createBrowserRouter([
         path: "/admin-login",
         element: <Login />
     },
+    
+
     // Dashboard related routes 
     {
         path: '/dashboard',

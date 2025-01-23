@@ -1,15 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { Select } from 'flowbite-react';
 import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+import { useQuery } from '@tanstack/react-query';
 
 const Banner = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate(); // Create navigate function to programmatically navigate
     const [bannerData, setBannerData] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
+
+    const { data: locations = [] } = useQuery({
+        queryKey: ['locationsData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllLocations');
+            return res.data?.data;
+        }
+    });
+    const { data: branchName = [] } = useQuery({
+        queryKey: ['branchName'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllBranches');
+            return res.data?.data;
+        }
+    });
 
     useEffect(() => {
         const fetchBannerData = async () => {
@@ -46,12 +63,16 @@ const Banner = () => {
         );
     };
 
+    const handleLocationChange = (location) => {
+        navigate(`/branch/${location}`); // Navigate to the location page with the selected location
+    };
+
+    const handleBranchChange = (location) => {
+        navigate(`/packages/${location}`); // Navigate to the branch page with the selected location and branch
+    };
+
     if (isLoading) {
-        return (
-            <div>
-                <SkeletonLoader />
-            </div>
-        );
+        return <SkeletonLoader />;
     }
 
     return (
@@ -62,34 +83,36 @@ const Banner = () => {
             </p>
 
             {/* Responsive Form */}
-            <div className="absolute z-30 p-4 top-[105%] md:top-[65%] left-[50%] transform -translate-x-[50%] md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex flex-col md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
-                <div className="w-full md:w-auto">
-                    <Select
-                        id="destination"
-                        required
-                        className="w-full p-2 rounded-md border border-gray-300"
+            <div className="absolute lg:-mt-24 z-30 p-4 top-[105%] md:top-[65%] left-[50%] transform -translate-x-[50%] md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex flex-col md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
+                <div className="w-full   md:w-auto">
+                    <label className='block font-semibold'>Location</label>
+                    <select
+                        className='mt-2 p-2 border rounded'
+                        onChange={(e) => handleLocationChange(e.target.value)} // Trigger the navigation when location is selected
                     >
-                        <option value="">Select Destination</option>
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
-                    </Select>
+                        <option>Select Location</option>
+                        {locations.map((location) => (
+                            <option key={location._id} value={location._id}>
+                                {location.location}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="w-full md:w-auto">
-                    <Select
-                        id="guests"
-                        required
-                        className="w-full p-2 rounded-md border border-gray-300"
+                    <label className='block font-semibold'>Branch</label>
+                    <select
+                        className='mt-2 p-2 border rounded'
+                        onChange={(e) => handleBranchChange(e.target.value)} // Trigger the navigation when branch is selected
                     >
-                        <option value="">Select Guests</option>
-                        <option>1 Guest</option>
-                        <option>2 Guests</option>
-                        <option>3 Guests</option>
-                        <option>4+ Guests</option>
-                    </Select>
+                        <option >Select Branch</option>
+                        {branchName.map((branch) => (
+                            <option key={branch._id} value={branch._id}>
+                                {branch.branch}
+                            </option>
+                        ))}
+                    </select>
                 </div>
-                <button className="w-full md:w-auto flex gap-2 items-center justify-center bg-main-color rounded-lg px-6 py-2 text-white text-sm md:text-base hover:bg-yellow-600">
+                <button className="w-full md:w-auto flex gap-2 items-center justify-center mt-8 bg-[#853493] rounded-lg px-6 py-2 text-white text-sm md:text-base ">
                     <FaSearch />
                     <p>Search</p>
                 </button>
@@ -102,8 +125,7 @@ const Banner = () => {
                         key={index}
                         src={item.img}
                         alt={`Slide ${index + 1}`}
-                        className={`absolute top-0 left-0 w-full h-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'
-                            }`}
+                        className={`absolute top-0 left-0 w-full h-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
                         style={{
                             transform: `translateX(${(index - currentIndex) * 100}%)`,
                         }}
