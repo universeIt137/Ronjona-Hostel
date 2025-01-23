@@ -6,7 +6,7 @@ const PackageDetailsLeftSide = () => {
     return (
         <div className=''>
             <Banner2 />
-            <PackageDetailsDescription/>
+            <PackageDetailsDescription  />
         </div>
     );
 };

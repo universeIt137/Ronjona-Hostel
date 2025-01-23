@@ -27,7 +27,7 @@ const PriceSection = ({ packagesDetailsData }) => {
         <div className='justify-items-center'>
             {/* Video Thumbnail */}
             <div
-                className="relative w-[300px] h-64 rounded-[20px] overflow-hidden shadow-lg my-10 cursor-pointer"
+                className="relative w-[300px]  h-64 rounded-[20px] overflow-hidden shadow-lg my-10 cursor-pointer"
                 onClick={handleOpenModal} // Opens modal when clicked
             >
                 <video
@@ -52,7 +52,7 @@ const PriceSection = ({ packagesDetailsData }) => {
                 overlayClassName="fixed inset-0 bg-black bg-opacity-50"
                 ariaHideApp={false}
             >
-                <div className="relative bg-black rounded-lg shadow-lg w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
+                <div className="relative z-50 bg-black rounded-lg shadow-lg w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
                     <button
                         onClick={handleCloseModal}
                         className="absolute top-2 right-2 text-white text-3xl font-bold z-10"

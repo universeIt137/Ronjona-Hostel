@@ -112,6 +112,7 @@ const AddPackage = () => {
                 });
             })
             .catch((error) => {
+                console.log(error)
                 Swal.fire({
                     position: 'center',
                     icon: 'error',

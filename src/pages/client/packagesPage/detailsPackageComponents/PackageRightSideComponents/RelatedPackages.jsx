@@ -29,7 +29,7 @@ const RelatedPackages = () => {
                                     <img
                                         className="h-48 w-64 rounded-[15px] object-cover"
                                         src={
-                                            item?.img
+                                            item?.img[0]
                                         }
                                         alt="Package"
                                     />

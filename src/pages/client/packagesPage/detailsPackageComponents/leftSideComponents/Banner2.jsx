@@ -4,7 +4,9 @@ import PackagesDetailsImage from '../../../../../components/client/packages-deta
 const Banner2 = () => {
   return (
     <div>
+      <div className='' >
         <PackagesDetailsImage></PackagesDetailsImage>
+      </div>
     </div>
   )
 }
