@@ -64,6 +64,7 @@ import ManagePayment from "../pages/admin/payment-page/ManagePayment";
 import UpdatePayment from "../pages/admin/payment-page/UpdatePayment";
 import FilterBranch from "../pages/client/home-filter/FilterBranch";
 import FilterPackages from "../pages/client/home-filter/FilterPackages";
+import NavFacility from "../pages/client/homePage/homeComponents/NavFacility";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -161,6 +162,10 @@ const router = createBrowserRouter([
             {
                 path: "packages/:id",
                 element : <FilterPackages></FilterPackages>
+            },
+            {
+                path: "our-facility",
+                element : <NavFacility></NavFacility>
             }
             
 

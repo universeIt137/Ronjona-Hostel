@@ -1,4 +1,3 @@
-import React from 'react';
 import Banner from './homeComponents/Banner';
 import ChooseUs from './homeComponents/ChooseUs';
 import Location from './homeComponents/Location';
@@ -17,7 +16,7 @@ const HomePage = () => {
             <Helmet>
                 <title>Ronjona | Home Page</title>
             </Helmet>
-            <Banner />
+            <Banner  />
             <Location/>
             <Packages />
             <Offers></Offers>
