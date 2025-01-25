@@ -85,6 +85,9 @@ const MainNavbar = () => {
                         <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             Our Packages
                         </NavLink>
+                        <NavLink to={`/our-facility`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                            Our Facility
+                        </NavLink>
 
                         <NavLink to={`/faq`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
                             FAQ
@@ -202,6 +205,32 @@ const MainNavbar = () => {
                         )}
                     </div>
 
+                    <NavLink
+                        to="/all-packages"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
+                        Our Packages
+                    </NavLink>
+
+                    <NavLink
+                        to="/our-facility"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
+                        Our Facility
+                    </NavLink>
+                    <NavLink
+                        to="/faq"
+                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
+                        onClick={() => setIsOpen(false)} // Close drawer on click
+                    >
+                        FAQ
+                    </NavLink>
+                    
+
+                    
+
                     {/* Gallery dropdown */}
                     <div className="py-2">
                         <button
@@ -238,13 +267,7 @@ const MainNavbar = () => {
                     >
                         Our Branches
                     </NavLink>
-                    <NavLink
-                        to="/all-packages"
-                        className="block text-lg font-medium text-gray-700 hover:underline py-2"
-                        onClick={() => setIsOpen(false)} // Close drawer on click
-                    >
-                        Our Packages
-                    </NavLink>
+
                     <NavLink
                         to="/contact-us"
                         className="block text-lg font-medium text-gray-700 hover:underline py-2"
