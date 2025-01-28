@@ -55,10 +55,11 @@ const ManageBookingPackages = () => {
                         <th className="px-4 py-2 border border-gray-300">Name</th>
                         <th className="px-4 py-2 border border-gray-300"> Number</th>
                         <th className="px-4 py-2 border border-gray-300">Transaction ID</th>
-                        <th className="px-4 py-2 border border-gray-300">Name</th>
+                        <th className="px-4 py-2 border border-gray-300">Packages Name</th>
                         <th className="px-4 py-2 border border-gray-300">Price</th>
                         <th className="px-4 py-2 border border-gray-300">Branch</th>
                         <th className="px-4 py-2 border border-gray-300">Location</th>
+                        <th className="px-4 py-2 border border-gray-300">Status</th>
                         <th className="px-4 py-2 border border-gray-300">Action</th>
                     </tr>
                 </thead>
@@ -68,10 +69,13 @@ const ManageBookingPackages = () => {
                             <td className="px-4 py-2 border border-gray-300">{row.name}</td>
                             <td className="px-4 py-2 border border-gray-300">{row.phoneNumber}</td>
                             <td className="px-4 py-2 border border-gray-300">{row.tran_id}</td>
-                            <td className="px-4 py-2 border border-gray-300">{row.title}</td>
-                            <td className="px-4 py-2 border border-gray-300">{row.price}</td>
-                            <td className="px-4 py-2 border border-gray-300">{row.branch}</td>
-                            <td className="px-4 py-2 border border-gray-300">{row.location}</td>
+                            <td className="px-4 py-2 border border-gray-300">{row.packageDetails?.title}</td>
+                            <td className="px-4 py-2 border border-gray-300">{row.packageDetails?.price}</td>
+                            <td className="px-4 py-2 border border-gray-300">{row.branchDetails?.branch}</td>
+                            <td className="px-4 py-2 border border-gray-300">{row.locationDetails?.location}</td>
+                            <td className="px-4 py-2 border border-gray-300">{
+                                row?.status ? "Confirm" : "Not confirm"
+                            }</td>
                             <td className="px-4 py-2 border border-gray-300">
                                 <button
                                     className="text-red-500 hover:text-red-700"
