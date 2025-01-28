@@ -29,11 +29,13 @@ const BookingFrom = () => {
         const name = e.target.name.value;
         const phoneNumber = e.target.phoneNumber.value;
         const packagesId = e.target.packagesId.value;
+        const tran_id = e.target.tran_id.value;
 
         const payload = {
             name,
             phoneNumber,
             packagesId,
+            tran_id
         };
 
 
@@ -78,61 +80,77 @@ const BookingFrom = () => {
 
     return (
         <>
-            <div className="flex justify-center mt-24  items-center  p-4">
+            <div className="flex justify-center mt-24 w-11/12 mx-auto   items-center  p-4">
                 <Helmet>
                     <title>Ronjona | Booking Form</title>
                 </Helmet>
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white border p-6 rounded-lg shadow-lg w-full max-w-sm space-y-4"
+                    className="bg-white border p-6 rounded-lg shadow-lg w-full  space-y-4"
                 >
                     <h2 className="text-2xl font-bold text-center text-gray-800">Booking Form</h2>
 
-                    {/* Name Field */}
-                    <div>
-                        <label htmlFor="name" className="block text-gray-600 font-semibold mb-2">
-                            Name
-                        </label>
-                        <input
-                            id="name"
-                            type="text"
-                            name="name"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Enter your full name"
-                            required
-                        />
-                    </div>
+                    <div className='grid lg:grid-cols-2 gap-6 ' >
+                        {/* Name Field */}
+                        <div>
+                            <label htmlFor="name" className="block text-gray-600 font-semibold mb-2">
+                                Name
+                            </label>
+                            <input
+                                id="name"
+                                type="text"
+                                name="name"
+                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter your full name"
+                                required
+                            />
+                        </div>
 
-                    {/* Phone Number Field */}
-                    <div>
-                        <label htmlFor="phoneNumber" className="block text-gray-600 font-semibold mb-2">
-                            Phone Number
-                        </label>
-                        <input
-                            id="phoneNumber"
-                            type="tel"
-                            name="phoneNumber"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            placeholder="Enter your phone number"
-                            required
-                        />
-                    </div>
+                        {/* Phone Number Field */}
+                        <div>
+                            <label htmlFor="phoneNumber" className="block text-gray-600 font-semibold mb-2">
+                                Phone Number
+                            </label>
+                            <input
+                                id="phoneNumber"
+                                type="tel"
+                                name="phoneNumber"
+                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                        </div>
+                        {/* tranzisiton id */}
+                        <div>
+                            <label htmlFor="tran_id" className="block text-gray-600 font-semibold mb-2">
+                            Transition Number
+                            </label>
+                            <input
+                                id="tran_id"
+                                type="text"
+                                name="tran_id"
+                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter your transition number "
 
-                    {/* Package Selection Field */}
-                    <div>
-                        <label htmlFor="package" className="block text-gray-600 font-semibold mb-2">
-                            Select Package
-                        </label>
-                        <select
-                            id="package"
-                            name="packagesId"
-                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        >
-                            <option disabled selected value={singlePacagesData._id}>
-                                {singlePacagesData?.title}
-                            </option>
-                        </select>
+                            />
+                        </div>
+
+                        {/* Package Selection Field */}
+                        <div>
+                            <label htmlFor="package" className="block text-gray-600 font-semibold mb-2">
+                                Select Package
+                            </label>
+                            <select
+                                id="package"
+                                name="packagesId"
+                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required
+                            >
+                                <option disabled selected value={singlePacagesData._id}>
+                                    {singlePacagesData?.title}
+                                </option>
+                            </select>
+                        </div>
                     </div>
 
                     {/* Submit Button */}
