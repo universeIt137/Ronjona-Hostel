@@ -68,6 +68,9 @@ import NavFacility from "../pages/client/homePage/homeComponents/NavFacility";
 import Privacy from "../pages/client/privacy/Privacy";
 import UploadTermCondiction from "../pages/admin/term-condiction-page/UploadTermCondiction";
 import TermCondiction from "../pages/admin/term-condiction-page/TermCondiction";
+import RefundUpload from "../pages/admin/refund/RefundUpload";
+import Refund from "../pages/admin/refund/Refund";
+import Testemonial from "../components/client/testimonial/Testimonial";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -148,38 +151,46 @@ const router = createBrowserRouter([
                 path: "faq",
                 element: <Faq></Faq>
             },
-            
+
             // choose us related routes
 
             {
                 path: "choose-us-details",
-                element : <WhyChosseDetails></WhyChosseDetails>
+                element: <WhyChosseDetails></WhyChosseDetails>
             },
             // home page filter
             {
                 path: "branch/:id",
                 element: <FilterBranch></FilterBranch>
             },
-            
-            
+
+
             {
                 path: "packages/:id",
-                element : <FilterPackages></FilterPackages>
+                element: <FilterPackages></FilterPackages>
             },
             {
                 path: "our-facility",
-                element : <NavFacility ></NavFacility>
+                element: <NavFacility ></NavFacility>
             },
             {
                 path: "privacy",
-                element : <Privacy></Privacy>
+                element: <Privacy></Privacy>
             },
             {
                 path: "term&condicton",
-                element : <TermCondiction></TermCondiction>
+                element: <TermCondiction></TermCondiction>
             },
+            {
+                path: "refund",
+                element: <Refund></Refund>
+            },
+            {
+                path: "testmonial",
+                element: <Testemonial></Testemonial>
+            }
 
-            
+
 
         ]
 
@@ -192,7 +203,7 @@ const router = createBrowserRouter([
         path: "/admin-login",
         element: <Login />
     },
-    
+
 
     // Dashboard related routes 
     {
@@ -324,57 +335,57 @@ const router = createBrowserRouter([
 
             {
                 path: "about-data-upload",
-                element : <UploadAboutData/>
+                element: <UploadAboutData />
             },
             // team related route
             {
                 path: "add-team-member",
-                element : <AddTeam></AddTeam>
+                element: <AddTeam></AddTeam>
             },
             {
                 path: "manage-team-member",
-                element : <ManageTeam></ManageTeam>
+                element: <ManageTeam></ManageTeam>
             },
             {
                 path: "team-update/:id",
-                element : <UpdateTeam></UpdateTeam>
+                element: <UpdateTeam></UpdateTeam>
             },
 
             // why choose us
 
             {
                 path: "upload-why-choose-us",
-                element : <UploadWhyChoose></UploadWhyChoose>
+                element: <UploadWhyChoose></UploadWhyChoose>
             },
             // visson vission routes
 
             {
                 path: "mission-vission-from",
-                element : <UploadMissionVission></UploadMissionVission>
+                element: <UploadMissionVission></UploadMissionVission>
             },
             // key features routes
             {
                 path: "upload-key-features",
-                element : <UploadKeyFeatures></UploadKeyFeatures>
+                element: <UploadKeyFeatures></UploadKeyFeatures>
             },
             {
                 path: "manage-key-feature",
-                element : <ManageKeyFeatures></ManageKeyFeatures>
+                element: <ManageKeyFeatures></ManageKeyFeatures>
             },
 
             // faq related routes
 
             {
                 path: "faq-upload",
-                element : <FaqUpload></FaqUpload>
+                element: <FaqUpload></FaqUpload>
             },
             {
                 path: "manage-faq",
-                element : <FaqManage></FaqManage>
+                element: <FaqManage></FaqManage>
             },
             {
                 path: "faq-update/:id",
-                element : <FaqUpdate></FaqUpdate>
+                element: <FaqUpdate></FaqUpdate>
             },
 
 
@@ -382,21 +393,26 @@ const router = createBrowserRouter([
 
             {
                 path: "add-pyment-method",
-                element : <AddPayment></AddPayment>
+                element: <AddPayment></AddPayment>
             },
 
             {
                 path: "manage-payment-method",
-                element : <ManagePayment></ManagePayment>
+                element: <ManagePayment></ManagePayment>
             },
             {
                 path: "payment-update/:id",
-                element : <UpdatePayment></UpdatePayment>
+                element: <UpdatePayment></UpdatePayment>
             },
             {
                 path: "upload-term-condiction",
-                element : <UploadTermCondiction></UploadTermCondiction>
-            }
+                element: <UploadTermCondiction></UploadTermCondiction>
+            },
+            {
+                path: "refund-upload",
+                element: <RefundUpload></RefundUpload>
+            },
+
 
         ]
     }

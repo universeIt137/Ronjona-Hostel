@@ -53,7 +53,7 @@ const Footer = () => {
                         <div>
                             <ul>
                                 <li><Link  to="/all-packages">All Hostels</Link></li>
-                                <li><Link  to="#">Testimonials</Link></li>
+                                <li><Link  to="/testmonial">Testimonials</Link></li>
                                 <li><Link  to="/image-gallery">Gallery</Link></li>
                                 <li><Link  to="/faq">FAQ</Link></li>
                                 <li><Link  to="#">Blog</Link></li>
@@ -78,7 +78,7 @@ const Footer = () => {
                                 <li><NavLink to="#">Investors</NavLink></li>
                                 <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li>
                                 <li><NavLink to="/privacy">Privacy Policy</NavLink></li>
-                                <li><NavLink to="#">Refund Policy</NavLink></li>
+                                <li><NavLink to="/refund">Refund Policy</NavLink></li>
                                 <li><Link to={"/admin-login"}>Admin Login</Link></li>
                                 <li><Link to={"/admin-register"}>Admin Register</Link></li>
                             </ul>

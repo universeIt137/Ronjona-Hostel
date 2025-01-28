@@ -4,15 +4,15 @@ import { useQuery } from '@tanstack/react-query';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
 import { Helmet } from 'react-helmet-async';
 
-const TermCondiction = () => {
+const Refund = () => {
   const axiosPublic = useAxiosPublic();
   // Team data
 
 
-  const { data: termCondiction = [], refetch, isLoading } = useQuery({
-    queryKey: ['termCondiction'],
+  const { data: refundData = [], refetch, isLoading } = useQuery({
+    queryKey: ['refundData'],
     queryFn: async () => {
-      const res = await axiosPublic.get('/get-term');
+      const res = await axiosPublic.get('/refund');
       return res?.data?.data?.[0];
     }
   })
@@ -27,14 +27,14 @@ const TermCondiction = () => {
   return (
     <div className='w-11/12 mx-auto my-28 ' >
       <Helmet>
-        <title>Dashboard | Ronjona Term & Condiction Page </title>
+        <title>Dashboard | Ronjona Refund Page </title>
       </Helmet>
       <div
-        className="text-lg text-black py-10"
-        dangerouslySetInnerHTML={{ __html: termCondiction?.desc }}
+        className="text-lg text-justify text-black py-10"
+        dangerouslySetInnerHTML={{ __html: refundData?.desc }}
       />
     </div>
   )
 }
 
-export default TermCondiction
+export default Refund
