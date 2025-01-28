@@ -5,7 +5,7 @@ import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 
 const PhotoGallery = () => {
-
+    window.scrollTo(0,0)
     const axiosPublic = useAxiosPublic();
 
     const [isOpen, setIsOpen] = useState(false);

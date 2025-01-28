@@ -1,7 +1,7 @@
 import React from 'react';
-import { FaAngleRight, FaFacebook, FaInstagramSquare, FaLinkedin } from 'react-icons/fa';
+import { FaAngleRight, FaInstagramSquare, FaLinkedin } from 'react-icons/fa';
 import { FaSquareFacebook } from 'react-icons/fa6';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -22,22 +22,23 @@ const Footer = () => {
                     <div className='border border-gray-500'></div>
 
                     {/* Footer Links Section */}
-                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 md:gap=6 py-8 text-sm md:text-base'>
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-12 md:gap=6 py-8 text-sm md:text-base  '>
                         {/* Column 1 */}
-                        <div>
+                        <div className='' >
                             <ul>
                                 <li className='flex gap-2 py-2'>
                                     <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736053908/Ronjona/xzbrgqzomenlw5t6n7qo.png" alt="Phone" />
-                                    <a href="#">1800-572-0709</a>
+                                    <Link to="#">88 0 1 7 7 7 1 7 7 7 7 1
+                                    </Link>
                                 </li>
                                 <li className='flex gap-2 py-2'>
                                     <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736054078/Ronjona/p5lot1ryu8zqhh2hream.png" alt="Email" />
-                                    <a href="#">hello@thehivehostels.com</a>
+                                    <Link to="#">ronjonawomenshostel@gmail.com</Link>
                                 </li>
                                 <li className='py-2'>
-                                    <a href="#" className='text-yellow-400'>
+                                    <Link Link to="#" className=''>
                                         405, 4th Floor, The Summit Business Bay, Near WEH Metro Station, Gundavali, Andheri-Kurla Road, Andheri East, Mumbai - 400 093, Maharashtra, India.
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className='py-2'>CIN: U55209MH2019PTC325971</li>
                                 <li className='flex gap-2 py-4'>
@@ -51,52 +52,38 @@ const Footer = () => {
                         {/* Column 2 */}
                         <div>
                             <ul>
-                                <li><a href="#">All Hostels</a></li>
-                                <li><a href="#">Testimonials</a></li>
-                                <li><a href="#">Gallery</a></li>
-                                <li><a href="#">FAQ</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="#">Site Map</a></li>
+                                <li><Link  to="/all-packages">All Hostels</Link></li>
+                                <li><Link  to="#">Testimonials</Link></li>
+                                <li><Link  to="/image-gallery">Gallery</Link></li>
+                                <li><Link  to="/faq">FAQ</Link></li>
+                                <li><Link  to="#">Blog</Link></li>
+                                <li><Link to="#">Site Map</Link></li>
                             </ul>
                         </div>
 
                         {/* Column 3 */}
                         <div>
                             <ul>
-                                <li><a href="#">Hive Luxe</a></li>
-                                <li><a href="#">Hive Connect</a></li>
-                                <li><a href="#">Careers</a></li>
-                                <li><a href="#">Partner with Us</a></li>
-                                <li><a href="#">Investors</a></li>
+                                <li><Link  to="#">Hive Luxe</Link></li>
+                                <li><Link  to="#">Hive Connect</Link></li>
+                                <li><Link  to="#">Careers</Link></li>
+                                <li><Link  to="#">Partner with Us</Link></li>
+                                <li><Link  to="#">Investors</Link></li>
                             </ul>
                         </div>
 
                         {/* Column 4 */}
-                        <div>
+                        <div className='' >
                             <ul>
-                                <li><a href="#">Investors</a></li>
-                                <li><a href="#">Terms & Condition</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Refund Policy</a></li>
+                                <li><NavLink to="#">Investors</NavLink></li>
+                                <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li>
+                                <li><NavLink to="/privacy">Privacy Policy</NavLink></li>
+                                <li><NavLink to="#">Refund Policy</NavLink></li>
                                 <li><Link to={"/admin-login"}>Admin Login</Link></li>
                                 <li><Link to={"/admin-register"}>Admin Register</Link></li>
                             </ul>
                         </div>
 
-                        {/* Column 5 */}
-                        <div>
-                            <ul>
-                                <li><a href="#">PG in Delhi</a></li>
-                                <li><a href="#">PG in Mumbai</a></li>
-                                <li><a href="#">PG in Indore</a></li>
-                                <li><a href="#">PG in Dehradun</a></li>
-                                <li><a href="#">PG in Bangalore</a></li>
-                                <li><a href="#">PG in Noida</a></li>
-                                <li><a href="#">PG in Greater Noida</a></li>
-                                <li><a href="#">PG in Ahmedabad</a></li>
-                                <li><a href="#">PG in Jaipur</a></li>
-                            </ul>
-                        </div>
                     </div>
                 </div>
 

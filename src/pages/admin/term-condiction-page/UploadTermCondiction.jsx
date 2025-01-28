@@ -5,16 +5,16 @@ import Swal from 'sweetalert2';
 import { Editor } from '@tinymce/tinymce-react';
 import { useQuery } from '@tanstack/react-query';
 
-const AddPrivacy = () => {
+const UploadTermCondiction = () => {
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(false);
     const [tinyDescription, setTinyDescription] = useState('');
 
     // Fetch privacy data
-    const { data: privacy = {}, refetch } = useQuery({
-        queryKey: ['privacy'],
+    const { data: termCondiction = {}, refetch } = useQuery({
+        queryKey: ['termCondiction'],
         queryFn: async () => {
-            const res = await axiosPublic.get('/getPrivacyById');
+            const res = await axiosPublic.get('/get-term');
             console.log(res.data.data)
             return res.data.data[0];
         },
@@ -22,10 +22,10 @@ const AddPrivacy = () => {
 
     // Set default value for TinyMCE editor
     useEffect(() => {
-        if (privacy?.desc) {
-            setTinyDescription(privacy.desc);
+        if (termCondiction?.desc) {
+            setTinyDescription(termCondiction.desc);
         }
-    }, [privacy]);
+    }, [termCondiction]);
 
     const handleDescriptionChange = (value) => {
         setTinyDescription(value);
@@ -38,12 +38,12 @@ const AddPrivacy = () => {
         const payload = { desc: tinyDescription };
 
         try {
-            const response = await axiosPublic.put(`/privacy-upload`, payload);
+            const response = await axiosPublic.put(`/post-term`, payload);
             if (response) {
                 Swal.fire({
                     position: 'center',
                     icon: 'success',
-                    title: 'Your privacy has been updated successfully',
+                    title: 'Term condiction upload successfully',
                     showConfirmButton: false,
                     timer: 1500,
                 });
@@ -65,7 +65,7 @@ const AddPrivacy = () => {
     return (
         <div>
             <Helmet>
-                <title>Dashboard | Add Privacy</title>
+                <title>Dashboard | Add Term & Condiction</title>
             </Helmet>
             <h2 className="text-2xl font-bold text-center mb-6">Add Privacy</h2>
             <form onSubmit={handleSubmit}>
@@ -76,7 +76,7 @@ const AddPrivacy = () => {
                             <Editor
                                 apiKey="atnary0we9a0nuqjzgtnpxyd0arpbwud7ocxkjxqjtaab3nm"
                                 init={{
-                                    height: 500,
+                                    height: 800,
                                     toolbar:
                                         'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight | bullist numlist | removeformat',
                                 }}
@@ -102,4 +102,4 @@ const AddPrivacy = () => {
     );
 };
 
-export default AddPrivacy;
+export default UploadTermCondiction;
