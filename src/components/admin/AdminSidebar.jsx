@@ -169,6 +169,11 @@ const AdminSidebar = () => {
                                 Privacy
                             </Sidebar.Item>
                         </Link>
+                        <Link to={'/dashboard/upload-term-condiction'}>
+                            <Sidebar.Item icon={FcPrivacy}>
+                                Term & Condiction
+                            </Sidebar.Item>
+                        </Link>
 
 
 

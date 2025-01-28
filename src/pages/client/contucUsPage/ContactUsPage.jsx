@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { NavLink } from "react-router-dom";
 
 const ContactUsPage = () => {
   const [loading, setLoading] = useState(false);
@@ -13,7 +14,7 @@ const ContactUsPage = () => {
     const message = e.target.message.value;
     const phone_number = e.target.phone_number.value;
     const payload = {
-      name, email, message,phone_number
+      name, email, message, phone_number
 
     };
     try {
@@ -169,7 +170,12 @@ const ContactUsPage = () => {
           Map
         </h2>
         <div className="bg-gray-200 h-64 md:h-80 rounded-lg flex items-center justify-center text-gray-500">
-          <span>Map Placeholder</span>
+          <iframe
+            className="w-full h-[250px] lg:h-[320px] rounded-lg shadow-lg"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.0285212873277!2d90.37951897599214!3d23.87343163115428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c40ed3c3c18b%3A0x9521b4915bd8ee05!2sUttara%20Sector-12%20Society!5e0!3m2!1sen!2sbd!4v1737780091312!5m2!1sen!2sbd"
+            allowFullScreen=""
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 
 const ManagePhotoGallery = () => {
     const axiosPublic = useAxiosPublic()
+    window.scrollTo(0,0)
 
     const { data: PhotoData = [], refetch, isLoading } = useQuery({
         queryKey: ['PhotoData'],

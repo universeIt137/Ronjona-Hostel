@@ -65,6 +65,9 @@ import UpdatePayment from "../pages/admin/payment-page/UpdatePayment";
 import FilterBranch from "../pages/client/home-filter/FilterBranch";
 import FilterPackages from "../pages/client/home-filter/FilterPackages";
 import NavFacility from "../pages/client/homePage/homeComponents/NavFacility";
+import Privacy from "../pages/client/privacy/Privacy";
+import UploadTermCondiction from "../pages/admin/term-condiction-page/UploadTermCondiction";
+import TermCondiction from "../pages/admin/term-condiction-page/TermCondiction";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -165,8 +168,17 @@ const router = createBrowserRouter([
             },
             {
                 path: "our-facility",
-                element : <NavFacility></NavFacility>
-            }
+                element : <NavFacility ></NavFacility>
+            },
+            {
+                path: "privacy",
+                element : <Privacy></Privacy>
+            },
+            {
+                path: "term&condicton",
+                element : <TermCondiction></TermCondiction>
+            },
+
             
 
         ]
@@ -380,6 +392,10 @@ const router = createBrowserRouter([
             {
                 path: "payment-update/:id",
                 element : <UpdatePayment></UpdatePayment>
+            },
+            {
+                path: "upload-term-condiction",
+                element : <UploadTermCondiction></UploadTermCondiction>
             }
 
         ]
