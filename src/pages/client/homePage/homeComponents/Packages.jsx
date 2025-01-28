@@ -47,11 +47,11 @@ const Packages = () => {
     }
 
     return (
-        <div className=" w-11/12 mx-auto my-4  " >
+        <div className=" w-11/12 mx-auto lg:my-4  " >
             <Helmet>
                 <title>Ronjona | Home Page</title>
             </Helmet>
-            <h1 className=" py-8 text-4xl font-bold hover:underline " >Our Packages</h1>
+            <h1 className=" py-8 text-3xl lg:text-4xl font-bold hover:underline " >Our Packages</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
                 {packagesData.map((pkg) => (

@@ -19,12 +19,12 @@ const Location = () => {
         return (<SkeletonLoader></SkeletonLoader>)
     }
     return (
-        <div className="mt-64 md:mt-16 container px-4 md:px-0 md:mx-auto">
+        <div className="lg:mt-12 mt-36 container px-4 md:px-0 md:mx-auto">
             <Helmet>
                 <title>Ronjona| Home Page</title>
             </Helmet>
             {/* Title */}
-            <p className="hover:underline text-2xl md:text-4xl mb-6 font-bold">Locations</p>
+            <p className="hover:underline text-2xl md:text-4xl lg:mb-6 font-bold">Locations</p>
 
             {/* Wrapper with overflow hidden */}
             <div className="overflow-hidden relative">
