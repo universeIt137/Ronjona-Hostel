@@ -86,11 +86,11 @@ const BookingFrom = () => {
                 </Helmet>
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white border p-6 rounded-lg shadow-lg w-full  space-y-4"
+                    className="bg-white border p-2 rounded-lg shadow-lg w-full  space-y-4"
                 >
                     <h2 className="text-2xl font-bold text-center text-gray-800">Booking Form</h2>
 
-                    <div className='grid lg:grid-cols-2 gap-6 ' >
+                    <div className='grid lg:grid-cols-2 gap-3 ' >
                         {/* Name Field */}
                         <div>
                             <label htmlFor="name" className="block text-gray-600 font-semibold mb-2">
@@ -100,7 +100,7 @@ const BookingFrom = () => {
                                 id="name"
                                 type="text"
                                 name="name"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Enter your full name"
                                 required
                             />
@@ -115,7 +115,7 @@ const BookingFrom = () => {
                                 id="phoneNumber"
                                 type="tel"
                                 name="phoneNumber"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Enter your phone number"
                                 required
                             />
@@ -129,7 +129,7 @@ const BookingFrom = () => {
                                 id="tran_id"
                                 type="text"
                                 name="tran_id"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Enter your transition number "
 
                             />
@@ -143,7 +143,7 @@ const BookingFrom = () => {
                             <select
                                 id="package"
                                 name="packagesId"
-                                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                             >
                                 <option disabled selected value={singlePacagesData._id}>
@@ -189,7 +189,7 @@ const BookingFrom = () => {
                     </div>
                 </form>
             </div>
-            <div className='my-16' >
+            <div className='my-10' >
                 <PaymentCard></PaymentCard>
             </div>
         </>
