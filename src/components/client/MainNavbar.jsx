@@ -28,7 +28,7 @@ const MainNavbar = () => {
     }, []);
 
     return (
-        <div className={`fixed w-full top-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-50' : 'bg-white opacity-100'}`}>
+        <div className={`fixed w-full top-0 z-50 transition-colors duration-300 ${isScrolled ? 'bg-black bg-opacity-50' : 'bg-white opacity-100 shadow-lg '}`}>
             {!isScrolled && (
                 <div className="flex flex-col lg:flex-row items-center lg:gap-4 py-2 lg:py-0 bg-black text-white justify-center">
                     <p className='text-xs md:text-md lg:text-md'>
@@ -41,7 +41,7 @@ const MainNavbar = () => {
                 </div>
             )}
 
-            <div className='w-11/12 mx-auto ' >
+            <div className=' ' >
                 {/* Navbar */}
                 <Navbar className={`${isScrolled ? 'bg-black bg-opacity-50' : 'bg-white opacity-100'} transition-all duration-300 `} fluid rounded>
                     {/* Brand */}
