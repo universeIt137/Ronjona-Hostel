@@ -5,6 +5,7 @@ import SkeletonLoader from '../../skeleton-loader/SkeletonLoader';
 
 const Testemonial = () => {
     const axiosPublic = useAxiosPublic();
+    window.scrollTo(0,0)
 
     const { data: reviewsData = [], refetch, isError, isLoading } = useQuery({
         queryKey: ['reviewsData'],

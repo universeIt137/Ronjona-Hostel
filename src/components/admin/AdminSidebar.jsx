@@ -169,14 +169,23 @@ const AdminSidebar = () => {
                                 Privacy
                             </Sidebar.Item>
                         </Link>
+
                         <Link to={'/dashboard/upload-term-condiction'}>
                             <Sidebar.Item icon={FcPrivacy}>
                                 Term & Condiction
                             </Sidebar.Item>
                         </Link>
+
                         <Link to={'/dashboard/refund-upload'}>
                             <Sidebar.Item icon={FcPrivacy}>
                                 Refund
+                            </Sidebar.Item>
+                        </Link>
+
+
+                        <Link to={'/dashboard/booking-from'}>
+                            <Sidebar.Item icon={FcPrivacy}>
+                                Booking Packages
                             </Sidebar.Item>
                         </Link>
 

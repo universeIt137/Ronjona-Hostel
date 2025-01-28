@@ -71,6 +71,7 @@ import TermCondiction from "../pages/admin/term-condiction-page/TermCondiction";
 import RefundUpload from "../pages/admin/refund/RefundUpload";
 import Refund from "../pages/admin/refund/Refund";
 import Testemonial from "../components/client/testimonial/Testimonial";
+import ManageBookingPackages from "../pages/admin/booking-pages/ManageBookingPackages";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -411,6 +412,10 @@ const router = createBrowserRouter([
             {
                 path: "refund-upload",
                 element: <RefundUpload></RefundUpload>
+            },
+            {
+                path: "booking-from",
+                element: <ManageBookingPackages></ManageBookingPackages>
             },
 
 
