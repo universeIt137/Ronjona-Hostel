@@ -68,7 +68,7 @@ const ManagePayment = () => {
 
 
   return (
-    <div className="max-w-5xl mt-20 mx-auto p-6 bg-white shadow-md rounded-md">
+    <div className=" mt-20 mx-auto p-6 bg-white shadow-md rounded-md">
       <Helmet>
         <title>Dashboard | Payment Details Page</title>
       </Helmet>
@@ -77,9 +77,10 @@ const ManagePayment = () => {
         <table className="w-full table-auto border-collapse border border-gray-200">
           <thead>
             <tr className="bg-gray-100 text-left">
-              <th className="px-4 py-2 border border-gray-300">Logo</th>
-              <th className="px-4 py-2 border border-gray-300">Payment Name</th>
-              <th className="px-4 py-2 border border-gray-300">Phone Number</th>
+              <th className="px-4 py-2 border border-gray-300">Account Name</th>
+              <th className="px-4 py-2 border border-gray-300">Account Number</th>
+              <th className="px-4 py-2 border border-gray-300">Bank Name</th>
+              <th className="px-4 py-2 border border-gray-300">Branch Name</th>
               <th className="px-4 py-2 border border-gray-300">Created Date</th>
               <th className="px-4 py-2 border border-gray-300">Actions</th>
             </tr>
@@ -88,13 +89,18 @@ const ManagePayment = () => {
             {paymentData.map((item, index) => (
               <tr key={index} className="hover:bg-gray-100">
                 <td className="px-4 py-2 border border-gray-300">
-                  <img src={item.logo} alt="Logo" className="w-12 h-12" />
+                  {
+                    item?.accountName
+                  }
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
-                  {item.paymentName}
+                  {item.accountNumber}
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
-                  {item.phoneNumber}
+                  {item.bankName}
+                </td>
+                <td className="px-4 py-2 border border-gray-300">
+                  {item.branchName}
                 </td>
                 <td className="px-4 py-2 border border-gray-300">
                   {new Date(item.createdAt).toLocaleDateString()}
