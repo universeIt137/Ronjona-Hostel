@@ -128,7 +128,7 @@ const AddPackage = () => {
     return (
         <div className="mx-auto bg-white p-6 shadow-lg rounded-lg">
             <Helmet>
-                <title>Dashboard | Add Feature</title>
+                <title>Dashboard | Add Package Page</title>
             </Helmet>
             <h2 className="text-2xl font-bold text-center mb-6">Add Packages</h2>
             <form onSubmit={handleSubmit}>
@@ -198,7 +198,7 @@ const AddPackage = () => {
                                     type="text"
                                     value={content?.featilityTitle}
                                     onChange={(e) => handleContentChange(index, 'featilityTitle', e.target.value)}
-                                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
+                                    className="w-full  border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                                     placeholder="Enter Feature Title"
                                     required
                                 />
@@ -207,7 +207,7 @@ const AddPackage = () => {
                                     onChange={(e) =>
                                         handleContentChange(index, 'featilityImg', e.target.files[0])
                                     }
-                                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
+                                    className="w-full  border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                                     required
                                 />
                                 {contents.length > 1 && (
