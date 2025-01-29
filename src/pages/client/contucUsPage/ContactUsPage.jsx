@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
 
 const ContactUsPage = () => {
+  window.scrollTo(0,0)
   const [loading, setLoading] = useState(false);
   const axiosPublic = useAxiosPublic()
   const handleSubmit = async (e) => {

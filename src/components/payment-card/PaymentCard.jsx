@@ -22,18 +22,17 @@ const PaymentCard = () => {
                     paymentData?.map((item, i) => {
                         return (
                             <div key={i} >
-                                <div className="card bg-base-100  shadow-xl">
-                                    <figure>
-                                        <img
-                                            className='w-32 h-32  '
-                                            src= {item?.logo}
-                                            alt="Shoes" />
-                                    </figure>
-                                    <div className="card-body">
-                                        <h2 className="card-title">{ item?.paymentName}</h2>
-                                        <p>Number : { item?.phoneNumber}</p>
-                                        
-                                    </div>
+                                <div className="card bg-base-100 h-60 p-6 shadow-xl">
+                                    <p className=""><span className='font-bold' >Account Name :</span> {item?.accountName}</p>
+                                    <p> <span className='font-bold' >Account Number :</span> {item?.accountNumber}</p>
+                                    {
+                                        item?.phoneNumber ? <>
+                                            <p> <span className='font-bold' >Bank Name :</span>  {item?.bankName}</p>
+                                            <p> <span className='font-bold' >Phone Number :</span>  {item?.phoneNumber}</p>
+                                            <p > <span className='font-bold' >Branch Name :</span> {item?.branchName}</p>
+                                        </> : <></>
+                                    }
+
                                 </div>
                             </div>
                         )
