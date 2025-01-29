@@ -22,7 +22,7 @@ const PaymentCard = () => {
                     paymentData?.map((item, i) => {
                         return (
                             <div key={i} >
-                                <div className="card bg-base-100 h-60 p-6 shadow-xl">
+                                <div className="card bg-base-100 border h-60 p-6 shadow-xl">
                                     <p className=""><span className='font-bold' >Account Name :</span> {item?.accountName}</p>
                                     <p> <span className='font-bold' >Account Number :</span> {item?.accountNumber}</p>
                                     {

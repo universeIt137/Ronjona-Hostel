@@ -10,31 +10,26 @@ import { useQuery } from '@tanstack/react-query';
 const UpdatePayment = () => {
   const { id } = useParams()
   const { data: singlePamentData = {}, refetch, isLoading } = useQuery({
-    queryKey: ['singlePamentData',id],
+    queryKey: ['singlePamentData', id],
     queryFn: async () => {
       const res = await axiosPublic.get(`/payment/${id}`);
       return res.data.data;
     }
   });
-  const { logo: upcommingLogo } = singlePamentData;
 
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const logo = e.target.logo.files[0];
-    const paymentName = e.target.paymentName.value;
+    const accountName = e.target.accountName.value;
+    const accountNumber = e.target.accountNumber.value;
+    const bankName = e.target.bankName.value;
     const phoneNumber = e.target.phoneNumber.value;
+    const branchName = e.target.branchName.value;
 
-    let imgUrl = upcommingLogo;
-
-    if (imgUrl) {
-      imgUrl = upcommingLogo;
-    }
-    imgUrl = await uploadImg(logo)
     const payload = {
-      paymentName, phoneNumber, logo: imgUrl
-    };
+      accountName,accountNumber,bankName,phoneNumber,branchName
+    }
 
     let resp = await updateAlert();
 
@@ -73,62 +68,93 @@ const UpdatePayment = () => {
         <Helmet>
           <title>Dashboard | Payme Update Page</title>
         </Helmet>
-        <div className="max-w-lg mx-auto mt-24  p-6  bg-white shadow-md rounded-md">
+        <div className=" mx-auto mt-24  p-6  bg-white shadow-md rounded-md">
           <h1 className="text-2xl font-bold text-center mb-4">Payment Form</h1>
           <form className='' onSubmit={handleSubmit}>
-            <div className="avatar">
-              <div className="w-12">
-                <img src= {singlePamentData?.logo} />
+
+            <div className='grid grid-cols-2  gap-x-5 ' >
+              {/* accountName */}
+              <div className="mb-4">
+                <label htmlFor="accountName" className="block text-lg font-semibold mb-2">
+                  Account Name
+                </label>
+                <input
+                  type="text"
+                  id="accountName"
+                  name="accountName"
+                  defaultValue={singlePamentData?.accountName}
+                  className="w-full px-3  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
               </div>
-            </div>
-            {/* Logo Field */}
-            <div className="mb-4">
-              <label htmlFor="logo" className="block text-lg font-semibold mb-2">
-                Logo
-              </label>
-              <input
-                type="file"
-                id="logo"
-                name="logo"
-                placeholder="Enter logo URL"
-                className="w-full px-3  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
 
-            {/* Payment Name Field */}
-            <div className="mb-4">
-              <label htmlFor="paymentName" className="block text-lg font-semibold mb-2">
-                Payment Name
-              </label>
-              <input
-                type="text"
-                id="paymentName"
-                name="paymentName"
-                defaultValue={singlePamentData?.paymentName}
-                placeholder="Enter payment name"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
+              {/* accountNumber */}
+              <div className="mb-4">
+                <label htmlFor="accountNumber" className="block text-lg font-semibold mb-2">
+                  Account Number
+                </label>
+                <input
+                  type="text"
+                  id="accountNumber"
+                  name="accountNumber"
+                  defaultValue={singlePamentData?.accountNumber}
+                  placeholder="Enter payment name"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
 
-            {/* Phone Number Field */}
-            <div className="mb-4">
-              <label htmlFor="phoneNumber" className="block text-lg font-semibold mb-2">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phoneNumber"
-                name="phoneNumber"
-                defaultValue={singlePamentData?.phoneNumber}
-                placeholder="Enter phone number"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              {
+                singlePamentData?.phoneNumber ? <>
+                  {/* bankName */}
+                  <div className="mb-4">
+                    <label htmlFor="bankName" className="block text-lg font-semibold mb-2">
+                      Bank Name
+                    </label>
+                    <input
+                      type="text"
+                      id="bankName"
+                      name="bankName"
+                      defaultValue={singlePamentData?.bankName}
+                      placeholder="Enter phone number"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+
+                  {/* phoneNumber */}
+                  <div className="mb-4">
+                    <label htmlFor="phoneNumber" className="block text-lg font-semibold mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      defaultValue={singlePamentData?.phoneNumber}
+                      placeholder="Enter phone number"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  {/* branchName */}
+                  <div className="mb-4">
+                    <label htmlFor="branchName" className="block text-lg font-semibold mb-2">
+                      Branch Name
+                    </label>
+                    <input
+                      type="text"
+                      id="branchName"
+                      name="branchName"
+                      defaultValue={singlePamentData?.branchName}
+                      placeholder="Enter phone number"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </> : <></>
+              }
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
+              className="px-4 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300"
             >
               {
                 loading ? "Submiting..." : "Submit"

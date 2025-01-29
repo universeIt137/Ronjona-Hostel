@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { uploadImg } from "../../../hooks/UploadImage";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -32,6 +33,8 @@ const AddBranch = () => {
         }
     })
 
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e) => {
         setLoading(true);
@@ -47,6 +50,8 @@ const AddBranch = () => {
         if (!images?.name) {
             images = ""
         }
+
+        
 
         images = await uploadImg(img)
 
@@ -77,6 +82,7 @@ const AddBranch = () => {
             }
 
         } catch (error) {
+            navigate("/admin-login")
             Swal.fire({
                 position: "center",
                 icon: "error",
