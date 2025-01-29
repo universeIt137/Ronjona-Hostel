@@ -4,6 +4,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { uploadImg } from '../../../hooks/UploadImage';
+import { useNavigate } from 'react-router-dom';
 
 const ManageLocation = () => {
     const axiosPublic = useAxiosPublic();
@@ -28,7 +29,7 @@ const ManageLocation = () => {
             return res.data.data;
         }
     })
-
+    const navigate = useNavigate();
     // console.log(locations)
 
     const handleDelete = async (id) => {
@@ -64,7 +65,9 @@ const ManageLocation = () => {
                         });
                     }
 
-                } catch (error) {
+                } catch (error) {   
+                    navigate(`/admin-login`)
+
                     Swal.fire({
                         position: "center",
                         icon: "error",

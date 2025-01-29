@@ -5,13 +5,15 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { uploadImg } from '../../../hooks/UploadImage';
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
+import { deleteAlert } from '../../../helper/deleteAlert';
 
 const ManageBranch = () => {
     const axiosPublic = useAxiosPublic();
     const [selectedBranch, setSelectedBranch] = useState(null); // Track selected user
 
 
-   
+
 
     const token = localStorage.getItem("token");
     const config = {
@@ -36,53 +38,39 @@ const ManageBranch = () => {
             const res = await axiosPublic.get('/getAllLocations', config);
             return res.data.data;
         }
-    })
+    });
+    const navigate = useNavigate();
 
 
     const handleDelete = async (id) => {
 
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                try {
-                    const res = await axiosPublic.delete(`/deleteLocation/${id}`, config);
-                    if (res.data.success) {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Location has been deleted",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        refetch();
-                    } else {
-                        Swal.fire({
-                            position: "center",
-                            icon: "error",
-                            title: res.data.message || "Failed to save location",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
+        try {
+            const resp = await deleteAlert();
 
-                } catch (error) {
+            if (resp.isConfirmed) {
+                let res = await axiosPublic.delete(`/deleteBranch/${id}`);
+                if (res) {
                     Swal.fire({
                         position: "center",
-                        icon: "error",
-                        title: error.response?.data?.message || "An error occurred. Please try again.",
+                        icon: "success",
+                        title: "Branch delete successfully",
                         showConfirmButton: false,
                         timer: 1500
                     });
+                    refetch()
+
                 }
             }
-        });
+        } catch (error) {
+            navigate("/admin-login")
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Branch delete fail",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
 
 
     }
@@ -119,6 +107,7 @@ const ManageBranch = () => {
             refetch(); // Refetch users after update
             document.getElementById('my_modal_1').close();
         } catch (error) {
+            navigate("/admin-login")
             console.error('Error updating user role:', error);
             document.getElementById('my_modal_1').close();
             Swal.fire({
@@ -132,7 +121,7 @@ const ManageBranch = () => {
         }
     };
 
-   
+
 
     return (
         <div>
