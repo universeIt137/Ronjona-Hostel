@@ -19,7 +19,7 @@ const Location = () => {
         return (<SkeletonLoader></SkeletonLoader>)
     }
     return (
-        <div className="lg:mt-12 mt-36 container px-4 md:px-0 md:mx-auto">
+        <div className="container px-4 md:px-0 md:mx-auto">
             <Helmet>
                 <title>Ronjona| Home Page</title>
             </Helmet>

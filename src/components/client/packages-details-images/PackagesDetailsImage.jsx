@@ -28,7 +28,7 @@ const PackagesDetailsImage = () => {
             {isLoading ? (
                 <p>Loading images...</p>
             ) : (
-                <div className=" -z-0 " >
+                <div className=" -z-0  " >
                     <ImageGallery autoPlay={true} items={images} />
                 </div>
             )}

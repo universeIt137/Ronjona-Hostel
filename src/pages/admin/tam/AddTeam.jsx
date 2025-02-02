@@ -14,9 +14,7 @@ const AddTeam = () => {
         e.preventDefault();
         const name = e.target.name.value;
         const role = e.target.role.value;
-        const phoneNumber = e.target.phoneNumber.value;
-        const email = e.target.email.value;
-        const experience = e.target.experience.value;
+        const des = e.target.des.value;
         const img = e.target.img.files[0];
 
         let imgUrl = "";
@@ -28,9 +26,7 @@ const AddTeam = () => {
         const payload = {
             name,
             role,
-            phoneNumber,
-            email,
-            experience,
+            des,
             img: imgUrl,
         };
 
@@ -74,7 +70,7 @@ const AddTeam = () => {
                 className="bg-white p-8 rounded-lg shadow-lg w-full space-y-6"
             >
                 <h2 className="text-2xl font-bold text-center text-gray-800">
-                    Add Team Member
+                    Add Management Member
                 </h2>
 
                 <div className="grid grid-cols-2 gap-5">
@@ -121,58 +117,19 @@ const AddTeam = () => {
                         />
                     </div>
 
-                    {/* Phone Number Input */}
+                    {/* des */}
                     <div className="mb-4">
                         <label
-                            htmlFor="phoneNumber"
+                            htmlFor="Description"
                             className="block text-gray-600 font-semibold mb-2"
                         >
-                            Phone Number
+                            Description
                         </label>
-                        <input
-                            id="phoneNumber"
-                            type="tel"
-                            name="phoneNumber"
-                            className="w-full p-3 border border-gray-300 rounded-lg"
-                            placeholder="Enter your phone number"
-                            required
-                        />
-                    </div>
-
-                    {/* Email Input */}
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-gray-600 font-semibold mb-2">
-                            Email
-                        </label>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            className="w-full p-3 border border-gray-300 rounded-lg"
-                            placeholder="Enter your email"
-                            required
-                        />
-                    </div>
-
-                    {/* Experience Input */}
-                    <div className="mb-4">
-                        <label
-                            htmlFor="experience"
-                            className="block text-gray-600 font-semibold mb-2"
-                        >
-                            Experience
-                        </label>
-                        <input
-                            id="experience"
-                            type="text"
-                            name="experience"
-                            className="w-full p-3 border border-gray-300 rounded-lg"
-                            placeholder="Enter your years of experience"
-                            required
-                        />
+                        <textarea name="des" className="w-full p-3 border border-gray-300 rounded-lg"  id="" rows="10"></textarea>
                     </div>
                 </div>
 
+                
                 {/* Submit Button */}
                 <div className="flex justify-center">
                     <button

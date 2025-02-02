@@ -6,29 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 import { updateAlert } from "../../../helper/updateAlert";
 import Swal from "sweetalert2";
+import { deleteAlert } from "../../../helper/deleteAlert";
+import { useNavigate } from "react-router-dom";
 
 const ManageBookingPackages = () => {
-    const [data, setData] = useState([
-        {
-            name: "John Doe",
-            phoneNumber: "123-456-7890",
-            tran_id: "001",
-            title: "Product 1",
-            price: "$100",
-            branch: "Branch 1",
-            location: "Location 1",
-        },
-        {
-            name: "Jane Smith",
-            phoneNumber: "987-654-3210",
-            tran_id: "002",
-            title: "Product 2",
-            price: "$200",
-            branch: "Branch 2",
-            location: "Location 2",
-        },
-    ]);
+
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate()
     // Team data
 
 
@@ -56,10 +40,38 @@ const ManageBookingPackages = () => {
                 }
             }
         } catch (error) {
+            navigate("/admin-login")
             Swal.fire({
                 position: "top-end",
                 icon: "error",
                 title: "Status update fail",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    };
+    const handleDelete = async (id) => {
+        try {
+            const resp = await deleteAlert();
+            if (resp.isConfirmed) {
+                let res = await axiosPublic.delete(`/manage-booking/${id}`);
+                if (res) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Delete successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    refetch()
+                }
+            }
+        } catch (error) {
+            navigate("/admin-login")
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Delete fail",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -105,7 +117,7 @@ const ManageBookingPackages = () => {
                                 row?.status ? "Confirm" : "Not confirm"
                             }</td>
                             <td className="px-4 py-2 border border-gray-300">
-                                <button
+                                <button onClick={() => handleDelete(row?._id)}
                                     className="text-red-500 hover:text-red-700"
                                 >
                                     <FaTrash />

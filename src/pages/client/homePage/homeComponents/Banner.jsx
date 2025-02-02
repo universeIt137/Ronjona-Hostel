@@ -76,7 +76,7 @@ const Banner = () => {
     }
 
     return (
-        <div className="relative lg:my-24 my-24  md:h-[100vh]  rounded-none">
+        <div className="relative mt-24  md:h-[100vh]  rounded-none">
             {/* Banner Text */}
             <p className="absolute top-[30%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] z-30 text-main-color text-lg md:text-5xl lg:text-6xl text-center font-bold px-4 w-full">
                 {
@@ -85,7 +85,7 @@ const Banner = () => {
             </p>
 
             {/* Responsive Form */}
-            <div className="absolute lg:-mt-24 z-30 p-4 top-[105%] md:top-[65%] left-[50%] transform -translate-x-[50%] md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex  md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
+            <div className="absolute lg:-mt-24 z-30 p-4 top-[105%] md:top-[55%] left-[50%] transform -translate-x-[50%] md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex  md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
                 <div className="lg:w-full w-auto">
                     <label className='block font-semibold'>Location</label>
                     <select
@@ -100,10 +100,10 @@ const Banner = () => {
                         ))}
                     </select>
                 </div>
-                <div className="w-full  ">
+                <div className="lg:w-full    ">
                     <label className='block font-semibold'>Branch</label>
                     <select
-                        className='mt-2 lg:p-2 border  rounded'
+                        className='mt-2 lg:p-2 p-2 w-[85%] lg:w-full   rounded'
                         onChange={(e) => handleBranchChange(e.target.value)} // Trigger the navigation when branch is selected
                     >
                         <option >Select Branch</option>
@@ -127,7 +127,7 @@ const Banner = () => {
                         key={index}
                         src={item.img}
                         alt={`Slide ${index + 1}`}
-                        className={`absolute top-0 left-0   w-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
+                        className={`absolute top-0 left-0 h-[87vh]   w-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
                         style={{
                             transform: `translateX(${(index - currentIndex) * 100}%)`,
                         }}
@@ -137,13 +137,13 @@ const Banner = () => {
 
             {/* Navigation Buttons */}
             <button
-                className="absolute hidden lg:flex top-[50%] left-4 transform -translate-y-[50%] text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none"
+                className="absolute hidden lg:flex top-[45%] left-4 transform -translate-y-[50%] text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none"
                 onClick={handlePrevSlide}
             >
                 <FaChevronLeft size={24} />
             </button>
             <button
-                className="absolute hidden lg:flex top-[50%] right-4 transform -translate-y-[50%] text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none"
+                className="absolute hidden lg:flex top-[45%] right-4 transform -translate-y-[50%] text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none"
                 onClick={handleNextSlide}
             >
                 <FaChevronRight size={24} />
