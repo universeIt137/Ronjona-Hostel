@@ -20,6 +20,13 @@ const ManagementInfoPage = () => {
             return res.data.data;
         }
     });
+    const { data: featuresDatas = [], isError, } = useQuery({
+        queryKey: ['featuresDatas'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllFeatures');
+            return res.data?.data;
+        }
+    });
     if (isLoading) {
         return (
             <div className='py-10' >
@@ -27,20 +34,7 @@ const ManagementInfoPage = () => {
             </div>
         )
     }
-    const peopleData = [
-        {
-            name: "Juthi Sharmin",
-            description:
-                "ronjona women's Hostel is a modern hostel for women. It is the only Hostel available in Uttara which provides 'Quality Living' in a 'Homely Atmosphere'. Our hostel will be the perfect solution for accommodation for ladies students and working women who are away from home for their studies and job.",
-            image: "https://www.ronjonabd.co/wp-content/uploads/2021/05/IMG-20210519-WA0000.jpg", // Replace with actual image URL
-        },
-        {
-            name: "Taskiat Rahman",
-            description:
-                "Our place is an only women hostel, quiet, cosy and well-located. Very quiet hostel, the staffs are so friendly, kind and helpful and close enough to walk to many College and University of Uttara.",
-            image: "https://www.ronjonabd.co/wp-content/uploads/2021/05/IMG-20210519-WA0000.jpg", // Replace with actual image URL
-        },
-    ];
+
     return (
         <div>
             <div className="container mx-auto mt-32 p-4">
@@ -54,7 +48,7 @@ const ManagementInfoPage = () => {
                             <h1 className='text-center font-bold text-4xl mb-4 ' >The Management</h1>
                             <div className='w-[25%] h-1 bg-black block mx-auto ' ></div>
                         </div>
-                        
+
                         {teamDatas.map((person, index) => (
                             <div
                                 key={index}
@@ -86,6 +80,21 @@ const ManagementInfoPage = () => {
                 </div>
                 <div>
                     <ServiceOffer></ServiceOffer>
+                </div>
+                <div className='my-4' >
+                    <h1 className='text-4xl italic mb-4 ' >Oteher Services are</h1>
+                    <div className="grid grid-cols-2 md:grid-cols-6 ">
+                        {featuresDatas.slice(0,6).map((item, i) => (
+                            <div className='' key={i}>
+                                <div className="justify-items-center   text-white my-2  transform transition-transform duration-300 hover:scale-105">
+                                    <div className="bg-red-700  rounded-2xl ">
+                                        <img className=" w-44   h-44 border-2 border-[#853493] rounded-2xl " src={item?.logo} alt={item?.title} />
+                                    </div>
+
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

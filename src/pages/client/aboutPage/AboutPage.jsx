@@ -4,6 +4,9 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const AboutPage = () => {
   const axiosPublic = useAxiosPublic()
@@ -15,6 +18,13 @@ const AboutPage = () => {
       return res?.data?.data[0] || {};
     },
   });
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duration of the animation
+      easing: "ease-in-out", // Easing function
+      once: true, // Trigger the animation only once
+    });
+  }, []);
   if (isLoading) {
     return (
       <div>
@@ -23,162 +33,73 @@ const AboutPage = () => {
     )
   }
   return (
-    <div className="w-11/12 bg-white py-10 px-6 mx-auto">
+    <div className="w-11/12 bg-white py-10  mx-auto">
       <Helmet>
         <title>Ronjona | About Us Page </title>
       </Helmet>
       {/* Who We Are Section */}
-      <section className="text-center mt-16">
-        <div>
-          <h1 className="text-4xl font-bold text-black">Who We Are</h1>
-        </div>
-      </section>
+      <div
+        className="h-[60vh]  flex flex-col justify-center items-start px-8 text-white bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('https://res.cloudinary.com/dnvmj9pvk/image/upload/v1727492547/course-images/p5gcvttzauhtt7dggh3f.jpg')" }}
+      >
+        <h1 className="text-4xl font-semibold mb-4 italic" data-aos="fade-up">
+          Special Offers For Pandemic Situation!
+        </h1>
+        <h3 className="text-2xl mb-6 italic" data-aos="fade-up">
+          10% Off On All Categories Seat
+        </h3>
+        <a
+          href="#"
+          className="px-6 py-3 bg-transparent rounded border border-[#97509F] text-white hover:bg-[#97509F] hover:text-white transition"
+          data-aos="fade-up"
+        >
+          Book Your Seat Earlier
+        </a>
+      </div>
+      <div className="bg-gray-100 py-12 ">
+        <h2 className="text-4xl  font-bold text-center text-blue-600 mb-8">
+          About
+        </h2>
 
-      <section className="bg-white py-10 px-6">
-        {/* About Company Section */}
-        <button className="bg-blue-900 rounded-full mb-4">
-          <h2 className="text-xl font-bold text-white px-2 py-1">
-            About Company
-          </h2>
-        </button>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center mb-12">
-          <div className="text-left">
-            <h3 className="text-3xl font-bold text-black mb-4">
-              {
-                aboutData?.title
-              }
-            </h3>
+        <div className=" mx-auto flex flex-col md:flex-row justify-between items-start bg-white shadow-lg rounded-lg ">
+          {/* Left Side - Image */}
+          <div className="md:w-1/2" data-aos="zoom-in" >
+            <img
+              src={aboutData?.img}
+              alt="Garment Factory"
+              className="w-full h-[70vh] rounded-lg"
+            />
           </div>
-          <div className="text-right">
-            <p className="text-lg text-gray-700 leading-relaxed text-justify">
+
+          {/* Right Side - Text Content */}
+          <div className="md:w-1/2 md:pl-6 mt-6 md:mt-0" data-aos="zoom-in" >
+            <h3 className="text-2xl ml-6 font-bold text-blue-600 mb-4">About Us</h3>
+            <p className="text-gray-700 mb-2 p-6 text-justify ">
               {
                 aboutData?.shortDes
               }
             </p>
+
           </div>
         </div>
-
-        {/* Highlights Section (All Cards) */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          {/* Card 1 */}
-          {
-            aboutData?.aboutFeatures.map((item, i) => {
-              return (
-                <div key={i} >
-                  <img
-                    src={item?.logo}
-                    alt="Trusted Business"
-                    className="w-20 h-20 mx-auto mb-4"
-                  />
-                  <h4 className="text-xl font-semibold text-blue-900 text-center">
-                    {
-                      item?.title
-                    }
-                  </h4>
-
-                  <p className="text-sm text-gray-600 text-center mt-2">
-                    {
-                      item?.short_des
-                    }
-                  </p>
-                </div>
-              )
-            })
-          }
-
-
+      </div>
+      <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Vision Card */}
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h2 className="text-2xl font-bold text-blue-600 mb-4">Vision</h2>
+          <p className="text-gray-700 text-justify ">
+            Our mission is to be the No.1 Hostel service provider in Dhaka City by providing a clean, comfortable and affordable accommodation with superior customer service with assurance of Discipline, Security, and Excellence in all amenities & care. Our team is extremely professional and willing to go above and beyond to provide the absolute best Hostel experience possible.
+          </p>
         </div>
-      </section>
 
-      <section>
-        <img
-          src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736576752/rtj1nrifk5xbhoxbm42x.png"
-          alt="Company Visual"
-          className="w-full h-auto"
-        />
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
-          <div className="flex flex-col items-center justify-center relative">
-            <div className="relative w-60 h-80 bg-transparent">
-              <img
-                src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736573918/cvl6hsaiyswfys7tivyl.png"
-                alt="Image 2"
-                className="object-contain w-full h-full rounded-lg"
-              />
-            </div>
-            <div className="absolute top-44 left-8 transform translate-x-1/2 -translate-y-1/2 rounded-full w-28 h-28 shadow-lg">
-              <img
-                src="https://res.cloudinary.com/dxgisw3qc/image/upload/v1736578446/r8sgg0mvcepncvmuypyo.png"
-                alt="Image 1"
-                className="rounded-full"
-              />
-            </div>
-            <div className="absolute bottom-10 left-50 transform translate-x-1/2 translate-y-1/2 w-40 h-48 shadow-lg">
-              <img
-                src={aboutData?.img}
-                alt="Image 3"
-                className="object-cover w-full h-full rounded-lg"
-              />
-            </div>
-          </div>
-          <div>
-            <button className="bg-blue-900 text-xl font-bold text-white mt-12 rounded-full px-2 py-1">Our Values</button>
-            <p className="text-4xl font-bold text-black mt-6">
-              {
-                aboutData?.valuesTitle
-              }
-            </p>
-            <p className="text-black mt-4 leading-relaxed text-justify text-lg">
-              {
-                aboutData?.valueDes
-              }
-            </p>
-          </div>
+        {/* Mission Card */}
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h2 className="text-2xl font-bold text-blue-600 mb-4">Mission</h2>
+          <p className="text-gray-700 text-justify ">
+            Our mission is to be the No.1 Hostel service provider in Dhaka City by providing a clean, comfortable and affordable accommodation with superior customer service with assurance of Discipline, Security, and Excellence in all amenities & care. Our team is extremely professional and willing to go above and beyond to provide the absolute best Hostel experience possible.
+          </p>
         </div>
-      </section>
-
-      <section>
-        <div>
-          <h1 className="text-center text-5xl text-black font-semibold m-10">
-            We Are Here To Help You
-          </h1>
-        </div>
-      </section>
-
-      <section className="py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4">
-          {/* Card 1 */}
-          {
-            aboutData?.aboutTeamImg.map((item, i) => {
-              return (
-                <div key={i} className="relative">
-                  <img
-                    src={item?.img}
-                    alt="John McNab"
-                    className="w-full h-full object-cover rounded-lg shadow-md"
-                  />
-                  {/* Overlay */}
-                  <div className="absolute left-10 bottom-2 bg-black bg-opacity-50 rounded-lg flex flex-row justify-start items-center space-x-4 px-2 py-1">
-                    <div className="text-center text-white">
-                      <p className="font-bold text-lg"> {item?.name} </p>
-                      <p className="text-sm">Position/{ item?.role}</p>
-                    </div>
-                    <div>
-                      <i className="text-white text-4xl">
-                        <Link to={item?.linkedinLink}><FaLinkedin /></Link>
-                      </i>
-                    </div>
-                  </div>
-                </div>
-              )
-            })
-          }
-
-        </div>
-      </section>
+      </div>
     </div>
   );
 };
