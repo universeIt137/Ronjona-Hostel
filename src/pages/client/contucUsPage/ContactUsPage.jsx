@@ -70,13 +70,14 @@ const ContactUsPage = () => {
             Ronjona Girls Hostel
           </h2>
           <p className="text-gray-600">
-            <strong>Location:</strong> 123, Main Street, City, Country
+            <strong>Location:</strong> House No # 44, Road No # 13, Sector # 12
+            Uttara, Dhaka-1230
           </p>
           <p className="text-gray-600">
-            <strong>Phone:</strong> +123-456-7890
+            <strong>Phone:</strong> +88 0 1 7 7 7 1 7 7 7 7 1
           </p>
           <p className="text-gray-600">
-            <strong>Email:</strong> info@ronjonahostel.com
+            <strong>Email:</strong> ronjonawomenshostel@gmail.com
           </p>
         </div>
 

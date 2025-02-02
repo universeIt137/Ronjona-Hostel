@@ -209,7 +209,7 @@ const router = createBrowserRouter([
     // Dashboard related routes 
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: <PrivateRoute role={"admin"} ><DashboardLayout /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard',
