@@ -45,7 +45,10 @@ const Faq = () => {
         <h2 className="lg:text-6xl text-center mb-12 italic" data-aos="fade-up">
           Frequently Asked Questions
         </h2>
-        <div className="bg-[#85919A] h-[80vh] flex flex-col justify-center items-start px-8 text-white">
+        <div
+          className="h-[60vh]  flex flex-col justify-center items-start px-8 text-white bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://res.cloudinary.com/dnvmj9pvk/image/upload/v1727492547/course-images/p5gcvttzauhtt7dggh3f.jpg')" }}
+        >
           <h1 className="text-4xl font-semibold mb-4 italic" data-aos="fade-up">
             Special Offers For Pandemic Situation!
           </h1>
@@ -54,7 +57,7 @@ const Faq = () => {
           </h3>
           <a
             href="#"
-            className="px-6 py-3 bg-transparent rounded border border-[#97509F] text-white hover:bg-[#97509F]   hover:text-white transition"
+            className="px-6 py-3 bg-transparent rounded border border-[#97509F] text-white hover:bg-[#97509F] hover:text-white transition"
             data-aos="fade-up"
           >
             Book Your Seat Earlier
