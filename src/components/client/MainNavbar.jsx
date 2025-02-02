@@ -76,7 +76,7 @@ const MainNavbar = () => {
                                     <NavLink NavLink to={"/about"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
                                     {/* <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink> */}
                                     <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision & Mission</NavLink>
-                                    <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Info</NavLink>
+                                    <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Speech</NavLink>
                                     <NavLink NavLink to={"/border-review"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Review</NavLink>
                                 </div>
                             )}
@@ -192,7 +192,7 @@ const MainNavbar = () => {
                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
                                     onClick={() => setIsOpen(false)} // Close drawer on click
                                 >
-                                    Management Info
+                                    Management Speech
                                 </NavLink>
                                 <NavLink
                                     to="/border-review"
@@ -227,9 +227,9 @@ const MainNavbar = () => {
                     >
                         FAQ
                     </NavLink>
-                    
 
-                    
+
+
 
                     {/* Gallery dropdown */}
                     <div className="py-2">

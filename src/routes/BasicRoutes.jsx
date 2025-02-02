@@ -209,7 +209,7 @@ const router = createBrowserRouter([
     // Dashboard related routes 
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+        element: <DashboardLayout />,
         children: [
             {
                 path: '/dashboard',
@@ -414,7 +414,7 @@ const router = createBrowserRouter([
                 element: <RefundUpload></RefundUpload>
             },
             {
-                path: "booking-from",
+                path: "manage-booking-from",
                 element: <ManageBookingPackages></ManageBookingPackages>
             },
 

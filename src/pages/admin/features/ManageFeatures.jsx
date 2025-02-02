@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import formatDateTime from '../../../hooks/useDateTime';
 import { uploadImg } from '../../../hooks/UploadImage';
+import { useNavigate } from 'react-router-dom';
+import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
 
 
 const ManageFeatures = () => {
@@ -23,13 +25,15 @@ const ManageFeatures = () => {
     };
 
 
-    const { data: features = [], refetch } = useQuery({
+    const { data: features = [], refetch ,isLoading} = useQuery({
         queryKey: ['features'],
         queryFn: async () => {
             const res = await axiosPublic.get('/getAllFeatures');
             return res.data.data;
         }
     })
+
+    const navigate = useNavigate();
 
     // console.log(locations)
 
@@ -67,6 +71,7 @@ const ManageFeatures = () => {
                     }
 
                 } catch (error) {
+                    navigate("/admin-login")
                     Swal.fire({
                         position: "center",
                         icon: "error",
@@ -114,6 +119,7 @@ const ManageFeatures = () => {
             document.getElementById('my_modal_1').close();
             form.reset();
         } catch (error) {
+            navigate("/admin-login")
             console.error('Error updating user role:', error);
             alert('Failed to update user role');
         }
@@ -124,6 +130,14 @@ const ManageFeatures = () => {
         // setRole(user.role); // Set initial role value
         document.getElementById('my_modal_1').showModal();
     };
+
+    if (isLoading) {
+        return (
+            <div>
+                <SkeletonLoader></SkeletonLoader>
+            </div>
+        )
+    }
 
     return (
         <div>

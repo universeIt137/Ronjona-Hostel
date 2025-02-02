@@ -47,7 +47,9 @@ const KeyFeatures = () => {
           <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg">
             {keyFeaturesDatas?.features?.map((item, i) => (
               <li key={i} className="flex items-start gap-4">
-                <FaRegDotCircle className="text-[#A020BA] mt-1 text-lg lg:text-xl" />
+                <div>
+                  <FaRegDotCircle className="text-[#A020BA] mt-1 text-xl " />
+                </div>
                 <span>{item?.title}</span>
               </li>
             ))}
@@ -62,7 +64,9 @@ const KeyFeatures = () => {
           <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg">
             {keyFeaturesDatas?.facilities?.map((item, i) => (
               <li key={i} className="flex items-start gap-4">
-                <FaRegDotCircle className="text-[#A020BA] mt-1 text-lg lg:text-xl" />
+                <div>
+                  <FaRegDotCircle className="text-[#A020BA] mt-1 text-xl " />
+                </div>
                 <span>{item?.title}</span>
               </li>
             ))}

@@ -183,7 +183,7 @@ const AdminSidebar = () => {
                         </Link>
 
 
-                        <Link to={'/dashboard/booking-from'}>
+                        <Link to={'/dashboard/manage-booking-from'}>
                             <Sidebar.Item icon={FcPrivacy}>
                                 Booking Packages
                             </Sidebar.Item>
