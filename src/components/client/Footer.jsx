@@ -37,7 +37,8 @@ const Footer = () => {
                                 </li>
                                 <li className='py-2'>
                                     <Link Link to="#" className=''>
-                                        405, 4th Floor, The Summit Business Bay, Near WEH Metro Station, Gundavali, Andheri-Kurla Road, Andheri East, Mumbai - 400 093, Maharashtra, India.
+                                        House No # 44, Road No # 13, Sector # 12
+                                        Uttara, Dhaka-1230
                                     </Link>
                                 </li>
                                 <li className='py-2'>CIN: U55209MH2019PTC325971</li>
@@ -52,23 +53,21 @@ const Footer = () => {
                         {/* Column 2 */}
                         <div>
                             <ul>
-                                <li><Link  to="/all-packages">All Hostels</Link></li>
-                                <li><Link  to="/testmonial">Testimonials</Link></li>
-                                <li><Link  to="/image-gallery">Gallery</Link></li>
-                                <li><Link  to="/faq">FAQ</Link></li>
-                                <li><Link  to="#">Blog</Link></li>
-                                <li><Link to="#">Site Map</Link></li>
+                                <li><Link to="/about">About Us</Link></li>
+                                <li><Link to="/vission">Vission & Mission</Link></li>
+                                <li><Link to="/management-info">Management Speech</Link></li>
+                                <li><Link to="/border-review">Review</Link></li>
                             </ul>
                         </div>
 
                         {/* Column 3 */}
                         <div>
                             <ul>
-                                <li><Link  to="#">Hive Luxe</Link></li>
-                                <li><Link  to="#">Hive Connect</Link></li>
-                                <li><Link  to="#">Careers</Link></li>
-                                <li><Link  to="#">Partner with Us</Link></li>
-                                <li><Link  to="#">Investors</Link></li>
+                                <li><Link to="#">Hive Luxe</Link></li>
+                                <li><Link to="#">Hive Connect</Link></li>
+                                <li><Link to="#">Careers</Link></li>
+                                <li><Link to="#">Partner with Us</Link></li>
+                                <li><Link to="#">Investors</Link></li>
                             </ul>
                         </div>
 
