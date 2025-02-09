@@ -26,6 +26,11 @@ const Footer = () => {
                         {/* Column 1 */}
                         <div className='' >
                             <ul>
+                                <li className='flex gap-2 py-4'>
+                                    <FaSquareFacebook className='text-3xl hover:text-[#812F8C] transition-all ' />
+                                    <FaInstagramSquare className='text-3xl hover:text-[#812F8C] ' />
+                                    <FaLinkedin className='text-3xl hover:text-[#812F8C] ' />
+                                </li>
                                 <li className='flex gap-2 py-2'>
                                     <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736053908/Ronjona/xzbrgqzomenlw5t6n7qo.png" alt="Phone" />
                                     <Link to="#">88 0 1 7 7 7 1 7 7 7 7 1
@@ -41,12 +46,8 @@ const Footer = () => {
                                         Uttara, Dhaka-1230
                                     </Link>
                                 </li>
-                                <li className='py-2'>CIN: U55209MH2019PTC325971</li>
-                                <li className='flex gap-2 py-4'>
-                                    <FaSquareFacebook className='text-2xl' />
-                                    <FaInstagramSquare className='text-2xl' />
-                                    <FaLinkedin className='text-2xl' />
-                                </li>
+
+
                             </ul>
                         </div>
 
@@ -63,21 +64,25 @@ const Footer = () => {
                         {/* Column 3 */}
                         <div>
                             <ul>
-                                <li><Link to="#">Hive Luxe</Link></li>
-                                <li><Link to="#">Hive Connect</Link></li>
-                                <li><Link to="#">Careers</Link></li>
-                                <li><Link to="#">Partner with Us</Link></li>
-                                <li><Link to="#">Investors</Link></li>
+                                <li><Link to="/all-packages">Our Our Packages</Link></li>
+                                <li><Link to="/our-facility">Our Facility</Link></li>
+                                <li><Link to="/faq">FAQ</Link></li>
+                                <li><Link to="/our-branch">Our Branches</Link></li>
+                                <li><Link to="/image-gallery">Image Gallery</Link></li>
+                                <li><Link to="/video-gallery">Video Gallery</Link></li>
+                                <li><Link to="/contact-us">Contact Us</Link></li>
                             </ul>
                         </div>
 
                         {/* Column 4 */}
                         <div className='' >
                             <ul>
-                                <li><NavLink to="#">Investors</NavLink></li>
-                                <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li>
-                                <li><NavLink to="/privacy">Privacy Policy</NavLink></li>
-                                <li><NavLink to="/refund">Refund Policy</NavLink></li>
+                                <li><NavLink to="/booking-from">Booking From</NavLink></li>
+                                <li><NavLink to="/hotline">Hotline</NavLink></li>
+                                <li><NavLink to="/address">Address</NavLink></li>
+                                {/* <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li> */}
+                                {/* <li><NavLink to="/privacy">Privacy Policy</NavLink></li> */}
+                                {/* <li><NavLink to="/refund">Refund Policy</NavLink></li> */}
                                 <li><Link to={"/admin-login"}>Admin Login</Link></li>
                                 <li><Link to={"/admin-register"}>Admin Register</Link></li>
                             </ul>

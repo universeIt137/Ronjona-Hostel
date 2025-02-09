@@ -4,14 +4,13 @@ import { createAlert } from "../../../helper/createAlert";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
-import { uploadImg } from "../../../hooks/UploadImage";
+import { Editor } from "@tinymce/tinymce-react"; // TinyMCE Editor
 
 const UploadAboutData = () => {
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         shortDes: "",
-        img: "",
     });
 
     // 🔹 Fetch Default Data from Backend on Component Mount
@@ -30,21 +29,9 @@ const UploadAboutData = () => {
         fetchData();
     }, []);
 
-    // 🔹 Handle Input Change
-    const handleInputChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    // 🔹 Handle Image Upload
-    const handleUpload = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-
-        const uploadedImageUrl = await uploadImg(file); // Upload image via `uploadImg`
-        setFormData((prevState) => ({
-            ...prevState,
-            img: uploadedImageUrl, // ✅ Save uploaded image URL
-        }));
+    // 🔹 Handle TinyMCE Input Change
+    const handleEditorChange = (content) => {
+        setFormData((prev) => ({ ...prev, shortDes: content }));
     };
 
     // 🔹 Handle Form Submission
@@ -83,35 +70,21 @@ const UploadAboutData = () => {
             </Helmet>
             <h1 className="text-2xl font-bold mb-4">About Section</h1>
             <form onSubmit={handleSubmit} className="space-y-6">
-                {/* 🔹 Short Description */}
-                <div className="mb-4">
-                    <label htmlFor="shortDes" className="block font-bold mb-2">
-                        Short Description
-                    </label>
-                    <textarea
-                        id="shortDes"
-                        name="shortDes"
-                        value={formData.shortDes || ""}
-                        onChange={handleInputChange}
-                        rows={9}
-                        placeholder="Write a short description"
-                        className="w-full p-2 border rounded-lg"
-                    ></textarea>
-                </div>
 
-                {/* 🔹 Show Uploaded Image */}
-                {formData.img && (
-                    <div className="mb-4">
-                        <img src={formData.img} alt="Uploaded" className="w-24 h-24 object-cover rounded-lg mb-2" />
-                    </div>
-                )}
-
-                {/* 🔹 Image Upload */}
-                <div className="mb-4">
-                    <label htmlFor="img" className="block font-bold mb-2">
-                        Upload Image
-                    </label>
-                    <input id="img" type="file" onChange={handleUpload} className="w-full border rounded-lg" />
+                {/* 🔹 TinyMCE Editor for Short Description */}
+                
+                <div className="p-2 w-full mb-10 h-full">
+                    <label>Short Description</label>
+                    <Editor
+                        apiKey='atnary0we9a0nuqjzgtnpxyd0arpbwud7ocxkjxqjtaab3nm'
+                        value={formData.shortDes}
+                        init={{
+                            height: 500,
+                            toolbar:
+                                'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight | bullist numlist | removeformat',
+                        }}
+                        onEditorChange={handleEditorChange}
+                    />
                 </div>
 
                 {/* 🔹 Submit Button */}
