@@ -51,7 +51,7 @@ const VideoGallery = () => {
     }
 
     return (
-        <div className="px-4 md:px-0 w-11/12 mx-auto my-20">
+        <div className="px-4 md:px-0 w-11/12 mx-auto my-24">
             <Helmet>
                 <title>
                     Ronjona | Video Gallery Page
