@@ -3,6 +3,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import { createAlert } from "../../../helper/createAlert";
 import toast, { Toaster } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const UploadHotline = () => {
     const axiosPublic = useAxiosPublic();
@@ -23,7 +24,6 @@ const UploadHotline = () => {
         : {}; // Handle missing token gracefully
 
     const [formData, setFormData] = useState({
-        branchName: "",
         hotlineNumber: "",
     });
 
@@ -35,10 +35,7 @@ const UploadHotline = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!formData.branchName || !formData.hotlineNumber) {
-            toast.error("All fields are required!");
-            return;
-        }
+        
 
         try {
             let resp = await createAlert();
@@ -61,31 +58,16 @@ const UploadHotline = () => {
 
     return (
         <div className="max-w-md mx-auto bg-white p-6 my-32 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-semibold text-center mb-4">Branch Form</h2>
+            <Helmet>
+                <title>Dashboard | Upload Hotline</title>
+            </Helmet>
+            <h2 className="text-2xl font-semibold text-center mb-4">Hotline upload from</h2>
 
             {isLoading ? (
                 <p className="text-center text-gray-600">Loading branches...</p>
             ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    {/* Branch Name Dropdown */}
-                    <div>
-                        <label className="block text-gray-700 font-medium mb-1">
-                            Branch Name
-                        </label>
-                        <select
-                            name="branchName"
-                            value={formData.branchName}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#853493]"
-                        >
-                            <option value="">Select a Branch</option>
-                            {branchData.map((branch, index) => (
-                                <option className="text-black" key={index} value={branch.branch}>
-                                    {branch.branch}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
+                    
 
                     {/* Hotline Number Input */}
                     <div>

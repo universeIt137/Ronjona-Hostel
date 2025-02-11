@@ -76,6 +76,8 @@ import FooterBookingFrom from "../pages/client/booking-from/FooterBookingFrom";
 import Hotline from "../pages/client/hotline/Hotline";
 import Address from "../pages/client/address/Address";
 import UploadHotline from "../pages/admin/hotline/UploadHotline";
+import ManageHotline from "../pages/admin/hotline/ManageHotline";
+import HotlineUpdate from "../pages/admin/hotline/HotlineUpdate";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -437,6 +439,14 @@ const router = createBrowserRouter([
             {
                 path: "upload-hotline",
                 element : <UploadHotline></UploadHotline>
+            },
+            {
+                path: "manage-hotline",
+                element : <ManageHotline></ManageHotline>
+            },
+            {
+                path: "hotline-update/:id",
+                element : <HotlineUpdate></HotlineUpdate>
             }
 
 
