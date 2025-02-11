@@ -91,7 +91,7 @@ const PhotoGallery = () => {
                     {!showAll && imgList.length > 10 && (
                         <button
                             onClick={() => setShowAll(true)}
-                            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition mr-4"
+                            className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition mr-4"
                         >
                             Show More
                         </button>
@@ -99,7 +99,7 @@ const PhotoGallery = () => {
                     {showAll && (
                         <button
                             onClick={() => setShowAll(false)}
-                            className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition"
+                            className="bg-[#853493] text-white px-6 py-2 rounded-lg  transition"
                         >
                             Show Less
                         </button>

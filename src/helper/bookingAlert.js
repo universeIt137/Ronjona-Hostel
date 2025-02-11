@@ -11,7 +11,7 @@ export const bookingAlert = async () => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, booking this packages!"
+            confirmButtonText: "Yes, i am booking this!"
         })
     )
 }

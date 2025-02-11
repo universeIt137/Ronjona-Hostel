@@ -72,6 +72,9 @@ import RefundUpload from "../pages/admin/refund/RefundUpload";
 import Refund from "../pages/admin/refund/Refund";
 import Testemonial from "../components/client/testimonial/Testimonial";
 import ManageBookingPackages from "../pages/admin/booking-pages/ManageBookingPackages";
+import FooterBookingFrom from "../pages/client/booking-from/FooterBookingFrom";
+import Hotline from "../pages/client/hotline/Hotline";
+import Address from "../pages/client/address/Address";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -189,6 +192,16 @@ const router = createBrowserRouter([
             {
                 path: "testmonial",
                 element: <Testemonial></Testemonial>
+            },
+            {
+                path: "booking-froms",
+                element : <FooterBookingFrom></FooterBookingFrom>
+            }, {
+                path: "hotline",
+                element : <Hotline></Hotline>
+            }, {
+                path: "address",
+                element : <Address></Address>
             }
 
 

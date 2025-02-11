@@ -12,7 +12,7 @@ const MissionVissionForm = () => {
 
     // Fetch mission and vision data
     const { data: missionVissionData = {}, refetch, isLoading } = useQuery({
-        queryKey: ["whyChooseData"],
+        queryKey: ["missionVissionData"],
         queryFn: async () => {
             const res = await axiosPublic.get("/vission-mission");
             return res.data.data[0];

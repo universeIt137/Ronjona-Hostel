@@ -67,7 +67,7 @@ const ContactUsPage = () => {
 
           {/* Content */}
           <h2 className="text-4xl font-semibold text-gray-700">
-            Ronjona Girls Hostel
+            Ronjona Female Hostel
           </h2>
           <p className="text-gray-600">
             <strong>Location:</strong> House No # 44, Road No # 13, Sector # 12
