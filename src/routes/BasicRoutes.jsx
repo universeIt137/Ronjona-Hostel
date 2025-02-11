@@ -78,6 +78,8 @@ import Address from "../pages/client/address/Address";
 import UploadHotline from "../pages/admin/hotline/UploadHotline";
 import ManageHotline from "../pages/admin/hotline/ManageHotline";
 import HotlineUpdate from "../pages/admin/hotline/HotlineUpdate";
+import UploadAddress from "../pages/admin/address/UploadAddress";
+import ManageAddress from "../pages/admin/address/ManageAddress";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -443,6 +445,20 @@ const router = createBrowserRouter([
             {
                 path: "manage-hotline",
                 element : <ManageHotline></ManageHotline>
+            },
+            {
+                path: "hotline-update/:id",
+                element : <HotlineUpdate></HotlineUpdate>
+            },
+            // address
+
+            {
+                path: "upload-address",
+                element : <UploadAddress></UploadAddress>
+            },
+            {
+                path: "manage-address",
+                element : <ManageAddress></ManageAddress>
             },
             {
                 path: "hotline-update/:id",
