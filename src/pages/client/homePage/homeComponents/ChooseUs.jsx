@@ -23,7 +23,7 @@ const ChooseUs = () => {
     return (
         <div className=" my-10 w-11/12 mx-auto  px-4 md:px-0 md:mx-auto">
             <div className='  mb-10 '>
-                <p className="text-2xl md:text-5xl hover:underline font-bold text-black">
+                <p className="text-2xl md:text-5xl hover:underline font-bold text-[#A020BA]">
                     {
                         whyChooseData?.title
                     }
@@ -47,7 +47,7 @@ const ChooseUs = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-1/2 mt-6 lg:mt-10 mr-0 lg:mr-8">
-                    <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-black">WHY YOU WITH RONJONA</p>
+                    <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-[#A020BA]">WHY YOU WITH RONJONA</p>
                     <p className="text-sm lg:text-lg text-justify">
                         {
                             whyChooseData?.des.slice(0,500)

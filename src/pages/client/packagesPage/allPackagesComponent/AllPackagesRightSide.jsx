@@ -299,8 +299,8 @@ const AllPackagesRightSide = () => {
             {/* Packages Section */}
             <div className='w-full lg:w-3/4 p-5'>
                 <div className='text-center mb-10 font-bold'>
-                    <p className='text-2xl lg:text-4xl '>Our All Packages</p>
-                    <p className='mt-4 text-sm lg:text-xl'>
+                    <p className='text-2xl lg:text-4xl text-[#A020BA] '>Our All Packages</p>
+                    <p className='mt-4 text-sm lg:text-xl text-[#A020BA] '>
                         Choose your preferred package now and book it within the specified time frame.
                     </p>
                 </div>
