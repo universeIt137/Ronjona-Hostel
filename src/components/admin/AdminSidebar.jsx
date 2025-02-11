@@ -457,6 +457,33 @@ const AdminSidebar = () => {
                         </Sidebar.Collapse>
 
 
+                        {/* hotline  */}
+
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="Hotline"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+
+
+                            <Link to={'/dashboard/upload-hotline'}>
+                                <Sidebar.Item>
+                                    Upload Hotline
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/manage-hotline'}>
+                                <Sidebar.Item>
+                                    Manage HotLine
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+
 
 
 

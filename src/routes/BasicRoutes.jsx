@@ -75,6 +75,7 @@ import ManageBookingPackages from "../pages/admin/booking-pages/ManageBookingPac
 import FooterBookingFrom from "../pages/client/booking-from/FooterBookingFrom";
 import Hotline from "../pages/client/hotline/Hotline";
 import Address from "../pages/client/address/Address";
+import UploadHotline from "../pages/admin/hotline/UploadHotline";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -430,6 +431,13 @@ const router = createBrowserRouter([
                 path: "manage-booking-from",
                 element: <ManageBookingPackages></ManageBookingPackages>
             },
+
+            // hotline
+
+            {
+                path: "upload-hotline",
+                element : <UploadHotline></UploadHotline>
+            }
 
 
         ]
