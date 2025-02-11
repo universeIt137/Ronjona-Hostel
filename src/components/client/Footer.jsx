@@ -83,8 +83,6 @@ const Footer = () => {
                                 {/* <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li> */}
                                 {/* <li><NavLink to="/privacy">Privacy Policy</NavLink></li> */}
                                 {/* <li><NavLink to="/refund">Refund Policy</NavLink></li> */}
-                                <li><Link to={"/admin-login"}>Admin Login</Link></li>
-                                <li><Link to={"/admin-register"}>Admin Register</Link></li>
                             </ul>
                         </div>
 

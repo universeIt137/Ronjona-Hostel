@@ -71,7 +71,7 @@ const PhotoGallery = () => {
                 <Helmet>
                     <title>Ronjona | Img Gallery Page</title>
                 </Helmet>
-                <h1 className="text-center text-black lg:text-4xl font-bold">Our Photo Gallery</h1>
+                <h1 className="text-center text-[#A020BA] lg:text-4xl font-bold">Our Photo Gallery</h1>
 
                 {/* Gallery Images */}
                 <div className="gallery-container mt-4 flex flex-col lg:grid grid-cols-2 lg:grid-cols-3 gap-4 p-4">

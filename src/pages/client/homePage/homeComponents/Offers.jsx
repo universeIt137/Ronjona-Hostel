@@ -57,7 +57,7 @@ const Offers = () => {
             </Helmet>
             {/* Top Section */}
             <div className='mb-6 font-bold flex justify-between items-center'>
-                <p className="text-2xl md:text-4xl hover:underline text-black">Offers For You</p>
+                <p className="text-2xl md:text-4xl hover:underline text-[#A020BA]">Offers For You</p>
                 <div className='flex items-center gap-8 me-8 text-xl'>
                     <IoArrowBackOutline onClick={handlePrev} className="cursor-pointer" />
                     <IoArrowForward onClick={handleNext} className="cursor-pointer" />

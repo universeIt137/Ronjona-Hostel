@@ -58,7 +58,7 @@ const VideoGallery = () => {
                 </title>
             </Helmet>
             <div className="mb-10">
-                <p className="text-2xl md:text-4xl hover:underline font-bold ">Video Gallery</p>
+                <p className="text-2xl md:text-4xl hover:underline font-bold text-[#A020BA] ">Video Gallery</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                 {displayedVideos.map((video, index) => (

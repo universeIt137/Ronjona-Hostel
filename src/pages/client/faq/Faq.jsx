@@ -42,7 +42,7 @@ const Faq = () => {
         <title>Ronjona | FAQ page</title>
       </Helmet>
       <div>
-        <h2 className="lg:text-6xl text-center mb-12 italic" data-aos="fade-up">
+        <h2 className="lg:text-6xl text-center text-[#A020BA]  mb-12 italic" data-aos="fade-up">
           Frequently Asked Questions
         </h2>
         <div
@@ -64,7 +64,7 @@ const Faq = () => {
           </a>
         </div>
         <div className="px-4 py-8">
-          <h1 className="text-6xl text-center mb-8 italic" data-aos="fade-up">
+          <h1 className="text-6xl text-center text-[#A020BA]  mb-8 italic" data-aos="fade-up">
             Frequently Asked Questions
           </h1>
 

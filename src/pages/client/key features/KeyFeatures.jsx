@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaRegDotCircle } from "react-icons/fa";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const KeyFeatures = () => {
   const [showMoreImages, setShowMoreImages] = useState(false);
@@ -23,7 +24,7 @@ const KeyFeatures = () => {
   const facilities = keyFeaturesData?.facilities ? (showMoreFacilities ? keyFeaturesData.facilities : keyFeaturesData.facilities.slice(0, 4)) : [];
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto  ">
       {/* Header */}
       <div className="flex justify-center my-8">
         <button className="bg-[#A020BA] px-4 py-2 lg:px-8 lg:py-4 text-xl lg:text-4xl text-white rounded-md hover:bg-purple-700 transition duration-300">
@@ -59,7 +60,7 @@ const KeyFeatures = () => {
       )}
 
       {/* Features and Facilities Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-4 lg:p-8 bg-gray-50">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-4 lg:p-8 bg-[#A020BA] text-white ">
         {/* Features Section */}
         <div>
           <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-[#A020BA]">Features</h1>
@@ -75,12 +76,14 @@ const KeyFeatures = () => {
           {/* Show More / Show Less for Features */}
           {keyFeaturesData?.features?.length > 4 && (
             <div className="mt-4">
-              <button
-                onClick={() => setShowMoreFeatures(!showMoreFeatures)}
-                className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition"
-              >
-                {showMoreFeatures ? "Show Less" : "Show More"}
-              </button>
+              <Link className="ml-10" to="/our-facility">
+                <button
+                  onClick={() => setShowMoreFacilities(!setShowMoreFeatures)}
+                  className="text-white px-6 py-2 rounded-lg bg-[#853493] transition"
+                >
+                  <Link to={"/our-facility"}>Show More</Link>
+                </button>
+              </Link>
             </div>
           )}
         </div>
@@ -100,12 +103,14 @@ const KeyFeatures = () => {
           {/* Show More / Show Less for Facilities */}
           {keyFeaturesData?.facilities?.length > 4 && (
             <div className="mt-4">
-              <button
-                onClick={() => setShowMoreFacilities(!showMoreFacilities)}
-                className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition"
-              >
-                {showMoreFacilities ? "Show Less" : "Show More"}
-              </button>
+              <Link className="ml-10" to="/our-facility">
+                <button
+                  onClick={() => setShowMoreFacilities(!showMoreFacilities)}
+                  className="text-white px-6 py-2 rounded-lg bg-[#853493] transition"
+                >
+                  <Link to={"/our-facility"}>Show More</Link>
+                </button>
+              </Link>
             </div>
           )}
         </div>
