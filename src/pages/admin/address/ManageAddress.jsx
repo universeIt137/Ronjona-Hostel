@@ -12,7 +12,7 @@ const ManageAddress = () => {
     const { data: hotlineData = [], refetch, isLoading } = useQuery({
         queryKey: ["getAllHotlines"],
         queryFn: async () => {
-            const res = await axiosPublic.get("/all-hotline");
+            const res = await axiosPublic.get("/all-address");
             return res.data.data;
         },
     });
@@ -22,15 +22,15 @@ const ManageAddress = () => {
         try {
             let resp = await deleteAlert();
             if (resp.isConfirmed) {
-                let res = await axiosPublic.delete(`/hotline-delete/${id}`);
+                let res = await axiosPublic.delete(`/address-delete/${id}`);
                 if (res) {
-                    toast.success("Hotline deleted successfully");
+                    toast.success("Address deleted successfully");
                     refetch(); // Refresh data
                 }
             }
 
         } catch (error) {
-            toast.error("Failed to delete hotline");
+            toast.error("Failed to delete address");
         }
     };
 
@@ -38,7 +38,7 @@ const ManageAddress = () => {
 
 
     const handleUpdate = (id) => {
-        navigate(`/dashboard/hotline-update/${id}`)
+        navigate(`/dashboard/address-update/${id}`)
     }
 
     return (
@@ -52,7 +52,7 @@ const ManageAddress = () => {
                     <table className="w-full border-collapse border border-gray-300">
                         <thead>
                             <tr className="bg-gray-200">
-                                <th className="border border-gray-300 px-4 py-2">Hotline Number</th>
+                                <th className="border border-gray-300 px-4 py-2">Address</th>
                                 <th className="border border-gray-300 px-4 py-2">Created At</th>
                                 <th className="border border-gray-300 px-4 py-2">Action</th>
                             </tr>
@@ -67,7 +67,7 @@ const ManageAddress = () => {
                             ) : (
                                 hotlineData.map((item, index) => (
                                     <tr key={index} className="text-center">
-                                        <td className="border border-gray-300 px-4 py-2">{item.hotlineNumber}</td>
+                                        <td className="border border-gray-300 px-4 py-2">{item.name}</td>
                                         <td className="border border-gray-300 px-4 py-2">
                                             {new Date(item.createdAt).toLocaleDateString()}
                                         </td>

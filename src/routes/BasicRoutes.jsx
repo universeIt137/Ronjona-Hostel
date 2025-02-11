@@ -80,6 +80,7 @@ import ManageHotline from "../pages/admin/hotline/ManageHotline";
 import HotlineUpdate from "../pages/admin/hotline/HotlineUpdate";
 import UploadAddress from "../pages/admin/address/UploadAddress";
 import ManageAddress from "../pages/admin/address/ManageAddress";
+import UpdateAddress from "../pages/admin/address/UpdateAddress";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -461,8 +462,8 @@ const router = createBrowserRouter([
                 element : <ManageAddress></ManageAddress>
             },
             {
-                path: "hotline-update/:id",
-                element : <HotlineUpdate></HotlineUpdate>
+                path: "address-update/:id",
+                element : <UpdateAddress></UpdateAddress>
             }
 
 
