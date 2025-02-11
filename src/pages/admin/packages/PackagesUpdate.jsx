@@ -14,12 +14,13 @@ const PackagesUpdate = () => {
     const [formData, setFormData] = useState({
         title: "",
         price: "",
-        locationLink: "",
         video: "",
         img: [],
         desc: "",
-        features: [{ featilityTitle: "", featilityImg: "" }],
-        branchId: "",
+        features: [{ featureTitle: "", featureImg: "" }],
+        branch: "",
+        location: "",
+        seatAvalible: ""
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -30,9 +31,16 @@ const PackagesUpdate = () => {
             return res.data?.data || [];
         },
     });
+    const { data: location = [] } = useQuery({
+        queryKey: ["location"],
+        queryFn: async () => {
+            const res = await axiosPublic.get("/getAllLocations");
+            return res.data?.data || [];
+        },
+    });
 
     const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/<your-cloud-name>/image/upload";
-    const UPLOAD_PRESET = "<your-upload-preset>";
+    const UPLOAD_PRESET = "dxvacpgrv";
 
     // Fetch package data
     useEffect(() => {
@@ -142,7 +150,6 @@ const PackagesUpdate = () => {
         }));
     };
 
-    console.log(formData)
 
     // Handle form submission
     const handleSubmit = async (e) => {
@@ -190,7 +197,7 @@ const PackagesUpdate = () => {
                 <div className="mb-4">
                     <label htmlFor="price" className="block font-bold mb-2">Price</label>
                     <input
-                        type="number"
+                        type="text"
                         id="price"
                         name="price"
                         value={formData.price}
@@ -198,22 +205,26 @@ const PackagesUpdate = () => {
                         className="w-full p-2 border rounded-lg"
                     />
                 </div>
-                <div className="mb-4">
-                    <label htmlFor="locationLink" className="block font-bold mb-2">Location Link</label>
-                    <input
-                        type="url"
-                        id="locationLink"
-                        name="locationLink"
-                        value={formData.locationLink}
+
+                {/* Seat Availability Dropdown */}
+                <div>
+                    <label className="block text-gray-700 font-medium">Seat Availability</label>
+                    <select
+                        name="seatAvailable"
+                        value={formData.seatAvalible}
                         onChange={handleInputChange}
-                        className="w-full p-2 border rounded-lg"
-                    />
+                        className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
+                    >
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
                 </div>
+
                 <div className="mb-4">
                     <label className="block font-bold mb-2">Branch</label>
                     <select
-                        name="branchId"
-                        value={formData.branchId || ""}
+                        name="branch"
+                        value={formData.branch || ""}
                         onChange={handleInputChange}
                         className="w-full p-2 border rounded-lg"
                     >
@@ -221,6 +232,22 @@ const PackagesUpdate = () => {
                         {branchNames.map((branch) => (
                             <option key={branch._id} value={branch._id}>
                                 {branch.branch}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div className="mb-4">
+                    <label className="block font-bold mb-2">Location</label>
+                    <select
+                        name="location"
+                        value={formData.location || ""}
+                        onChange={handleInputChange}
+                        className="w-full p-2 border rounded-lg"
+                    >
+                        <option value="" disabled>Select a location</option>
+                        {location.map((branch) => (
+                            <option key={branch._id} value={branch._id}>
+                                {branch.location}
                             </option>
                         ))}
                     </select>
@@ -247,18 +274,18 @@ const PackagesUpdate = () => {
                         <input
                             type="text"
                             placeholder="Feature Title"
-                            value={feature.featilityTitle}
-                            onChange={(e) => handleArrayChange(e, index, "features", "featilityTitle")}
+                            value={feature.featureTitle}
+                            onChange={(e) => handleArrayChange(e, index, "features", "featureTitle")}
                             className="flex-1  border rounded-lg"
                         />
                         <input
                             type="file"
-                            onChange={(e) => handleUpload(e, "features", index, "featilityImg")}
+                            onChange={(e) => handleUpload(e, "features", index, "featureImg")}
                             className="flex-1 border-2 "
                         />
-                        {feature.featilityImg && (
+                        {feature.featureImg && (
                             <img
-                                src={feature.featilityImg}
+                                src={feature.featureImg}
                                 alt="Feature"
                                 className="w-16 h-16 rounded"
                             />
@@ -274,40 +301,12 @@ const PackagesUpdate = () => {
                 ))}
                 <button
                     type="button"
-                    onClick={() => handleAddItem("features", { featilityTitle: "", featilityImg: "" })}
+                    onClick={() => handleAddItem("features", { featureTitle: "", featureImg: "" })}
                     className="mt-4 p-2 bg-blue-500 text-white rounded"
                 >
                     Add Feature
                 </button>
-                <div className="mb-4">
-                    <label htmlFor="img" className="block font-bold mb-2">Package Images</label>
-                    <input
-                        type="file"
-                        id="img"
-                        name="img"
-                        multiple
-                        onChange={handleImageUpload}
-                        className="w-full p-2 border rounded-lg"
-                    />
-                    <div className="flex flex-wrap gap-4 mt-2">
-                        {formData.img.map((image, index) => (
-                            <div key={index} className="relative">
-                                <img
-                                    src={image}
-                                    alt={`Uploaded ${index + 1}`}
-                                    className="w-32 h-32 object-cover rounded-lg"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() => handleRemoveImage(index)}
-                                    className="absolute top-1 right-1 p-2 bg-blue-500 text-white rounded"
-                                >
-                                    X
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+
                 {/* Submit Button */}
                 <button
                     type="submit"

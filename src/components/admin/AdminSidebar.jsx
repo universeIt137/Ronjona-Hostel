@@ -457,6 +457,59 @@ const AdminSidebar = () => {
                         </Sidebar.Collapse>
 
 
+                        {/* hotline  */}
+
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="Hotline"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+
+
+                            <Link to={'/dashboard/upload-hotline'}>
+                                <Sidebar.Item>
+                                    Upload Hotline
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/manage-hotline'}>
+                                <Sidebar.Item>
+                                    Manage HotLine
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+                        {/* address  */}
+
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="Address"
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+
+
+                            <Link to={'/dashboard/upload-address'}>
+                                <Sidebar.Item>
+                                    Upload Address
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/manage-address'}>
+                                <Sidebar.Item>
+                                    Manage Address
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+
 
 
 
