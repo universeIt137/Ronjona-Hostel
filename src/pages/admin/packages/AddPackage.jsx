@@ -32,7 +32,7 @@ const AddPackage = () => {
         }
     });
 
-    console.log("payload is ",formData)
+    console.log("payload is ", formData)
 
     const handleDescriptionChange = (value) => {
         setFormData({ ...formData, description: value });
@@ -61,7 +61,7 @@ const AddPackage = () => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append("upload_preset", "ronjonaImg"); // Replace with your Cloudinary upload preset
-        formData.append('cloud_name', 'YOUR_CLOUD_NAME'); // Replace with your Cloudinary cloud name
+        formData.append('cloud_name', 'dxvacpgrv'); // Replace with your Cloudinary cloud name
 
         const response = await fetch(`https://api.cloudinary.com/v1_1/dxvacpgrv/image/upload`, {
             method: 'POST',
@@ -81,6 +81,7 @@ const AddPackage = () => {
         const location = form.location.value;
         const price = form.price.value;
         const video = form.video.value;
+        const seatAvalible = form.seatAvalible.value;
 
         setLoading(true);
 
@@ -108,9 +109,10 @@ const AddPackage = () => {
             video,
             features: updatedContents,
             img,
-            desc: formData.description
+            desc: formData.description,
+            seatAvalible
         };
-        console.log("payload is",payload)
+        console.log("payload is", payload)
 
         axiosPublic.post('/createPackage', payload)
             .then(() => {
@@ -175,6 +177,17 @@ const AddPackage = () => {
                                     {item?.location}
                                 </option>
                             ))}
+                        </select>
+                    </div>
+                    {/* Seat Availability Dropdown */}
+                    <div>
+                        <label className="block text-gray-700 font-medium">Seat Availability</label>
+                        <select
+                            name="seatAvalible"
+                            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
+                        >
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
                     </div>
                 </div>
