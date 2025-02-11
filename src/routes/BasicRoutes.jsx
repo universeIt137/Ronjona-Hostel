@@ -81,6 +81,7 @@ import HotlineUpdate from "../pages/admin/hotline/HotlineUpdate";
 import UploadAddress from "../pages/admin/address/UploadAddress";
 import ManageAddress from "../pages/admin/address/ManageAddress";
 import UpdateAddress from "../pages/admin/address/UpdateAddress";
+import AllAddress from "../pages/admin/address/AllAddress";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -208,7 +209,8 @@ const router = createBrowserRouter([
             }, {
                 path: "address",
                 element : <Address></Address>
-            }
+            },
+            
 
 
 

@@ -42,7 +42,7 @@ const ManageAddress = () => {
     }
 
     return (
-        <div className="max-w-4xl mx-auto my-10 bg-white p-6 rounded-lg shadow-lg">
+        <div className=" mx-auto my-10 bg-white p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold text-center mb-4">Manage Address</h2>
 
             {isLoading ? (

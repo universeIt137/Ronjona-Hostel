@@ -7,7 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 
 const AddPackage = () => {
-    const [contents, setContents] = useState([{ featilityTitle: '', featilityImg: '' }]);
+    const [contents, setContents] = useState([{ featureTitle: '', featureImg: '' }]);
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({ description: '' });
@@ -24,6 +24,16 @@ const AddPackage = () => {
         }
     });
 
+    const { data: location = [] } = useQuery({
+        queryKey: ['location'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/getAllLocations');
+            return res.data.data;
+        }
+    });
+
+    console.log("payload is ",formData)
+
     const handleDescriptionChange = (value) => {
         setFormData({ ...formData, description: value });
     };
@@ -36,7 +46,7 @@ const AddPackage = () => {
     };
 
     const addContent = () => {
-        setContents([...contents, { featilityTitle: '', featilityImg: '' }]);
+        setContents([...contents, { featureTitle: '', featureImg: '' }]);
     };
 
     const removeContent = (index) => {
@@ -68,18 +78,18 @@ const AddPackage = () => {
 
         const title = form.title.value;
         const branch = form.branch.value;
+        const location = form.location.value;
         const price = form.price.value;
         const video = form.video.value;
-        const locationLink = form.locationLink.value;
 
         setLoading(true);
 
         // Upload feature images
         const updatedContents = await Promise.all(
             contents.map(async (content) => {
-                if (content.featilityImg instanceof File) {
-                    const uploadedImgUrl = await uploadToCloudinary(content.featilityImg);
-                    return { ...content, featilityImg: uploadedImgUrl };
+                if (content.featureImg instanceof File) {
+                    const uploadedImgUrl = await uploadToCloudinary(content.featureImg);
+                    return { ...content, featureImg: uploadedImgUrl };
                 }
                 return content;
             })
@@ -92,14 +102,15 @@ const AddPackage = () => {
 
         const payload = {
             title,
+            location,
             branch,
             price,
             video,
             features: updatedContents,
             img,
-            locationLink,
             desc: formData.description
         };
+        console.log("payload is",payload)
 
         axiosPublic.post('/createPackage', payload)
             .then(() => {
@@ -154,6 +165,18 @@ const AddPackage = () => {
                             ))}
                         </select>
                     </div>
+                    <div className="">
+                        <label>Select Location</label>
+                        <select name="location" className="select select-bordered w-full mb-2
+                         ">
+                            <option disabled selected>Select Location</option>
+                            {location?.map((item) => (
+                                <option value={item._id} key={item._id}>
+                                    {item?.location}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-3">
@@ -164,16 +187,6 @@ const AddPackage = () => {
                             name="price"
                             className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                             placeholder="Enter Price"
-                            required
-                        />
-                    </div>
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-semibold mb-2">Location Url</label>
-                        <input
-                            type="text"
-                            name="locationLink"
-                            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
-                            placeholder="Enter Location Url"
                             required
                         />
                     </div>
@@ -196,8 +209,8 @@ const AddPackage = () => {
                             <div key={index} className="flex gap-4 mb-2">
                                 <input
                                     type="text"
-                                    value={content?.featilityTitle}
-                                    onChange={(e) => handleContentChange(index, 'featilityTitle', e.target.value)}
+                                    value={content?.featureTitle}
+                                    onChange={(e) => handleContentChange(index, 'featureTitle', e.target.value)}
                                     className="w-full  border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                                     placeholder="Enter Feature Title"
                                     required
@@ -205,7 +218,7 @@ const AddPackage = () => {
                                 <input
                                     type="file"
                                     onChange={(e) =>
-                                        handleContentChange(index, 'featilityImg', e.target.files[0])
+                                        handleContentChange(index, 'featureImg', e.target.files[0])
                                     }
                                     className="w-full  border border-gray-300 rounded focus:outline-none focus:border-pink-500"
                                     required
