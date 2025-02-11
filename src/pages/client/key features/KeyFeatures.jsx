@@ -51,7 +51,7 @@ const KeyFeatures = () => {
         <div className="flex justify-center my-6">
           <button
             onClick={() => setShowMoreImages(!showMoreImages)}
-            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+            className="bg-[#853493] text-white px-6 py-2 rounded-lg  transition"
           >
             {showMoreImages ? "Show Less" : "Show More"}
           </button>
@@ -77,7 +77,7 @@ const KeyFeatures = () => {
             <div className="mt-4">
               <button
                 onClick={() => setShowMoreFeatures(!showMoreFeatures)}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+                className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition"
               >
                 {showMoreFeatures ? "Show Less" : "Show More"}
               </button>
@@ -102,7 +102,7 @@ const KeyFeatures = () => {
             <div className="mt-4">
               <button
                 onClick={() => setShowMoreFacilities(!showMoreFacilities)}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
+                className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition"
               >
                 {showMoreFacilities ? "Show Less" : "Show More"}
               </button>

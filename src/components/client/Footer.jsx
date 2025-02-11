@@ -77,7 +77,7 @@ const Footer = () => {
                         {/* Column 4 */}
                         <div className='' >
                             <ul>
-                                <li><NavLink to="/booking-from">Booking From</NavLink></li>
+                                <li><NavLink to="/booking-froms">Booking From</NavLink></li>
                                 <li><NavLink to="/hotline">Hotline</NavLink></li>
                                 <li><NavLink to="/address">Address</NavLink></li>
                                 {/* <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li> */}
