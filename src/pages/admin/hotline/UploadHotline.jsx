@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
 import { createAlert } from "../../../helper/createAlert";
 import toast, { Toaster } from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
@@ -9,13 +8,7 @@ const UploadHotline = () => {
     const axiosPublic = useAxiosPublic();
     const [loading, setLoading] = useState(false);
 
-    const { data: branchData = [], isLoading } = useQuery({
-        queryKey: ["getAllBranches"],
-        queryFn: async () => {
-            const res = await axiosPublic.get("/getAllBranches");
-            return res.data.data;
-        },
-    });
+    
 
     const token = localStorage.getItem("token");
 
@@ -63,9 +56,7 @@ const UploadHotline = () => {
             </Helmet>
             <h2 className="text-2xl font-semibold text-center mb-4">Hotline upload from</h2>
 
-            {isLoading ? (
-                <p className="text-center text-gray-600">Loading branches...</p>
-            ) : (
+            
                 <form onSubmit={handleSubmit} className="space-y-4">
                     
 
@@ -93,7 +84,6 @@ const UploadHotline = () => {
                         {loading ? "Submitting..." : "Submit"}
                     </button>
                 </form>
-            )}
             <Toaster position="top-center" />
         </div>
     );
