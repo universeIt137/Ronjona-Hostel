@@ -21,11 +21,11 @@ const RelatedPackages = () => {
         <div className="h-auto p-5 rounded-[30px] mt-10 bg-gray-200 shadow-lg">
             <h2 className="text-xl font-semibold mb-5 text-center">Related Packages</h2>
             <div className="h-[100lvh] overflow-y-auto">
-                <div className="flex flex-col bg-white p-4 rounded-[15px] shadow-md hover:shadow-lg transition-shadow w-full my-4">
+                <div className="flex flex-col  rounded-lg p-4  shadow-md hover:shadow-lg transition-shadow w-full my-4">
                     {
                         packagesData.slice(0,5).map((item, i) => {
                             return (
-                                <div key={i} className='my-4 border-2 border-[#853493] py-3 ' >
+                                <div key={i} className='my-4 border-2 border-[#853493] py-3 shadow-xl rounded-lg  ' >
                                     <img
                                         className="h-48 w-64 rounded-[15px] object-cover"
                                         src={

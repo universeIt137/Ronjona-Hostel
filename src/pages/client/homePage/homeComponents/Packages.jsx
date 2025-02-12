@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaEnvelope, FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { MdArrowOutward } from "react-icons/md";
 import { TbShare3 } from "react-icons/tb";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Links, NavLink } from "react-router-dom";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
@@ -56,8 +56,8 @@ const Packages = () => {
             </Helmet>
             <h1 className=" py-8 text-3xl text-[#A020BA] lg:text-4xl font-bold hover:underline " >Our Packages</h1>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
-                {packagesData.map((pkg) => (
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 '>
+                {packagesData.slice(0, 4).map((pkg) => (
                     <div
                         key={pkg._id}
                         className="pb-5 rounded shadow relative transform transition-transform duration-300 hover:scale-105"
@@ -134,13 +134,19 @@ const Packages = () => {
                                     </li>
                                 </ul>
                             </div>
+
                         )}
                     </div>
                 ))}
             </div>
+            <div>
+                {
+                    packagesData.length > 4 ? <><button className="px-4 bg-[#A020BA] text-white font-semibold py-2 block mx-auto rounded-md " > <Link to={'/all-packages'}>Show More</Link> </button></> : <></>
+                }
+            </div>
             {/* Show More / Show Less Buttons */}
             <div className="flex justify-center mt-6">
-                
+
             </div>
         </div>
     );

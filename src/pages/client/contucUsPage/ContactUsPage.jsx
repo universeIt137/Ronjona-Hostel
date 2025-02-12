@@ -3,6 +3,7 @@ import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 import { NavLink } from "react-router-dom";
+import AllBranch from "../branch/AllBranch";
 
 const ContactUsPage = () => {
   window.scrollTo(0, 0)
@@ -50,7 +51,7 @@ const ContactUsPage = () => {
       </Helmet>
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#A020BA] ">
           Visit Our Office
         </h1>
       </div>
@@ -171,7 +172,7 @@ const ContactUsPage = () => {
 
       {/* Map Section */}
       <div className="mt-12">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4 text-center">
+        <h2 className="text-2xl font-semibold text-[#A020BA] mb-4 text-center">
           Map
         </h2>
         <div className="bg-gray-200 h-64 md:h-80 rounded-lg flex items-center justify-center text-gray-500">
@@ -182,6 +183,9 @@ const ContactUsPage = () => {
             loading="lazy"
           ></iframe>
         </div>
+      </div>
+      <div>
+        <AllBranch></AllBranch>
       </div>
     </div>
   );
