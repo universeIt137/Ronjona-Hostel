@@ -73,7 +73,8 @@ const PriceSection = ({ packagesDetailsData }) => {
             <div className='bg-gray-200 shadow-lg p-6 w-[450px] rounded-[30px]'>
                 <p className='lg:text-xl text-[14px] font-bold text-center '> {packagesDetailsData?.title} </p>
                 <p className='lg:text-xl text-[14px] font-bold text-center '>Set Avalible : {packagesDetailsData?.seatAvalible} </p>
-                <p className='lg:text-xl text-[14px] font-semibold text-center '>Price {packagesDetailsData?.price} </p>
+                <p className='lg:text-xl text-[14px] font-semibold text-center '>Price : {packagesDetailsData?.price} </p>
+                <p className='lg:text-xl text-[14px] font-semibold text-center '>Location : {packagesDetailsData?.locationDetails?.location} </p>
                 <div className='flex justify-between gap-3 mt-6 '>
 
                     <a
