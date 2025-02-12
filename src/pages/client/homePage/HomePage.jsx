@@ -16,17 +16,17 @@ const HomePage = () => {
             <Helmet>
                 <title>Ronjona | Home Page</title>
             </Helmet>
-            <Banner  />
-            <Location/>
+            <Banner />
+            <Location />
             <Packages />
             <Offers></Offers>
             {/* <Facility/> */}
             <KeyFeatures />
             <ChooseUs />
             <Review />
-            <PhotoGallery/>
-            <VideoGallery/>
-            
+            <PhotoGallery />
+            <VideoGallery />
+
         </div>
     );
 };

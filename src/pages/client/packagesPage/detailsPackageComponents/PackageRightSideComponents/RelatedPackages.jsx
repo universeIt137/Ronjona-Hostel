@@ -25,7 +25,7 @@ const RelatedPackages = () => {
                     {
                         packagesData.slice(0,5).map((item, i) => {
                             return (
-                                <div key={i} className='my-4' >
+                                <div key={i} className='my-4 border-2 border-[#853493] py-3 ' >
                                     <img
                                         className="h-48 w-64 rounded-[15px] object-cover"
                                         src={
@@ -40,7 +40,7 @@ const RelatedPackages = () => {
                                         </div>
                                         <div className="flex gap-6  items-center mt-2">
                                             <p className="text-black font-bold">Price : { item?.price } টাকা </p>
-                                            <button onClick={()=>handleNavigate(item?._id)} className="px-4 py-2 bg-[#853493] text-white rounded-lg hover:bg-blue-600 transition-colors">
+                                            <button onClick={()=>handleNavigate(item?._id)} className="px-4 py-2 bg-[#853493] text-white rounded-lg  transition-colors">
                                                 Book Now
                                             </button>
                                         </div>

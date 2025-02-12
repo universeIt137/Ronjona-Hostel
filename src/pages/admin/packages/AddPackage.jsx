@@ -31,6 +31,13 @@ const AddPackage = () => {
             return res.data.data;
         }
     });
+    const { data: priceData = [] } = useQuery({
+        queryKey: ['priceData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/all-price');
+            return res.data.data;
+        }
+    });
 
     console.log("payload is ", formData)
 
@@ -193,15 +200,19 @@ const AddPackage = () => {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-3">
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-semibold mb-2">Price</label>
-                        <input
-                            type="text"
+                    <div className='mt-2' >
+                        <label className="block text-gray-700 font-medium">Select Price</label>
+                        <select
                             name="price"
-                            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
-                            placeholder="Enter Price"
-                            required
-                        />
+                            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
+                        >
+                            <option disabled selected>Select Price</option>
+                            {priceData?.map((item) => (
+                                <option value={item.price} key={item._id}>
+                                    {item?.price}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-semibold mb-2">Video Url</label>
@@ -260,7 +271,7 @@ const AddPackage = () => {
                         <label>Package Banner Images</label><br />
                         <input
                             type="file"
-                            name="images"
+                            name="img"
                             multiple
                             onChange={handleImageChange}
                             className="file-input file-input-bordered file-input-md w-full"
@@ -271,7 +282,7 @@ const AddPackage = () => {
                 <div className="p-2 w-full mb-10 h-full">
                     <label>Package Description</label>
                     <Editor
-                        apiKey='atnary0we9a0nuqjzgtnpxyd0arpbwud7ocxkjxqjtaab3nm'
+                        apiKey='s4n5yz8z4ykqy3nw5fylvw14ucilnduy3s81c0u4h65mvhij'
                         init={{
                             height: 500,
                             toolbar:

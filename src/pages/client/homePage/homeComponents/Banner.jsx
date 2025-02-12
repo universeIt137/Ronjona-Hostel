@@ -80,7 +80,7 @@ const Banner = () => {
 
     const handleSearch = () => {
         if (selectedLocation && selectedBranch) {
-            navigate(`/${selectedLocation}/${selectedBranch}`);
+            navigate(`/packages/${selectedLocation}/${selectedBranch}`);
         }
     };
 
@@ -95,7 +95,7 @@ const Banner = () => {
             </p>
 
             {/* Responsive Form */}
-            <div className="absolute lg:-mt-24 z-30 p-4 top-[105%] md:top-[55%] left-[50%] transform -translate-x-[50%] md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
+            <div className="absolute lg:-mt-24 z-30 p-4 top-[50%] md:top-[55%] left-[50%] transform -translate-x-[50%] md:-translate-y-[50%] border-2 md:border-8 bg-white border-black border-opacity-10 flex md:flex-row gap-3 items-center w-[90%] md:w-auto rounded-md shadow-lg">
                 <div className="lg:w-full w-auto">
                     <label className="block font-semibold">Location</label>
                     <select

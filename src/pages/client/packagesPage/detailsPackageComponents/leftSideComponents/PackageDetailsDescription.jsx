@@ -44,8 +44,8 @@ const PackageDetailsDescription = () => {
     return (
         <div>
             {/* feature */}
-            <h1 className='font-bold text-4xl mt-8'>Features</h1>
-            <div className='w-[90%] my-8'>
+            <h1 className='font-bold lg:text-4xl text-xl mt-8'>Features</h1>
+            <div className='w-[90%] my-8  '>
                 <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {packagesDetailsDescription?.features?.map((feature, index) => (
                         <div
@@ -53,19 +53,19 @@ const PackageDetailsDescription = () => {
                             className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow duration-300"
                         >
                             <img
-                                src={feature?.featilityImg}
-                                alt={feature?.title}
+                                src={feature?.featureImg}
+                                alt={feature?.featureTitle}
                                 className="rounded-t-lg block mx-auto h-16 object-cover"
                             />
                             <h3 className="text-[14px] text-center font-semibold text-gray-800 mt-4">
-                                {feature.featilityTitle}
+                                {feature.featureTitle}
                             </h3>
                         </div>
                     ))}
                 </div>
             </div>
-            <div className='flex justify-between items-center'>
-                <p className='lg:text-4xl font-bold'>Package Details</p>
+            <div className='flex justify-between items-center  '>
+                <p className='lg:text-4xl text-xl font-bold'>Package Details</p>
                 {/* <button
                     className='text-[12px] lg:text-xl bg-[#853493] py-2 lg:py-4 px-4 lg:px-8 text-white rounded-xl'
                     onClick={handleShareButton}  // Toggle the visibility of share icons
@@ -73,7 +73,7 @@ const PackageDetailsDescription = () => {
                     Share Now
                 </button> */}
             </div>
-            <div className='w-full lg:h-[128lvh] bg-gray-200 px-10 mt-10 rounded-[30px]'>
+            <div className='lg:w-[90vh] border-2 lg:h-[128lvh] bg-gray-200 px-10 mt-10 rounded-[30px] mb-10 '>
                 <div
                     className="text-lg text-black py-10"
                     dangerouslySetInnerHTML={{ __html: packagesDetailsDescription?.desc }}

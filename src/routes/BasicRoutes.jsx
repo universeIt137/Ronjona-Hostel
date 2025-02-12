@@ -82,6 +82,7 @@ import UploadAddress from "../pages/admin/address/UploadAddress";
 import ManageAddress from "../pages/admin/address/ManageAddress";
 import UpdateAddress from "../pages/admin/address/UpdateAddress";
 import AllAddress from "../pages/admin/address/AllAddress";
+import UploadPrice from "../pages/admin/price-page/UploadPrice";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -177,7 +178,7 @@ const router = createBrowserRouter([
 
 
             {
-                path: "packages/:id",
+                path: "packages/:location/:branch",
                 element: <FilterPackages></FilterPackages>
             },
             {
@@ -466,6 +467,10 @@ const router = createBrowserRouter([
             {
                 path: "address-update/:id",
                 element : <UpdateAddress></UpdateAddress>
+            },
+            {
+                path: "price-upload",
+                element : <UploadPrice></UploadPrice>
             }
 
 

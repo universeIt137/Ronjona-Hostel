@@ -23,7 +23,7 @@ const VissionPage = () => {
         )
     }
     return (
-        <div className="bg-gray-100">
+        <div className="bg-gray-100 mb-10 ">
             <Helmet>
                 <title>Ronjona | Mission&Vission Page </title>
             </Helmet>
@@ -63,32 +63,7 @@ const VissionPage = () => {
                 </div>
             </section>
 
-            {/* Project Features Section */}
-            <section className="py-8 bg-white">
-                <div className="max-w-6xl mx-auto px-6 lg:px-4">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center mb-6">Key Features</h2>
-                    <Marquee gradient={false} className="space-x-8">
-                        {
-                            vissionData?.keyFeatures.map((item, i) => {
-                                return (
-                                    <div key={i} >
-                                        <div
-                                            className="max-w-lg flex-shrink-0  w-full h-[400px] text-justify p-6 bg-[#7F2B90] border border-gray-200 rounded-lg shadow-lg text-white dark:bg-gray-800 dark:border-gray-700"
-                                        >
-                                            <p className="mb-3 font-normal text-sm sm:text-base lg:text-lg">
-                                                {
-                                                    item?.des
-                                                }
-                                            </p>
-                                        </div>
-                                    </div>
-                                )
-                            })
-                        }
-                    </Marquee>
-
-                </div>
-            </section>
+            
         </div>
     );
 };

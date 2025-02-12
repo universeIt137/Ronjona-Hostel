@@ -26,7 +26,7 @@ const Review = () => {
         <div className="w-11/12 mx-auto px-4 md:px-0">
             {/* Title Section */}
             <div>
-                <p className="text-2xl md:text-4xl hover:underline font-bold text-black">Border Review</p>
+                <p className="text-2xl md:text-4xl hover:underline font-bold text-[#853493] ">Border Review</p>
             </div>
 
             {/* Card Container */}
