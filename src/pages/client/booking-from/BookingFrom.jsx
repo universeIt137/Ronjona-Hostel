@@ -158,7 +158,7 @@ const BookingFrom = () => {
                         <button
                             type="submit"
                             disabled={loading} // Disable button when loading
-                            className={`flex items-center justify-center bg-blue-500 text-white font-semibold px-6 py-3 rounded-lg focus:outline-none hover:bg-blue-600 ${loading ? 'opacity-70 cursor-not-allowed' : ''
+                            className={`flex items-center justify-center bg-[#853493] text-white font-semibold px-6 py-3 rounded-lg focus:outline-none  ${loading ? 'opacity-70 cursor-not-allowed' : ''
                                 }`}
                         >
                             {loading ? (

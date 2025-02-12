@@ -38,7 +38,7 @@ const Footer = () => {
                                 </li>
                                 <li className='flex gap-2 py-2'>
                                     <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736054078/Ronjona/p5lot1ryu8zqhh2hream.png" alt="Email" />
-                                    <Link to="#">ronjonawomenshostel@gmail.com</Link>
+                                    <Link to="#">info@ronjonabd.com</Link>
                                 </li>
                                 <li className='py-2'>
                                     <Link Link to="#" className=''>

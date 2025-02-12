@@ -260,7 +260,7 @@ const AddPackage = () => {
                         <label>Package Banner Images</label><br />
                         <input
                             type="file"
-                            name="images"
+                            name="img"
                             multiple
                             onChange={handleImageChange}
                             className="file-input file-input-bordered file-input-md w-full"
@@ -271,7 +271,7 @@ const AddPackage = () => {
                 <div className="p-2 w-full mb-10 h-full">
                     <label>Package Description</label>
                     <Editor
-                        apiKey='atnary0we9a0nuqjzgtnpxyd0arpbwud7ocxkjxqjtaab3nm'
+                        apiKey='s4n5yz8z4ykqy3nw5fylvw14ucilnduy3s81c0u4h65mvhij'
                         init={{
                             height: 500,
                             toolbar:

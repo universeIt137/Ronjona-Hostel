@@ -22,7 +22,6 @@ const Packages = () => {
     });
     const [showShareOptions, setShowShareOptions] = useState(null); // Track which package's share options are open
 
-    const displayPackages = showAll ? packagesData : packagesData.slice(0, 4);
 
     // Social Media Share URLs
     const socialShareUrls = {
@@ -58,7 +57,7 @@ const Packages = () => {
             <h1 className=" py-8 text-3xl text-[#A020BA] lg:text-4xl font-bold hover:underline " >Our Packages</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10 '>
-                {displayPackages.map((pkg) => (
+                {packagesData.map((pkg) => (
                     <div
                         key={pkg._id}
                         className="pb-5 rounded shadow relative transform transition-transform duration-300 hover:scale-105"
@@ -141,22 +140,7 @@ const Packages = () => {
             </div>
             {/* Show More / Show Less Buttons */}
             <div className="flex justify-center mt-6">
-                {!showAll && packagesData.length > 4 && (
-                    <button
-                        onClick={() => setShowAll(true)}
-                        className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition mr-4"
-                    >
-                        Show More
-                    </button>
-                )}
-                {showAll && (
-                    <button
-                        onClick={() => setShowAll(false)}
-                        className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition"
-                    >
-                        Show Less
-                    </button>
-                )}
+                
             </div>
         </div>
     );
