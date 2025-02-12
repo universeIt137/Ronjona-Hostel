@@ -1,5 +1,7 @@
+import toast, { Toaster } from "react-hot-toast";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import { deleteAlert } from "../../../helper/deleteAlert";
 
 const PriceTable = () => {
     const axiosPublic = useAxiosPublic();
@@ -11,6 +13,18 @@ const PriceTable = () => {
         }
     });
     const onDelete = async (id) => {
+        try {
+            const resp = await deleteAlert();
+            if (resp.isConfirmed) {
+                let res = await axiosPublic.delete(`/delete-price/${id}`);
+                if (res) {
+                    refetch()
+                    toast.success("Price delete successfully.")
+                }
+            }
+        } catch (error) {
+            toast.error("Delete fail")
+        }
         console.log(id)
     };
     const onEdit = async (id) => {
@@ -49,6 +63,7 @@ const PriceTable = () => {
                     ))}
                 </tbody>
             </table>
+            <Toaster position="top-center" ></Toaster>
         </div>
     );
 };
