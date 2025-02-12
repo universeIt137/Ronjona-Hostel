@@ -1,11 +1,11 @@
 import React from 'react'
 import PackagesDetailsImage from '../../../../../components/client/packages-details-images/PackagesDetailsImage'
 
-const Banner2 = () => {
+const Banner2 = ({packagesDetailsData}) => {
   return (
     <div>
       <div className='' >
-        <PackagesDetailsImage></PackagesDetailsImage>
+        <PackagesDetailsImage packagesDetailsData = {packagesDetailsData} ></PackagesDetailsImage>
       </div>
     </div>
   )

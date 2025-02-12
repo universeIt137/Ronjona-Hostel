@@ -7,20 +7,25 @@ import toast, { Toaster } from "react-hot-toast";
 
 const UploadPrice = () => {
     const axiosPublic = useAxiosPublic();
-    const [price, setPrice] = useState("");
+
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const price = e.target.price.value;
+        const payload = {
+            price
+        };
+        console.log(payload)
         try {
             const resp = await createAlert();
             if (resp.isConfirmed) {
                 setLoading(true);
-                let res = await axiosPublic.post(`/price-upload`, price);
+                let res = await axiosPublic.post(`/price-upload`, payload);
                 setLoading(false);
                 if (res) {
-                    setPrice("");
                     toast.success("Price upload successfully");
+                    e.target.reset();
                     return;
                 }
             }
@@ -45,8 +50,7 @@ const UploadPrice = () => {
                         type="text"
                         className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter price"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        name="price"
                         required
                     />
                 </div>

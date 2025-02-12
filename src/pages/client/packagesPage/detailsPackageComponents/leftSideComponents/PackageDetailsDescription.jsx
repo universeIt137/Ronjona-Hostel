@@ -53,12 +53,12 @@ const PackageDetailsDescription = () => {
                             className="bg-white rounded-lg shadow-md p-4 hover:shadow-xl transition-shadow duration-300"
                         >
                             <img
-                                src={feature?.featilityImg}
-                                alt={feature?.title}
+                                src={feature?.featureImg}
+                                alt={feature?.featureTitle}
                                 className="rounded-t-lg block mx-auto h-16 object-cover"
                             />
                             <h3 className="text-[14px] text-center font-semibold text-gray-800 mt-4">
-                                {feature.featilityTitle}
+                                {feature.featureTitle}
                             </h3>
                         </div>
                     ))}

@@ -26,7 +26,7 @@ const DetailsPackagePage = () => {
             <Helmet>
                 <title>Ronjona | Packages Details Page </title>
             </Helmet>
-            <PackageDetailsLeftSide   />
+            <PackageDetailsLeftSide  packagesDetailsData = {packagesDetailsData} />
             <PackageDetailsRightSide packagesDetailsData = {packagesDetailsData} />
         </div>
     );

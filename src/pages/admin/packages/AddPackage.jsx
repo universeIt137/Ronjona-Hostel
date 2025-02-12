@@ -31,6 +31,13 @@ const AddPackage = () => {
             return res.data.data;
         }
     });
+    const { data: priceData = [] } = useQuery({
+        queryKey: ['priceData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/all-price');
+            return res.data.data;
+        }
+    });
 
     console.log("payload is ", formData)
 
@@ -193,15 +200,19 @@ const AddPackage = () => {
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-3">
-                    <div className="mb-4">
-                        <label className="block text-gray-700 font-semibold mb-2">Price</label>
-                        <input
-                            type="text"
+                    <div className='mt-2' >
+                        <label className="block text-gray-700 font-medium">Select Price</label>
+                        <select
                             name="price"
-                            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-pink-500"
-                            placeholder="Enter Price"
-                            required
-                        />
+                            className="w-full p-2 border rounded-lg focus:ring focus:ring-blue-300"
+                        >
+                            <option disabled selected>Select Price</option>
+                            {priceData?.map((item) => (
+                                <option value={item.price} key={item._id}>
+                                    {item?.price}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="mb-4">
                         <label className="block text-gray-700 font-semibold mb-2">Video Url</label>
