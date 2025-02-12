@@ -50,7 +50,7 @@ const VideoGallery = () => {
     // Loading state
     if (isLoading) {
         return (
-            <div className="w-full flex justify-center items-center min-h-screen">
+            <div className="">
                 <SkeletonLoader />
             </div>
         );

@@ -38,6 +38,13 @@ const PackagesUpdate = () => {
             return res.data?.data || [];
         },
     });
+    const { data: priceData = [] } = useQuery({
+        queryKey: ['priceData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/all-price');
+            return res.data.data;
+        }
+    });
 
     const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/<your-cloud-name>/image/upload";
     const UPLOAD_PRESET = "dxvacpgrv";
@@ -195,15 +202,20 @@ const PackagesUpdate = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="price" className="block font-bold mb-2">Price</label>
-                    <input
-                        type="text"
-                        id="price"
+                    <label className="block font-bold mb-2">Price</label>
+                    <select
                         name="price"
-                        value={formData.price}
+                        value={formData.price || ""}
                         onChange={handleInputChange}
                         className="w-full p-2 border rounded-lg"
-                    />
+                    >
+                        <option value="" disabled>Select Price</option>
+                        {priceData.map((branch) => (
+                            <option key={branch._id} value={branch.price}>
+                                {branch.price}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 {/* Seat Availability Dropdown */}
@@ -306,6 +318,40 @@ const PackagesUpdate = () => {
                 >
                     Add Feature
                 </button>
+
+                {/* <div className="my-8" >
+                    {formData.img.map((images, index) => (
+                        <div key={index} className="flex gap-4 mb-4">
+                            
+                            <input
+                                type="file"
+                                onChange={(e) => handleUpload(e, "features", index, "featureImg")}
+                                className="flex-1 border-2 "
+                            />
+                            {images && (
+                                <img
+                                    src={images.img}
+                                    alt="Feature"
+                                    className="w-16 h-16 rounded"
+                                />
+                            )}
+                            <button
+                                type="button"
+                                onClick={() => handleRemoveItem("images", index)}
+                                className=" text-blue-500 font-bold rounded"
+                            >
+                                Remove
+                            </button>
+                        </div>
+                    ))}
+                    <button
+                        type="button"
+                        onClick={() => handleAddItem("features", { featureTitle: "", featureImg: "" })}
+                        className="mt-4 p-2 bg-blue-500 text-white rounded"
+                    >
+                        Add Feature
+                    </button>
+                </div> */}
 
                 {/* Submit Button */}
                 <button

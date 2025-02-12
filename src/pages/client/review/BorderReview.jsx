@@ -55,7 +55,7 @@ const BorderReview = () => {
             </Helmet>
             {/* Top Section */}
             <div className='mb-6 font-bold flex justify-between items-center'>
-                <p className="text-2xl md:text-4xl hover:underline text-black">Border Review</p>
+                <p className="text-2xl md:text-4xl hover:underline text-[#A020BA] ">Border Review</p>
                 <div className='flex items-center gap-8 text-xl'>
                     <IoArrowBackOutline onClick={handlePrev} className="cursor-pointer" />
                     <IoArrowForward onClick={handleNext} className="cursor-pointer" />
