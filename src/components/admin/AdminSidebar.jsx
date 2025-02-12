@@ -510,6 +510,14 @@ const AdminSidebar = () => {
                         </Sidebar.Collapse>
 
 
+                        <Link to={'/dashboard/price-upload'}>
+                            <Sidebar.Item icon={FcPrivacy}>
+                                Price Upload
+                            </Sidebar.Item>
+                        </Link>
+
+
+
 
 
 
