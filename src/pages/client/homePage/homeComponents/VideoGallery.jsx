@@ -1,101 +1,115 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import Marquee from 'react-fast-marquee';
-import ReactPlayer from 'react-player';
-import useAxiosPublic from '../../../../hooks/useAxiosPublic';
-import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
-import { Helmet } from 'react-helmet-async';
+import { useQuery } from "@tanstack/react-query";
+import React, { useState, useMemo } from "react";
+import Marquee from "react-fast-marquee";
+import ReactPlayer from "react-player";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
+import { Helmet } from "react-helmet-async";
 
 const VideoGallery = () => {
     const axiosPublic = useAxiosPublic();
-    const { data: videos = [],isLoading,isError,refetch } = useQuery({
-        queryKey: ["vidoeGalleryData"],
+
+    // Fetching videos
+    const { data: videos = [], isLoading, isError } = useQuery({
+        queryKey: ["videoGalleryData"],
         queryFn: async () => {
-            const res = await axiosPublic.get(`/getAllVideo`);
-            console.log(res)
+            const res = await axiosPublic.get("/getAllVideo");
             return res.data?.data || [];
-        }
+        },
     });
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentVideo, setCurrentVideo] = useState(null);
     const [showAllVideos, setShowAllVideos] = useState(false);
 
+    // Memoized filtered videos
+    const displayedVideos = useMemo(
+        () => (showAllVideos ? videos : videos.slice(0, 12)),
+        [showAllVideos, videos]
+    );
+
+    // Open modal with selected video
     const handleVideoClick = (videoSrc) => {
         setCurrentVideo(videoSrc);
         setIsModalOpen(true);
     };
 
+    // Close modal
     const closeModal = () => {
         setIsModalOpen(false);
         setCurrentVideo(null);
     };
 
+    // Click outside modal to close
     const handleModalClick = (e) => {
         if (e.target.id === "modalBackground") {
             closeModal();
         }
     };
 
-    // Show all videos if "See More" is clicked, otherwise show up to 12 videos
-    const displayedVideos = showAllVideos ? videos : videos.slice(0, 12);
-
+    // Loading state
     if (isLoading) {
         return (
-            <div >
-                <div>
-                    <SkeletonLoader></SkeletonLoader>
-                </div>
+            <div className="w-full flex justify-center items-center min-h-screen">
+                <SkeletonLoader />
             </div>
-        )
+        );
     }
 
     return (
         <div className="px-4 md:px-0 w-11/12 mx-auto my-24">
             <Helmet>
-                <title>
-                    Ronjona | Video Gallery Page
-                </title>
+                <title>Ronjona | Video Gallery Page</title>
             </Helmet>
-            <div className="mb-10">
-                <p className="text-2xl md:text-4xl hover:underline font-bold text-[#A020BA] ">Video Gallery</p>
+            <div className="mb-10 text-center">
+                <p className="text-2xl md:text-4xl hover:underline font-bold text-[#A020BA]">
+                    Video Gallery
+                </p>
             </div>
+
+            {/* Video Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                {displayedVideos.map((video, index) => (
-                    <div key={index} className="cursor-pointer">
-                        <ReactPlayer
-                            url={video.video_link ? video.video_link : video?.video_link} // Assuming each video object has a `url` property
-                            width="100%"
-                            height="150px"
-                            controls
-                            onClick={() => handleVideoClick(video.video_link ? video.video_link : video?.video_link)}
-                        />
-                    </div>
-                ))}
+                {displayedVideos.map((video, index) => {
+                    const validVideoUrl = video.video_link || video.youtube_link;
+                    if (!validVideoUrl) return null;
+
+                    return (
+                        <div
+                            key={index}
+                            className="relative cursor-pointer group"
+                        >
+                            {/* Video Player */}
+                            <ReactPlayer
+                                url={validVideoUrl}
+                                width="100%"
+                                height="150px"
+                                controls
+                            />
+
+                            {/* Transparent Overlay for Click */}
+                            <div
+                                className="absolute inset-0 bg-transparent hover:bg-black/30 transition-opacity"
+                                onClick={() => handleVideoClick(validVideoUrl)}
+                            />
+                        </div>
+                    );
+                })}
             </div>
 
             {/* See More / See Less Button */}
             {videos.length > 12 && (
                 <div className="mt-6 text-center">
-                    {!showAllVideos ? (
-                        <button
-                            className="px-6 py-2 bg-blue-500 text-white rounded-lg"
-                            onClick={() => setShowAllVideos(true)}
-                        >
-                            See More
-                        </button>
-                    ) : (
-                        <button
-                            className="px-6 py-2 bg-red-500 text-white rounded-lg"
-                            onClick={() => setShowAllVideos(false)}
-                        >
-                            See Less
-                        </button>
-                    )}
+                    <button
+                        className={`px-6 py-2 rounded-lg text-white ${showAllVideos ? "bg-red-500" : "bg-blue-500"
+                            }`}
+                        onClick={() => setShowAllVideos(!showAllVideos)}
+                    >
+                        {showAllVideos ? "See Less" : "See More"}
+                    </button>
                 </div>
             )}
 
-            {/* Modal */}
+            {/* Video Modal */}
             {isModalOpen && (
                 <div
                     id="modalBackground"
@@ -108,6 +122,7 @@ const VideoGallery = () => {
                             width="80vw"
                             height="60vh"
                             controls
+                            playing
                         />
                         <button
                             onClick={closeModal}
@@ -116,23 +131,6 @@ const VideoGallery = () => {
                             &times;
                         </button>
                     </div>
-
-                    {/* Horizontal Scrollable Thumbnail List */}
-                    <Marquee pauseOnHover gradient={false} speed={100} className="w-full bg-black bg-opacity-50 py-4">
-                        <div className="flex space-x-4 px-3">
-                            {videos.map((video, index) => (
-                                <ReactPlayer
-                                    key={index}
-                                    url={video.video_link ? video.video_link : video?.video_link}
-                                    width="100px"
-                                    height="60px"
-                                    className={`rounded-lg cursor-pointer ${currentVideo === video.video_link ? video.video_link : video?.video_link ? "ring-4 ring-white" : ""
-                                        }`}
-                                    onClick={() => setCurrentVideo(video.video_link ? video.video_link : video?.video_link)}
-                                />
-                            ))}
-                        </div>
-                    </Marquee>
                 </div>
             )}
         </div>

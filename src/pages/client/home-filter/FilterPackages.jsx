@@ -130,16 +130,16 @@ const Packages = ({ packages, isLoading }) => {
 
 // Main component
 const FilterPackages = () => {
-  const {id} = useParams()
+  const {location,branch} = useParams()
   const axiosPublic = useAxiosPublic();
   const [priceRange, setPriceRange] = useState('all');
   const [selectedLocation, setSelectedLocation] = useState('all');
   const [selectedBranch, setSelectedBranch] = useState('all');
 
-  const { data: packagesData = [], isLoading } = useQuery({
-    queryKey: ['packagesData'],
+  const { data: locationBranchData = [], isLoading } = useQuery({
+    queryKey: ['locationBranchData'],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/branch-by-packages/${id}`);
+      const res = await axiosPublic.get(`/packages/${location}/${branch}`);
       return res.data?.data;
     }
   });
@@ -162,7 +162,15 @@ const FilterPackages = () => {
       let res = await axios.get(`https://ronjona-hostel-server.vercel.app/api/v1/getAllBranches`);
       setBranchName(res.data?.data)
     })()
-  }, [locations])
+  }, [locations]);
+
+  if (locationBranchData.length === 0) {
+    return (
+      <div className='flex flex-col justify-center items-center h-screen  ' >
+        <h1 className='text-3xl font-semibold ' >Packages not found..</h1>
+      </div>
+    )
+  }
 
 
 
@@ -172,7 +180,7 @@ const FilterPackages = () => {
   // Filter packages based on price range, location, and branch name
 
   const filterPackages = (priceRange, location, branch) => {
-    let filtered = packagesData;
+    let filtered = locationBranchData;
 
     // Filter by price range
     if (priceRange !== 'all') {

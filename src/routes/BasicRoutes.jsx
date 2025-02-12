@@ -177,7 +177,7 @@ const router = createBrowserRouter([
 
 
             {
-                path: "packages/:id",
+                path: "packages/:location/:branch",
                 element: <FilterPackages></FilterPackages>
             },
             {

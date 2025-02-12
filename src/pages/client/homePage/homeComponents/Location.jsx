@@ -25,7 +25,7 @@ const Location = () => {
                 <title>Ronjona| Home Page</title>
             </Helmet>
             {/* Title */}
-            <p className="hover:underline text-2xl md:text-4xl lg:mb-6 font-bold">Locations</p>
+            <p className="hover:underline text-2xl md:text-4xl lg:mb-6 font-bold text-[#853493] ">Locations</p>
 
             {/* Wrapper with overflow hidden */}
             <div className="overflow-hidden relative">
