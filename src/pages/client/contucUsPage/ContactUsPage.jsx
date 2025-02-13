@@ -45,7 +45,7 @@ const ContactUsPage = () => {
     }
   }
   return (
-    <div className="bg-white mt-20 px-6 md:px-16 lg:px-32 py-12">
+    <div className="bg-white mt-36 lg:mt-20 px-6 md:px-16 lg:px-32 py-12">
       <Helmet>
         <title>Ronjona | Contact Page </title>
       </Helmet>

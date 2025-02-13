@@ -22,11 +22,11 @@ const AllBranch = () => {
     }
 
     return (
-        <div className="lg:mt-28 lg:mb-12 mt-20 w-11/12 mx-auto">
+        <div className="lg:mt-28 lg:mb-12  mt-40 w-11/12 mx-auto">
             <Helmet>
                 <title>Ronjona | Branch List</title>
             </Helmet>
-            <h1 className="text-center font-bold lg:text-4xl text-[#A020BA] ">Our Branch</h1>
+            <h1 className="text-center font-bold text-4xl text-[#A020BA] ">Our Branch</h1>
             <div className="overflow-hidden relative">
                 <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-8 px-1 py-10">
                     {branchData.map((branch) => (
