@@ -41,7 +41,7 @@ const NavFacility = () => {
     window.scrollTo(0, 0)
 
     return (
-        <div className="mt-28 w-11/12 mx-auto  px-4 md:px-0 md:mx-auto">
+        <div className="mt-28 w-11/12 mx-auto  px-4 md:px-0 md:mx-auto mb-10 ">
             <div className="mb-10">
                 <p className="text-2xl md:text-4xl hover:underline font-bold text-[#A020BA] ">BELOW ALL FACILITIES ARE ABSILUTELY FREE</p>
                 <p className='text-[#A020BA]' >We offer modern (5 star) hotel facilities for your comfort.</p>
@@ -86,11 +86,11 @@ const NavFacility = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-4 lg:p-8 bg-[#A020BA] text-white ">
                 {/* Features Section */}
                 <div>
-                    <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-[#A020BA]">Features</h1>
+                    <h1 className="text-2xl lg:text-4xl font-bold mb-6  ">Features</h1>
                     <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg">
                         {keyFeaturesData?.features?.map((item, i) => (
                             <li key={i} className="flex items-start gap-4">
-                                <div><FaRegDotCircle className="text-[#A020BA] mt-1 text-xl" /></div>
+                                <div><FaRegDotCircle className=" mt-1 text-xl" /></div>
                                 <span>{item?.title}</span>
                             </li>
                         ))}
@@ -101,11 +101,11 @@ const NavFacility = () => {
 
                 {/* Facilities Section */}
                 <div>
-                    <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-[#A020BA]">Facilities</h1>
+                    <h1 className="text-2xl lg:text-4xl font-bold mb-6  ">Facilities</h1>
                     <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg">
                         {keyFeaturesData.facilities?.map((item, i) => (
                             <li key={i} className="flex items-start gap-4">
-                                <div><FaRegDotCircle className="text-[#A020BA] mt-1 text-xl" /></div>
+                                <div><FaRegDotCircle className=" mt-1 text-xl" /></div>
                                 <span>{item?.title}</span>
                             </li>
                         ))}

@@ -5,6 +5,7 @@ import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
+import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
 
 const DetailsPackagePage = () => {
     const axiosPublic = useAxiosPublic();
@@ -20,6 +21,14 @@ const DetailsPackagePage = () => {
             return res.data?.data;
         }
     });
+
+    if (isLoading) {
+        return (
+            <div>
+                <SkeletonLoader> </SkeletonLoader>
+            </div>
+        )
+    }
 
     return (
         <div className='flex flex-col-reverse justify-between md:flex-row gap-4 justify-items-center w-11/12 mx-auto mt-24 lg:mt-24'>

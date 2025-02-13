@@ -27,7 +27,7 @@ const Footer = () => {
                         <div className='' >
                             <ul>
                                 <li className='flex gap-2 py-4'>
-                                    <FaSquareFacebook className='text-3xl hover:text-[#812F8C] transition duration-500 ' />
+                                    <Link to={"https://www.facebook.com/share/1AHRqtswiV/"}><FaSquareFacebook className='text-3xl hover:text-[#812F8C] transition duration-500 ' /></Link>
                                     <FaInstagramSquare className='text-3xl hover:text-[#812F8C] transition duration-500 ' />
                                     <FaLinkedin className='text-3xl hover:text-[#812F8C] transition duration-500 ' />
                                 </li>
