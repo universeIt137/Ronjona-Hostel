@@ -46,8 +46,8 @@ const PackagesUpdate = () => {
         }
     });
 
-    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/<your-cloud-name>/image/upload";
-    const UPLOAD_PRESET = "dxvacpgrv";
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dxvacpgrv/image/upload";
+    const UPLOAD_PRESET = "ronjonaImg";
 
     // Fetch package data
     useEffect(() => {
