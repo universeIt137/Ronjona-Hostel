@@ -15,7 +15,7 @@ const ManageTeam = () => {
 
 
     const { data: teamData = [], refetch, isLoading } = useQuery({
-        queryKey: ['teamData'],
+        queryKey: ['teamData',],
         queryFn: async () => {
             const res = await axiosPublic.get('/team');
             return res.data.data;
@@ -24,7 +24,6 @@ const ManageTeam = () => {
 
     // Handle delete action
     const handleDelete = async (id) => {
-        console.log(id);
         let resp = await deleteAlert();
         try {
             if (resp.isConfirmed) {
@@ -38,6 +37,7 @@ const ManageTeam = () => {
                         timer: 1500
                     });
                     refetch();
+                    return
                 }
             }
         } catch (error) {

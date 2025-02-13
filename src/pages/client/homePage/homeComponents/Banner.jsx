@@ -14,9 +14,8 @@ const Banner = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedLocation, setSelectedLocation] = useState('');
     const [selectedBranch, setSelectedBranch] = useState('');
-    const [packages, setPackages] = useState([]);
-    const [loadingPackages, setLoadingPackages] = useState(false);
 
+    // Fetch locations data
     const { data: locations = [] } = useQuery({
         queryKey: ['locationsData'],
         queryFn: async () => {
@@ -25,14 +24,17 @@ const Banner = () => {
         }
     });
 
+    // Fetch branch data and refetch when selectedLocation changes.
     const { data: branchName = [] } = useQuery({
-        queryKey: ['branchName'],
+        queryKey: ['branchName', selectedLocation],
         queryFn: async () => {
-            const res = await axiosPublic.get('/getAllBranches');
+            const res = await axiosPublic.get(`/locationby-branch-name/${selectedLocation}`);
             return res.data?.data;
-        }
+        },
+        enabled: Boolean(selectedLocation) // Only run when a location is selected
     });
 
+    // Fetch banner data
     useEffect(() => {
         const fetchBannerData = async () => {
             try {
@@ -47,6 +49,7 @@ const Banner = () => {
         fetchBannerData();
     }, [axiosPublic]);
 
+    // Auto slider interval
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) =>
@@ -56,30 +59,22 @@ const Banner = () => {
         return () => clearInterval(interval);
     }, [bannerData]);
 
+    // Handle location change
     const handleLocationChange = (e) => {
         setSelectedLocation(e.target.value);
+        // Optionally reset the branch when location changes
+        setSelectedBranch('');
     };
 
+    // Handle branch change
     const handleBranchChange = (e) => {
         setSelectedBranch(e.target.value);
     };
 
-    const fetchPackages = async () => {
-        if (selectedLocation && selectedBranch) {
-            setLoadingPackages(true);
-            try {
-                const res = await axiosPublic.get(`/getPackages/${selectedLocation}/${selectedBranch}`);
-                setPackages(res.data.data || []);
-            } catch (error) {
-                console.error('Error fetching packages:', error);
-                setPackages([]);
-            }
-            setLoadingPackages(false);
-        }
-    };
-
+    // Handle search click
     const handleSearch = () => {
-        if (selectedLocation && selectedBranch) {
+        if (selectedLocation && selectedBranch ) {
+            // Example navigation, adjust path as needed
             navigate(`/packages/${selectedLocation}/${selectedBranch}`);
         }
     };
@@ -142,7 +137,8 @@ const Banner = () => {
                         key={index}
                         src={item.img}
                         alt={`Slide ${index + 1}`}
-                        className={`absolute top-0 left-0 h-[87vh] w-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'}`}
+                        className={`absolute top-0 left-0 h-[87vh] w-full object-cover transition-transform duration-700 ${index === currentIndex ? 'translate-x-0' : 'translate-x-full'
+                            }`}
                         style={{
                             transform: `translateX(${(index - currentIndex) * 100}%)`,
                         }}
@@ -153,18 +149,20 @@ const Banner = () => {
             {/* Navigation Buttons */}
             <button
                 className="absolute hidden lg:flex top-[45%] left-4 transform -translate-y-[50%] text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none"
-                onClick={() => setCurrentIndex(currentIndex === 0 ? bannerData.length - 1 : currentIndex - 1)}
+                onClick={() =>
+                    setCurrentIndex(currentIndex === 0 ? bannerData.length - 1 : currentIndex - 1)
+                }
             >
                 <FaChevronLeft size={24} />
             </button>
             <button
                 className="absolute hidden lg:flex top-[45%] right-4 transform -translate-y-[50%] text-white bg-black bg-opacity-50 rounded-full p-2 focus:outline-none"
-                onClick={() => setCurrentIndex(currentIndex === bannerData.length - 1 ? 0 : currentIndex + 1)}
+                onClick={() =>
+                    setCurrentIndex(currentIndex === bannerData.length - 1 ? 0 : currentIndex + 1)
+                }
             >
                 <FaChevronRight size={24} />
             </button>
-
-
         </div>
     );
 };

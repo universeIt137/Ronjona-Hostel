@@ -70,17 +70,17 @@ const ContactUsPage = () => {
           <h2 className="text-4xl font-semibold text-gray-700">
             ronjona women's Hostel
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-justify ">
             <strong>Branch 1 : </strong> House No # 44, Road No # 13, Sector # 12
             Uttara, Dhaka-1230
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-justify ">
             <strong>Branch 2 :</strong> Farmgate – 29, Purbo Raja Bazar (Near the Metro Rail Station), Dhaka-1255
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-justify ">
             <strong>Phone:</strong> +88 0 1 7 7 7 1 7 7 7 7 1
           </p>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-justify ">
             <strong>Email:</strong> info@ronjonabd.com
           </p>
         </div>
