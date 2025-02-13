@@ -80,7 +80,7 @@ const BookingFrom = () => {
 
     return (
         <>
-            <div className="flex justify-center mt-24 w-11/12 mx-auto   items-center  p-4">
+            <div className="flex justify-center mt-40 lg:mt-24 w-11/12 mx-auto   items-center  p-4">
                 <Helmet>
                     <title>Ronjona | Booking Form</title>
                 </Helmet>

@@ -39,12 +39,12 @@ const AboutPage = () => {
       </Helmet>
       {/* Who We Are Section */}
 
-      <div className=" my-28  ">
+      <div className=" lg:mt-28 mt-40 mb-4  ">
 
 
         {/* Right Side - Text Content */}
         <div className=" md:pl-6 mt-6 md:mt-0" data-aos="zoom-in" >
-          <h3 className="lg:text-4xl ml-6 font-bold text-center mb-4 text-[#A020BA] ">About Us</h3>
+          <h3 className="text-4xl ml-6 font-bold text-center mb-4 text-[#A020BA] ">About Us</h3>
           <p className="text-gray-700 mb-2  text-justify ">
             <div
               className=" text-2xl text-black "

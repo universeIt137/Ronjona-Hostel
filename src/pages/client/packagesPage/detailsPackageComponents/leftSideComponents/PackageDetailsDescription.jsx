@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaWhatsapp, FaInstagram } from 'react-icons/fa';  // Import social media icons
 
 const PackageDetailsDescription = () => {
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
 
     const { id } = useParams();
     const axiosPublic = useAxiosPublic();
@@ -73,9 +73,9 @@ const PackageDetailsDescription = () => {
                     Share Now
                 </button> */}
             </div>
-            <div className='lg:w-[90vh] border-2 lg:h-[128lvh] bg-gray-200 px-10 mt-10 rounded-[30px] mb-10 '>
+            <div className="w-full max-w-[90vh] lg:max-w-[90vh] border-2 lg:h-[128lvh] bg-gray-200 px-5 lg:px-10 mt-10 rounded-[30px] mb-10">
                 <div
-                    className="text-lg text-black py-10"
+                    className="text-sm sm:text-base lg:text-lg text-black py-5 lg:py-10 leading-relaxed break-words whitespace-normal"
                     dangerouslySetInnerHTML={{ __html: packagesDetailsDescription?.desc }}
                 />
             </div>

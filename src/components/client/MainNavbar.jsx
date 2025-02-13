@@ -174,7 +174,7 @@ const MainNavbar = () => {
                         {showGetInTouchDropdown && (
                             <div className="pl-4">
                                 <NavLink
-                                    to="/about-us"
+                                    to="/about"
                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
                                     onClick={() => setIsOpen(false)} // Close drawer on click
                                 >

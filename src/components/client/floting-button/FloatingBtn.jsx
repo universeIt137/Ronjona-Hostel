@@ -6,7 +6,7 @@ const FloatingBtn = () => {
     const phoneNumber = "01777177771"; // Define phone number once to reuse
 
     return (
-        <div className="fixed bottom-4 left-9 flex gap-4 w-11/12 mx-auto justify-between">
+        <div className="fixed bottom-4  flex gap-4 w-11/12 mx-auto justify-between">
             {/* Phone Call Button */}
             <a
                 href={`tel:+88${phoneNumber}`}
