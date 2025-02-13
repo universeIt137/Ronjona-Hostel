@@ -176,9 +176,9 @@ const AllPackagesRightSide = () => {
         // Filter by price range
         if (priceRange !== 'all') {
             filtered = filtered.filter(pkg => {
-                if (priceRange === 'low') return pkg.price < 100;
-                if (priceRange === 'medium') return pkg.price >= 100 && pkg.price <= 500;
-                if (priceRange === 'high') return pkg.price > 500;
+                if (priceRange === 'low') return pkg.price.split("-")[0] < 100;
+                if (priceRange === 'medium') return pkg.price.split("-")[0] >= 100 && pkg.price.split("-")[0] <= 500;
+                if (priceRange === 'high') return pkg.price.split("-")[0] > 500;
                 return true;
             });
         }

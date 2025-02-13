@@ -26,8 +26,8 @@ const Address = () => {
           {
             addressData.map((item, i) => {
               return (
-                <div className='border p-4 shadow-md rounded-md  ' key={i} >
-                  <h1>Number : {item?.name} </h1>
+                <div className='border p-4 shadow-md rounded-md bg-[#A020BA] text-white ' key={i} >
+                  <h1>Address : {item?.name} </h1>
                 </div>
               )
             })

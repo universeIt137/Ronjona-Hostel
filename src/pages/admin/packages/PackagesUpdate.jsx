@@ -22,6 +22,7 @@ const PackagesUpdate = () => {
         location: "",
         seatAvalible: ""
     });
+    console.log(formData)
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const { data: branchNames = [] } = useQuery({
@@ -46,8 +47,8 @@ const PackagesUpdate = () => {
         }
     });
 
-    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/<your-cloud-name>/image/upload";
-    const UPLOAD_PRESET = "dxvacpgrv";
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dxvacpgrv/image/upload";
+    const UPLOAD_PRESET = "ronjonaImg";
 
     // Fetch package data
     useEffect(() => {
@@ -319,39 +320,43 @@ const PackagesUpdate = () => {
                     Add Feature
                 </button>
 
-                {/* <div className="my-8" >
-                    {formData.img.map((images, index) => (
+                <div className="my-8" >
+                    {formData?.img.map((images, index) => (
                         <div key={index} className="flex gap-4 mb-4">
+
+                            {
+                                console.log(images)
+                            }
                             
-                            <input
+                             <input
                                 type="file"
-                                onChange={(e) => handleUpload(e, "features", index, "featureImg")}
+                                onChange={(e) => handleUpload(e, "img", index, "images")}
                                 className="flex-1 border-2 "
                             />
                             {images && (
                                 <img
-                                    src={images.img}
+                                    src={images}
                                     alt="Feature"
                                     className="w-16 h-16 rounded"
                                 />
-                            )}
+                            )} 
                             <button
                                 type="button"
-                                onClick={() => handleRemoveItem("images", index)}
+                                onClick={() => handleRemoveItem("img", index)}
                                 className=" text-blue-500 font-bold rounded"
                             >
                                 Remove
                             </button>
                         </div>
                     ))}
-                    <button
+                    {/* <button
                         type="button"
-                        onClick={() => handleAddItem("features", { featureTitle: "", featureImg: "" })}
+                        onClick={() => handleAddItem("img")}
                         className="mt-4 p-2 bg-blue-500 text-white rounded"
                     >
                         Add Feature
-                    </button>
-                </div> */}
+                    </button> */}
+                </div>
 
                 {/* Submit Button */}
                 <button

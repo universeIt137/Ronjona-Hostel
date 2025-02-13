@@ -122,7 +122,7 @@ const UploadWhyChoose = () => {
             </Helmet>
             <form
                 onSubmit={handleSubmit}
-                className="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg space-y-4"
+                className="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl space-y-4"
             >
                 <h2 className="text-2xl font-bold text-center text-gray-800">
                     {chooseData?._id ? "Update Why Choose Us" : "Upload Why Choose Us"}

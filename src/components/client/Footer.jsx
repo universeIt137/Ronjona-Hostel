@@ -27,23 +27,27 @@ const Footer = () => {
                         <div className='' >
                             <ul>
                                 <li className='flex gap-2 py-4'>
-                                    <FaSquareFacebook className='text-3xl hover:text-[#812F8C] transition-all ' />
-                                    <FaInstagramSquare className='text-3xl hover:text-[#812F8C] ' />
-                                    <FaLinkedin className='text-3xl hover:text-[#812F8C] ' />
+                                    <FaSquareFacebook className='text-3xl hover:text-[#812F8C] transition duration-500 ' />
+                                    <FaInstagramSquare className='text-3xl hover:text-[#812F8C] transition duration-500 ' />
+                                    <FaLinkedin className='text-3xl hover:text-[#812F8C] transition duration-500 ' />
                                 </li>
                                 <li className='flex gap-2 py-2'>
                                     <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736053908/Ronjona/xzbrgqzomenlw5t6n7qo.png" alt="Phone" />
-                                    <Link to="#">88 0 1 7 7 7 1 7 7 7 7 1
+                                    <Link className='hover:text-[#812F8C] transition duration-500' to="#">88 0 1 7 7 7 1 7 7 7 7 1
                                     </Link>
                                 </li>
                                 <li className='flex gap-2 py-2'>
-                                    <img src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736054078/Ronjona/p5lot1ryu8zqhh2hream.png" alt="Email" />
-                                    <Link to="#">info@ronjonabd.com</Link>
+                                    <img className='hover:text-[#812F8C] transition duration-500' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736054078/Ronjona/p5lot1ryu8zqhh2hream.png" alt="Email" />
+                                    <Link className='hover:text-[#812F8C] transition duration-500' to="#">info@ronjonabd.com</Link>
                                 </li>
                                 <li className='py-2'>
-                                    <Link Link to="#" className=''>
-                                        House No # 44, Road No # 13, Sector # 12
-                                        Uttara, Dhaka-1230
+                                    <Link Link to="#" className='hover:text-[#812F8C] transition duration-500'>
+                                        Branch 1 : House No # 44, Road No # 13, Sector # 12 Uttara, Dhaka-1230
+                                    </Link>
+                                </li>
+                                <li className='py-2'>
+                                    <Link Link to="#" className='hover:text-[#812F8C] transition duration-500'>
+                                    Branch 2 : Farmgate – 29, Purbo Raja Bazar (Near the Metro Rail Station), Dhaka-1255
                                     </Link>
                                 </li>
 
@@ -54,32 +58,116 @@ const Footer = () => {
                         {/* Column 2 */}
                         <div>
                             <ul>
-                                <li><Link to="/about">About Us</Link></li>
-                                <li><Link to="/vission">Vission & Mission</Link></li>
-                                <li><Link to="/management-info">Management Speech</Link></li>
-                                <li><Link to="/border-review">Review</Link></li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/about">About Us</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/vission">Vission & Mission</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/management-info">Management Speech</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/border-review">Review</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/privacy">Privace Policy</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/refund">Refund Policy</Link>
+                                    </span>
+                                </li>
+
                             </ul>
                         </div>
 
                         {/* Column 3 */}
                         <div>
                             <ul>
-                                <li><Link to="/all-packages">Our Our Packages</Link></li>
-                                <li><Link to="/our-facility">Our Facility</Link></li>
-                                <li><Link to="/faq">FAQ</Link></li>
-                                <li><Link to="/our-branch">Our Branches</Link></li>
-                                <li><Link to="/image-gallery">Image Gallery</Link></li>
-                                <li><Link to="/video-gallery">Video Gallery</Link></li>
-                                <li><Link to="/contact-us">Contact Us</Link></li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/all-packages">Our Our Packages</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/our-facility">Our Facility</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/faq">FAQ</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/our-branch">Our Branches</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/image-gallery">Image Gallery</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/video-gallery">Video Gallery</Link>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <Link to="/contact-us">Contact Us</Link>
+                                    </span>
+                                </li>
                             </ul>
                         </div>
 
                         {/* Column 4 */}
                         <div className='' >
                             <ul>
-                                <li><NavLink to="/booking-froms">Booking From</NavLink></li>
-                                <li><NavLink to="/hotline">Hotline</NavLink></li>
-                                <li><NavLink to="/address">Address</NavLink></li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <NavLink to="/booking-froms">Booking From</NavLink>
+                                    </span>
+                                </li>
+
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <NavLink to="/hotline">Hotline</NavLink>
+                                    </span>
+                                </li>
+                                <li className="flex items-center space-x-2">
+                                    <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
+                                    <span className="hover:text-[#853493] transition duration-300">
+                                        <NavLink to="/address">Address</NavLink>
+                                    </span>
+                                </li>
                                 {/* <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li> */}
                                 {/* <li><NavLink to="/privacy">Privacy Policy</NavLink></li> */}
                                 {/* <li><NavLink to="/refund">Refund Policy</NavLink></li> */}
@@ -101,3 +189,30 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+// export default function Footer() {
+//     const items = [
+//         "Assure Development & Design Ltd",
+//         "Assure Builders Ltd",
+//         "Assure Properties Ltd",
+//         "Assure Tourism (Dera Resort)",
+//         "Assure Tours and Travels",
+//         "Assure General Hospital Ltd",
+//         "Assure Agro Complex Ltd",
+//         "Bangla Version",
+//     ];
+
+//     return (
+//         <div className="bg-black text-white p-6">
+//             <ul className="space-y-2">
+//                 {items.map((item, index) => (
+//                     <li key={index} className="flex items-center space-x-2">
+//                         <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+//                         <span className="hover:text-[#853493] transition duration-300">{item}</span>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// }

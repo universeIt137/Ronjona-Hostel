@@ -3,7 +3,6 @@ import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 const PrivateRoute = ({children}) => {
     const user = localStorage.getItem("user");
-    console.log(user);
     const location = useLocation();
     const navigate = useNavigate();
 

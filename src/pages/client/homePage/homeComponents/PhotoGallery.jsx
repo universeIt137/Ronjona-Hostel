@@ -67,7 +67,7 @@ const PhotoGallery = () => {
 
     return (
         <div className="bg-white">
-            <div className="w-11/12 mx-auto lg:mt-28">
+            <div className="w-11/12 mx-auto lg:mt-28 mb-6 ">
                 <Helmet>
                     <title>Ronjona | Img Gallery Page</title>
                 </Helmet>

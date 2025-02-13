@@ -282,7 +282,7 @@ const AddPackage = () => {
                 <div className="p-2 w-full mb-10 h-full">
                     <label>Package Description</label>
                     <Editor
-                        apiKey='s4n5yz8z4ykqy3nw5fylvw14ucilnduy3s81c0u4h65mvhij'
+                        apiKey='g6uwg88yaicnshdv89f9zzw8mfkk6dzmgovm38k9qunt68o3'
                         init={{
                             height: 500,
                             toolbar:
