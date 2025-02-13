@@ -26,7 +26,7 @@ const Hotline = () => {
           {
             hotlineData.map((item, i) => {
               return (
-                <div className='border p-4 shadow-md rounded-md  ' key={i} >
+                <div className='border p-4 shadow-md rounded-md bg-[#A020BA] text-white  ' key={i} >
                   <h1>Number : {item?.hotlineNumber} </h1>
                 </div>
               )
