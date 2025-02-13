@@ -63,11 +63,11 @@ const KeyFeatures = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 p-4 lg:p-8 bg-[#A020BA] text-white ">
         {/* Features Section */}
         <div>
-          <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-white ml-9  ">Features</h1>
+          <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-white  ">Features</h1>
           <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg">
             {features?.map((item, i) => (
               <li key={i} className="flex items-start gap-4">
-                <div><FaRegDotCircle className="text-[#A020BA] mt-1 text-xl" /></div>
+                <div><FaRegDotCircle className=" mt-[6px] text-xl" /></div>
                 <span>{item?.title}</span>
               </li>
             ))}
@@ -90,11 +90,11 @@ const KeyFeatures = () => {
 
         {/* Facilities Section */}
         <div>
-          <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-white ml-9">Facilities</h1>
+          <h1 className="text-2xl lg:text-4xl font-bold mb-6 text-white ">Facilities</h1>
           <ul className="space-y-4 lg:space-y-6 text-base lg:text-lg">
             {facilities?.map((item, i) => (
               <li key={i} className="flex items-start gap-4">
-                <div><FaRegDotCircle className="text-[#A020BA] mt-1 text-xl" /></div>
+                <div><FaRegDotCircle className=" mt-[6px] text-xl" /></div>
                 <span>{item?.title}</span>
               </li>
             ))}
