@@ -88,7 +88,7 @@ const BookingFrom = () => {
                     onSubmit={handleSubmit}
                     className="bg-white border p-2 rounded-lg shadow-lg w-full  space-y-4"
                 >
-                    <h2 className="text-2xl font-bold text-center text-gray-800">Booking Form</h2>
+                    <h2 className="text-2xl font-bold text-center text-[#853493] ">Booking Form</h2>
 
                     <div className='grid lg:grid-cols-2 gap-3 ' >
                         {/* Name Field */}

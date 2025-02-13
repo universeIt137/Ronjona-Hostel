@@ -70,6 +70,7 @@ const ManagementInfoPage = () => {
                                     <img
                                         src={person.img}
                                         alt={person.name}
+
                                         className="w-64 h-64 object-cover rounded-lg shadow-lg"
                                     />
                                     <p className='font-semibold italic lg:ml-28 mt-2 ' >{person.role}</p>
