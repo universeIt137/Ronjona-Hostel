@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const ChooseUs = () => {
     const axiosPublic = useAxiosPublic()
-    
+
     const { data: whyChooseData = [], refetch, isLoading } = useQuery({
         queryKey: ["whyChooseData"],
         queryFn: async () => {
@@ -35,7 +35,7 @@ const ChooseUs = () => {
 
                     <div className="relative ">
                         <img
-                            className="w-full md:w-3/4 h-[70lvh] md:h-[80lvh] rounded-[20px]"
+                            className="w-full md:w-3/4 h-[65vh] md:h-[80lvh] rounded-[20px]"
                             src={whyChooseData?.backgroundImg}
                             alt="Main Image"
                         />
@@ -50,7 +50,7 @@ const ChooseUs = () => {
                     <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-[#A020BA]">WHY YOU WITH RONJONA</p>
                     <p className="text-sm lg:text-lg text-justify">
                         {
-                            whyChooseData?.des.slice(0,500)
+                            whyChooseData?.des.slice(0, 500)
                         }...  <Link className='underline font-bold ' to={`choose-us-details`}>See more</Link>
                     </p>
                 </div>
