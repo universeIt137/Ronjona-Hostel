@@ -55,7 +55,7 @@ const PackagesDetailsImage = ({ packagesDetailsData }) => {
                     <img
                         key={index}
                         src={img}
-                        alt={`Thumbnail ${index + 1}`}
+                        alt={` ${index + 1}`}
                         className={`w-16 h-16 object-cover rounded-lg cursor-pointer border-2 transition-all ${index === currentIndex ? "border-[#853493]" : "border-transparent"
                             }`}
                         onClick={() => setCurrentIndex(index)}

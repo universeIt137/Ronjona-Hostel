@@ -63,7 +63,7 @@ const AddTeam = () => {
     return (
         <div className="flex justify-center items-center min-h-screen p-4">
             <Helmet>
-                <title>Dashboard | Team Member Upload Page</title>
+                <title>Dashboard | Management Member Upload Page</title>
             </Helmet>
             <form
                 onSubmit={handleSubmit}

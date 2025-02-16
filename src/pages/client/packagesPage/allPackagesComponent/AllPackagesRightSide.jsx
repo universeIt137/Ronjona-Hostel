@@ -45,7 +45,7 @@ const Packages = ({ packages, isLoading }) => {
     }
 
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mb-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10'>
             {packages.map((pkg) => (
                 <div key={pkg._id} className='pb-5 rounded shadow relative'>
                     <Link to={`/package-details/${pkg?._id}`}>
