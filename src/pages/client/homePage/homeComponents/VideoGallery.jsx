@@ -7,6 +7,7 @@ import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoade
 import { Helmet } from "react-helmet-async";
 
 const VideoGallery = () => {
+    window.scrollTo(0, 0);
     const axiosPublic = useAxiosPublic();
 
     // Fetching videos

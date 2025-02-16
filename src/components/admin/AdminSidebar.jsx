@@ -282,7 +282,7 @@ const AdminSidebar = () => {
 
                         <Sidebar.Collapse
                             icon={BiGitBranch}
-                            label="Team"
+                            label="Management"
                             renderChevronIcon={(theme, open) => {
                                 const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
 
@@ -293,12 +293,12 @@ const AdminSidebar = () => {
 
                             <Link to={'/dashboard/add-team-member'}>
                                 <Sidebar.Item>
-                                    Add Team Member
+                                    Add Management Member
                                 </Sidebar.Item>
                             </Link>
                             <Link to={'/dashboard/manage-team-member'}>
                                 <Sidebar.Item>
-                                    Manage Team Member
+                                    Manage Management Member
                                 </Sidebar.Item>
                             </Link>
 

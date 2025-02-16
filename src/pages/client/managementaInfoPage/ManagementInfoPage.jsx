@@ -37,66 +37,51 @@ const ManagementInfoPage = () => {
 
     return (
         <div>
-            <div className="container mx-auto mt-32 p-4">
+            <div className="container mx-auto mt-14 p-4">
                 <Helmet>
                     <title>Ronjon | Management Page </title>
                 </Helmet>
-                <ManageAbout></ManageAbout>
                 <div className=" my-8 ">
                     <div className=" mx-auto">
-                        <div className=' my-14 ' >
-                            <h1 className='text-center font-bold text-4xl mb-4 ' >The Management</h1>
-                            <div className='w-[25%] h-1 bg-black block mx-auto ' ></div>
+                        <div className='  ' >
+                            <h1 className='text-center font-bold text-4xl mb-4 text-[#853493] ' >The Management</h1>
+                            <div className='w-[25%] h-1 text-[#853493] block mx-auto ' ></div>
                         </div>
 
-                        {teamDatas.map((person, index) => (
-                            <div
-                                key={index}
-                                className="flex flex-col lg:flex-row items-center lg:gap-32 gap-3 lg:items-center mb-12"
-                            >
+                        <div className=' max-w-4xl mx-auto   ' >
+                            {teamDatas.map((person, index) => (
                                 <div
-                                    className={`${index % 2 === 0 ? "lg:order-1     " : "lg:order-2  "
-                                        } flex-1  text-center lg:text-justify gap-52 `}
+                                    key={index}
+                                    className="flex flex-col lg:flex-row items-center justify-between  lg:gap-32 gap-3 lg:items-center mb-12"
                                 >
-                                    <h2 className="text-2xl font-semibold italic mb-2">
-                                        {person.name}
-                                    </h2>
-                                    <p className="text-gray-700 text-justify ">{person.des}</p>
-                                </div>
-                                <div
-                                    className={`${index % 2 === 0 ? "lg:order-2" : "lg:order-1"
-                                        } flex-1 justify-between `}
-                                >
-                                    <img
-                                        src={person.img}
-                                        alt={person.name}
-
-                                        className="w-64 h-64 object-cover rounded-lg shadow-lg"
-                                    />
-                                    <p className='font-semibold italic lg:ml-28 mt-2 ' >{person.role}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div>
-                    <ServiceOffer></ServiceOffer>
-                </div>
-                <div className='my-4' >
-                    <h1 className='text-4xl italic mb-4 ' >Oteher Services are</h1>
-                    <div className="grid grid-cols-2 md:grid-cols-6 ">
-                        {featuresDatas.slice(0,6).map((item, i) => (
-                            <div className='' key={i}>
-                                <div className="justify-items-center   text-white my-2  transform transition-transform duration-300 hover:scale-105">
-                                    <div className="bg-red-700  rounded-2xl ">
-                                        <img className=" w-44   h-44 border-2 border-[#853493] rounded-2xl " src={item?.logo} alt={item?.title} />
+                                    <div
+                                        className={`${index % 2 === 0 ? "lg:order-1      " : "lg:order-2  "
+                                            } flex-1  text-center lg:text-justify gap-52 `}
+                                    >
+                                        <h2 className="text-2xl font-semibold italic mb-2">
+                                            {person.name}
+                                        </h2>
+                                        <p className="text-gray-700 text-justify ">{person.des}</p>
                                     </div>
+                                    <div
+                                        className={`${index % 2 === 0 ? "lg:order-2 justify-end " : "lg:order-1  "
+                                            } flex-1 justify-between `}
+                                    >
+                                        <img
+                                            src={person.img}
+                                            alt={person.name}
 
+                                            className="w-64 h-64 object-cover rounded-lg shadow-lg"
+                                        />
+                                        <p className='font-semibold italic lg:ml-28 mt-2 ' >{person.role}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     );
