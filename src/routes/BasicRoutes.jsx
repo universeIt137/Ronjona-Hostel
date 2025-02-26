@@ -83,6 +83,7 @@ import ManageAddress from "../pages/admin/address/ManageAddress";
 import UpdateAddress from "../pages/admin/address/UpdateAddress";
 import AllAddress from "../pages/admin/address/AllAddress";
 import UploadPrice from "../pages/admin/price-page/UploadPrice";
+import NavGallery from "../pages/client/navGallery/NavGallery";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -129,7 +130,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "image-gallery",
-                element: <PhotoGallery></PhotoGallery>
+                element: <NavGallery></NavGallery>
             },
             {
                 path: "video-gallery",

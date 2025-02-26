@@ -24,7 +24,7 @@ const Footer = () => {
                     {/* Footer Links Section */}
                     <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-12 md:gap=6 py-8 text-sm md:text-base  '>
                         {/* Column 1 */}
-                        <div className='' >
+                        <div className='  ' >
                             <ul>
                                 <li className='flex gap-2 py-4'>
                                     <Link to={"https://www.facebook.com/share/1AHRqtswiV/"}><FaSquareFacebook className='text-3xl hover:text-[#812F8C] transition duration-500 ' /></Link>
@@ -41,13 +41,11 @@ const Footer = () => {
                                     <Link className='hover:text-[#812F8C] transition duration-500' to="#">info@ronjonabd.com</Link>
                                 </li>
 
-
-
                             </ul>
                         </div>
 
                         {/* Column 2 */}
-                        <div>
+                        <div className='' >
                             <ul>
                                 <li className="flex items-center space-x-2">
                                     <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
@@ -90,7 +88,7 @@ const Footer = () => {
                         </div>
 
                         {/* Column 3 */}
-                        <div>
+                        <div className='' >
                             <ul>
                                 <li className="flex items-center space-x-2">
                                     <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
@@ -170,9 +168,6 @@ const Footer = () => {
                                         Branch 2 : Farmgate – 29, Purbo Raja Bazar (Near the Metro Rail Station), Dhaka-1255
                                     </Link>
                                 </li>
-                                {/* <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li> */}
-                                {/* <li><NavLink to="/privacy">Privacy Policy</NavLink></li> */}
-                                {/* <li><NavLink to="/refund">Refund Policy</NavLink></li> */}
                             </ul>
                         </div>
 

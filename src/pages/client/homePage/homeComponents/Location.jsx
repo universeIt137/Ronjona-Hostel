@@ -21,9 +21,7 @@ const Location = () => {
     }
     return (
         <div className="container px-4 md:px-0 md:mx-auto">
-            <Helmet>
-                <title>Ronjona| Home Page</title>
-            </Helmet>
+            
             {/* Title */}
             <p className="hover:underline text-2xl md:text-4xl lg:mb-6 font-bold text-[#853493] ">Locations</p>
 
