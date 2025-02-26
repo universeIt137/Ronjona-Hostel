@@ -59,7 +59,7 @@ const MainNavbar = () => {
                     <div className="hidden md:flex  md:space-x-6 lg:mr-32   ">
                         <NavLink
                             to="/"
-                            className="relative text-lg font-medium hover:text-main-color"
+                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
                         >
                             Home
                             {pathname === "/" && (
