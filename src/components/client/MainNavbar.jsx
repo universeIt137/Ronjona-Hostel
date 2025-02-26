@@ -4,7 +4,7 @@ import { FaAngleRight, FaAngleUp } from 'react-icons/fa';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const MainNavbar = () => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     const [isOpen, setIsOpen] = useState(false); // Drawer visibility state
     const [isScrolled, setIsScrolled] = useState(false); // Scroll state
     const [showGetInTouchDropdown, setShowGetInTouchDropdown] = useState(false); // Get In Touch dropdown visibility

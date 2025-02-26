@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 
 const VissionPage = () => {
     const axiosPublic = useAxiosPublic();
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const { data: vissionData = [], refetch, isLoading } = useQuery({
         queryKey: ['vissionData'],
         queryFn: async () => {
