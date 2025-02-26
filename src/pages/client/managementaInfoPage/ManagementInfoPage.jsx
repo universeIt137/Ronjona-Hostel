@@ -8,7 +8,7 @@ import ServiceOffer from './ServiceOffer';
 
 const ManagementInfoPage = () => {
 
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
     const axiosPublic = useAxiosPublic();
     // Team data
 
