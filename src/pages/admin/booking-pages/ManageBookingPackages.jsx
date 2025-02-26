@@ -21,8 +21,10 @@ const ManageBookingPackages = () => {
         queryFn: async () => {
             const res = await axiosPublic.get('/manage-booking');
             return res.data.data;
+            
         }
     });
+    console.log(bookingData)
     const statusUpdate = async (id) => {
         try {
             let resp = await updateAlert();
@@ -98,7 +100,7 @@ const ManageBookingPackages = () => {
                         <th className="px-4 py-2 border border-gray-300">Packages Name</th>
                         <th className="px-4 py-2 border border-gray-300">Price</th>
                         <th className="px-4 py-2 border border-gray-300">Branch</th>
-                        <th className="px-4 py-2 border border-gray-300">Location</th>
+                        <th className="px-4 py-2 border border-gray-300">amount</th>
                         <th className="px-4 py-2 border border-gray-300">Status</th>
                         <th className="px-4 py-2 border border-gray-300">Action</th>
                     </tr>
@@ -112,7 +114,7 @@ const ManageBookingPackages = () => {
                             <td className="px-4 py-2 border border-gray-300">{row.packageDetails?.title}</td>
                             <td className="px-4 py-2 border border-gray-300">{row.packageDetails?.price}</td>
                             <td className="px-4 py-2 border border-gray-300">{row.branchDetails?.branch}</td>
-                            <td className="px-4 py-2 border border-gray-300">{row.locationDetails?.location}</td>
+                            <td className="px-4 py-2 border border-gray-300">{row.amount}</td>
                             <td onClick={() => statusUpdate(row?._id)} className="px-4 py-2 border  cursor-pointer border-gray-300">{
                                 row?.status ? "Confirm" : "Not confirm"
                             }</td>
