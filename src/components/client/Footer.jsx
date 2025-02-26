@@ -40,16 +40,7 @@ const Footer = () => {
                                     <img className='hover:text-[#812F8C] transition duration-500' src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1736054078/Ronjona/p5lot1ryu8zqhh2hream.png" alt="Email" />
                                     <Link className='hover:text-[#812F8C] transition duration-500' to="#">info@ronjonabd.com</Link>
                                 </li>
-                                <li className='py-2'>
-                                    <Link Link to="#" className='hover:text-[#812F8C] transition duration-500'>
-                                        Branch 1 : House No # 44, Road No # 13, Sector # 12 Uttara, Dhaka-1230
-                                    </Link>
-                                </li>
-                                <li className='py-2'>
-                                    <Link Link to="#" className='hover:text-[#812F8C] transition duration-500'>
-                                    Branch 2 : Farmgate – 29, Purbo Raja Bazar (Near the Metro Rail Station), Dhaka-1255
-                                    </Link>
-                                </li>
+
 
 
                             </ul>
@@ -167,6 +158,17 @@ const Footer = () => {
                                     <span className="hover:text-[#853493] transition duration-300">
                                         <NavLink to="/address">Address</NavLink>
                                     </span>
+                                </li>
+
+                                <li className='py-2'>
+                                    <Link Link to="#" className='hover:text-[#812F8C] transition duration-500'>
+                                        Branch 1 : House No # 44, Road No # 13, Sector # 12 Uttara, Dhaka-1230
+                                    </Link>
+                                </li>
+                                <li className='py-2'>
+                                    <Link Link to="#" className='hover:text-[#812F8C] transition duration-500'>
+                                        Branch 2 : Farmgate – 29, Purbo Raja Bazar (Near the Metro Rail Station), Dhaka-1255
+                                    </Link>
                                 </li>
                                 {/* <li><NavLink to="/term&condicton">Terms & Condition</NavLink></li> */}
                                 {/* <li><NavLink to="/privacy">Privacy Policy</NavLink></li> */}
