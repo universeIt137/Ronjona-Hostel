@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar, Drawer, Button } from "flowbite-react";
 import { FaAngleRight, FaAngleUp } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const MainNavbar = () => {
     window.scrollTo(0, 0)
@@ -9,6 +9,8 @@ const MainNavbar = () => {
     const [isScrolled, setIsScrolled] = useState(false); // Scroll state
     const [showGetInTouchDropdown, setShowGetInTouchDropdown] = useState(false); // Get In Touch dropdown visibility
     const [showGalleryDropdown, setShowGalleryDropdown] = useState(false); // Gallery dropdown visibility
+    const { pathname } = useLocation();
+
 
     // Function to handle scroll
     useEffect(() => {
@@ -55,8 +57,14 @@ const MainNavbar = () => {
 
                     {/* Large screen navigation */}
                     <div className="hidden md:flex  md:space-x-6 lg:mr-32   ">
-                        <NavLink to="/" className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink
+                            to="/"
+                            className="relative text-lg font-medium hover:text-main-color"
+                        >
                             Home
+                            {pathname === "/" && (
+                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493] "></span>
+                            )}
                         </NavLink>
 
                         {/* Get In Touch dropdown */}
@@ -65,53 +73,113 @@ const MainNavbar = () => {
                             onMouseEnter={() => setShowGetInTouchDropdown(true)}
                             onMouseLeave={() => setShowGetInTouchDropdown(false)}
                         >
-                            <p className={`text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                            <p
+                                className={`relative text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'}`}
+                            >
                                 Get In Touch
+                                {(pathname === "/about" || pathname === "/vission" || pathname === "/management-info" || pathname === "/border-review") && (
+                                    <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                                )}
                             </p>
-                            {showGetInTouchDropdown && (
-                                <div
-                                    className="absolute top-full left-0  w-48 bg-white shadow-lg rounded-md z-50"
-                                >
 
-                                    <NavLink NavLink to={"/about"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">About Us</NavLink>
-                                    {/* <NavLink NavLink to={"/mission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Mission</NavLink> */}
-                                    <NavLink NavLink to={"/vission"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Vision & Mission</NavLink>
-                                    <NavLink NavLink to={"/management-info"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Management Speech</NavLink>
-                                    <NavLink NavLink to={"/border-review"} className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Review</NavLink>
+                            {showGetInTouchDropdown && (
+                                <div className="absolute top-full left-0 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200">
+                                    <NavLink
+                                        to="/about"
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-200 ${pathname === "/about" ? "font-semibold" : ""}`}
+                                    >
+                                        About Us
+                                    </NavLink>
+                                    <NavLink
+                                        to="/vission"
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-200 ${pathname === "/vission" ? "font-semibold" : ""}`}
+                                    >
+                                        Vision & Mission
+                                    </NavLink>
+                                    <NavLink
+                                        to="/management-info"
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-200 ${pathname === "/management-info" ? "font-semibold" : ""}`}
+                                    >
+                                        Management Speech
+                                    </NavLink>
+                                    <NavLink
+                                        to="/border-review"
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-200 ${pathname === "/border-review" ? "font-semibold" : ""}`}
+                                    >
+                                        Review
+                                    </NavLink>
                                 </div>
                             )}
                         </div>
 
-                        <NavLink to={`/all-packages`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink
+                            to="/all-packages"
+                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
+                        >
                             Our Packages
+                            {pathname === "/all-packages" && (
+                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                            )}
                         </NavLink>
-                        <NavLink to={`/our-facility`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink
+                            to="/our-facility"
+                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
+                        >
                             Our Facility
+                            {pathname === "/our-facility" && (
+                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                            )}
                         </NavLink>
 
-                        <NavLink to={`/faq`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink
+                            to="/faq"
+                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
+                        >
                             FAQ
+                            {pathname === "/faq" && (
+                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                            )}
                         </NavLink>
 
-                        <NavLink to={`/our-branch`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink
+                            to="/our-branch"
+                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
+                        >
                             Our Branches
+                            {pathname === "/our-branch" && (
+                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                            )}
                         </NavLink>
 
                         {/* Gallery dropdown */}
                         <div
-                            className="relative"
+                            className="relative group"
                             onMouseEnter={() => setShowGalleryDropdown(true)}
                             onMouseLeave={() => setShowGalleryDropdown(false)}
                         >
-                            <p className={`text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                            <p
+                                className={`relative text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'}`}
+                            >
                                 Gallery
+                                {(pathname === "/image-gallery" || pathname === "/video-gallery") && (
+                                    <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                                )}
                             </p>
+
                             {showGalleryDropdown && (
-                                <div
-                                    className="absolute top-full left-0  w-48 bg-white shadow-lg rounded-md z-50"
-                                >
-                                    <NavLink to="/image-gallery" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Image Gallery</NavLink>
-                                    <NavLink to="/video-gallery" className="block px-4 py-2 text-gray-700 hover:bg-gray-200">Video Gallery</NavLink>
+                                <div className="absolute top-full left-0 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200">
+                                    <NavLink
+                                        to="/image-gallery"
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-200 ${pathname === "/image-gallery" ? "font-semibold" : ""}`}
+                                    >
+                                        Image Gallery
+                                    </NavLink>
+                                    <NavLink
+                                        to="/video-gallery"
+                                        className={`block px-4 py-2 text-gray-700 hover:bg-gray-200 transition duration-200 ${pathname === "/video-gallery" ? "font-semibold" : ""}`}
+                                    >
+                                        Video Gallery
+                                    </NavLink>
                                 </div>
                             )}
                         </div>
@@ -119,8 +187,14 @@ const MainNavbar = () => {
 
 
 
-                        <NavLink to={`/contact-us`} className={`text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} hover:underline decoration-main-color`}>
+                        <NavLink
+                            to="/contact-us"
+                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
+                        >
                             Contact Us
+                            {pathname === "/contact-us" && (
+                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
+                            )}
                         </NavLink>
 
 
