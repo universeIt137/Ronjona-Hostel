@@ -19,7 +19,7 @@ const KeyFeatures = () => {
   });
 
   // Ensure images exist before slicing
-  const images = keyFeaturesData?.images ? (showMoreImages ? keyFeaturesData.images : keyFeaturesData.images.slice(0, 4)) : [];
+  const images = keyFeaturesData?.images.slice(0,4) ;
   const features = keyFeaturesData?.features ? (showMoreFeatures ? keyFeaturesData.features : keyFeaturesData.features.slice(0, 3)) : [];
   const facilities = keyFeaturesData?.facilities ? (showMoreFacilities ? keyFeaturesData.facilities : keyFeaturesData.facilities.slice(0, 4)) : [];
 
@@ -54,7 +54,7 @@ const KeyFeatures = () => {
             onClick={() => setShowMoreImages(!showMoreImages)}
             className="bg-[#853493] text-white px-6 py-2 rounded-lg  transition"
           >
-            {showMoreImages ? "Show Less" : "Show More"}
+            <Link to={"/our-facility"}>Show more</Link>
           </button>
         </div>
       )}

@@ -3,10 +3,11 @@ import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+import { Link } from 'react-router-dom';
 
 const PhotoGallery = () => {
     const axiosPublic = useAxiosPublic();
-
+    window.scrollTo(0, 0);
     const [isOpen, setIsOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showAll, setShowAll] = useState(false); // State to toggle full gallery view
@@ -63,7 +64,7 @@ const PhotoGallery = () => {
     }
 
     // Determine how many images to show
-    const displayedImages = showAll ? imgList : imgList.slice(0, 10);
+    const displayedImages = showAll ? imgList : imgList.slice(0, 4);
 
     return (
         <div className="bg-white">
@@ -88,22 +89,12 @@ const PhotoGallery = () => {
 
                 {/* Show More / Show Less Buttons */}
                 <div className="flex justify-center mt-6">
-                    {!showAll && imgList.length > 10 && (
-                        <button
-                            onClick={() => setShowAll(true)}
-                            className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition mr-4"
-                        >
-                            Show More
-                        </button>
-                    )}
-                    {showAll && (
-                        <button
-                            onClick={() => setShowAll(false)}
-                            className="bg-[#853493] text-white px-6 py-2 rounded-lg  transition"
-                        >
-                            Show Less
-                        </button>
-                    )}
+                    <button
+                        className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition mr-4"
+                    >
+                        <Link to={"/image-gallery"}>Show More</Link>
+                    </button>
+
                 </div>
 
                 {/* Modal */}
