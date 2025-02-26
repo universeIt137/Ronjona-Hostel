@@ -30,12 +30,14 @@ const BookingFrom = () => {
         const phoneNumber = e.target.phoneNumber.value;
         const packagesId = e.target.packagesId.value;
         const tran_id = e.target.tran_id.value;
+        const amount = e.target.amount.value;
 
         const payload = {
             name,
             phoneNumber,
             packagesId,
-            tran_id
+            tran_id,
+            amount
         };
 
 
@@ -123,7 +125,7 @@ const BookingFrom = () => {
                         {/* tranzisiton id */}
                         <div>
                             <label htmlFor="tran_id" className="block text-gray-600 font-semibold mb-2">
-                            Transition Number
+                                Transition Number
                             </label>
                             <input
                                 id="tran_id"
@@ -131,6 +133,21 @@ const BookingFrom = () => {
                                 name="tran_id"
                                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Enter your transition number "
+
+                            />
+                        </div>
+
+                        {/* amount */}
+                        <div>
+                            <label htmlFor="amount" className="block text-gray-600 font-semibold mb-2">
+                                Amount
+                            </label>
+                            <input
+                                id="amount"
+                                type="text"
+                                name="amount"
+                                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                placeholder="Enter amount"
 
                             />
                         </div>
@@ -190,7 +207,7 @@ const BookingFrom = () => {
                 </form>
             </div>
             <div className='mb-4' >
-            <PaymentCard></PaymentCard>
+                <PaymentCard></PaymentCard>
             </div>
         </>
     );
