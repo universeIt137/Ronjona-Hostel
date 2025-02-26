@@ -17,6 +17,8 @@ const UpdatePayment = () => {
     }
   });
 
+  const { logo: imgUrl } = singlePamentData;
+
   const axiosPublic = useAxiosPublic();
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
@@ -26,9 +28,19 @@ const UpdatePayment = () => {
     const bankName = e.target.bankName.value;
     const phoneNumber = e.target.phoneNumber.value;
     const branchName = e.target.branchName.value;
+    const logo = e.target.logo.files[0];
+
+
+    let logoUrl = imgUrl;
+
+    if (!logo?.name) {
+      logoUrl = imgUrl;
+    } else {
+      logoUrl = await uploadImg(logo)
+    }
 
     const payload = {
-      accountName,accountNumber,bankName,phoneNumber,branchName
+      accountName, accountNumber, bankName, phoneNumber, branchName, logo: logoUrl
     }
 
     let resp = await updateAlert();
@@ -71,8 +83,29 @@ const UpdatePayment = () => {
         <div className=" mx-auto mt-24  p-6  bg-white shadow-md rounded-md">
           <h1 className="text-2xl font-bold text-center mb-4">Payment Form</h1>
           <form className='' onSubmit={handleSubmit}>
+            <div>
+              <div className="avatar">
+                <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring ring-offset-2">
+                  <img src={singlePamentData?.logo} />
+                </div>
+              </div>
+            </div>
 
             <div className='grid grid-cols-2  gap-x-5 ' >
+              {/* logo */}
+              <div className="mb-4">
+
+                <label htmlFor="logo" className="block text-lg font-semibold mb-2">
+                  Logo
+                </label>
+                <input
+                  type="file"
+                  id="logo"
+                  name="logo"
+                  placeholder="Enter account name"
+                  className="w-full px-3  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
               {/* accountName */}
               <div className="mb-4">
                 <label htmlFor="accountName" className="block text-lg font-semibold mb-2">
@@ -86,6 +119,8 @@ const UpdatePayment = () => {
                   className="w-full px-3  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
+
+
 
               {/* accountNumber */}
               <div className="mb-4">

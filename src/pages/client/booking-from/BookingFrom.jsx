@@ -90,7 +90,7 @@ const BookingFrom = () => {
                 >
                     <h2 className="text-2xl font-bold text-center text-[#853493] ">Booking Form</h2>
 
-                    <div className='grid lg:grid-cols-2 gap-3 ' >
+                    <div className='grid lg:grid-cols-4 gap-3 ' >
                         {/* Name Field */}
                         <div>
                             <label htmlFor="name" className="block text-gray-600 font-semibold mb-2">
@@ -189,8 +189,8 @@ const BookingFrom = () => {
                     </div>
                 </form>
             </div>
-            <div className='my-10' >
-                <PaymentCard></PaymentCard>
+            <div className='mb-4' >
+            <PaymentCard></PaymentCard>
             </div>
         </>
     );

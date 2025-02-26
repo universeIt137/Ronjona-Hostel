@@ -31,7 +31,7 @@ const Location = () => {
                 <div className="absolute z-10 h-80 w-80 p-8 bg-[#f1edec] rounded-lg bg-opacity-80  hidden lg:block">
                     <img
                         className="rounded-lg h-60 w-full"
-                        src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/imagecon-group.jpg"
+                        src={locationData[0]?.img}
                         alt="Highlight Location"
                     />
                 </div>
