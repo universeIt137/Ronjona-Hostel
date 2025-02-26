@@ -73,7 +73,7 @@ const PackageDetailsDescription = () => {
                     Share Now
                 </button> */}
             </div>
-            <div className="w-full max-w-[90vh] lg:max-w-[90vh] border-2 lg:h-[38lvh] bg-gray-200 px-5 lg:px-10 mt-10 rounded-[30px] mb-10">
+            <div className="w-full max-w-[100vw] lg:w-[100%]  lg:h-[38lvh] bg-gray-200 px-5 lg:px-10 mt-10 rounded-[30px] mb-10">
                 <div
                     className="text-sm sm:text-base lg:text-lg text-black py-5 lg:py-10 leading-relaxed break-words whitespace-normal"
                     dangerouslySetInnerHTML={{ __html: packagesDetailsDescription?.desc }}

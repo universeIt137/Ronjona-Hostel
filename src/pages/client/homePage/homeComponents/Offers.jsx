@@ -52,9 +52,7 @@ const Offers = () => {
 
     return (
         <div className='mt-10 container px-4 md:px-0 md:mx-auto'>
-            <Helmet>
-                <title>Ronjona | Home Page</title>
-            </Helmet>
+            
             {/* Top Section */}
             <div className='mb-6 font-bold flex justify-between items-center'>
                 <p className="text-2xl md:text-4xl hover:underline text-[#A020BA]">Offers For You</p>

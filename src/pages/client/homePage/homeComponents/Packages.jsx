@@ -51,9 +51,7 @@ const Packages = () => {
 
     return (
         <div className=" w-11/12 mx-auto lg:my-4  " >
-            <Helmet>
-                <title>Ronjona | Home Page</title>
-            </Helmet>
+            
             <h1 className=" py-8 text-3xl text-[#A020BA] lg:text-4xl font-bold hover:underline " >Our Packages</h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 '>

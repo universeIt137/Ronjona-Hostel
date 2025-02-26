@@ -59,12 +59,10 @@ const MainNavbar = () => {
                     <div className="hidden md:flex  md:space-x-6 lg:mr-32   ">
                         <NavLink
                             to="/"
-                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
+                            className={`relative ${pathname === "/" ? "bg-[#853493] px-4 py-1 text-white rounded" : ""} text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
                         >
                             Home
-                            {pathname === "/" && (
-                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493] "></span>
-                            )}
+
                         </NavLink>
 
                         {/* Get In Touch dropdown */}
@@ -74,12 +72,10 @@ const MainNavbar = () => {
                             onMouseLeave={() => setShowGetInTouchDropdown(false)}
                         >
                             <p
-                                className={`relative text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'}`}
+                                className={`relative text-lg ${pathname === "/about" || pathname === "/vission" || pathname === "/management-info" || pathname === "/border-review" ? "bg-[#853493] px-4 py-1 text-white rounded" : "" } font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'}`}
                             >
                                 Get In Touch
-                                {(pathname === "/about" || pathname === "/vission" || pathname === "/management-info" || pathname === "/border-review") && (
-                                    <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                                )}
+
                             </p>
 
                             {showGetInTouchDropdown && (
@@ -114,41 +110,33 @@ const MainNavbar = () => {
 
                         <NavLink
                             to="/all-packages"
-                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
+                            className={`relative ${pathname === "/all-packages" ? " bg-[#853493] px-4 py-1 text-white rounded " : ""} text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
                         >
                             Our Packages
-                            {pathname === "/all-packages" && (
-                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                            )}
+                            
                         </NavLink>
                         <NavLink
                             to="/our-facility"
-                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
+                            className={`relative text-lg ${pathname === "/our-facility" ? " bg-[#853493] px-4 py-1 text-white rounded " : ""} font-medium ${isScrolled ? 'text-white' : 'text-black'} `}
                         >
                             Our Facility
-                            {pathname === "/our-facility" && (
-                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                            )}
+                            
                         </NavLink>
 
                         <NavLink
                             to="/faq"
-                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
+                            className={` ${pathname === "/faq" ? " bg-[#853493] px-4 py-1 text-white rounded " : ""} relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
                         >
                             FAQ
-                            {pathname === "/faq" && (
-                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                            )}
+                            
                         </NavLink>
 
                         <NavLink
                             to="/our-branch"
-                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
+                            className={`relative ${pathname === "/our-branch" ? " bg-[#853493] px-4 py-1 text-white rounded " : ""} text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
                         >
                             Our Branches
-                            {pathname === "/our-branch" && (
-                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                            )}
+                            
                         </NavLink>
 
                         {/* Gallery dropdown */}
@@ -158,12 +146,10 @@ const MainNavbar = () => {
                             onMouseLeave={() => setShowGalleryDropdown(false)}
                         >
                             <p
-                                className={`relative text-lg font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'}`}
+                                className={`relative text-lg ${pathname === "/image-gallery" || pathname === "/video-gallery" ? "bg-[#853493] px-4 py-1 text-white rounded" : "" } font-medium cursor-pointer ${isScrolled ? 'text-white' : 'text-black'}`}
                             >
                                 Gallery
-                                {(pathname === "/image-gallery" || pathname === "/video-gallery") && (
-                                    <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                                )}
+                                
                             </p>
 
                             {showGalleryDropdown && (
@@ -189,12 +175,10 @@ const MainNavbar = () => {
 
                         <NavLink
                             to="/contact-us"
-                            className={`relative text-lg font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
+                            className={`relative text-lg ${pathname === "/contact-us" ? " bg-[#853493] px-4 py-1 text-white rounded " : ""} font-medium ${isScrolled ? 'text-white' : 'text-black'}`}
                         >
                             Contact Us
-                            {pathname === "/contact-us" && (
-                                <span className="absolute left-0 -bottom-1 w-full h-[3px] bg-[#853493]"></span>
-                            )}
+                            
                         </NavLink>
 
 

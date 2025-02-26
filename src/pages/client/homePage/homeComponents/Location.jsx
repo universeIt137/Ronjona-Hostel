@@ -21,9 +21,7 @@ const Location = () => {
     }
     return (
         <div className="container px-4 md:px-0 md:mx-auto">
-            <Helmet>
-                <title>Ronjona| Home Page</title>
-            </Helmet>
+            
             {/* Title */}
             <p className="hover:underline text-2xl md:text-4xl lg:mb-6 font-bold text-[#853493] ">Locations</p>
 
@@ -33,7 +31,7 @@ const Location = () => {
                 <div className="absolute z-10 h-80 w-80 p-8 bg-[#f1edec] rounded-lg bg-opacity-80  hidden lg:block">
                     <img
                         className="rounded-lg h-60 w-full"
-                        src="https://res.cloudinary.com/dntcuf8u3/image/upload/v1733452829/samples/imagecon-group.jpg"
+                        src={locationData[0]?.img}
                         alt="Highlight Location"
                     />
                 </div>

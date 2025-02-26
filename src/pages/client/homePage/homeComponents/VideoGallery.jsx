@@ -59,9 +59,7 @@ const VideoGallery = () => {
 
     return (
         <div className="px-4 md:px-0 w-11/12 mx-auto my-24">
-            <Helmet>
-                <title>Ronjona | Video Gallery Page</title>
-            </Helmet>
+            
             <div className="mb-10 text-center">
                 <p className="text-2xl md:text-4xl hover:underline font-bold text-[#A020BA]">
                     Video Gallery

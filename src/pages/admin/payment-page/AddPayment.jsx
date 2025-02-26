@@ -15,9 +15,15 @@ const AddPayment = () => {
     const bankName = e.target.bankName.value;
     const phoneNumber = e.target.phoneNumber.value;
     const branchName = e.target.branchName.value;
-    const payload = {
-      accountName, accountNumber,bankName,phoneNumber,branchName
+    const logo = e.target.logo.files[0];
+    let imgUrl = "";
+    if (!logo.name) {
+      imgUrl = ""
     }
+    imgUrl = await uploadImg(logo)
+    const payload = {
+      accountName, accountNumber, bankName, phoneNumber, branchName, logo: imgUrl
+    };
 
     
 
@@ -72,6 +78,19 @@ const AddPayment = () => {
                 type="text"
                 id="accountName"
                 name="accountName"
+                placeholder="Enter account name"
+                className="w-full px-3  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            {/* logo */}
+            <div className="mb-4">
+              <label htmlFor="logo" className="block text-lg font-semibold mb-2">
+                Logo
+              </label>
+              <input
+                type="file"
+                id="logo"
+                name="logo"
                 placeholder="Enter account name"
                 className="w-full px-3  border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />

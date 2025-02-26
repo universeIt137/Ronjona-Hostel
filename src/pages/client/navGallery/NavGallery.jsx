@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useQuery } from '@tanstack/react-query';
-import useAxiosPublic from '../../../../hooks/useAxiosPublic';
-import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
 import { Link } from 'react-router-dom';
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
 
-const PhotoGallery = () => {
+const NavGallery = () => {
     const axiosPublic = useAxiosPublic();
     const [isOpen, setIsOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -63,17 +63,19 @@ const PhotoGallery = () => {
     }
 
     // Determine how many images to show
-    const displayedImages = showAll ? imgList : imgList.slice(0, 4);
+
 
     return (
         <div className="bg-white">
             <div className="w-11/12 mx-auto lg:mt-28 mb-6 ">
-                
+                <Helmet>
+                    <title>Ronjona | Img Gallery Page</title>
+                </Helmet>
                 <h1 className="text-center text-[#A020BA] lg:text-4xl font-bold">Our Photo Gallery</h1>
 
                 {/* Gallery Images */}
                 <div className="gallery-container mt-4 flex flex-col lg:grid grid-cols-2 lg:grid-cols-4 gap-4 p-4">
-                    {displayedImages.map((item, index) => (
+                    {imgList.map((item, index) => (
                         <img
                             key={index}
                             src={item?.img}
@@ -84,15 +86,7 @@ const PhotoGallery = () => {
                     ))}
                 </div>
 
-                {/* Show More / Show Less Buttons */}
-                <div className="flex justify-center mt-6">
-                    <button
-                        className=" text-white px-6 py-2 rounded-lg bg-[#853493] transition mr-4"
-                    >
-                        <Link to={"/image-gallery"}>Show More</Link>
-                    </button>
-
-                </div>
+                
 
                 {/* Modal */}
                 {isOpen && (
@@ -138,4 +132,4 @@ const PhotoGallery = () => {
     );
 };
 
-export default PhotoGallery;
+export default NavGallery;
