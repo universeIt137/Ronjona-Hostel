@@ -47,12 +47,12 @@ const Faq = () => {
         </h2>
         <div
           className="h-[60vh]  flex flex-col justify-center items-start px-8 text-white bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://res.cloudinary.com/dnvmj9pvk/image/upload/v1727492547/course-images/p5gcvttzauhtt7dggh3f.jpg')" }}
+          style={{ backgroundImage: "url('https://res.cloudinary.com/dnvmj9pvk/image/upload/v1740654088/Banner-3_1_1_ouyni3.jpg')" }}
         >
-          <h1 className="text-4xl font-semibold mb-4 italic" data-aos="fade-up">
+          <h1 className="text-4xl font-semibold text-black mb-4 italic" data-aos="fade-up">
             Special Offers For Pandemic Situation!
           </h1>
-          <h3 className="text-2xl mb-6 italic" data-aos="fade-up">
+          <h3 className="text-2xl mb-6 italic text-black " data-aos="fade-up">
             10% Off On All Categories Seat
           </h3>
           <a
