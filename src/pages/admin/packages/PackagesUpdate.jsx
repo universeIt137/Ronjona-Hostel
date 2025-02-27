@@ -15,15 +15,16 @@ const PackagesUpdate = () => {
         title: "",
         price: "",
         video: "",
-        img: [],
+        img: [""],
         desc: "",
         features: [{ featureTitle: "", featureImg: "" }],
         branch: "",
         location: "",
         seatAvalible: ""
     });
-    console.log(formData)
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+    console.log(formData)
 
     const { data: branchNames = [] } = useQuery({
         queryKey: ["branchNames"],
@@ -98,6 +99,10 @@ const PackagesUpdate = () => {
         }));
     };
 
+    const handleAddImage = () => {
+        setFormData({ ...formData, img: [...formData.img, ""] });
+    };
+
     // Handle image upload
     const handleUpload = async (e, arrayName, index, fieldName) => {
         const file = e.target.files[0];
@@ -108,10 +113,15 @@ const PackagesUpdate = () => {
         try {
             const response = await axios.post(CLOUDINARY_URL, imageData);
             const imageUrl = response.data.secure_url;
+            console.log(`upcomming img url is ${imageUrl}`)
+            const uploadImgUrl = imageUrl.toString();  // Ensure it's a string
 
             setFormData((prev) => {
-                const updatedArray = [...prev[arrayName]];
-                updatedArray[index][fieldName] = imageUrl;
+                // Check if arrayName exists and is an array, otherwise initialize as an empty array
+                const updatedArray = Array.isArray(prev[arrayName]) ? [...prev[arrayName]] : [];
+                updatedArray[index] = updatedArray[index] || []; // Ensure the index exists
+                updatedArray[index][fieldName] = uploadImgUrl;
+
                 return { ...prev, [arrayName]: updatedArray };
             });
         } catch (error) {
@@ -320,18 +330,13 @@ const PackagesUpdate = () => {
                     Add Feature
                 </button>
 
-                <div className="my-8" >
+                <div className="my-8">
                     {formData?.img.map((images, index) => (
                         <div key={index} className="flex gap-4 mb-4">
-
-                            {
-                                console.log(images)
-                            }
-                            
-                             <input
+                            <input
                                 type="file"
                                 onChange={(e) => handleUpload(e, "img", index, "images")}
-                                className="flex-1 border-2 "
+                                className="flex-1 border-2"
                             />
                             {images && (
                                 <img
@@ -339,22 +344,23 @@ const PackagesUpdate = () => {
                                     alt="Feature"
                                     className="w-16 h-16 rounded"
                                 />
-                            )} 
+                            )}
                             <button
                                 type="button"
                                 onClick={() => handleRemoveItem("img", index)}
-                                className=" text-blue-500 font-bold rounded"
+                                className="text-blue-500 font-bold rounded"
                             >
                                 Remove
                             </button>
                         </div>
                     ))}
+
                     {/* <button
                         type="button"
-                        onClick={() => handleAddItem("img")}
-                        className="mt-4 p-2 bg-blue-500 text-white rounded"
+                        onClick={handleAddImage}
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
                     >
-                        Add Feature
+                        Add More Images
                     </button> */}
                 </div>
 

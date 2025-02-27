@@ -93,7 +93,7 @@ const Footer = () => {
                                 <li className="flex items-center space-x-2">
                                     <span className="w-2 h-2 bg-[#853493] rounded-full"></span>
                                     <span className="hover:text-[#853493] transition duration-300">
-                                        <Link to="/all-packages">Our Our Packages</Link>
+                                        <Link to="/all-packages">Our Packages</Link>
                                     </span>
                                 </li>
                                 <li className="flex items-center space-x-2">

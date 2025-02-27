@@ -520,6 +520,41 @@ const AdminSidebar = () => {
 
 
 
+                        {/* payment  */}
+
+                        <Sidebar.Collapse
+                            icon={BiGitBranch}
+                            label="Payment Type "
+                            renderChevronIcon={(theme, open) => {
+                                const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+
+                                return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+                            }}
+                        >
+
+
+                            <Link to={'/dashboard/upload-payment-type'}>
+                                <Sidebar.Item>
+                                    Upload Pyment Type
+                                </Sidebar.Item>
+                            </Link>
+                            <Link to={'/dashboard/manage-payment-type'}>
+                                <Sidebar.Item>
+                                    Manage Payment Type
+                                </Sidebar.Item>
+                            </Link>
+
+                        </Sidebar.Collapse>
+
+
+
+
+
+
+
+
+
+
 
 
 

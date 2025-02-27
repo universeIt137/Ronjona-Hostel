@@ -84,6 +84,9 @@ import UpdateAddress from "../pages/admin/address/UpdateAddress";
 import AllAddress from "../pages/admin/address/AllAddress";
 import UploadPrice from "../pages/admin/price-page/UploadPrice";
 import NavGallery from "../pages/client/navGallery/NavGallery";
+import UploadPaymentType from "../pages/admin/payment-type/UploadPaymentType";
+import ManagePaymentType from "../pages/admin/payment-type/ManagePaymentType";
+import PaymentTypeUpdate from "../pages/admin/payment-type/PaymentTypeUpdate";
 
 const router = createBrowserRouter([
     // Client related routes 
@@ -472,6 +475,22 @@ const router = createBrowserRouter([
             {
                 path: "price-upload",
                 element : <UploadPrice></UploadPrice>
+            },
+
+            // payment type
+
+
+            {
+                path: "upload-payment-type",
+                element : < UploadPaymentType></UploadPaymentType>
+            },
+            {
+                path: "manage-payment-type",
+                element : <ManagePaymentType></ManagePaymentType>
+            },
+            {
+                path : "payment-type-update/:id",
+                element : <PaymentTypeUpdate></PaymentTypeUpdate>
             }
 
 

@@ -12,17 +12,30 @@ const BookingFrom = () => {
     window.scrollTo(0, 0)
     const [loading, setLoading] = useState(false);
     const axiosPublic = useAxiosPublic();
+    const [paymentType, setPaymentType] = useState("");
+
     const { id } = useParams();
+
+    const paymentValue = paymentType.toLowerCase();
 
     // Fetch package data by ID
     const { data: singlePacagesData = {}, isLoading } = useQuery({
         queryKey: ['singlePacagesData', id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/getPackageById/${id}`);
-            console.log(res?.data?.data);
             return res.data.data;
         },
     });
+
+
+    const { data: paymentTypeData = [], } = useQuery({
+        queryKey: ['paymentTypeData'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/payment-type`);
+            return res.data?.data;
+        },
+    });
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -168,7 +181,31 @@ const BookingFrom = () => {
                                 </option>
                             </select>
                         </div>
+                        <div>
+                            <label className="block text-gray-700 font-medium mb-1">Payment Type</label>
+                            <select
+                                value={paymentType}
+                                onChange={(e) => setPaymentType(e.target.value)}
+                                name="paymentType"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                required
+                            >
+                                <option value="" disabled selected>Select a payment type</option>
+                                {paymentTypeData.map((item, i) => (
+                                    <option key={i} value={item.paymentName}>
+                                        {item.paymentName}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        
+
                     </div>
+
+                    <div className=' w-[37%] left-96 ' >
+                            <PaymentCard paymentValue = {paymentValue} ></PaymentCard>
+                        </div>
+
 
                     {/* Submit Button */}
                     <div className="flex justify-center">
@@ -207,7 +244,6 @@ const BookingFrom = () => {
                 </form>
             </div>
             <div className='mb-4' >
-                <PaymentCard></PaymentCard>
             </div>
         </>
     );
