@@ -1,7 +1,9 @@
-import Marquee from 'react-fast-marquee';
+import MarqueeImport from 'react-fast-marquee';
 import useAxiosPublic from '../../../../hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import SkeletonLoader from '../../../../components/skeleton-loader/SkeletonLoader';
+
+const Marquee = MarqueeImport?.default?.default ?? MarqueeImport?.default ?? MarqueeImport;
 
 const Review = () => {
     const axiosPublic = useAxiosPublic();

@@ -50,14 +50,12 @@ const ChooseUs = () => {
                     <p className="text-xl lg:text-6xl font-semibold mb-4 text-center text-[#A020BA]">WHY YOU WITH RONJONA</p>
                     <p className="text-sm lg:text-lg text-justify">
                         {
-                            whyChooseData?.des.slice(0, 500)
+                            whyChooseData?.des
                         }...  <Link className='underline font-bold ' to={`choose-us-details`}>See more</Link>
                     </p>
                 </div>
             </div>
         </div>
-
-
     );
 };
 

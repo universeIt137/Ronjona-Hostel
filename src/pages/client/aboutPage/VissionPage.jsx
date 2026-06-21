@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Marquee from 'react-fast-marquee';
+import MarqueeImport from 'react-fast-marquee';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import SkeletonLoader from '../../../components/skeleton-loader/SkeletonLoader';
 import { Helmet } from 'react-helmet-async';
+
+const Marquee = MarqueeImport?.default?.default ?? MarqueeImport?.default ?? MarqueeImport;
 
 const VissionPage = () => {
     const axiosPublic = useAxiosPublic();

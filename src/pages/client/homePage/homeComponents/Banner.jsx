@@ -23,6 +23,7 @@ const Banner = () => {
             return res.data?.data;
         }
     });
+console.log("banner", locations);
 
     // Fetch branch data and refetch when selectedLocation changes.
     const { data: branchName = [] } = useQuery({

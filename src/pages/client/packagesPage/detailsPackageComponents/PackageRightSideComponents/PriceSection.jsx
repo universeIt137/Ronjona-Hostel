@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
+import ReactPlayerImport from 'react-player';
 import Modal from 'react-modal'; // Install this library using: npm install react-modal
 import { useNavigate } from 'react-router-dom';
 const phoneNumber = "01777177771"; // Define phone number once to reuse
+const ReactPlayer = ReactPlayerImport?.default?.default ?? ReactPlayerImport?.default ?? ReactPlayerImport;
 
 
 const PriceSection = ({ packagesDetailsData }) => {

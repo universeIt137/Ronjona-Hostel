@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState, useMemo } from "react";
-import Marquee from "react-fast-marquee";
-import ReactPlayer from "react-player";
+import MarqueeImport from "react-fast-marquee";
+import ReactPlayerImport from "react-player";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../../components/skeleton-loader/SkeletonLoader";
 import { Helmet } from "react-helmet-async";
+
+const Marquee = MarqueeImport?.default?.default ?? MarqueeImport?.default ?? MarqueeImport;
+const ReactPlayer = ReactPlayerImport?.default?.default ?? ReactPlayerImport?.default ?? ReactPlayerImport;
 
 const VideoGallery = () => {
     window.scrollTo(0, 0);

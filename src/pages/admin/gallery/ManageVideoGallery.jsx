@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { useQuery } from "@tanstack/react-query";
-import ReactPlayer from "react-player";
+import ReactPlayerImport from "react-player";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import SkeletonLoader from "../../../components/skeleton-loader/SkeletonLoader";
 import { deleteAlert } from "../../../helper/deleteAlert";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+
+const ReactPlayer = ReactPlayerImport?.default?.default ?? ReactPlayerImport?.default ?? ReactPlayerImport;
 
 const ManageVideoGallery = () => {
     const axiosPublic = useAxiosPublic();
